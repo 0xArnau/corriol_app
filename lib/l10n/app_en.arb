@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "language": "English",
+  "@language": {
+    "description": "The current language"
+   },
+   "home": "Home",
+   "@home": {
+    "description": "The home navigation button / page"
+   },
+   "handyman": "Handyman",
+   "@handyman": {
+    "description": "The handyman navigation button / page"
+   },
+   "profile": "Profile",
+   "@profile": {
+    "description": "The profile navigation button / page"
+   }
+}
