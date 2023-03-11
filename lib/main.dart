@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Corriol APP',
       theme: ThemeData(
-        primarySwatch: kPrimaryBlue,
+        primarySwatch: kColorPrimaryBlue,
         useMaterial3: true,
       ),
       supportedLocales: L10n.all,

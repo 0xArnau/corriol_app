@@ -15,5 +15,25 @@
    "profile": "Profile",
    "@profile": {
     "description": "The profile navigation button / page"
+   },
+   "meetKentishPlover": "Meet the Kenthish Plover",
+   "@meetKentishPlover": {
+    "description": "Text for the card/page"
+   },
+   "contact": "Contact",
+   "@contact": {
+    "description": "Text  for the card/page"
+   },
+   "recordObservation": "Record an observation",
+   "@contact": {
+    "description": "Text  for the card/page"
+   },
+   "myRecords": "My records",
+   "@contact": {
+    "description": "Text  for the card/page"
+   },
+   "warningText112": "If you notice any incident related to the Kentish Plover, call",
+   "@112Text": {
+    "description": "112 alert text"
    }
 }
