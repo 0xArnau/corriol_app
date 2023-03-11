@@ -16,7 +16,7 @@ const kDouble15 = 15.0;
 const kDouble20 = 20.0;
 const kDouble25 = 25.0;
 
-const kDoublePaddingCardImageText = 60.0;
+const kDoublePaddingCardImageText = 40.0;
 const kDoublePaddingGridViewText = 20.0;
 
 // Text size & weigth
