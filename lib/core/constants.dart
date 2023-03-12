@@ -19,6 +19,9 @@ const kDouble25 = 25.0;
 const kDoublePaddingCardImageText = 40.0;
 const kDoublePaddingGridViewText = 20.0;
 
+const kDoublePaddingFloatingActionButtonH = 100.0;
+const kDoublePaddingFloatingActionButtonV = 150.0;
+
 // Text size & weigth
 const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
