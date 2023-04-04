@@ -17,6 +17,26 @@ class RecordObservationPage extends StatefulWidget {
 class _RecordObservationPageState extends State<RecordObservationPage> {
   Position? _position;
 
+  String? valueChoose;
+  List itemsList = [
+    "Corriol A",
+    "Corriol B",
+  ];
+
+  int _count = 0;
+
+  void _increment() {
+    setState(() {
+      _count++;
+    });
+  }
+
+  void _decrement() {
+    setState(() {
+      if (_count > 0) _count--;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -47,19 +67,22 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(kDouble25),
-          child: Column(
-            children: [
-              Center(
-                child: Row(
+          child: Center(
+            child: Column(
+              children: [
+                // Map
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.map_outlined),
                     const SizedBox(width: kDouble25),
-                    // _position == null
-                    //     ? const CircularProgressIndicator()
-                    //     : Text(_position.toString()),
                     Expanded(
                       child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -80,13 +103,89 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                             ),
                           );
                         },
-                        child: const Text('Veure google maps'),
+                        child: ValueListenableBuilder(
+                            valueListenable: currenPositionNotifier,
+                            builder: (context, currentPosition, child) {
+                              return Text(
+                                  "${currentPosition.latitude.toStringAsFixed(6)} ${currentPosition.longitude.toStringAsFixed(6)}");
+                            }),
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 15),
+                // Especie
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.map_outlined),
+                    const SizedBox(width: kDouble25),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: DropdownButton(
+                          hint: const Text("Espècie"),
+                          isExpanded: true,
+                          style: const TextStyle(color: Colors.black),
+                          value: valueChoose,
+                          onChanged: (newValue) {
+                            setState(() {
+                              valueChoose = newValue as String;
+                            });
+                          },
+                          items: itemsList.map((itemValue) {
+                            return DropdownMenuItem(
+                              value: itemValue,
+                              child: Text(itemValue),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.map_outlined),
+                    const SizedBox(width: kDouble25),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('#Femelles'),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: _decrement,
+                        ),
+                        Text('$_count'),
+                        IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: _increment,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
