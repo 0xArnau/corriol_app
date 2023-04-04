@@ -5,9 +5,11 @@ class CounterButtonWidget extends StatefulWidget {
   const CounterButtonWidget({
     super.key,
     required this.hint,
+    required this.onChanged,
   });
 
   final String hint;
+  final ValueChanged<int> onChanged;
 
   @override
   State<CounterButtonWidget> createState() => _CounterButtonWidgetState();
@@ -20,12 +22,14 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
     setState(() {
       _count++;
     });
+    widget.onChanged.call(_count);
   }
 
   void _decrement() {
     setState(() {
       if (_count > 0) _count--;
     });
+    widget.onChanged.call(_count);
   }
 
   @override
@@ -55,7 +59,9 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
               icon: const Icon(Icons.remove),
               onPressed: _decrement,
             ),
-            Text('$_count'),
+            Text(
+              '$_count',
+            ),
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: _increment,
