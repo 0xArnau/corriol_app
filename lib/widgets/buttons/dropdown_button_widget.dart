@@ -21,6 +21,13 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
   String? _valueChoose;
 
   @override
+  void initState() {
+    super.initState();
+    _valueChoose = widget.itemsList[0];
+    widget.onChanged.call(_valueChoose!);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
