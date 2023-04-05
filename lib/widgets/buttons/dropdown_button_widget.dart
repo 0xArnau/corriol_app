@@ -24,7 +24,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
   void initState() {
     super.initState();
     _valueChoose = widget.itemsList[0];
-    widget.onChanged.call(_valueChoose!);
+    // widget.onChanged.call(_valueChoose!);
   }
 
   @override
