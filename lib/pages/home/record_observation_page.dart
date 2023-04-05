@@ -1,3 +1,7 @@
+import 'dart:io';
+import 'dart:convert';
+
+import 'package:corriol_app/classes/record_observations_class.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
@@ -5,6 +9,8 @@ import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:corriol_app/classes/file_io_class.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RecordObservationPage extends StatefulWidget {
   const RecordObservationPage({super.key});
@@ -14,13 +20,18 @@ class RecordObservationPage extends StatefulWidget {
 }
 
 class _RecordObservationPageState extends State<RecordObservationPage> {
-  int _countFemales = 0;
-  int _countMales = 0;
-  int _countUndetermined = 0;
-  int _countChickens = 0;
-  int _countCats = 0;
-  int _countDogs = 0;
-  String? _especie;
+  RecordObservationClass fields = RecordObservationClass(
+    coordenates: const LatLng(0, 0),
+    species: 'species',
+    females: 0,
+    males: 0,
+    undetermined: 0,
+    chickens: 0,
+    cats: 0,
+    dogs: 0,
+  );
+
+  FileIoClass fileClass = FileIoClass(fileName: 'test.txt');
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +60,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               hint: AppLocalizations.of(context).screen1_3_Button_Select_Specie,
               onChanged: (value) {
                 setState(() {
-                  _especie = value;
+                  fields.species = value;
                 });
               },
             ),
@@ -60,7 +71,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               image: const AssetImage('assets/images/Screen-1_3/femelles.png'),
               onChanged: (value) {
                 setState(() {
-                  _countFemales = value;
+                  fields.females = value;
                 });
               },
             ),
@@ -71,7 +82,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               image: const AssetImage('assets/images/Screen-1_3/mescles.png'),
               onChanged: (value) {
                 setState(() {
-                  _countMales = value;
+                  fields.males = value;
                 });
               },
             ),
@@ -83,7 +94,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   const AssetImage('assets/images/Screen-1_3/indeterminat.png'),
               onChanged: (value) {
                 setState(() {
-                  _countUndetermined = value;
+                  fields.undetermined = value;
                 });
               },
             ),
@@ -94,7 +105,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               image: const AssetImage('assets/images/Screen-1_3/polls.png'),
               onChanged: (value) {
                 setState(() {
-                  _countChickens = value;
+                  fields.chickens = value;
                 });
               },
             ),
@@ -105,7 +116,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               image: const AssetImage('assets/images/Screen-1_3/gats.png'),
               onChanged: (value) {
                 setState(() {
-                  _countCats = value;
+                  fields.cats = value;
                 });
               },
             ),
@@ -116,7 +127,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               image: const AssetImage('assets/images/Screen-1_3/gossos.png'),
               onChanged: (value) {
                 setState(() {
-                  _countDogs = value;
+                  fields.dogs = value;
                 });
               },
             ),
@@ -135,14 +146,15 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   ),
                 ),
                 onPressed: () {
+                  fileClass.writeContent(jsonEncode(fields.toJson()));
                   // Show the Snackbar
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                          "${AppLocalizations.of(context).screen1_3_Button_Select_Specie}: $_especie\n${AppLocalizations.of(context).screen1_3_Button_Females}: $_countFemales\n${AppLocalizations.of(context).screen1_3_Button_Males}: $_countMales\n${AppLocalizations.of(context).screen1_3_Button_Undetermined}: $_countUndetermined\n${AppLocalizations.of(context).screen1_3_Button_Chickens}: $_countChickens\n${AppLocalizations.of(context).screen1_3_Button_Cats}: $_countCats\n${AppLocalizations.of(context).screen1_3_Button_Dogs}: $_countDogs"),
-                      duration: const Duration(seconds: 3),
+                    const SnackBar(
+                      content: Text('Saving information'),
+                      duration: Duration(seconds: 3),
                     ),
                   );
+                  Navigator.pop(context);
                 },
                 child: const Text('Submit'),
               ),
