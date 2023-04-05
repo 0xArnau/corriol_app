@@ -8,5 +8,14 @@
   "contact": "Contacte",
   "recordObservation": "Anotar una observació",
   "myRecords": "Els meus registres",
-  "warningText112": "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al"
+  "warningText112": "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al",
+  "screen1_3_Button_Select_Specie": "Seleccionar espècie",
+  "screen1_3_Button_Select_Specie_Camanegre": "Corriol camanegre",
+  "screen1_3_Button_Select_Specie_Petit": "Charadrius dubius",
+  "screen1_3_Button_Females": "Femelles",
+  "screen1_3_Button_Males": "Mascles",
+  "screen1_3_Button_Undetermined": "Indeterminat",
+  "screen1_3_Button_Chickens": "Polls",
+  "screen1_3_Button_Cats": "Gats",
+  "screen1_3_Button_Dogs": "Gossos"
 }

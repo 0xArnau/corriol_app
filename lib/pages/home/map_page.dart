@@ -1,4 +1,5 @@
 import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/pages/home/map_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -16,26 +17,26 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MapController>(
-      create: (_) => MapController(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Google Maps: Selecciona una posició',
-            style: kTextStylePageTitle,
-          ),
-        ),
-        body: Center(
-          child: Consumer<MapController>(
-            builder: (_, controller, __) => GoogleMap(
-              initialCameraPosition:
-                  controller.getDefaultCameraPosition(position, zoom),
-              markers: controller.markers,
-              onTap: controller.onTap,
+    return ValueListenableBuilder(
+      valueListenable: currenPositionNotifier,
+      builder: (context, currentPosition, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "${currentPosition.latitude.toStringAsFixed(6)} ${currentPosition.longitude.toStringAsFixed(6)}",
+              style: kTextStylePageTitle,
             ),
           ),
-        ),
-      ),
+          body: Center(
+            child: GoogleMap(
+              initialCameraPosition:
+                  MapController.getDefaultCameraPosition(position, zoom),
+              markers: MapController.markers,
+              onTap: MapController.onTap,
+            ),
+          ),
+        );
+      },
     );
   }
 }
