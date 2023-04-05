@@ -15,12 +15,12 @@ class RecordObservationPage extends StatefulWidget {
 }
 
 class _RecordObservationPageState extends State<RecordObservationPage> {
-  final List _itemsList = [
-    "Corriol A",
-    "Corriol B",
-  ];
-
-  int? _countFemelles;
+  int? _countFemales;
+  int? _countMales;
+  int? _countUndetermined;
+  int? _countChickens;
+  int? _countCats;
+  int? _countDogs;
   String? _especie;
 
   @override
@@ -44,8 +44,14 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   const SizedBox(height: 15),
                   // Especie
                   DropdownButtonWidget(
-                    itemsList: _itemsList,
-                    hint: "Espècie",
+                    itemsList: [
+                      AppLocalizations.of(context)
+                          .screen1_3_Button_Select_Specie_Camanegre,
+                      AppLocalizations.of(context)
+                          .screen1_3_Button_Select_Specie_Petit,
+                    ],
+                    hint: AppLocalizations.of(context)
+                        .screen1_3_Button_Select_Specie,
                     onChanged: (value) {
                       setState(() {
                         _especie = value;
@@ -53,19 +59,79 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     },
                   ),
                   const SizedBox(height: 15),
-                  // Femelles
+                  // Females
                   CounterButtonWidget(
-                    hint: "# Femelles",
+                    hint: AppLocalizations.of(context).screen1_3_Button_Females,
+                    image: const AssetImage(
+                        'assets/images/Screen-1_3/femelles.png'),
                     onChanged: (value) {
                       setState(() {
-                        _countFemelles = value;
+                        _countFemales = value;
                       });
                     },
                   ),
                   const SizedBox(height: 15),
-                  //
-                  Text(_countFemelles.toString()),
-                  _especie != null ? Text(_especie!) : const Text('null'),
+                  // Males
+                  CounterButtonWidget(
+                    hint: AppLocalizations.of(context).screen1_3_Button_Males,
+                    image: const AssetImage(
+                        'assets/images/Screen-1_3/mescles.png'),
+                    onChanged: (value) {
+                      setState(() {
+                        _countMales = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  // Undetermined
+                  CounterButtonWidget(
+                    hint: AppLocalizations.of(context)
+                        .screen1_3_Button_Undetermined,
+                    image: const AssetImage(
+                        'assets/images/Screen-1_3/indeterminat.png'),
+                    onChanged: (value) {
+                      setState(() {
+                        _countUndetermined = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  // Chickens
+                  CounterButtonWidget(
+                    hint:
+                        AppLocalizations.of(context).screen1_3_Button_Chickens,
+                    image:
+                        const AssetImage('assets/images/Screen-1_3/polls.png'),
+                    onChanged: (value) {
+                      setState(() {
+                        _countChickens = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  // Cats
+                  CounterButtonWidget(
+                    hint: AppLocalizations.of(context).screen1_3_Button_Cats,
+                    image:
+                        const AssetImage('assets/images/Screen-1_3/gats.png'),
+                    onChanged: (value) {
+                      setState(() {
+                        _countCats = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  // Dogs
+                  CounterButtonWidget(
+                    hint: AppLocalizations.of(context).screen1_3_Button_Dogs,
+                    image:
+                        const AssetImage('assets/images/Screen-1_3/gossos.png'),
+                    onChanged: (value) {
+                      setState(() {
+                        _countDogs = value;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),

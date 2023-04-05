@@ -5,10 +5,12 @@ class CounterButtonWidget extends StatefulWidget {
   const CounterButtonWidget({
     super.key,
     required this.hint,
+    required this.image,
     required this.onChanged,
   });
 
   final String hint;
+  final AssetImage image;
   final ValueChanged<int> onChanged;
 
   @override
@@ -37,7 +39,11 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.map_outlined),
+        Image(
+          image: widget.image,
+          width: 24.0,
+          height: 24.0,
+        ),
         const SizedBox(width: kDouble25),
         Expanded(
           child: Container(
