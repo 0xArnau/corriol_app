@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     CardWidget(
                       imagePath:
-                          'null', // TODO: Changes this to a valid image path
+                          'assets/images/home/1_1-coneix-al-corriol.png', // TODO: Changes this to a valid image path
                       text: AppLocalizations.of(context).meetKentishPlover,
                       background: kColorRedCard,
                       foreground: Colors.black,
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                     ),
                     CardWidget(
                       imagePath:
-                          'null', // TODO: Changes this to a valid image path
+                          'assets/images/home/1_6-contacta.png', // TODO: Changes this to a valid image path
                       text: AppLocalizations.of(context).contact,
                       background: kColorPurpleCard,
                       foreground: Colors.black,
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                     ),
                     CardWidget(
                       imagePath:
-                          'null', // TODO: Changes this to a valid image path
+                          'assets/images/home/1_3-anotar-observacio.png', // TODO: Changes this to a valid image path
                       text: AppLocalizations.of(context).recordObservation,
                       background: kColorGreenCard,
                       foreground: Colors.black,
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                     ),
                     CardWidget(
                       imagePath:
-                          'null', // TODO: Changes this to a valid image path
+                          'assets/images/home/1_4-registres.png', // TODO: Changes this to a valid image path
                       text: AppLocalizations.of(context).myRecords,
                       background: kColorYellowCard,
                       foreground: Colors.black,
@@ -77,8 +77,11 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: kColorPrimaryBlue,
                   ),
-                )
+                ),
                 // TODO: Add GEPEC & EdC Logos
+                const Image(
+                  image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                ),
               ],
             ),
           ),
