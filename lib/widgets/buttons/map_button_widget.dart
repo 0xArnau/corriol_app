@@ -15,7 +15,7 @@ class MapButtonWidget extends StatefulWidget {
 
 class _MapButtonWidgetState extends State<MapButtonWidget> {
   Position? _position;
-  
+
   Future<void> updateLocation() async {
     GeolocationClass().enableLocationPermission();
     if (!isGpsOnNotifier.value) {
@@ -23,17 +23,19 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
           const Duration(seconds: 5)); // TODO: Change this to a better solution
     }
     Position? newPosition = await GeolocationClass().getCurrentLocation();
-    setState(() {
-      _position = newPosition;
-    });
+    if (mounted) {
+      setState(() {
+        _position = newPosition;
+      });
+    }
   }
-    
+
   @override
   void initState() {
     super.initState();
     updateLocation();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Row(

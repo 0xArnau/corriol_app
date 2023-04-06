@@ -48,9 +48,11 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
               style: const TextStyle(color: Colors.black),
               value: _valueChoose,
               onChanged: (newValue) {
-                setState(() {
-                  _valueChoose = newValue as String;
-                });
+                if (mounted) {
+                  setState(() {
+                    _valueChoose = newValue as String;
+                  });
+                }
                 widget.onChanged.call(_valueChoose!);
               },
               items: widget.itemsList.map((itemValue) {

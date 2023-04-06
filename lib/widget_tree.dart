@@ -47,11 +47,13 @@ class _WidgetTreeState extends State<WidgetTree> {
         destinations: navigation,
         selectedIndex: currentPage,
         onDestinationSelected: (int value) {
-          setState(
-            () {
-              currentPage = value;
-            },
-          );
+          if (mounted) {
+            setState(
+              () {
+                currentPage = value;
+              },
+            );
+          }
         },
       ),
     );

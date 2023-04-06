@@ -21,16 +21,20 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
   int _count = 0;
 
   void _increment() {
-    setState(() {
-      _count++;
-    });
+    if (mounted) {
+      setState(() {
+        _count++;
+      });
+    }
     widget.onChanged.call(_count);
   }
 
   void _decrement() {
-    setState(() {
-      if (_count > 0) _count--;
-    });
+    if (mounted) {
+      setState(() {
+        if (_count > 0) _count--;
+      });
+    }
     widget.onChanged.call(_count);
   }
 
