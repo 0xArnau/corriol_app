@@ -32,24 +32,30 @@ class _SplashState extends State<Splash> {
       body: Center(
         child: Column(
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child: Text(
-                'Corriol APP',
-                style: TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                child: Text(
+                  'Corriol APP',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-              child: Image.asset('assets/images/CorriolAPP.png'),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+                child: Image.asset('assets/images/CorriolAPP.png'),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-              child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+                child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+              ),
             ),
           ],
         ),
