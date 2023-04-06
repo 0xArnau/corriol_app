@@ -30,7 +30,12 @@ class CardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(kDouble25),
           child: Column(
             children: [
-              const Icon(Icons.device_unknown), // TODO: change this to an image
+              Image(
+                image: AssetImage(imagePath),
+                width:
+                    48.0, // TODO: increment size and remove padding (bottom overflowed in spanish)
+                color: Colors.black,
+              ), // TODO: change this to an image
               const SizedBox(height: kDoublePaddingCardImageText),
               Align(
                 alignment: Alignment.bottomCenter,
