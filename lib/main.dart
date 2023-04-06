@@ -1,7 +1,7 @@
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/l10n/l10n.dart';
-import 'package:corriol_app/widget_tree.dart';
+import 'package:corriol_app/splash.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          home: const WidgetTree(),
+          home: const Splash(),
           locale: locale,
         );
       },
