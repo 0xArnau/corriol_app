@@ -1,5 +1,6 @@
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
+import 'package:corriol_app/main.dart';
 import 'package:flutter/material.dart';
 
 class LanguageButtonWidget extends StatefulWidget {
@@ -28,6 +29,7 @@ class _LanguageButtonWidgetState extends State<LanguageButtonWidget> {
               onPressed: () {
                 setState(() {
                   localeNotifier.value = widget.newLocale!;
+                  cfg.reWriteContent(localeNotifier.value.toString());
                   print(widget.newLocale!);
                 });
               },

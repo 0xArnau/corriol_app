@@ -19,9 +19,19 @@ class FileIoClass {
     return File('$path/$fileName');
   }
 
+  Future<bool> fileExists() async {
+    final file = await _localFile;
+    return file.exists();
+  }
+
   Future<File> writeContent(String content) async {
     final file = await _localFile;
     return file.writeAsString('$content\n', mode: FileMode.append);
+  }
+
+  Future<File> reWriteContent(String content) async {
+    final file = await _localFile;
+    return file.writeAsString(content, mode: FileMode.write);
   }
 
   Future<String> readcontent() async {

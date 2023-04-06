@@ -8,20 +8,24 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:ui' as ui;
 
 void main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  String locale = ui.window.locale.languageCode;
+
+  if (await cfg.fileExists()) {
+    locale = await cfg.readcontent();
+  }
+
+  MyApp.languageCode = Locale(locale);
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({
+  const MyApp({
     super.key,
   });
 
-  final String _languageCode =
-      ui.window.locale.languageCode; // TODO: Save & Get saved language
-
-  Locale getDefaultLocale() {
-    return Locale(_languageCode);
-  }
+  static late final Locale languageCode;
 
   @override
   State<MyApp> createState() => _MyAppState();
