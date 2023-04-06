@@ -44,9 +44,9 @@
    "@screen1_3_Button_Select_Specie_Camanegre": {
     "description": "Text for the button on screen 1.3, select species _> Kenthish Plover"
    },
-   "screen1_3_Button_Select_Specie_Petit": "Charadrius dubius",
+   "screen1_3_Button_Select_Specie_Petit": "Little ringed plover",
    "@screen1_3_Button_Select_Specie_Petit": {
-    "description": "Text for the button on screen 1.3, select species _> Charadrius dubius"
+    "description": "Text for the button on screen 1.3, select species _> Little ringed plover"
    },
    "screen1_3_Button_Females": "Females",
    "@screen1_3_Button_Females": {
@@ -71,5 +71,69 @@
    "screen1_3_Button_Dogs": "Dogs",
    "@screen1_3_Button_Dogs": {
     "description": "Text for the button on screen 1.3, number of dogs"
+   },
+   "screen_1_1_Foto_1_1_1_before": "The Kentish Plover is a small bird that lays its eggs in the sand on the beach",
+   "@screen_1_1_Foto_1_1_1_before": {
+    "description": "Text for screen 1.1 and image 1.1.1"
+   },
+   "screen_1_1_Foto_1_1_1_after": "Its reproduction period coincides with the time of year when the beaches are most frequented, from March to August.",
+   "@screen_1_1_Foto_1_1_1_after": {
+    "description": "Text for screen 1.1 and image 1.1.1"
+   },
+   "screen_1_1_Foto_1_1_2_before": "Each female may lay more than one clutch of eggs during the breeding season.",
+   "@screen_1_1_Foto_1_1_2_before": {
+    "description": "Text for screen 1.1 and image 1.1.2"
+   },
+   "screen_1_1_Foto_1_1_2_after": "The female lays 3 eggs in the sand that will be incubated by both the male and the female for approximately 25 days.",
+   "@screen_1_1_Foto_1_1_2_after": {
+    "description": "Text for screen 1.1 and image 1.1.2"
+   },
+   "screen_1_1_Foto_1_1_3_before": "The hatchlings are nidifugous. This means that they leave the nest when they are born, since they are capable of walking and feeding themselves.",
+   "@screen_1_1_Foto_1_1_3_before": {
+    "description": "Text for screen 1.1 and image 1.1.3"
+   },
+   "screen_1_1_Foto_1_1_3_after": "They are easy prey for predators, but they grow quickly.",
+   "@screen_1_1_Foto_1_1_3_after": {
+    "description": "Text for screen 1.1 and image 1.1.3"
+   },
+   "screen_1_1_Foto_1_1_4_before": "When they reach 30 days of life they are able to fly from one beach to another.",
+   "@screen_1_1_Foto_1_1_4_before": {
+    "description": "Text for screen 1.1 and image 1.1.4"
+   },
+   "screen_1_1_Foto_1_1_4_after": "It is a generally migratory specie that comes to our beaches to reproduce. If we take good care of it every season it will visit us again.",
+   "@screen_1_1_Foto_1_1_4_after": {
+    "description": "Text for screen 1.1 and image 1.1.4"
+   },
+   "screen_1_1_Foto_1_1_5_before": "We can distinguish the male from the female by its orange coloration on the head during the breeding season.",
+   "@screen_1_1_Foto_1_1_5_before": {
+    "description": "Text for screen 1.1 and image 1.1.5"
+   },
+   "screen_1_1_Foto_1_1_5_after": "And also because of the black necklace that it wears around the neck and of the spots on its eyes and forehead.",
+   "@screen_1_1_Foto_1_1_5_after": {
+    "description": "Text for screen 1.1 and image 1.1.5"
+   },
+   "screen_1_1_Foto_1_1_6_before": "The female blends in very well with the sand on the beach when she is stretched out.",
+   "@screen_1_1_Foto_1_1_6_before": {
+    "description": "Text for screen 1.1 and image 1.1.6"
+   },
+   "screen_1_1_Foto_1_1_6_after": "When they have a nest or hatchlings and feel threatened, they sometimes act as they are wounded as in 'drag their wings'.If you observe this behavior, the best thing you can do is to walk away.",
+   "@screen_1_1_Foto_1_1_6_after": {
+    "description": "Text for screen 1.1 and image 1.1.6"
+   },
+   "screen_1_1_Foto_1_1_7_before": "On the beach we can also find a species very similar to the Kentish Plover, which sometimes also nests in the sand: the Little Ringed Plover.",
+   "@screen_1_1_Foto_1_1_7_before": {
+    "description": "Text for screen 1.1 and image 1.1.7"
+   },
+   "screen_1_1_Foto_1_1_7_after": "Its behavior is similar to the one of the Kentish Plover and we can distinguish it because it has a more accentuated spot on forehead and on the eyes and a yellow ring around the eye.",
+   "@screen_1_1_Foto_1_1_7_after": {
+    "description": "Text for screen 1.1 and image 1.1.7"
+   },
+   "screen_1_1_Foto_1_1_8_before": "Help us protect the plover",
+   "@screen_1_1_Foto_1_1_8_before": {
+    "description": "Text for screen 1.1 and image 1.1.8"
+   },
+   "screen_1_1_Foto_1_1_8_after": "Become a volunteer and participate by recording your observations",
+   "@screen_1_1_Foto_1_1_8_after": {
+    "description": "Text for screen 1.1 and image 1.1.8"
    }
 }
