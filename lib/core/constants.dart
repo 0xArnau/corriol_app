@@ -1,3 +1,4 @@
+import 'package:corriol_app/classes/file_io_class.dart';
 import 'package:flutter/material.dart';
 
 // Colors
@@ -25,3 +26,5 @@ const kDoublePaddingFloatingActionButtonV = 150.0;
 // Text size & weigth
 const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
+
+final FileIoClass cfg = FileIoClass(fileName: 'user_config.cfg');
