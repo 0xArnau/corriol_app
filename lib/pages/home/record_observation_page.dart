@@ -44,123 +44,155 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(kDouble25),
-        child: Column(
-          children: [
-            // Map
-            const MapButtonWidget(),
-            const SizedBox(height: 15),
-            // Especie
-            DropdownButtonWidget(
-              itemsList: [
-                AppLocalizations.of(context)
-                    .screen1_3_Button_Select_Specie_Camanegre,
-                AppLocalizations.of(context)
-                    .screen1_3_Button_Select_Specie_Petit,
-              ],
-              hint: AppLocalizations.of(context).screen1_3_Button_Select_Specie,
-              onChanged: (value) {
-                setState(() {
-                  fields.species = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Females
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Females,
-              image: const AssetImage('assets/images/Screen-1_3/femelles.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.females = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Males
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Males,
-              image: const AssetImage('assets/images/Screen-1_3/mescles.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.males = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Undetermined
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Undetermined,
-              image:
-                  const AssetImage('assets/images/Screen-1_3/indeterminat.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.undetermined = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Chickens
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Chickens,
-              image: const AssetImage('assets/images/Screen-1_3/polls.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.chickens = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Cats
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Cats,
-              image: const AssetImage('assets/images/Screen-1_3/gats.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.cats = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Dogs
-            CounterButtonWidget(
-              hint: AppLocalizations.of(context).screen1_3_Button_Dogs,
-              image: const AssetImage('assets/images/Screen-1_3/gossos.png'),
-              onChanged: (value) {
-                setState(() {
-                  fields.dogs = value;
-                });
-              },
-            ),
-            const SizedBox(height: 15),
-            // Submit
-            const Spacer(),
-            SizedBox(
-              height: null,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+        child: ListView.builder(
+          itemCount: 17,
+          itemBuilder: (BuildContext context, int index) {
+            switch (index) {
+              case 0:
+                return const MapButtonWidget();
+              case 1:
+                return const SizedBox(height: 15);
+              case 2:
+                return DropdownButtonWidget(
+                    itemsList: [
+                      AppLocalizations.of(context)
+                          .screen1_3_Button_Select_Specie_Camanegre,
+                      AppLocalizations.of(context)
+                          .screen1_3_Button_Select_Specie_Petit,
+                    ],
+                    hint: AppLocalizations.of(context)
+                        .screen1_3_Button_Select_Specie,
+                    onChanged: (value) {
+                      if (mounted) {
+                        setState(() {
+                          fields.species = value;
+                        });
+                      }
+                    });
+              case 3:
+                return const SizedBox(height: 15);
+              case 4:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context).screen1_3_Button_Females,
+                  image:
+                      const AssetImage('assets/images/Screen-1_3/femelles.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.females = value;
+                      });
+                    }
+                  },
+                );
+              case 5:
+                return const SizedBox(height: 15);
+              case 6:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context).screen1_3_Button_Males,
+                  image:
+                      const AssetImage('assets/images/Screen-1_3/mescles.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.males = value;
+                      });
+                    }
+                  },
+                );
+              case 7:
+                return const SizedBox(height: 15);
+              case 8:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context)
+                      .screen1_3_Button_Undetermined,
+                  image: const AssetImage(
+                      'assets/images/Screen-1_3/indeterminat.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.undetermined = value;
+                      });
+                    }
+                  },
+                );
+              case 9:
+                return const SizedBox(height: 15);
+              case 10:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context).screen1_3_Button_Chickens,
+                  image: const AssetImage('assets/images/Screen-1_3/polls.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.chickens = value;
+                      });
+                    }
+                  },
+                );
+              case 11:
+                return const SizedBox(height: 15);
+              case 12:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context).screen1_3_Button_Cats,
+                  image: const AssetImage('assets/images/Screen-1_3/gats.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.cats = value;
+                      });
+                    }
+                  },
+                );
+              case 13:
+                return const SizedBox(height: 15);
+              case 14:
+                return CounterButtonWidget(
+                  hint: AppLocalizations.of(context).screen1_3_Button_Dogs,
+                  image:
+                      const AssetImage('assets/images/Screen-1_3/gossos.png'),
+                  onChanged: (value) {
+                    if (mounted) {
+                      setState(() {
+                        fields.dogs = value;
+                      });
+                    }
+                  },
+                );
+              case 15:
+                return const SizedBox(height: 15);
+              // case 16:
+              //   return const Spacer();
+              case 16:
+                return SizedBox(
+                  height: null,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
                     ),
+                    onPressed: () {
+                      fileClass.writeContent(jsonEncode(fields.toJson()));
+                      // Show the Snackbar
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Saving information'),
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Submit'),
                   ),
-                ),
-                onPressed: () {
-                  fileClass.writeContent(jsonEncode(fields.toJson()));
-                  // Show the Snackbar
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Saving information'),
-                      duration: Duration(seconds: 3),
-                    ),
-                  );
-                  Navigator.pop(context);
-                },
-                child: const Text('Submit'),
-              ),
-            ),
-            const Spacer(),
-          ],
+                );
+              // case 18:
+              //   return const Spacer();
+            }
+            return null;
+          },
         ),
       ),
     );
