@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                       text: AppLocalizations.of(context).contact,
                       background: kColorPurpleCard,
                       foreground: Colors.black,
-                      page: const ContactPage(),
+                      page: ContactPage(),
                     ),
                     CardWidget(
                       imagePath:
