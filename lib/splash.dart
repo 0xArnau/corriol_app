@@ -18,12 +18,12 @@ class _SplashState extends State<Splash> {
   _navigatetohome() async {
     await Future.delayed(const Duration(milliseconds: 1500), () {});
     if (!mounted) return;
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const WidgetTree(),
-      ),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => const WidgetTree(),
+    //   ),
+    // );
   }
 
   @override
@@ -51,7 +51,9 @@ class _SplashState extends State<Splash> {
                 child: Image.asset('assets/images/CorriolAPP.png'),
               ),
             ),
-            Expanded(
+            // const Spacer(),
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
                 child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
