@@ -32,9 +32,17 @@
    "@contact": {
     "description": "Text  for the card/page"
    },
-   "warningText112": "If you notice any incident related to the Kentish Plover, call",
+   "warningText112": "If you notice any incident related to the Kentish Plover, call: ",
    "@112Text": {
     "description": "112 alert text"
+   },
+   "emailText": "If you want to participate actively in the conservation of the Plover or have any questions or proposals, please contact us: ",
+   "@emailText": {
+    "description": "email text"
+   },
+   "webText": "Or visit our website: ",
+   "@webText": {
+    "description": "web text"
    },
    "screen1_3_Button_Select_Specie": "Select species",
    "@screen1_3_Button_Select_Specie": {
