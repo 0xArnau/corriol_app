@@ -18,48 +18,50 @@ class _SplashState extends State<Splash> {
   _navigatetohome() async {
     await Future.delayed(const Duration(milliseconds: 1500), () {});
     if (!mounted) return;
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const WidgetTree(),
-    //   ),
-    // );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const WidgetTree(),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-                child: Text(
-                  'Corriol APP',
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              const Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                  child: Text(
+                    'Corriol APP',
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                child: Image.asset('assets/images/CorriolAPP.png'),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+                  child: Image.asset('assets/images/CorriolAPP.png'),
+                ),
               ),
-            ),
-            // const Spacer(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+              // const Spacer(),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+                  child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
