@@ -135,5 +135,13 @@
    "screen_1_1_Foto_1_1_8_after": "Become a volunteer and participate by recording your observations",
    "@screen_1_1_Foto_1_1_8_after": {
     "description": "Text for screen 1.1 and image 1.1.8"
+   },
+   "saveInformation": "Save information",
+   "@saveInformation": {
+    "description": "Text for saving information"
+   },
+   "sendInformation": "Send information",
+   "@sendInformation": {
+    "description": "Text for sending information"
    }
 }

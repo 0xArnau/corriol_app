@@ -178,9 +178,10 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                       fileClass.writeContent(jsonEncode(fields.toJson()));
                       // Show the Snackbar
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Saving information'),
-                          duration: Duration(seconds: 3),
+                        SnackBar(
+                          content: Text(
+                              AppLocalizations.of(context).saveInformation),
+                          duration: const Duration(seconds: 3),
                         ),
                       );
                       Navigator.pop(context);
