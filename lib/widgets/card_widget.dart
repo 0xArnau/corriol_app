@@ -33,10 +33,10 @@ class CardWidget extends StatelessWidget {
               Image(
                 image: AssetImage(imagePath),
                 width:
-                    48.0, // TODO: increment size and remove padding (bottom overflowed in spanish)
+                    56.0, // TODO: increment size and remove padding (bottom overflowed in spanish)
                 color: Colors.black,
               ), // TODO: change this to an image
-              const SizedBox(height: kDoublePaddingCardImageText),
+              // const SizedBox(height: kDoublePaddingCardImageText),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Text(
