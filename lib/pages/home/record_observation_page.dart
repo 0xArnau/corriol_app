@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:corriol_app/classes/record_observations_class.dart';
 import 'package:corriol_app/core/constants.dart';
@@ -11,6 +13,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:corriol_app/classes/file_io_class.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/services.dart';
 
 class RecordObservationPage extends StatefulWidget {
   const RecordObservationPage({super.key});
@@ -31,7 +35,41 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     dogs: 0,
   );
 
-  FileIoClass fileClass = FileIoClass(fileName: 'test.txt');
+  late StreamSubscription<ConnectivityResult> subscription;
+  late bool saveInformation2DB;
+
+  @override
+  void initState() {
+    super.initState();
+    // TODO: decide wether to move this to home page, widget_tree or somewhere else
+    subscription = Connectivity().onConnectivityChanged.listen(
+      (ConnectivityResult result) {
+        // To simulate there is no internet connection
+        // TODO: remove the next line in production
+        result = ConnectivityResult.none;
+        if (result == ConnectivityResult.wifi) {
+          // internet connection with WiFi
+          // send the information to the database
+          print('internet connection: wifi');
+          saveInformation2DB = true;
+        } else {
+          // some type of internet connection or without internet connection
+          // check this for more information: https://pub.dev/documentation/connectivity_plus/latest/
+          // TODO: decide which types are allowed to send information or not
+          // Don't send the information, save it locally
+          print("internet connection status: ${result}");
+          saveInformation2DB = false;
+        }
+      },
+    );
+  }
+
+  // Be sure to cancel subscription after you are done
+  @override
+  dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,16 +213,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                       ),
                     ),
                     onPressed: () {
-                      fileClass.writeContent(jsonEncode(fields.toJson()));
-                      // Show the Snackbar
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                              AppLocalizations.of(context).saveInformation),
-                          duration: const Duration(seconds: 3),
-                        ),
-                      );
-                      Navigator.pop(context);
+                      saveReport();
                     },
                     child: const Text('Submit'),
                   ),
@@ -197,5 +226,20 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         ),
       ),
     );
+  }
+
+  void saveReport() {
+    saveInformation2DB
+        ? reportsFile.writeContent(jsonEncode(fields.toJson()))
+        : reportsWithoutConnectionfile
+            .writeContent(jsonEncode(fields.toJson()));
+    // Show the Snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context).saveInformation),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+    Navigator.pop(context);
   }
 }
