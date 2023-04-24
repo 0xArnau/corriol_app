@@ -35,42 +35,6 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     dogs: 0,
   );
 
-  late StreamSubscription<ConnectivityResult> subscription;
-  late bool saveInformation2DB;
-
-  @override
-  void initState() {
-    super.initState();
-    // TODO: decide wether to move this to home page, widget_tree or somewhere else
-    subscription = Connectivity().onConnectivityChanged.listen(
-      (ConnectivityResult result) {
-        // To simulate there is no internet connection
-        // TODO: remove the next line in production
-        result = ConnectivityResult.none;
-        if (result == ConnectivityResult.wifi) {
-          // internet connection with WiFi
-          // send the information to the database
-          print('internet connection: wifi');
-          saveInformation2DB = true;
-        } else {
-          // some type of internet connection or without internet connection
-          // check this for more information: https://pub.dev/documentation/connectivity_plus/latest/
-          // TODO: decide which types are allowed to send information or not
-          // Don't send the information, save it locally
-          print("internet connection status: ${result}");
-          saveInformation2DB = false;
-        }
-      },
-    );
-  }
-
-  // Be sure to cancel subscription after you are done
-  @override
-  dispose() {
-    subscription.cancel();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -229,7 +193,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   }
 
   void saveReport() {
-    saveInformation2DB
+    isConnectedNotifier.value
         ? reportsFile.writeContent(jsonEncode(fields.toJson()))
         : reportsWithoutConnectionfile
             .writeContent(jsonEncode(fields.toJson()));

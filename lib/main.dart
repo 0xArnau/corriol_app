@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/l10n/l10n.dart';
@@ -32,6 +35,43 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late StreamSubscription<ConnectivityResult> subscription;
+  @override
+  void initState() {
+    super.initState();
+    // TODO: decide wether to move this to home page, widget_tree or somewhere else
+    subscription = Connectivity().onConnectivityChanged.listen(
+      (ConnectivityResult result) {
+        // To simulate there is no internet connection
+        // TODO: remove the next line in production
+        result = ConnectivityResult.none;
+        if (result == ConnectivityResult.none) {
+          isConnectedNotifier.value = true;
+          print('no internet connection');
+        } else if (result == ConnectivityResult.wifi) {
+          // internet connection with WiFi
+          // send the information to the database
+          print('internet connection: wifi');
+          isConnectedNotifier.value = true;
+        } else {
+          // some type of internet connection
+          // check this for more information: https://pub.dev/documentation/connectivity_plus/latest/
+          // TODO: decide which types are allowed to send information or not
+          // Don't send the information, save it locally
+          print("internet connection status: ${result}");
+          isConnectedNotifier.value = false;
+        }
+      },
+    );
+  }
+
+  // Be sure to cancel subscription after you are done
+  @override
+  dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
