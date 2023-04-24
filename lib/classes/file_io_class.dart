@@ -34,7 +34,7 @@ class FileIoClass {
     return file.writeAsString(content, mode: FileMode.write);
   }
 
-  Future<String> readcontent() async {
+  Future<String> readContent() async {
     try {
       final file = await _localFile;
       String contents = await file.readAsString();
