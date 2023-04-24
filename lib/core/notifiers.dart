@@ -6,3 +6,5 @@ ValueNotifier<bool> isGpsOnNotifier = ValueNotifier(false);
 ValueNotifier<Locale> localeNotifier = ValueNotifier(MyApp.languageCode);
 ValueNotifier<LatLng> currenPositionNotifier =
     ValueNotifier(const LatLng(41.8205, 1.8401)); // Catalunya
+
+ValueNotifier<bool> isConnectedNotifier = ValueNotifier(false);
