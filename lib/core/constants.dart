@@ -28,7 +28,6 @@ const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 
 // Files
-final FileIoClass cfg = FileIoClass(fileName: 'user_config.cfg');
 FileIoClass reportsWithoutConnectionfile =
     FileIoClass(fileName: 'reports_without_connection.json');
 FileIoClass reportsFile = FileIoClass(fileName: 'reports.json');

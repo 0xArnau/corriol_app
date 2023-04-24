@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:corriol_app/classes/user_config_class.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/main.dart';
@@ -21,17 +24,16 @@ class _LanguageButtonWidgetState extends State<LanguageButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: localeNotifier,
-      builder: (context, locale, child) {
+      valueListenable: userConfigNotifier,
+      builder: (context, userConfig, child) {
         return Expanded(
           child: Center(
             child: ElevatedButton(
               onPressed: () {
-                setState(() {
-                  localeNotifier.value = widget.newLocale!;
-                  cfg.reWriteContent(localeNotifier.value.toString());
-                  print(widget.newLocale!);
-                });
+                userConfig.locale = widget.newLocale!;
+                userConfig.saveConfig();
+                userConfigNotifier.notifyListeners();
+                print(userConfig.locale);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: kColorPrimaryBlue,

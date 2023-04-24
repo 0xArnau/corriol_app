@@ -12,13 +12,8 @@ import 'dart:ui' as ui;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  String locale = ui.window.locale.languageCode;
-
-  if (await cfg.fileExists()) {
-    locale = await cfg.readcontent();
-  }
-
-  MyApp.languageCode = Locale(locale);
+  userConfigNotifier.value.locale = Locale(ui.window.locale.languageCode);
+  userConfigNotifier.value.loadConfig();
 
   runApp(const MyApp());
 }
@@ -75,8 +70,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: localeNotifier,
-      builder: (context, locale, child) {
+      valueListenable: userConfigNotifier,
+      builder: (context, userConfig, child) {
         return MaterialApp(
           title: 'Corriol APP',
           theme: ThemeData(
@@ -91,7 +86,7 @@ class _MyAppState extends State<MyApp> {
             GlobalWidgetsLocalizations.delegate,
           ],
           home: const Splash(),
-          locale: locale,
+          locale: userConfig.locale,
         );
       },
     );

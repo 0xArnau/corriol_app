@@ -1,3 +1,4 @@
+import 'package:corriol_app/widgets/buttons/data_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/drop_down_fab_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,14 @@ class ProfilePage extends StatelessWidget {
           children: const [],
         ),
       ),
-      floatingActionButton: const DropDownFABWidget(),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          DropDownFABWidget(),
+          SizedBox(height: 15),
+          DataButtonWidget(),
+        ],
+      ),
     );
   }
 }
