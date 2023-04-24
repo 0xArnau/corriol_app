@@ -69,6 +69,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    print(userConfigNotifier.value.locale);
     return ValueListenableBuilder(
       valueListenable: userConfigNotifier,
       builder: (context, userConfig, child) {
