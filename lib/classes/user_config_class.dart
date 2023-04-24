@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:corriol_app/classes/file_io_class.dart';
+import 'package:corriol_app/core/notifiers.dart';
 import 'package:flutter/material.dart';
 
 class UserConfigClass extends ChangeNotifier {
@@ -10,15 +11,13 @@ class UserConfigClass extends ChangeNotifier {
 
   final FileIoClass file = FileIoClass(fileName: 'user_config.cfg');
 
-  factory UserConfigClass.fromJson(Map<String, dynamic> json) {
-    return UserConfigClass(
-      locale: Locale(json['locale']),
-      mobileData: json['mobile_data'],
-    );
+  void fromJson(Map<String, dynamic> json) {
+    locale = Locale(json['locale']);
+    mobileData = json['mobile_data'];
   }
 
   Map<String, dynamic> toJson() => {
-        'locale': locale,
+        'locale': locale.languageCode,
         'mobile_data': mobileData,
       };
 
@@ -27,11 +26,12 @@ class UserConfigClass extends ChangeNotifier {
       if (await file.fileExists()) {
         final jsonStr = await file.readContent();
         final jsonMap = jsonDecode(jsonStr);
-        final userConfig = UserConfigClass.fromJson(jsonMap);
-        locale = userConfig.locale;
-        mobileData = userConfig.mobileData;
-        notifyListeners();
+        fromJson(jsonMap);
+        userConfigNotifier.value = this;
+        userConfigNotifier.notifyListeners();
         print("loaded");
+        print(locale);
+        print(mobileData);
       }
     } on Exception catch (e) {
       // TODO
@@ -41,11 +41,11 @@ class UserConfigClass extends ChangeNotifier {
 
   void saveConfig() async {
     try {
-      // file.reWriteContent(
-      //   jsonEncode(
-      //     toJson(),
-      //   ),
-      // );
+      file.reWriteContent(
+        jsonEncode(
+          toJson(),
+        ),
+      );
       // notifyListeners();
       print("saved");
     } on Exception catch (e) {
