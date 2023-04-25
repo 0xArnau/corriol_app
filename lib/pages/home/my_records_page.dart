@@ -1,27 +1,11 @@
-import 'dart:ffi';
-
-import 'package:corriol_app/classes/record_observations_class.dart';
 import 'package:corriol_app/core/constants.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:corriol_app/widgets/legend_pie_chart_widget.dart';
+import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class MyRecordsPage extends StatefulWidget {
+class MyRecordsPage extends StatelessWidget {
   const MyRecordsPage({super.key});
-
-  @override
-  State<MyRecordsPage> createState() => _MyRecordsPageState();
-}
-
-class _MyRecordsPageState extends State<MyRecordsPage> {
-  late Future<List<RecordObservationClass>> records;
-
-  @override
-  void initState() {
-    super.initState();
-
-    records = RecordObservationClass.loadRecords();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,77 +16,47 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
           style: kTextStylePageTitle,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(kDouble15),
-        child: FutureBuilder<List<RecordObservationClass>>(
-          future: records,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              var femelles = 0;
-              var polls = 0;
-              var mascles = 0;
-              var indeterminat = 0;
-              var gossos = 0;
-              var gats = 0;
-              final _records = snapshot.data!;
-
-              for (final element in _records) {
-                femelles += element.females;
-                polls += element.chickens;
-                mascles += element.males;
-                indeterminat += element.undetermined;
-                gossos += element.dogs;
-                gats += element.cats;
-              }
-
-              final data = [
-                PieChartSectionData(
-                  value: femelles.toDouble(),
-                  color: kColorList['femelles'],
-                  radius: 50,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(kDouble15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const RecordsPieChartWidget(),
+              const SizedBox(height: kDouble25),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    childAspectRatio: 4,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
+                    children: [
+                      // Widgets en el GridView
+                      LegendPieChartWidget(
+                          color: kColorList['femelles']!, text: 'Femelles'),
+                      LegendPieChartWidget(
+                          color: kColorList['polls']!, text: 'Polls'),
+                      LegendPieChartWidget(
+                          color: kColorList['mascles']!, text: 'Mascles'),
+                      LegendPieChartWidget(
+                          color: kColorList['indeterminat']!,
+                          text: 'Indeterminat'),
+                      LegendPieChartWidget(
+                          color: kColorList['gossos']!, text: 'Gossos'),
+                      LegendPieChartWidget(
+                          color: kColorList['gats']!, text: 'Gats'),
+                    ],
+                  ),
                 ),
-                PieChartSectionData(
-                  value: polls.toDouble(),
-                  color: kColorList['polls'],
-                  radius: 50,
-                ),
-                PieChartSectionData(
-                  value: mascles.toDouble(),
-                  color: kColorList['mascles'],
-                  radius: 50,
-                ),
-                PieChartSectionData(
-                  value: indeterminat.toDouble(),
-                  color: kColorList['indeterminat'],
-                  radius: 50,
-                ),
-                PieChartSectionData(
-                  value: gossos.toDouble(),
-                  color: kColorList['gossos'],
-                  radius: 50,
-                ),
-                PieChartSectionData(
-                  value: gats.toDouble(),
-                  color: kColorList['gats'],
-                  radius: 50,
-                ),
-              ];
-
-              return PieChart(
-                PieChartData(
-                  sections: data,
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return const Center(
-                child: Text('Error'),
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+              ),
+              const SizedBox(height: kDouble15),
+              const Image(
+                image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+              ),
+            ],
+          ),
         ),
       ),
     );
