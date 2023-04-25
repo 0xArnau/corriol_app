@@ -45,6 +45,7 @@ dependencies:
   introduction_screen: ^3.1.7
   url_launcher: ^6.1.10
   connectivity_plus: ^3.0.4
+  fl_chart: ^0.62.0
 
 dev_dependencies:
   flutter_test:

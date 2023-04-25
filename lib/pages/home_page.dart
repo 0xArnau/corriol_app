@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                       text: AppLocalizations.of(context).myRecords,
                       background: kColorYellowCard,
                       foreground: Colors.black,
-                      page: const MyRecordsPage(),
+                      page: MyRecordsPage(),
                     ),
                   ],
                 ),
