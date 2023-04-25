@@ -35,6 +35,7 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
           final _records = snapshot.data!;
 
           for (final element in _records) {
+            print(element.toJson());
             femelles += element.females;
             polls += element.chickens;
             mascles += element.males;
@@ -42,6 +43,13 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
             gossos += element.dogs;
             gats += element.cats;
           }
+
+          print("femelles ${femelles}");
+          print("polls ${polls}");
+          print("mascles ${mascles}");
+          print("indeterminats ${indeterminat}");
+          print("gossos ${gossos}");
+          print("gats ${gats}");
 
           final data = [
             PieChartSectionData(

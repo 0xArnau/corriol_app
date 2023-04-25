@@ -69,6 +69,19 @@ class RecordObservationClass {
           }
         }
       }
+      if (await kFileReportsWithoutConnection.fileExists()) {
+        final jsonStr = await kFileReportsWithoutConnection.readContent();
+        final jsonStrList = jsonStr.split('\n');
+        for (var element in jsonStrList) {
+          if (element.isNotEmpty) {
+            records.add(
+              RecordObservationClass.fromJson(
+                jsonDecode(element),
+              ),
+            );
+          }
+        }
+      }
       return records;
     } on Exception catch (e) {
       // TODO
