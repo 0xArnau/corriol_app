@@ -194,8 +194,8 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
 
   void saveReport() {
     isConnectedNotifier.value
-        ? reportsFile.writeContent(jsonEncode(fields.toJson()))
-        : reportsWithoutConnectionfile
+        ? kFileReports.writeContent(jsonEncode(fields.toJson()))
+        : kFileReportsWithoutConnection
             .writeContent(jsonEncode(fields.toJson()));
     // Show the Snackbar
     ScaffoldMessenger.of(context).showSnackBar(

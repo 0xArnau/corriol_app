@@ -10,6 +10,14 @@ const kColorGreenCard = Colors.green;
 const kColorYellowCard = Colors.yellow;
 const kColorPinkCard = Colors.pink;
 const kColorCyanCard = Colors.cyan;
+const kColorList = {
+  'femelles': kColorYellowCard,
+  'polls': kColorPurpleCard,
+  'mascles': kColorGreenCard,
+  'indeterminat': kColorPinkCard,
+  'gossos': kColorCyanCard,
+  'gats': kColorRedCard
+};
 
 // Paddings
 const kDouble10 = 10.0;
@@ -28,6 +36,6 @@ const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 
 // Files
-FileIoClass reportsWithoutConnectionfile =
+FileIoClass kFileReportsWithoutConnection =
     FileIoClass(fileName: 'reports_without_connection.json');
-FileIoClass reportsFile = FileIoClass(fileName: 'reports.json');
+FileIoClass kFileReports = FileIoClass(fileName: 'reports.json');
