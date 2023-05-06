@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:corriol_app/auth.dart';
 import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +21,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   void initState() {
     super.initState();
 
-    isEmailVerified = Auth().isEmailVerified;
-
+    _checkEmailVerified();
     if (!isEmailVerified) {
       _sendEmailVerification();
 
@@ -38,9 +38,11 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     super.dispose();
   }
 
-  Future _checkEmailVerified() async {
-    Auth().userReload();
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
 
+  Future _checkEmailVerified() async {
     setState(() {
       isEmailVerified = Auth().isEmailVerified;
     });
@@ -58,17 +60,35 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(status),
-        duration: const Duration(seconds: 5),
+        duration: const Duration(seconds: 2),
       ),
+    );
+  }
+
+  Widget _button({onPressed, label, icon}) {
+    return ElevatedButton.icon(
+      onPressed: onPressed,
+      icon: icon,
+      label: label,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return isEmailVerified == true
-        ? const WidgetTree()
+        ? const AuthPage()
         : Scaffold(
-            appBar: AppBar(title: const Text('Verify Email')),
+            appBar: AppBar(
+              title: const Text('Verify Email'),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    signOut();
+                  },
+                  icon: const Icon(Icons.logout),
+                )
+              ],
+            ),
             body: Padding(
               padding: const EdgeInsets.all(kDouble15),
               child: Center(
@@ -80,7 +100,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                       style: const TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 15),
-                    ElevatedButton.icon(
+                    _button(
                       onPressed: _sendEmailVerification,
                       icon: const Icon(
                         Icons.email,
@@ -90,19 +110,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                         'Resend Verification',
                         style: TextStyle(fontSize: 24),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(50),
-                      ),
-                    ),
-                    const SizedBox(height: 50),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        Auth().userReload();
-                        // Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.refresh),
-                      label: const Text('Refresh'),
-                    ),
+                    )
                   ],
                 ),
               ),
