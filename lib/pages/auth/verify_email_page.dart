@@ -55,8 +55,10 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     _statusBar(status);
   }
 
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> _statusBar(
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? _statusBar(
       String status) {
+    if (!mounted) return null;
+
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(status),
