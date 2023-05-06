@@ -46,6 +46,8 @@ dependencies:
   url_launcher: ^6.1.10
   connectivity_plus: ^3.0.4
   fl_chart: ^0.62.0
+  firebase_core: ^2.11.0
+  firebase_auth: ^4.5.0
 
 dev_dependencies:
   flutter_test:

@@ -8,10 +8,12 @@ import 'package:corriol_app/splash.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'dart:ui' as ui;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   userConfigNotifier.value.locale = Locale(ui.window.locale.languageCode);
   userConfigNotifier.value.loadConfig();
 
