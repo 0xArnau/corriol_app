@@ -1,8 +1,8 @@
 import 'package:corriol_app/auth.dart';
 import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/pages/auth/register_page.dart';
-import 'package:corriol_app/pages/auth/verify_email_page.dart';
 import 'package:corriol_app/widgets/buttons/my_button_widget.dart';
 import 'package:corriol_app/widgets/my_text_field_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String? errorMessage = '';
 
-  Future<void> signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword(BuildContext context) async {
     try {
       await Auth().signInWithEmailAndPassword(
         email: _controllerEmail.text,
@@ -32,6 +32,14 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         errorMessage = e.message;
       });
+    } finally {
+      if (errorMessage == '') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => const AuthPage()),
+        );
+      }
     }
   }
 
@@ -47,7 +55,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _errorMessage() {
-    return Text(errorMessage == '' ? '' : errorMessage!);
+    return Text(
+      errorMessage == '' ? '' : errorMessage!,
+      style: const TextStyle(color: Colors.red),
+    );
   }
 
   Widget _forgotPassword() {
@@ -121,8 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.white,
                 ),
                 onTap: () {
-                  signInWithEmailAndPassword();
-                  Navigator.pop(context);
+                  signInWithEmailAndPassword(context);
                 },
               ),
               const Spacer(),
