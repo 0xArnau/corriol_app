@@ -24,3 +24,6 @@ To generate translations for an application, the intl and flutter_localizations 
 
 
 
+## [Generate an APK](https://docs.flutter.dev/deployment/android)
+
+1. % flutter build apk --build-name=0.0.1 --build-number=1
