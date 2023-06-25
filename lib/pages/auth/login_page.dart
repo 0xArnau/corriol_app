@@ -4,6 +4,7 @@ import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/pages/auth/register_page.dart';
 import 'package:corriol_app/widgets/buttons/my_button_widget.dart';
+import 'package:corriol_app/widgets/buttons/sss_button_widget.dart';
 import 'package:corriol_app/widgets/my_text_field_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
@@ -103,6 +104,29 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget _sso() {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SSOButtonWidget(
+          svgPath: 'assets/images/sso/Google_logo.svg',
+          onTap: null,
+          // text: 'Login with Google',
+        ),
+        SSOButtonWidget(
+          svgPath: 'assets/images/sso/Apple_logo.svg',
+          onTap: null,
+          // text: 'Login with Google',
+        ),
+        SSOButtonWidget(
+          svgPath: 'assets/images/sso/Microsoft_logo.svg',
+          onTap: null,
+          // text: 'Login with Google',
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,6 +170,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: kDouble25),
               _register(),
+              const SizedBox(height: kDouble25 * 2),
+              _sso(),
             ],
           ),
         ),
