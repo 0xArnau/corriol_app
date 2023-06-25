@@ -31,6 +31,9 @@ const kDoublePaddingGridViewText = 20.0;
 const kDoublePaddingFloatingActionButtonH = 100.0;
 const kDoublePaddingFloatingActionButtonV = 150.0;
 
+const kDoublePaddingMyButtonAndMyTextField = 15.0;
+const kDoublePaddingBasic = 10.0;
+
 // Text size & weigth
 const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);

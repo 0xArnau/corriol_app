@@ -1,3 +1,4 @@
+import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const WidgetTree(),
+        builder: (context) => const AuthPage(),
       ),
     );
   }

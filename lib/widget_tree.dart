@@ -1,3 +1,4 @@
+import 'package:corriol_app/auth.dart';
 import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
@@ -16,8 +17,12 @@ class _WidgetTreeState extends State<WidgetTree> {
   List<Widget> pages = [
     const HomePage(),
     const HandymanPage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +46,16 @@ class _WidgetTreeState extends State<WidgetTree> {
           'Corriol APP',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
         ),
+        actions: [
+          currentPage == 2
+              ? IconButton(
+                  onPressed: () {
+                    signOut();
+                  },
+                  icon: const Icon(Icons.logout),
+                )
+              : const Text(''),
+        ],
       ),
       body: pages.elementAt(currentPage),
       bottomNavigationBar: NavigationBar(
