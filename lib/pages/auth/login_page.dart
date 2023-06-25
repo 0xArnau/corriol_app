@@ -44,12 +44,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _title() {
-    return const Text(
-      'CorriolAPP',
-      style: TextStyle(
-        fontSize: 48,
-        fontWeight: FontWeight.bold,
-        color: kColorPrimaryBlue,
+    return const Center(
+      child: Text(
+        'CorriolAPP',
+        style: TextStyle(
+          fontSize: 48,
+          fontWeight: FontWeight.bold,
+          color: kColorPrimaryBlue,
+        ),
       ),
     );
   }
@@ -104,12 +106,14 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(kDoublePaddingBasic),
+          scrollDirection: Axis.vertical,
           child: Column(
             children: [
               _title(),
-              const Spacer(),
+              const SizedBox(height: kDouble25),
               MyTextFieldWidget(
                 hintText: 'Email',
                 controller: _controllerEmail,
@@ -135,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                   signInWithEmailAndPassword(context);
                 },
               ),
-              const Spacer(),
+              const SizedBox(height: kDouble25),
               _register(),
             ],
           ),
