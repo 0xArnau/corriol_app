@@ -6,9 +6,13 @@ class Auth {
 
   User? get currentUser => _firebaseAuth.currentUser;
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
-  bool get isEmailVerified => currentUser!.emailVerified;
 
   void userReload() => currentUser!.reload();
+
+  bool isEmailVerified() {
+    userReload();
+    return currentUser!.emailVerified;
+  }
 
   Future<void> signInWithEmailAndPassword({
     required String email,

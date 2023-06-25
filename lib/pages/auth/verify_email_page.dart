@@ -26,7 +26,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       _sendEmailVerification();
 
       timer = Timer.periodic(
-        const Duration(milliseconds: 5000),
+        const Duration(milliseconds: 20000),
         (_) => _checkEmailVerified(),
       );
     }
@@ -43,11 +43,15 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
 
   Future _checkEmailVerified() async {
+    print(isEmailVerified);
+
     setState(() {
-      isEmailVerified = Auth().isEmailVerified;
+      isEmailVerified = Auth().isEmailVerified();
     });
 
     if (isEmailVerified) timer?.cancel();
+
+    print(isEmailVerified);
   }
 
   Future<void> _sendEmailVerification() async {
@@ -97,6 +101,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const Spacer(),
                     Text(
                       'A verification email has been send to: ${Auth().currentUser!.email}',
                       style: const TextStyle(fontSize: 20),
@@ -112,7 +117,29 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                         'Resend Verification',
                         style: TextStyle(fontSize: 24),
                       ),
-                    )
+                    ),
+                    const SizedBox(height: kDouble25),
+                    const Spacer(),
+                    InkWell(
+                      onTap: _checkEmailVerified,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.refresh_outlined,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(width: kDouble10),
+                          Text(
+                            'Tap to refresh',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: kDouble25 * 2),
                   ],
                 ),
               ),

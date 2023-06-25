@@ -18,7 +18,7 @@ class _AuthPageState extends State<AuthPage> {
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Auth().isEmailVerified
+          return Auth().isEmailVerified()
               ? const WidgetTree()
               : const VerifyEmailPage();
         } else {
