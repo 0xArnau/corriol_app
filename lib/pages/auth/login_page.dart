@@ -6,6 +6,7 @@ import 'package:corriol_app/pages/auth/register_page.dart';
 import 'package:corriol_app/widgets/buttons/my_button_widget.dart';
 import 'package:corriol_app/widgets/my_text_field_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -113,7 +114,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               _title(),
-              const SizedBox(height: kDouble25),
+              SizedBox(
+                  height: kDouble25 *
+                      2 *
+                      (MediaQuery.of(context).size.height /
+                          MediaQuery.of(context).size.width)),
               MyTextFieldWidget(
                 hintText: 'Email',
                 controller: _controllerEmail,
