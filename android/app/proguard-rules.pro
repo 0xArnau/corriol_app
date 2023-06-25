@@ -1,0 +1,1 @@
+-keep class com.example.corriol_app.BuildConfig { *; }
