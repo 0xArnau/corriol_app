@@ -51,7 +51,7 @@ class RecordObservationClass {
           double.parse(
             coordenates[1],
           )),
-      species: SpeciesExtension.valueOf(['species'].toString()),
+      species: SpeciesExtension.valueOf(json['species'].toString()),
       females: int.parse(json['females'].toString()),
       males: int.parse(json['males'].toString()),
       undetermined: int.parse(json['undetermined'].toString()),
@@ -69,30 +69,40 @@ class RecordObservationClass {
       List<RecordObservationClass> records = [];
       if (await kFileReports.fileExists()) {
         final jsonStr = await kFileReports.readContent();
+        print("json: ${jsonStr}");
         final jsonStrList = jsonStr.split('\n');
+        print("split: ${jsonStrList}");
         for (var element in jsonStrList) {
           if (element.isNotEmpty) {
-            records.add(
-              RecordObservationClass.fromJson(
-                jsonDecode(element),
-              ),
-            );
+            try {
+              records.add(
+                RecordObservationClass.fromJson(
+                  jsonDecode(element),
+                ),
+              );
+            } catch (e) {
+              print("loadRecords > readContent > element: ${e} (${element})");
+            }
           }
         }
-      }
-      if (await kFileReportsWithoutConnection.fileExists()) {
+      } else if (await kFileReportsWithoutConnection.fileExists()) {
         final jsonStr = await kFileReportsWithoutConnection.readContent();
         final jsonStrList = jsonStr.split('\n');
         for (var element in jsonStrList) {
           if (element.isNotEmpty) {
-            records.add(
-              RecordObservationClass.fromJson(
-                jsonDecode(element),
-              ),
-            );
+            try {
+              records.add(
+                RecordObservationClass.fromJson(
+                  jsonDecode(element),
+                ),
+              );
+            } catch (e) {
+              print("loadRecords > readContent > element: ${e} (${element})");
+            }
           }
         }
       }
+      print("records: ${records}");
       return records;
     } on Exception catch (e) {
       // TODO

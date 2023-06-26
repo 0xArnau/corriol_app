@@ -48,9 +48,11 @@ enum Species {
   corriolCamanegre,
   corriolPetit,
 }
+
 extension SpeciesExtension on Species {
   static Species valueOf(String value) {
-    return Species.values
-        .firstWhere((element) => element.toString().split('.').last == value);
+    return value == 'Species.corriolCamanegre'
+        ? Species.corriolCamanegre
+        : Species.corriolPetit;
   }
 }
