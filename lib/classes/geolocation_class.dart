@@ -1,4 +1,5 @@
 import 'package:corriol_app/core/notifiers.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GeolocationClass {
@@ -51,5 +52,21 @@ class GeolocationClass {
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
+  }
+
+  Future<List<String>> updateAddress() async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+      currentPositionNotifier.value.latitude,
+      currentPositionNotifier.value.longitude,
+    );
+
+    print(placemarks[0]);
+
+    String administrativeArea = placemarks[0].administrativeArea ?? "none";
+    String subAdministrativeArea =
+        placemarks[0].subAdministrativeArea ?? "none";
+    String locality = placemarks[0].locality ?? "none";
+
+    return [administrativeArea, subAdministrativeArea, locality];
   }
 }

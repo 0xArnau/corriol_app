@@ -42,3 +42,17 @@ const kTextStylePageTitle =
 FileIoClass kFileReportsWithoutConnection =
     FileIoClass(fileName: 'reports_without_connection.json');
 FileIoClass kFileReports = FileIoClass(fileName: 'reports.json');
+
+// Enum
+enum Species {
+  corriolCamanegre,
+  corriolPetit,
+}
+
+extension SpeciesExtension on Species {
+  static Species valueOf(String value) {
+    return value == 'Species.corriolCamanegre'
+        ? Species.corriolCamanegre
+        : Species.corriolPetit;
+  }
+}

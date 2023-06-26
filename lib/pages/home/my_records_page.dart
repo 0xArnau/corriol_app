@@ -4,8 +4,15 @@ import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class MyRecordsPage extends StatelessWidget {
+class MyRecordsPage extends StatefulWidget {
   const MyRecordsPage({super.key});
+
+  @override
+  State<MyRecordsPage> createState() => _MyRecordsPageState();
+}
+
+class _MyRecordsPageState extends State<MyRecordsPage> {
+  bool isOptionA = true; // Corriol camanegre (true), Corriol petit (false)
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,34 @@ class MyRecordsPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const RecordsPieChartWidget(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text('Corriol petit'),
+                  Switch(
+                    value: isOptionA,
+                    onChanged: (value) {
+                      setState(() {
+                        isOptionA = value;
+                      });
+                    },
+                  ),
+                  const Text('Corriol camanegre'),
+                ],
+              ),
+              const SizedBox(height: kDouble25),
+              Visibility(
+                visible: isOptionA,
+                child: const RecordsPieChartWidget(
+                  species: Species.corriolCamanegre,
+                ),
+              ),
+              Visibility(
+                visible: !isOptionA,
+                child: const RecordsPieChartWidget(
+                  species: Species.corriolPetit,
+                ), // Corriol petit
+              ),
               const SizedBox(height: kDouble25),
               Expanded(
                 child: Padding(

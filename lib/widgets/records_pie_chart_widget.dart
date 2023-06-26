@@ -4,7 +4,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class RecordsPieChartWidget extends StatefulWidget {
-  const RecordsPieChartWidget({super.key});
+  const RecordsPieChartWidget({super.key, required this.species});
+
+  final Species species;
 
   @override
   State<RecordsPieChartWidget> createState() => _RecordsPieChartWidgetState();
@@ -18,6 +20,8 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
     super.initState();
 
     records = RecordObservationClass.loadRecords();
+
+    print("records ${records}");
   }
 
   @override
@@ -36,6 +40,9 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
 
           for (final element in _records) {
             print(element.toJson());
+
+            if (element.species != widget.species) continue;
+
             femelles += element.females;
             polls += element.chickens;
             mascles += element.males;
@@ -95,7 +102,7 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
           );
         } else if (snapshot.hasError) {
           return const Center(
-            child: Text('Error'),
+            child: Text('No data found'),
           );
         } else {
           return const Center(

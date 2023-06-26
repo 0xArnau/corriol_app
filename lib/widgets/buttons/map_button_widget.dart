@@ -71,10 +71,10 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
               );
             },
             child: ValueListenableBuilder(
-                valueListenable: currenPositionNotifier,
+                valueListenable: currentPositionNotifier,
                 builder: (context, currentPosition, child) {
                   return Text(
-                      "${currentPosition.latitude.toStringAsFixed(6)} ${currentPosition.longitude.toStringAsFixed(6)}");
+                      "${currentPosition.latitude.toStringAsFixed(6)},${currentPosition.longitude.toStringAsFixed(6)}");
                 }),
           ),
         ),

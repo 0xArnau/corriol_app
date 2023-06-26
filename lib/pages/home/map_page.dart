@@ -3,7 +3,6 @@ import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/pages/home/map_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
 
 class MapPage extends StatelessWidget {
   const MapPage({
@@ -18,12 +17,12 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: currenPositionNotifier,
+      valueListenable: currentPositionNotifier,
       builder: (context, currentPosition, child) {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "${currentPosition.latitude.toStringAsFixed(6)} ${currentPosition.longitude.toStringAsFixed(6)}",
+              "${currentPosition.latitude.toStringAsFixed(6)},${currentPosition.longitude.toStringAsFixed(6)}",
               style: kTextStylePageTitle,
             ),
           ),

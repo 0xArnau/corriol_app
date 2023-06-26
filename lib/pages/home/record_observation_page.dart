@@ -1,8 +1,5 @@
-import 'dart:async';
-import 'dart:io';
 import 'dart:convert';
-import 'dart:math';
-
+import 'package:corriol_app/classes/geolocation_class.dart';
 import 'package:corriol_app/classes/record_observations_class.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
@@ -11,10 +8,7 @@ import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:corriol_app/classes/file_io_class.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/services.dart';
 
 class RecordObservationPage extends StatefulWidget {
   const RecordObservationPage({super.key});
@@ -26,13 +20,16 @@ class RecordObservationPage extends StatefulWidget {
 class _RecordObservationPageState extends State<RecordObservationPage> {
   RecordObservationClass fields = RecordObservationClass(
     coordenates: const LatLng(0, 0),
-    species: 'species',
+    species: Species.corriolCamanegre,
     females: 0,
     males: 0,
     undetermined: 0,
     chickens: 0,
     cats: 0,
     dogs: 0,
+    administrativeArea: "none",
+    subAdministrativeArea: "none",
+    locality: "none",
   );
 
   @override
@@ -67,7 +64,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     onChanged: (value) {
                       if (mounted) {
                         setState(() {
-                          fields.species = value;
+                          fields.species = SpeciesExtension.valueOf(value);
                         });
                       }
                     });
@@ -162,8 +159,6 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                 );
               case 15:
                 return const SizedBox(height: 15);
-              // case 16:
-              //   return const Spacer();
               case 16:
                 return SizedBox(
                   height: null,
@@ -182,8 +177,6 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     child: const Text('Submit'),
                   ),
                 );
-              // case 18:
-              //   return const Spacer();
             }
             return null;
           },
@@ -192,7 +185,14 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     );
   }
 
-  void saveReport() {
+  void saveReport() async {
+    List<String> address = await GeolocationClass().updateAddress();
+
+    fields.administrativeArea = address[0];
+    fields.subAdministrativeArea = address[1];
+    fields.locality = address[2];
+
+    print("fields ${jsonEncode(fields.toJson())}");
     isConnectedNotifier.value
         ? kFileReports.writeContent(jsonEncode(fields.toJson()))
         : kFileReportsWithoutConnection
