@@ -186,6 +186,22 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   }
 
   void saveReport() async {
+    if (fields.cats == 0 &&
+        fields.dogs == 0 &&
+        fields.chickens == 0 &&
+        fields.undetermined == 0 &&
+        fields.females == 0 &&
+        fields.males == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('No pots guardar informació buida'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+
+      return;
+    }
+
     List<String> address = await GeolocationClass().updateAddress();
 
     fields.administrativeArea = address[0];
