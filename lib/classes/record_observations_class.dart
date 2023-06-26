@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:corriol_app/core/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -13,20 +12,29 @@ class RecordObservationClass {
     required this.chickens,
     required this.cats,
     required this.dogs,
+    required this.administrativeArea,
+    required this.subAdministrativeArea,
+    required this.locality,
   });
 
   LatLng coordenates;
-  String species;
+  Species species;
   int males;
   int females;
   int undetermined;
   int chickens;
   int dogs;
   int cats;
+  String administrativeArea;
+  String subAdministrativeArea;
+  String locality;
 
   Map<String, dynamic> toJson() => {
         'coordenates': '${coordenates.latitude}, ${coordenates.longitude}',
-        'species': species,
+        'administrativeArea': administrativeArea,
+        'subAdministrativeArea': subAdministrativeArea,
+        'locality': locality,
+        'species': species.toString(),
         'males': males,
         'females': females,
         'undetermined': undetermined,
@@ -43,13 +51,16 @@ class RecordObservationClass {
           double.parse(
             coordenates[1],
           )),
-      species: json['species'].toString(),
+      species: SpeciesExtension.valueOf(['species'].toString()),
       females: int.parse(json['females'].toString()),
       males: int.parse(json['males'].toString()),
       undetermined: int.parse(json['undetermined'].toString()),
       chickens: int.parse(json['chickens'].toString()),
       cats: int.parse(json['cats'].toString()),
       dogs: int.parse(json['dogs'].toString()),
+      administrativeArea: json['administrativeArea'].toString(),
+      subAdministrativeArea: json['subAdministrativeArea'].toString(),
+      locality: json['locality'].toString(),
     );
   }
 

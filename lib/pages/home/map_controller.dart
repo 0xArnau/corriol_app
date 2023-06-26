@@ -22,7 +22,7 @@ class MapController extends ChangeNotifier {
       position: position,
     );
 
-    currenPositionNotifier.value = position;
+    currentPositionNotifier.value = position;
 
     _markers[markerId] = marker;
   }
