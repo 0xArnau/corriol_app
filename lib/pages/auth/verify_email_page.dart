@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:corriol_app/auth.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
-import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
 
 class VerifyEmailPage extends StatefulWidget {

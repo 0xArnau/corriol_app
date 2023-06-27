@@ -1,5 +1,4 @@
 import 'package:corriol_app/pages/auth/auth_page.dart';
-import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {

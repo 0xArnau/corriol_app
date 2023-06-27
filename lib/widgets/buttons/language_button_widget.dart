@@ -1,9 +1,5 @@
-import 'dart:convert';
-
-import 'package:corriol_app/classes/user_config_class.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
-import 'package:corriol_app/main.dart';
 import 'package:flutter/material.dart';
 
 class LanguageButtonWidget extends StatefulWidget {
