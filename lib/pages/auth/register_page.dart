@@ -1,5 +1,6 @@
-import 'package:corriol_app/auth.dart';
+import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/login_page.dart';
 import 'package:corriol_app/widgets/buttons/my_button_widget.dart';
 import 'package:corriol_app/widgets/my_text_field_widget.dart';
@@ -19,7 +20,20 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final ageController = TextEditingController();
+  final nameController = TextEditingController();
+
   String? errorMessage = '';
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    ageController.dispose();
+    nameController.dispose();
+  }
 
   void signUserUp() async {
     BuildContext dialogContext = context;
@@ -36,11 +50,19 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       if (passwordController.text == confirmPasswordController.text) {
-        await Auth().createUserWithEmailAndPassword(
+        // Create the user
+        await AuthController().createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text);
         setState(() {
-          errorMessage = 'Passwords don\'t match';
+          errorMessage = '';
         });
+
+        // Add user details
+        await AuthController().addUserInformation(UserModel(
+          email: emailController.text,
+          fullName: nameController.text,
+          age: int.parse(ageController.text),
+        ));
       } else {
         setState(() {
           errorMessage = 'Passwords don\'t match';
@@ -100,8 +122,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(kDoublePaddingBasic),
+          scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -115,6 +139,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 100),
+              MyTextFieldWidget(
+                controller: nameController,
+                hintText: 'Name',
+                obscureText: false,
+              ),
+              const SizedBox(height: 15),
+              MyTextFieldWidget(
+                controller: ageController,
+                hintText: 'Age',
+                obscureText: false,
+              ),
+              const SizedBox(height: 15),
               MyTextFieldWidget(
                 controller: emailController,
                 hintText: 'Email',
@@ -154,7 +190,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.white,
                 ),
               ),
-              const Spacer(),
+              // const Spacer(),
+              const SizedBox(height: 100),
               _login(),
             ],
           ),

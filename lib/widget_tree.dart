@@ -1,4 +1,4 @@
-import 'package:corriol_app/auth.dart';
+import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
@@ -21,7 +21,7 @@ class _WidgetTreeState extends State<WidgetTree> {
   ];
 
   Future<void> signOut() async {
-    await Auth().signOut();
+    await AuthController().signOut();
   }
 
   @override
