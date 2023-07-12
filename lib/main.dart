@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         // TODO: remove the next line in production
         // result = ConnectivityResult.none; // For testing without connection
         if (result == ConnectivityResult.none) {
-          isConnectedNotifier.value = true;
+          isConnectedNotifier.value = false;
           print('no internet connection');
         } else if (result == ConnectivityResult.wifi) {
           // internet connection with WiFi
