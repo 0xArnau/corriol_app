@@ -18,6 +18,12 @@ class LanguageButtonWidget extends StatefulWidget {
 
 class _LanguageButtonWidgetState extends State<LanguageButtonWidget> {
   @override
+  void initState() {
+    print('klk');
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: userConfigNotifier,

@@ -24,26 +24,31 @@ class GeolocationClass {
         break;
       default:
     }
+
+    isGpsOnNotifier.notifyListeners();
   }
 
   void enableLocationPermission() async {
-    _permission = await Geolocator.checkPermission();
-    _updateIsGpsOnNotifier();
-
     if (!isGpsOnNotifier.value) {
       _permission = await Geolocator.requestPermission();
       _updateIsGpsOnNotifier();
       if (!isGpsOnNotifier.value) {
         await Geolocator.openLocationSettings();
+        _permission = await Geolocator.checkPermission();
       }
     }
+
+    _updateIsGpsOnNotifier();
   }
 
   void disableLocationPermission() async {
     if (isGpsOnNotifier.value) {
       // await Geolocator.openAppSettings();
       await Geolocator.openLocationSettings();
+      _permission = await Geolocator.checkPermission();
     }
+
+    _updateIsGpsOnNotifier();
   }
 
   Future<Position> getCurrentLocation() async {

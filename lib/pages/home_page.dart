@@ -85,21 +85,21 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              isGpsOnNotifier.value
-                  ? GeolocationClass().disableLocationPermission()
-                  : GeolocationClass().enableLocationPermission();
-            },
-            child: ValueListenableBuilder(
-              valueListenable: isGpsOnNotifier,
-              builder: (context, isGpsOn, child) {
-                return isGpsOn
-                    ? const Icon(Icons.gps_fixed)
-                    : const Icon(Icons.gps_off);
-              },
-            ),
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {
+          //     isGpsOnNotifier.value
+          //         ? GeolocationClass().disableLocationPermission()
+          //         : GeolocationClass().enableLocationPermission();
+          //   },
+          //   child: ValueListenableBuilder(
+          //     valueListenable: isGpsOnNotifier,
+          //     builder: (context, isGpsOn, child) {
+          //       return isGpsOn
+          //           ? const Icon(Icons.gps_fixed)
+          //           : const Icon(Icons.gps_off);
+          //     },
+          //   ),
+          // ),
         );
       },
     );

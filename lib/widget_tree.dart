@@ -52,7 +52,10 @@ class _WidgetTreeState extends State<WidgetTree> {
                   onPressed: () {
                     signOut();
                   },
-                  icon: const Icon(Icons.logout),
+                  icon: Icon(
+                    Icons.logout,
+                    color: Colors.red.shade700,
+                  ),
                 )
               : const Text(''),
         ],
