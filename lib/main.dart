@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
       (ConnectivityResult result) {
         // To simulate there is no internet connection
         // TODO: remove the next line in production
-        result = ConnectivityResult.none;
+        // result = ConnectivityResult.none; // For testing without connection
         if (result == ConnectivityResult.none) {
           isConnectedNotifier.value = true;
           print('no internet connection');

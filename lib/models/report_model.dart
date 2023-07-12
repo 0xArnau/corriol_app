@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'package:corriol_app/core/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class RecordObservationClass {
-  RecordObservationClass({
+class ReportModel {
+  ReportModel({
+    required this.createdBy,
     required this.coordenates,
     required this.species,
     required this.females,
@@ -17,6 +18,7 @@ class RecordObservationClass {
     required this.locality,
   });
 
+  String createdBy;
   LatLng coordenates;
   Species species;
   int males;
@@ -30,6 +32,7 @@ class RecordObservationClass {
   String locality;
 
   Map<String, dynamic> toJson() => {
+        'createdBy': createdBy,
         'coordenates': '${coordenates.latitude}, ${coordenates.longitude}',
         'administrativeArea': administrativeArea,
         'subAdministrativeArea': subAdministrativeArea,
@@ -43,9 +46,10 @@ class RecordObservationClass {
         'cats': cats,
       };
 
-  factory RecordObservationClass.fromJson(Map<String, dynamic> json) {
+  factory ReportModel.fromJson(Map<String, dynamic> json) {
     final coordenates = json['coordenates'].split(',');
-    return RecordObservationClass(
+    return ReportModel(
+      createdBy: json['createdBy'].toString(),
       coordenates: LatLng(
           double.parse(coordenates[0]),
           double.parse(
@@ -64,9 +68,9 @@ class RecordObservationClass {
     );
   }
 
-  static Future<List<RecordObservationClass>> loadRecords() async {
+  static Future<List<ReportModel>> loadRecords() async {
     try {
-      List<RecordObservationClass> records = [];
+      List<ReportModel> records = [];
       if (await kFileReports.fileExists()) {
         final jsonStr = await kFileReports.readContent();
         print("json: ${jsonStr}");
@@ -76,7 +80,7 @@ class RecordObservationClass {
           if (element.isNotEmpty) {
             try {
               records.add(
-                RecordObservationClass.fromJson(
+                ReportModel.fromJson(
                   jsonDecode(element),
                 ),
               );
@@ -92,7 +96,7 @@ class RecordObservationClass {
           if (element.isNotEmpty) {
             try {
               records.add(
-                RecordObservationClass.fromJson(
+                ReportModel.fromJson(
                   jsonDecode(element),
                 ),
               );

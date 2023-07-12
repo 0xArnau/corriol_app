@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:corriol_app/classes/geolocation_class.dart';
-import 'package:corriol_app/classes/record_observations_class.dart';
+import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/controllers/report_controller.dart';
+import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
@@ -18,7 +20,8 @@ class RecordObservationPage extends StatefulWidget {
 }
 
 class _RecordObservationPageState extends State<RecordObservationPage> {
-  RecordObservationClass fields = RecordObservationClass(
+  ReportModel fields = ReportModel(
+    createdBy: AuthController().currentUser!.email!,
     coordenates: const LatLng(0, 0),
     species: Species.corriolCamanegre,
     females: 0,
@@ -210,7 +213,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
 
     print("fields ${jsonEncode(fields.toJson())}");
     isConnectedNotifier.value
-        ? kFileReports.writeContent(jsonEncode(fields.toJson()))
+        ? ReportController().saveReport(fields)
         : kFileReportsWithoutConnection
             .writeContent(jsonEncode(fields.toJson()));
     // Show the Snackbar
