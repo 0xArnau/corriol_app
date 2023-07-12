@@ -1,4 +1,4 @@
-import 'package:corriol_app/classes/record_observations_class.dart';
+import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -13,20 +13,20 @@ class RecordsPieChartWidget extends StatefulWidget {
 }
 
 class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
-  late Future<List<RecordObservationClass>> records;
+  late Future<List<ReportModel>> records;
 
   @override
   void initState() {
     super.initState();
 
-    records = RecordObservationClass.loadRecords();
+    records = ReportModel.loadRecords();
 
     print("records ${records}");
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<RecordObservationClass>>(
+    return FutureBuilder<List<ReportModel>>(
       future: records,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
