@@ -1,4 +1,4 @@
-import 'package:corriol_app/auth.dart';
+import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     try {
-      await Auth().signInWithEmailAndPassword(
+      await AuthController().signInWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );

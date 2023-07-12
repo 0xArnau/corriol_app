@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:corriol_app/auth.dart';
+import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
@@ -37,14 +37,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
 
   Future<void> signOut() async {
-    await Auth().signOut();
+    await AuthController().signOut();
   }
 
   Future _checkEmailVerified() async {
     print(isEmailVerified);
 
     setState(() {
-      isEmailVerified = Auth().isEmailVerified();
+      isEmailVerified = AuthController().isEmailVerified();
     });
 
     if (isEmailVerified) timer?.cancel();
@@ -53,7 +53,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
 
   Future<void> _sendEmailVerification() async {
-    String status = await Auth().sendEmailVerification();
+    String status = await AuthController().sendEmailVerification();
     _statusBar(status);
   }
 
@@ -101,7 +101,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   children: [
                     const Spacer(),
                     Text(
-                      'A verification email has been send to: ${Auth().currentUser!.email}',
+                      'A verification email has been send to: ${AuthController().currentUser!.email}',
                       style: const TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 15),

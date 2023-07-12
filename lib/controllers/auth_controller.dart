@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:corriol_app/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class Auth {
+class AuthController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   User? get currentUser => _firebaseAuth.currentUser;
@@ -46,5 +48,34 @@ class Auth {
       status = e.toString();
     }
     return status;
+  }
+
+  Future<void> addUserInformation(UserModel user) async {
+    try {
+      await FirebaseFirestore.instance.collection('Users').add(user.toJson());
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<UserModel?> getUserInformation() async {
+    try {
+      UserModel? user;
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .get()
+          .then((snapshot) => snapshot.docs.forEach((document) {
+                // print(document.data());
+                // print(currentUser!.email);
+                if (document.data()['email'] == currentUser!.email) {
+                  user = UserModel.fromJson(document.data());
+                }
+              }));
+      return user;
+    } catch (e) {
+      print(e);
+
+      return null;
+    }
   }
 }
