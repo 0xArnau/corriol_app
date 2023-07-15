@@ -1,7 +1,6 @@
-import 'dart:convert';
-
+// import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:corriol_app/core/constants.dart';
+// import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 
@@ -12,7 +11,7 @@ class ReportController {
           .collection('Reports')
           .add(report.toJson());
 
-      kFileReports.writeContent(jsonEncode(report.toJson()));
+      // kFileReports.writeContent(jsonEncode(report.toJson()));
     } catch (e) {
       print(e);
     }

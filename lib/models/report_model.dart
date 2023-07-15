@@ -71,25 +71,25 @@ class ReportModel {
   static Future<List<ReportModel>> loadRecords() async {
     try {
       List<ReportModel> records = [];
-      if (await kFileReports.fileExists()) {
-        final jsonStr = await kFileReports.readContent();
-        print("json: ${jsonStr}");
-        final jsonStrList = jsonStr.split('\n');
-        print("split: ${jsonStrList}");
-        for (var element in jsonStrList) {
-          if (element.isNotEmpty) {
-            try {
-              records.add(
-                ReportModel.fromJson(
-                  jsonDecode(element),
-                ),
-              );
-            } catch (e) {
-              print("loadRecords > readContent > element: ${e} (${element})");
-            }
-          }
-        }
-      } else if (await kFileReportsWithoutConnection.fileExists()) {
+      // if (await kFileReports.fileExists()) {
+      //   final jsonStr = await kFileReports.readContent();
+      //   print("json: ${jsonStr}");
+      //   final jsonStrList = jsonStr.split('\n');
+      //   print("split: ${jsonStrList}");
+      //   for (var element in jsonStrList) {
+      //     if (element.isNotEmpty) {
+      //       try {
+      //         records.add(
+      //           ReportModel.fromJson(
+      //             jsonDecode(element),
+      //           ),
+      //         );
+      //       } catch (e) {
+      //         print("loadRecords > readContent > element: ${e} (${element})");
+      //       }
+      //     }
+      //   }
+      if (await kFileReportsWithoutConnection.fileExists()) {
         final jsonStr = await kFileReportsWithoutConnection.readContent();
         final jsonStrList = jsonStr.split('\n');
         for (var element in jsonStrList) {

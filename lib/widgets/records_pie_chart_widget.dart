@@ -1,3 +1,6 @@
+import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/controllers/report_controller.dart';
+import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -19,8 +22,14 @@ class _RecordsPieChartWidgetState extends State<RecordsPieChartWidget> {
   void initState() {
     super.initState();
 
-    records = ReportModel.loadRecords();
+    print("is connected? ${isConnectedNotifier.value}");
 
+    if (isConnectedNotifier.value) {
+      records = ReportController()
+          .getReportsByUserId(AuthController().currentUser!.email!);
+    } else {
+      records = ReportModel.loadRecords();
+    }
     print("records ${records}");
   }
 
