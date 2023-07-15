@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:corriol_app/classes/geolocation_class.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/models/user_model.dart';
+import 'package:corriol_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});
@@ -19,9 +22,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      user = _getUserInfo();
-    });
   }
 
   void _setGps(bool value) {
@@ -50,10 +50,6 @@ class _ProfilePageState extends State<ProfilePage> {
     userConfigNotifier.notifyListeners();
   }
 
-  Future<UserModel?> _getUserInfo() async {
-    return await AuthController().getUserInformation();
-  }
-
   Future<void> signOut() async {
     await AuthController().signOut();
   }
@@ -63,77 +59,61 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(kDouble25),
-        child: Center(
-          child: Column(
-            children: [
-              _profileUserInfo(),
-              const SizedBox(height: 10),
-              const Divider(),
-              const SizedBox(height: 10),
-              _profileUserOptions(
-                icon: const Icon(Icons.language),
-                option: "Language: ${userConfigNotifier.value.locale}",
-                onTap: () => _openLanguageMenu(context),
-              ),
-              _profileUserOptionsData(),
-              _profileUserOptionsGps(),
-              const SizedBox(height: 10),
-              const Divider(),
-              const SizedBox(height: 10),
-              _profileAppInfo(),
-            ],
-          ),
+        child: Column(
+          children: [
+            _profileUserInfo(),
+            const SizedBox(height: 10),
+            const Divider(),
+            const SizedBox(height: 10),
+            _profileUserOptions(
+              icon: const Icon(Icons.language),
+              option: "Language: ${userConfigNotifier.value.locale}",
+              onTap: () => _openLanguageMenu(context),
+            ),
+            _profileUserOptionsData(),
+            _profileUserOptionsGps(),
+            const SizedBox(height: 10),
+            const Divider(),
+            const SizedBox(height: 10),
+            _profileAppInfo(),
+          ],
         ),
       ),
-      // floatingActionButton: const Column(
-      //   mainAxisAlignment: MainAxisAlignment.end,
-      //   children: [
-      //     DropDownFABWidget(),
-      //     SizedBox(height: 15),
-      //     DataButtonWidget(),
-      //   ],
-      // ),
     );
   }
 
   Widget _profileUserInfo() {
-    return FutureBuilder<UserModel?>(
-      future: user,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+    return Consumer<UserProvider>(
+      builder: (context, provider, child) {
+        final user = provider.data as UserModel?;
+        if (user == null) {
           return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else if (snapshot.hasData) {
-          UserModel? user = snapshot.data;
-          if (user != null) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.person,
-                  size: 150,
+        } else {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.person,
+                size: 150,
+              ),
+              Text(
+                user.fullName,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
                 ),
-                Text(
-                  user.fullName,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                  ),
+              ),
+              Text(
+                user.email,
+                style: const TextStyle(
+                  // fontWeight: FontWeight.w600,
+                  fontSize: 17,
                 ),
-                Text(
-                  user.email,
-                  style: const TextStyle(
-                    // fontWeight: FontWeight.w600,
-                    fontSize: 17,
-                  ),
-                ),
-                Text(user.technician! ? 'Role: Technician' : 'Role: User'),
-              ],
-            );
-          }
+              ),
+              Text(user.technician! ? 'Role: Technician' : 'Role: User'),
+            ],
+          );
         }
-        return const SizedBox();
       },
     );
   }
