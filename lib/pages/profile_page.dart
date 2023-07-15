@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:corriol_app/classes/geolocation_class.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
-import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/models/user_model.dart';
+import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +17,11 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   // final User? user = AuthController().currentUser;
   late Future<UserModel?> user;
+  late UserProvider provider;
 
   @override
   void initState() {
+    provider = Provider.of<UserProvider>(context, listen: false);
     super.initState();
   }
 
@@ -30,25 +31,17 @@ class _ProfilePageState extends State<ProfilePage> {
         : GeolocationClass().enableLocationPermission();
   }
 
-  void _setLanguage(Locale value) {
-    if (mounted) {
-      setState(() {
-        userConfigNotifier.value.locale = value;
-      });
-    }
-    userConfigNotifier.value.saveConfig();
-    userConfigNotifier.notifyListeners();
-  }
+  // void _setLanguage(Locale value) {
+  //   if (mounted) {
+  //     setState(() {
+  //       userConfigNotifier.value.locale = value;
+  //     });
+  //   }
+  //   userConfigNotifier.value.saveConfig();
+  //   userConfigNotifier.notifyListeners();
+  // }
 
-  void _setMobileConnection(bool value) {
-    if (mounted) {
-      setState(() {
-        userConfigNotifier.value.mobileData = value;
-      });
-    }
-    userConfigNotifier.value.saveConfig();
-    userConfigNotifier.notifyListeners();
-  }
+  void _setMobileConnection(bool value) {}
 
   Future<void> signOut() async {
     await AuthController().signOut();
@@ -58,63 +51,62 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(kDouble25),
-        child: Column(
-          children: [
-            _profileUserInfo(),
-            const SizedBox(height: 10),
-            const Divider(),
-            const SizedBox(height: 10),
-            _profileUserOptions(
-              icon: const Icon(Icons.language),
-              option: "Language: ${userConfigNotifier.value.locale}",
-              onTap: () => _openLanguageMenu(context),
-            ),
-            _profileUserOptionsData(),
-            _profileUserOptionsGps(),
-            const SizedBox(height: 10),
-            const Divider(),
-            const SizedBox(height: 10),
-            _profileAppInfo(),
-          ],
+        child: Center(
+          child: Consumer<UserProvider>(
+            builder: (context, provider, child) {
+              final user = provider.user as UserModel?;
+              final preferences = provider.preferences as UserPreferencesModel;
+              if (user == null) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CircularProgressIndicator(),
+                  ],
+                );
+              } else {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.person,
+                      size: 150,
+                    ),
+                    Text(
+                      user.fullName,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      user.email,
+                      style: const TextStyle(
+                        // fontWeight: FontWeight.w600,
+                        fontSize: 17,
+                      ),
+                    ),
+                    Text(user.technician! ? 'Role: Technician' : 'Role: User'),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    _profileUserOptions(
+                      icon: const Icon(Icons.language),
+                      option: "Language: ${preferences.lang}",
+                      onTap: () => _openLanguageMenu(context),
+                    ),
+                    _profileUserOptionsData(mobileData: preferences.mobileData),
+                    _profileUserOptionsGps(isGpsOn: preferences.gps),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    _profileAppInfo(),
+                  ],
+                );
+              }
+            },
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _profileUserInfo() {
-    return Consumer<UserProvider>(
-      builder: (context, provider, child) {
-        final user = provider.user as UserModel?;
-        if (user == null) {
-          return const CircularProgressIndicator();
-        } else {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.person,
-                size: 150,
-              ),
-              Text(
-                user.fullName,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Text(
-                user.email,
-                style: const TextStyle(
-                  // fontWeight: FontWeight.w600,
-                  fontSize: 17,
-                ),
-              ),
-              Text(user.technician! ? 'Role: Technician' : 'Role: User'),
-            ],
-          );
-        }
-      },
     );
   }
 
@@ -173,19 +165,19 @@ class _ProfilePageState extends State<ProfilePage> {
     if (result != null) {
       switch (result) {
         case 1:
-          _setLanguage(const Locale('ca'));
+          provider.setLangInfo(const Locale('ca'));
           break;
         case 2:
-          _setLanguage(const Locale('es'));
+          provider.setLangInfo(const Locale('es'));
           break;
         case 3:
-          _setLanguage(const Locale('en'));
+          provider.setLangInfo(const Locale('en'));
           break;
       }
     }
   }
 
-  Widget _profileUserOptionsData() {
+  Widget _profileUserOptionsData({required bool mobileData}) {
     return ListTile(
       leading: Container(
         width: 40,
@@ -194,7 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
           borderRadius: BorderRadius.circular(100),
           color: Colors.grey.withOpacity(0.1),
         ),
-        child: userConfigNotifier.value.mobileData
+        child: mobileData
             ? const Icon(Icons.four_g_mobiledata_rounded)
             : const Icon(Icons.mobiledata_off),
       ),
@@ -207,45 +199,40 @@ class _ProfilePageState extends State<ProfilePage> {
           color: Colors.grey.withOpacity(0.1),
         ),
         child: Switch(
-          value: userConfigNotifier.value.mobileData,
-          onChanged: _setMobileConnection,
+          value: mobileData,
+          onChanged: provider.setMobileDataInfo,
         ),
       ),
       // onTap: onTap,
     );
   }
 
-  Widget _profileUserOptionsGps() {
-    return ValueListenableBuilder(
-      valueListenable: isGpsOnNotifier,
-      builder: (context, isGpsOn, child) {
-        return ListTile(
-          leading: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
-              ),
-              child: isGpsOn
-                  ? const Icon(Icons.gps_fixed)
-                  : const Icon(Icons.gps_off)),
-          title: const Text("GPS"),
-          trailing: Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(100),
-              color: Colors.grey.withOpacity(0.1),
-            ),
-            child: Switch(
-              value: isGpsOn,
-              onChanged: _setGps,
-            ),
+  Widget _profileUserOptionsGps({required bool isGpsOn}) {
+    return ListTile(
+      leading: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: Colors.grey.withOpacity(0.1),
           ),
-          // onTap: onTap,
-        );
-      },
+          child: isGpsOn
+              ? const Icon(Icons.gps_fixed)
+              : const Icon(Icons.gps_off)),
+      title: const Text("GPS"),
+      trailing: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadiusDirectional.circular(100),
+          color: Colors.grey.withOpacity(0.1),
+        ),
+        child: Switch(
+          value: isGpsOn,
+          onChanged: provider.setGpsInfo,
+        ),
+      ),
+      // onTap: onTap,
     );
   }
 
