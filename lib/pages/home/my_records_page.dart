@@ -12,6 +12,33 @@ class MyRecordsPage extends StatefulWidget {
 }
 
 class _MyRecordsPageState extends State<MyRecordsPage> {
+  final List<LegendPieChartWidget> charts = [
+    // Widgets en el GridView
+    LegendPieChartWidget(
+      color: kColorList['femelles']!,
+      text: 'Femelles',
+    ),
+    LegendPieChartWidget(
+      color: kColorList['polls']!,
+      text: 'Polls',
+    ),
+    LegendPieChartWidget(
+      color: kColorList['mascles']!,
+      text: 'Mascles',
+    ),
+    LegendPieChartWidget(
+      color: kColorList['indeterminat']!,
+      text: 'Indeterminat',
+    ),
+    LegendPieChartWidget(
+      color: kColorList['gossos']!,
+      text: 'Gossos',
+    ),
+    LegendPieChartWidget(
+      color: kColorList['gats']!,
+      text: 'Gats',
+    ),
+  ];
   bool isOptionA = true; // Corriol camanegre (true), Corriol petit (false)
 
   @override
@@ -23,75 +50,99 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
           style: kTextStylePageTitle,
         ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(kDouble15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text('Corriol petit'),
-                  Switch(
-                    value: isOptionA,
-                    onChanged: (value) {
-                      setState(() {
-                        isOptionA = value;
-                      });
-                    },
-                  ),
-                  const Text('Corriol camanegre'),
-                ],
-              ),
-              const SizedBox(height: kDouble25),
-              Visibility(
-                visible: isOptionA,
-                child: const RecordsPieChartWidget(
-                  species: Species.corriolCamanegre,
-                ),
-              ),
-              Visibility(
-                visible: !isOptionA,
-                child: const RecordsPieChartWidget(
-                  species: Species.corriolPetit,
-                ), // Corriol petit
-              ),
-              const SizedBox(height: kDouble25),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    childAspectRatio: 4,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
+      body: Stack(
+        children: [
+          ListView.builder(
+            itemCount: 12,
+            itemBuilder: (BuildContext context, int index) {
+              switch (index) {
+                case 0:
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      // Widgets en el GridView
-                      LegendPieChartWidget(
-                          color: kColorList['femelles']!, text: 'Femelles'),
-                      LegendPieChartWidget(
-                          color: kColorList['polls']!, text: 'Polls'),
-                      LegendPieChartWidget(
-                          color: kColorList['mascles']!, text: 'Mascles'),
-                      LegendPieChartWidget(
-                          color: kColorList['indeterminat']!,
-                          text: 'Indeterminat'),
-                      LegendPieChartWidget(
-                          color: kColorList['gossos']!, text: 'Gossos'),
-                      LegendPieChartWidget(
-                          color: kColorList['gats']!, text: 'Gats'),
+                      const Text('Corriol petit'),
+                      Switch(
+                        value: isOptionA,
+                        onChanged: (value) {
+                          setState(() {
+                            isOptionA = value;
+                          });
+                        },
+                      ),
+                      const Text('Corriol camanegre'),
                     ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: kDouble15),
-              const Image(
-                image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
-              ),
-            ],
+                  );
+                case 1:
+                  return const SizedBox(height: kDouble25);
+                case 2:
+                  return Visibility(
+                    visible: isOptionA,
+                    child: const RecordsPieChartWidget(
+                      species: Species.corriolCamanegre,
+                    ),
+                  );
+                case 3:
+                  return Visibility(
+                    visible: !isOptionA,
+                    child: const RecordsPieChartWidget(
+                      species: Species.corriolPetit,
+                    ), // Corriol petit
+                  );
+                case 4:
+                  return const SizedBox(height: kDouble25);
+                case 5:
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      charts[0],
+                      const Spacer(),
+                      charts[1],
+                      const Spacer(),
+                    ],
+                  );
+                case 6:
+                  return const SizedBox(height: kDouble15);
+                case 7:
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      charts[2],
+                      const Spacer(),
+                      charts[3],
+                      const Spacer(),
+                    ],
+                  );
+                case 8:
+                  return const SizedBox(height: kDouble15);
+                case 9:
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      charts[4],
+                      const Spacer(),
+                      charts[5],
+                      const Spacer(),
+                    ],
+                  );
+                case 10:
+                  return const SizedBox(height: kDouble15);
+                default:
+                  return const SizedBox();
+              }
+            },
           ),
-        ),
+          const Positioned(
+            bottom: 50,
+            left: 0,
+            right: 0,
+            child: Image(
+              image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+            ),
+          ),
+        ],
       ),
     );
   }
