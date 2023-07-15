@@ -85,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _profileUserInfo() {
     return Consumer<UserProvider>(
       builder: (context, provider, child) {
-        final user = provider.data as UserModel?;
+        final user = provider.user as UserModel?;
         if (user == null) {
           return const CircularProgressIndicator();
         } else {

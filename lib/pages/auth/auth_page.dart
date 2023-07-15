@@ -14,12 +14,11 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  UserProvider user = UserProvider();
+  late UserProvider provider;
   @override
   void initState() {
-    setState(() {
-      user.fetchUserInfo();
-    });
+    provider = Provider.of<UserProvider>(context, listen: false);
+    provider.fetchUserInfo();
     super.initState();
   }
 
@@ -30,10 +29,7 @@ class _AuthPageState extends State<AuthPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return AuthController().isEmailVerified()
-              ? ChangeNotifierProvider<UserProvider>.value(
-                  value: user,
-                  child: const WidgetTree(),
-                )
+              ? const WidgetTree()
               : const VerifyEmailPage();
         } else {
           return const LoginPage();

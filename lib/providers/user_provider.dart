@@ -4,18 +4,35 @@ import 'package:flutter/material.dart';
 
 class UserProvider extends ChangeNotifier {
   late UserModel? _user;
+  late bool _mobileData;
+  late bool _gps;
+  late Locale _lang;
 
-  get data => _user;
+  get user => _user;
+  get mobileData => _mobileData;
+  get gps => _gps;
+  get lang => _lang;
 
   UserProvider() {
     _user = null;
+    _mobileData = false;
+    _gps = false;
   }
 
   Future<void> fetchUserInfo() async {
     _user = await AuthController().getUserInformation();
     notifyListeners();
+  }
 
-    print("Update User info");
-    print(_user!.toJson());
+  Future<void> fetchMobileDataInfo() async {
+    notifyListeners();
+  }
+
+  Future<void> fetchGpsInfo() async {
+    notifyListeners();
+  }
+
+  Future<void> fetchLangInfo() async {
+    notifyListeners();
   }
 }

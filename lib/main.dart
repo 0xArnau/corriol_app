@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/l10n/l10n.dart';
+import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/splash.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,6 +14,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'dart:ui' as ui;
 
+import 'package:provider/provider.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -21,7 +24,15 @@ void main() async {
 
   await FlutterConfig.loadEnvVariables();
 
-  runApp(const MyApp());
+  UserProvider provider = UserProvider();
+
+  // runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<UserProvider>.value(
+      value: provider,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
