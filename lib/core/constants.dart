@@ -2,6 +2,8 @@ import 'package:corriol_app/classes/file_io_class.dart';
 import 'package:flutter/material.dart';
 
 // Colors
+// final kColorLightBackground = Colors.grey[500];
+
 const kColorPrimaryBlue = Colors.blue;
 const kColorPrimaryGrey = Colors.grey;
 const kColorRedCard = Colors.red;
@@ -33,6 +35,9 @@ const kDoublePaddingFloatingActionButtonV = 150.0;
 
 const kDoublePaddingMyButtonAndMyTextField = 15.0;
 const kDoublePaddingBasic = 10.0;
+
+// Border Radius
+const kDoubleBorderRadiusButtons = 15.0;
 
 // Text size & weigth
 const kTextStylePageTitle =

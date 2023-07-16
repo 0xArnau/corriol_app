@@ -1,5 +1,5 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
-import 'package:corriol_app/pages/auth/login_page.dart';
+import 'package:corriol_app/pages/auth/login_register_page.dart';
 import 'package:corriol_app/pages/auth/verify_email_page.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/widget_tree.dart';
@@ -32,7 +32,7 @@ class _AuthPageState extends State<AuthPage> {
               ? const WidgetTree()
               : const VerifyEmailPage();
         } else {
-          return const LoginPage();
+          return const LoginRegisterPage();
         }
       },
     );
