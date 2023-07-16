@@ -102,11 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         const SizedBox(width: 10),
         GestureDetector(
-          onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const LoginPage(),
-            ),
-          ),
+          onTap: () => Navigator.of(context).pop(),
           child: const Text(
             'Login now',
             style: TextStyle(
