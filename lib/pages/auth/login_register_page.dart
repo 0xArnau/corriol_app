@@ -3,6 +3,7 @@ import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
+import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sss_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
@@ -39,26 +40,24 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
       errorAuthFieldsSnackbar(context, "Empty fields");
-
-      return;
-    }
-
-    try {
-      await AuthController().signInWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
-      );
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      errorFirebaseAuthSnackbar(context, e);
-      return;
-    } finally {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => const AuthPage(),
-        ),
-      );
+    } else {
+      try {
+        await AuthController()
+            .signInWithEmailAndPassword(
+              email: _controllerEmail.text,
+              password: _controllerPassword.text,
+            )
+            .then(
+              (_) => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const AuthPage(),
+                ),
+              ),
+            );
+      } on FirebaseAuthException catch (e) {
+        errorFirebaseAuthSnackbar(context, e);
+      }
     }
   }
 
@@ -69,37 +68,36 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         _controllerName.text.isEmpty ||
         _controllerPassword.text.isEmpty) {
       errorAuthFieldsSnackbar(context, "Empty fields");
-      return;
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
       errorAuthFieldsSnackbar(context, "Passwords are different");
-      return;
-    }
-
-    try {
-      // Create the user
-      await AuthController().createUserWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
-      );
-
-      // Add user details
-      await AuthController().addUserInformation(
-        UserModel(
+    } else {
+      try {
+        // Create the user
+        await AuthController().createUserWithEmailAndPassword(
           email: _controllerEmail.text,
-          fullName: _controllerName.text,
-          age: int.parse(_controllerAge.text),
-        ),
-      );
-    } on FirebaseAuthException catch (e) {
-      errorFirebaseAuthSnackbar(context, e);
-      return;
-    } finally {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => const AuthPage(),
-        ),
-      );
+          password: _controllerPassword.text,
+        );
+
+        // Add user details
+        await AuthController()
+            .addUserInformation(
+              UserModel(
+                email: _controllerEmail.text,
+                fullName: _controllerName.text,
+                age: int.parse(_controllerAge.text),
+              ),
+            )
+            .then(
+              (_) => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const AuthPage(),
+                ),
+              ),
+            );
+      } on FirebaseAuthException catch (e) {
+        errorFirebaseAuthSnackbar(context, e);
+      }
     }
   }
 
@@ -175,7 +173,8 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         const SizedBox(height: kDouble15),
         // Login button
-        _loginregisterButton(
+        blackButton(
+          context: context,
           text: "Sign In",
           onTap: signInWithEmailAndPassword,
         ),
@@ -185,32 +184,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         // SSO
         // _sso(),
       ],
-    );
-  }
-
-  Widget _loginregisterButton({required String text, required Function onTap}) {
-    return GestureDetector(
-      onTap: () {
-        onTap(context);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(kDoublePaddingMyButtonAndMyTextField),
-        // margin: const EdgeInsets.symmetric(horizontal: kDouble25),
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
     );
   }
 
@@ -259,7 +232,8 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         const SizedBox(height: kDouble15),
         // Register button
-        _loginregisterButton(
+        blackButton(
+          context: context,
           text: "Register",
           onTap: registerWithEmailAndPassword,
         ),

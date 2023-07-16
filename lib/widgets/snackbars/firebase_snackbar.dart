@@ -30,3 +30,15 @@ void errorAuthFieldsSnackbar(BuildContext context, String e) {
     ),
   );
 }
+
+void snackbarInfo(BuildContext context, String e) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        e,
+      ),
+      duration: const Duration(seconds: 3),
+      // backgroundColor: Colors.red[200],
+    ),
+  );
+}

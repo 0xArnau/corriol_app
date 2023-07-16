@@ -1,5 +1,7 @@
 import 'package:corriol_app/core/constants.dart';
-import 'package:corriol_app/widgets/buttons/my_button_widget.dart';
+import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
+import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
+import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,25 +13,20 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  String? _status = null;
-  String? _errorMessage = '';
+  final _controllerEmail = TextEditingController();
 
   @override
   void dispose() {
-    emailController.dispose();
+    _controllerEmail.dispose();
     super.dispose();
   }
 
-  Widget _MyErrorMessage() {
-    return Text(
-      _errorMessage == '' ? '' : '$_errorMessage',
-      style: const TextStyle(color: Colors.red),
-    );
-  }
+  Future<void> _resetPassword(BuildContext context) async {
+    if (_controllerEmail.text.isEmpty) {
+      errorAuthFieldsSnackbar(context, "Field empty");
+      return;
+    }
 
-  Future resetPassword() async {
     // Show a loading icon
     showDialog(
       context: context,
@@ -39,75 +36,52 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         );
       },
     );
-    await FirebaseAuth.instance
-        .sendPasswordResetEmail(email: emailController.text)
-        .then((value) => _status = 'Emailed send to: ${emailController.text}')
-        .catchError((e) => _status = e.code);
-    setState(() {
-      _errorMessage = _status;
-    });
-    print(_errorMessage);
-    Navigator.pop(context);
+
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _controllerEmail.text)
+          .then((value) => snackbarInfo(context, "Email send"));
+    } on FirebaseAuthException catch (e) {
+      errorFirebaseAuthSnackbar(context, e);
+      return;
+    } finally {
+      Navigator.of(context).pop(); // Not working
+    }
+  }
+
+  Widget _emailButton() {
+    return MyTextFormWidget(
+      controller: _controllerEmail,
+      hintText: "Email",
+      obscureText: false,
+      prefixIcon: const Icon(Icons.email),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> list = [
+      _emailButton(),
+      const SizedBox(height: kDouble25),
+      blackButton(
+        context: context,
+        text: "Send email",
+        onTap: _resetPassword,
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: kColorPrimaryBlue,
-        elevation: 0,
-        title: const Text(
-          'Reset password',
-          style: TextStyle(color: kColorPrimaryBlue),
-        ),
+        title: const Text("Reset Password"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: emailController,
-                // cursorColor: primaryBlueColor,
-                textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade500,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade900),
-                  ),
-                  fillColor: Colors.grey.shade100,
-                  filled: true,
-                ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) {
-                  return email == null && email!.isEmpty
-                      ? 'Enter a valid email'
-                      : null;
-                },
-              ),
-              const SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kDouble25),
-                child: _MyErrorMessage(),
-              ),
-              const SizedBox(height: 25),
-              MyButtonWidget(
-                text: 'Reset password',
-                icon: const Icon(
-                  Icons.email,
-                  color: Colors.white,
-                ),
-                onTap: resetPassword,
-              ),
-            ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(kDouble20 * 2),
+          child: ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return list[index];
+            },
           ),
         ),
       ),
