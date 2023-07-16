@@ -69,6 +69,9 @@ class HomePage extends StatelessWidget {
                 color: kColorPrimaryBlue,
               ),
             ),
+            SizedBox(
+              height: kDouble15 + (MediaQuery.of(context).size.height / 16),
+            ),
             const Image(
               image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
             ),

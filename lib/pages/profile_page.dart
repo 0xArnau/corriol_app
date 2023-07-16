@@ -1,5 +1,6 @@
 import 'package:corriol_app/classes/geolocation_class.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
@@ -100,6 +101,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     const Divider(),
                     const SizedBox(height: 10),
                     _profileAppInfo(),
+                    SizedBox(
+                      height: kDouble15 +
+                          (MediaQuery.of(context).size.height / 10.2),
+                    ),
+                    const Image(
+                      image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                    ),
                   ],
                 );
               }
