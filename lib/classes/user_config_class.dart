@@ -25,7 +25,7 @@ class UserConfigClass extends ChangeNotifier {
     try {
       if (await file.fileExists()) {
         final jsonStr = await file.readContent();
-        final jsonMap = jsonDecode(jsonStr);
+        final jsonMap = jsonDecode(jsonStr!);
         fromJson(jsonMap);
         userConfigNotifier.value = this;
         userConfigNotifier.notifyListeners();

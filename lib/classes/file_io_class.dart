@@ -19,6 +19,13 @@ class FileIoClass {
     return File('$path/$fileName');
   }
 
+  Future<void> deleteFile() async {
+    final file = await _localFile;
+    if (await file.exists()) {
+      await file.delete();
+    }
+  }
+
   Future<bool> fileExists() async {
     final file = await _localFile;
     return file.exists();
@@ -34,14 +41,14 @@ class FileIoClass {
     return file.writeAsString(content, mode: FileMode.write);
   }
 
-  Future<String> readContent() async {
+  Future<String?> readContent() async {
     try {
       final file = await _localFile;
       String contents = await file.readAsString();
       return contents;
     } catch (e) {
       // If there is an error reading, return a default String
-      return 'Error';
+      return null;
     }
   }
 }
