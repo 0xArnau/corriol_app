@@ -41,6 +41,16 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
       errorAuthFieldsSnackbar(context, "Empty fields");
     } else {
+      // Show a loading icon
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
+
       try {
         await AuthController()
             .signInWithEmailAndPassword(
@@ -71,6 +81,16 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
       errorAuthFieldsSnackbar(context, "Passwords are different");
     } else {
+      // Show a loading icon
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
+
       try {
         // Create the user
         await AuthController().createUserWithEmailAndPassword(
