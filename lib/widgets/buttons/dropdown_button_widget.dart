@@ -32,7 +32,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.map_outlined),
+        const Icon(Icons.flutter_dash),
         const SizedBox(width: kDouble25),
         Expanded(
           child: Container(

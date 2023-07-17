@@ -224,7 +224,8 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       return;
     }
 
-    List<String> address = await GeolocationController().updateAddress();
+    List<String> address = await GeolocationController()
+        .updateAddress(Provider.of<UserProvider>(context, listen: false));
 
     fields.administrativeArea = address[0];
     fields.subAdministrativeArea = address[1];

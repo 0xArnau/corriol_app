@@ -98,8 +98,8 @@ class GeolocationController {
     );
   }
 
-  Future<List<String>> updateAddress() async {
-    final position = UserProvider().position as LatLng;
+  Future<List<String>> updateAddress(UserProvider provider) async {
+    final position = provider.position as LatLng;
     List<Placemark> placemarks = await placemarkFromCoordinates(
       position.latitude,
       position.longitude,
@@ -107,10 +107,9 @@ class GeolocationController {
 
     print(placemarks[0]);
 
-    String administrativeArea = placemarks[0].administrativeArea ?? "none";
-    String subAdministrativeArea =
-        placemarks[0].subAdministrativeArea ?? "none";
-    String locality = placemarks[0].locality ?? "none";
+    String administrativeArea = placemarks[0].administrativeArea ?? "";
+    String subAdministrativeArea = placemarks[0].subAdministrativeArea ?? "";
+    String locality = placemarks[0].locality ?? "";
 
     return [administrativeArea, subAdministrativeArea, locality];
   }
