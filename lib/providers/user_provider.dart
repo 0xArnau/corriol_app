@@ -18,8 +18,10 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider() {
     _user = null;
-    _preferences =
-        UserPreferencesModel(lang: Locale(ui.window.locale.languageCode));
+    _preferences = UserPreferencesModel(
+      lang: Locale(ui.window.locale.languageCode),
+      gps: GeolocationController().checkGpsStatus(),
+    );
     _position = const LatLng(41.8205, 1.8401); // Catalunya
 
     print("Constructor UserProvider(){}");
@@ -54,7 +56,7 @@ class UserProvider extends ChangeNotifier {
 
   void fetchPosition() async {
     print("fetchPosition");
-    final position = await GeolocationController().getCurrentLocation();
+    final position = await GeolocationController().getCurrentLocation(this);
     _position = LatLng(position.latitude, position.longitude);
     notifyListeners();
     print(_position);

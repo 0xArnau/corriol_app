@@ -1,4 +1,5 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
@@ -218,7 +219,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: Switch(
           value: isGpsOn,
-          onChanged: provider.setGpsInfo,
+          onChanged: (value) {
+            value
+                ? GeolocationController().enableLocationPermission(provider)
+                : GeolocationController().disableLocationPermission(provider);
+          },
         ),
       ),
       // onTap: onTap,

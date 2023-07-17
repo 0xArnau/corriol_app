@@ -22,6 +22,12 @@ class RecordObservationPage extends StatefulWidget {
 }
 
 class _RecordObservationPageState extends State<RecordObservationPage> {
+  @override
+  void initState() {
+    Provider.of<UserProvider>(context, listen: false).fetchPosition();
+    super.initState();
+  }
+
   ReportModel fields = ReportModel(
     createdAt: DateTime.now().toIso8601String(),
     createdBy: AuthController().currentUser!.email!,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:geocoding/geocoding.dart';
@@ -5,56 +7,91 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GeolocationController {
-  LocationPermission? _permission;
-
-  void _updateIsGpsOnNotifier() {
-    switch (_permission) {
+  void _updateIsGpsOnNotifier(UserProvider provider) async {
+    final LocationPermission permission = await Geolocator.requestPermission();
+    print("checking permissions: $permission");
+    switch (permission) {
       case LocationPermission.denied:
-        UserProvider().setGpsInfo(false);
+        provider.setGpsInfo(false);
         break;
       case LocationPermission.deniedForever:
-        UserProvider().setGpsInfo(false);
+        provider.setGpsInfo(false);
         break;
       case LocationPermission.unableToDetermine:
-        UserProvider().setGpsInfo(false);
+        provider.setGpsInfo(false);
         break;
       case LocationPermission.always:
-        UserProvider().setGpsInfo(true);
+        provider.setGpsInfo(true);
         break;
       case LocationPermission.whileInUse:
-        UserProvider().setGpsInfo(true);
+        provider.setGpsInfo(true);
         break;
       default:
     }
   }
 
-  void enableLocationPermission() async {
-    final preferences = UserProvider().preferences as UserPreferencesModel;
-    if (preferences.gps) {
-      _permission = await Geolocator.requestPermission();
-      _updateIsGpsOnNotifier();
-      if (!preferences.gps) {
-        await Geolocator.openLocationSettings();
-        _permission = await Geolocator.checkPermission();
+  bool checkGpsStatus() {
+    Geolocator.requestPermission().then((LocationPermission permission) {
+      print("checking permissions: $permission");
+      switch (permission) {
+        case LocationPermission.denied:
+          return false;
+        case LocationPermission.deniedForever:
+          return false;
+        case LocationPermission.unableToDetermine:
+          return false;
+        case LocationPermission.always:
+          return true;
+        case LocationPermission.whileInUse:
+          return true;
+        default:
+          return true;
       }
-    }
+    });
 
-    _updateIsGpsOnNotifier();
+    return false;
   }
 
-  void disableLocationPermission() async {
-    final preferences = UserProvider().preferences as UserPreferencesModel;
+  Future<void> enableLocationPermission(UserProvider provider) async {
+    final preferences = provider.preferences as UserPreferencesModel;
+
+    if (!preferences.gps) {
+      final completer = Completer<void>();
+
+      await Geolocator.requestPermission();
+
+      _updateIsGpsOnNotifier(provider);
+
+      if (!preferences.gps) {
+        await Geolocator.openAppSettings();
+
+        _updateIsGpsOnNotifier(provider);
+      }
+
+      completer.complete(); // Completar el Completer
+
+      return completer.future;
+    }
+  }
+
+  Future<void> disableLocationPermission(UserProvider provider) async {
+    final preferences = provider.preferences as UserPreferencesModel;
+
     if (preferences.gps) {
-      // await Geolocator.openAppSettings();
-      await Geolocator.openLocationSettings();
-      _permission = await Geolocator.checkPermission();
-    }
+      final completer = Completer<void>();
 
-    _updateIsGpsOnNotifier();
+      await Geolocator.openAppSettings();
+
+      completer.future.then((_) {
+        _updateIsGpsOnNotifier(provider);
+      });
+
+      return completer.future;
+    }
   }
 
-  Future<Position> getCurrentLocation() async {
-    enableLocationPermission();
+  Future<Position> getCurrentLocation(UserProvider provider) async {
+    enableLocationPermission(provider);
 
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
