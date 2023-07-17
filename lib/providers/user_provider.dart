@@ -1,23 +1,28 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/user_preferences_controller.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UserProvider extends ChangeNotifier {
   late UserModel? _user;
   late UserPreferencesModel _preferences;
+  late LatLng _position;
 
   get user => _user;
   get preferences => _preferences;
+  get position => _position;
 
   UserProvider() {
     _user = null;
     _preferences =
         UserPreferencesModel(lang: Locale(ui.window.locale.languageCode));
+    _position = const LatLng(41.8205, 1.8401); // Catalunya
 
-    print("UserProvider(){}");
+    print("Constructor UserProvider(){}");
   }
 
   Future<void> fetchUserInfo() async {
@@ -47,6 +52,14 @@ class UserProvider extends ChangeNotifier {
     print(_preferences.lang);
   }
 
+  void fetchPosition() async {
+    print("fetchPosition");
+    final position = await GeolocationController().getCurrentLocation();
+    _position = LatLng(position.latitude, position.longitude);
+    notifyListeners();
+    print(_position);
+  }
+
   void setMobileDataInfo(bool mobileData) {
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
@@ -66,5 +79,12 @@ class UserProvider extends ChangeNotifier {
     _preferences.lang = lang;
     notifyListeners();
     print(_preferences.lang);
+  }
+
+  void setPosition(LatLng position) {
+    print("setPosition");
+    _position = position;
+    notifyListeners();
+    print(_position);
   }
 }

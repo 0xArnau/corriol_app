@@ -1,6 +1,8 @@
-import 'package:corriol_app/core/notifiers.dart';
+import 'package:corriol_app/models/user_preferences_model.dart';
+import 'package:corriol_app/providers/user_provider.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GeolocationController {
   LocationPermission? _permission;
@@ -8,31 +10,30 @@ class GeolocationController {
   void _updateIsGpsOnNotifier() {
     switch (_permission) {
       case LocationPermission.denied:
-        isGpsOnNotifier.value = false;
+        UserProvider().setGpsInfo(false);
         break;
       case LocationPermission.deniedForever:
-        isGpsOnNotifier.value = false;
+        UserProvider().setGpsInfo(false);
         break;
       case LocationPermission.unableToDetermine:
-        isGpsOnNotifier.value = false;
+        UserProvider().setGpsInfo(false);
         break;
       case LocationPermission.always:
-        isGpsOnNotifier.value = true;
+        UserProvider().setGpsInfo(true);
         break;
       case LocationPermission.whileInUse:
-        isGpsOnNotifier.value = true;
+        UserProvider().setGpsInfo(true);
         break;
       default:
     }
-
-    isGpsOnNotifier.notifyListeners();
   }
 
   void enableLocationPermission() async {
-    if (!isGpsOnNotifier.value) {
+    final preferences = UserProvider().preferences as UserPreferencesModel;
+    if (preferences.gps) {
       _permission = await Geolocator.requestPermission();
       _updateIsGpsOnNotifier();
-      if (!isGpsOnNotifier.value) {
+      if (!preferences.gps) {
         await Geolocator.openLocationSettings();
         _permission = await Geolocator.checkPermission();
       }
@@ -42,7 +43,8 @@ class GeolocationController {
   }
 
   void disableLocationPermission() async {
-    if (isGpsOnNotifier.value) {
+    final preferences = UserProvider().preferences as UserPreferencesModel;
+    if (preferences.gps) {
       // await Geolocator.openAppSettings();
       await Geolocator.openLocationSettings();
       _permission = await Geolocator.checkPermission();
@@ -60,9 +62,10 @@ class GeolocationController {
   }
 
   Future<List<String>> updateAddress() async {
+    final position = UserProvider().position as LatLng;
     List<Placemark> placemarks = await placemarkFromCoordinates(
-      currentPositionNotifier.value.latitude,
-      currentPositionNotifier.value.longitude,
+      position.latitude,
+      position.longitude,
     );
 
     print(placemarks[0]);
