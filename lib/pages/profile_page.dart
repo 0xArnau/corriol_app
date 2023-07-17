@@ -1,7 +1,5 @@
-import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
-import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
@@ -9,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({super.key});
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -26,24 +24,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
-  void _setGps(bool value) {
-    isGpsOnNotifier.value
-        ? GeolocationController().disableLocationPermission()
-        : GeolocationController().enableLocationPermission();
-  }
-
-  // void _setLanguage(Locale value) {
-  //   if (mounted) {
-  //     setState(() {
-  //       userConfigNotifier.value.locale = value;
-  //     });
-  //   }
-  //   userConfigNotifier.value.saveConfig();
-  //   userConfigNotifier.notifyListeners();
-  // }
-
-  void _setMobileConnection(bool value) {}
-
   Future<void> signOut() async {
     await AuthController().signOut();
   }
@@ -58,10 +38,11 @@ class _ProfilePageState extends State<ProfilePage> {
               final user = provider.user as UserModel?;
               final preferences = provider.preferences as UserPreferencesModel;
               if (user == null) {
-                return Column(
+                return const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CircularProgressIndicator(),
+                    SizedBox(height: kDouble25),
+                    CircularProgressIndicator(),
                   ],
                 );
               } else {
