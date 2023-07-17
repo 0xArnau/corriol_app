@@ -1,5 +1,4 @@
 import 'package:corriol_app/core/constants.dart';
-import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/l10n/l10n.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
@@ -10,16 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'dart:ui' as ui;
-
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  userConfigNotifier.value.locale = Locale(ui.window.locale.languageCode);
-  userConfigNotifier.value.loadConfig();
-
   await FlutterConfig.loadEnvVariables();
 
   runApp(MyApp());
