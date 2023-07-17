@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 
-class FileIoClass {
-  FileIoClass({required this.fileName});
+class FileIoController {
+  FileIoController({required this.fileName});
 
   String fileName;
 

@@ -1,4 +1,4 @@
-import 'package:corriol_app/classes/file_io_class.dart';
+import 'package:corriol_app/controllers/file_io_controller.dart';
 import 'package:flutter/material.dart';
 
 // Colors
@@ -44,9 +44,9 @@ const kTextStylePageTitle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 
 // Files
-FileIoClass kFileReportsWithoutConnection =
-    FileIoClass(fileName: 'reports_without_connection.json');
-FileIoClass kFileReports = FileIoClass(fileName: 'reports.json');
+FileIoController kFileReportsWithoutConnection =
+    FileIoController(fileName: 'reports_without_connection.json');
+FileIoController kFileReports = FileIoController(fileName: 'reports.json');
 
 // Enum
 enum Species {
