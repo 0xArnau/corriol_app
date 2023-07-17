@@ -4,7 +4,7 @@ import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
-import 'package:corriol_app/widgets/buttons/sss_button_widget.dart';
+import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
