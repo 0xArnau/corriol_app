@@ -1,4 +1,4 @@
-import 'package:corriol_app/classes/geolocation_class.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
@@ -28,8 +28,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _setGps(bool value) {
     isGpsOnNotifier.value
-        ? GeolocationClass().disableLocationPermission()
-        : GeolocationClass().enableLocationPermission();
+        ? GeolocationController().disableLocationPermission()
+        : GeolocationController().enableLocationPermission();
   }
 
   // void _setLanguage(Locale value) {

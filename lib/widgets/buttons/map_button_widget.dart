@@ -1,4 +1,4 @@
-import 'package:corriol_app/classes/geolocation_class.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/core/notifiers.dart';
 import 'package:corriol_app/pages/home/map_page.dart';
@@ -17,12 +17,12 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
   Position? _position;
 
   Future<void> updateLocation() async {
-    GeolocationClass().enableLocationPermission();
+    GeolocationController().enableLocationPermission();
     if (!isGpsOnNotifier.value) {
       await Future.delayed(
           const Duration(seconds: 5)); // TODO: Change this to a better solution
     }
-    Position? newPosition = await GeolocationClass().getCurrentLocation();
+    Position? newPosition = await GeolocationController().getCurrentLocation();
     if (mounted) {
       setState(() {
         _position = newPosition;

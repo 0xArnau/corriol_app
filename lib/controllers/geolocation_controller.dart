@@ -2,7 +2,7 @@ import 'package:corriol_app/core/notifiers.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
-class GeolocationClass {
+class GeolocationController {
   LocationPermission? _permission;
 
   void _updateIsGpsOnNotifier() {

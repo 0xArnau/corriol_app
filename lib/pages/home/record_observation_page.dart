@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:corriol_app/classes/geolocation_class.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
@@ -218,7 +218,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       return;
     }
 
-    List<String> address = await GeolocationClass().updateAddress();
+    List<String> address = await GeolocationController().updateAddress();
 
     fields.administrativeArea = address[0];
     fields.subAdministrativeArea = address[1];
