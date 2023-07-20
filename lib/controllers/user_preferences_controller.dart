@@ -1,5 +1,7 @@
+import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:ui' as ui;
 
 class UserPreferencesController {
   static final Future<SharedPreferences> _prefs =
@@ -33,5 +35,18 @@ class UserPreferencesController {
   static Future<bool?> getPrefsMobileData() async {
     final SharedPreferences prefs = await _prefs;
     return prefs.getBool('mobile_data');
+  }
+
+  static Future<UserPreferencesModel> getUserPreferencesModel() async {
+    final SharedPreferences prefs = await _prefs;
+    final String? lang = prefs.getString("lang");
+    final bool? mobileData = prefs.getBool("mobile_data");
+    final bool? gps = prefs.getBool("gps");
+
+    return UserPreferencesModel(
+      lang: Locale(lang ?? ui.window.locale.languageCode),
+      mobileData: mobileData ?? true,
+      gps: gps ?? true,
+    );
   }
 }

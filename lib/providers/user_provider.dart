@@ -18,13 +18,24 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider() {
     _user = null;
-    _preferences = UserPreferencesModel(
-      lang: Locale(ui.window.locale.languageCode),
-      gps: GeolocationController().checkGpsStatus(),
-    );
+    _preferences = UserPreferencesModel();
     _position = const LatLng(41.8205, 1.8401); // Catalunya
 
-    print("Constructor UserProvider(){}");
+    print(
+        "Constructor UserProvider() ${this.preferences.toString()}, {$_position}");
+
+    init();
+  }
+
+  Future<void> init() async {
+    // Obtener las preferencias asincrónicas
+    _preferences = await UserPreferencesController.getUserPreferencesModel();
+
+    // Notificar a los listeners que las preferencias han cambiado
+    notifyListeners();
+
+    // Continuar con cualquier otra inicialización necesaria
+    fetchPosition();
   }
 
   Future<void> fetchUserInfo() async {

@@ -54,7 +54,7 @@ class GeolocationController {
 
   Future<void> enableLocationPermission(UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
-
+    print("preferences, ${preferences.gps}");
     if (!preferences.gps) {
       final completer = Completer<void>();
 

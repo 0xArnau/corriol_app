@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UserPreferencesModel {
   UserPreferencesModel({
-    required this.lang,
+    this.lang = const Locale("es"),
     this.mobileData = true,
     this.gps = true,
   });
