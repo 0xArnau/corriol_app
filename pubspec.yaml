@@ -53,6 +53,7 @@ dependencies:
   geocoding: ^2.1.0
   cloud_firestore: ^4.8.2
   shared_preferences: ^2.2.0
+  syncfusion_flutter_pdfviewer: ^22.1.39
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,7 @@ flutter:
     - assets/images/Screen-1_3/
     - assets/images/Screen-1_1/
     - assets/images/sso/
+    - assets/docs/legal/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

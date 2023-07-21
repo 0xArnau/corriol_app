@@ -6,6 +6,7 @@ import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
+import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
 import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       TextEditingController();
   final TextEditingController _controllerAge = TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
+
+  bool checkBoxLegal = false;
+  bool checkBoxInfo = false;
+  bool checkBoxPrivacy = false;
 
   List<bool> isSelected = [true, false];
 
@@ -80,6 +85,8 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       errorAuthFieldsSnackbar(context, "Empty fields");
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
       errorAuthFieldsSnackbar(context, "Passwords are different");
+    } else if (!checkBoxLegal || !checkBoxInfo || !checkBoxPrivacy) {
+      errorAuthFieldsSnackbar(context, "checkboxes");
     } else {
       // Show a loading icon
       showDialog(
@@ -172,6 +179,48 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     );
   }
 
+  Widget _legalStuff(
+      {required String asset,
+      required String text,
+      required bool isAccepted,
+      required Function(bool) onChanged}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Checkbox(
+          value: isAccepted,
+          onChanged: (value) => onChanged(value ?? false),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PdfViewerWidget(
+                      title: text,
+                      path: asset,
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                text,
+                style: const TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   Widget _login() {
     return Column(
       children: [
@@ -258,6 +307,36 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           onTap: registerWithEmailAndPassword,
         ),
         const SizedBox(height: kDouble25),
+        // Docs
+        _legalStuff(
+            asset: 'assets/docs/legal/Avis Legal - APP.pdf',
+            text: "Avís Legal",
+            isAccepted: checkBoxLegal,
+            onChanged: (value) {
+              setState(() {
+                checkBoxLegal = value;
+              });
+            }),
+        _legalStuff(
+            asset:
+                'assets/docs/legal/Cláusula informativa formulario INSCRIPCIÓ ACTIVIDADES - català.pdf',
+            text: "Cláusula informativa formulario INSCRIPCIÓ ACTIVIDADES",
+            isAccepted: checkBoxInfo,
+            onChanged: (value) {
+              setState(() {
+                checkBoxInfo = value;
+              });
+            }),
+        _legalStuff(
+            asset: 'assets/docs/legal/Política de Privacidad - APP.pdf',
+            text: "Política de Privacidad",
+            isAccepted: checkBoxPrivacy,
+            onChanged: (value) {
+              setState(() {
+                checkBoxPrivacy = value;
+              });
+            }),
+
         // SSO
         // _sso(),
       ],
