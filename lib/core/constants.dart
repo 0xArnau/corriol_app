@@ -34,7 +34,7 @@ const kDoublePaddingFloatingActionButtonH = 100.0;
 const kDoublePaddingFloatingActionButtonV = 150.0;
 
 const kDoublePaddingMyButtonAndMyTextField = 15.0;
-const kDoublePaddingBasic = 10.0;
+const kDoublePaddingBasic = 30.0;
 
 // Border Radius
 const kDoubleBorderRadiusButtons = 15.0;

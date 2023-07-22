@@ -76,7 +76,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(kDouble20 * 2),
+          padding: const EdgeInsets.all(kDoublePaddingBasic),
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {

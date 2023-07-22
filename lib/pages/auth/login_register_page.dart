@@ -417,7 +417,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(kDouble20 * 2),
+            padding: const EdgeInsets.all(kDoublePaddingBasic),
             child: ListView.builder(
               itemCount: list.length,
               itemBuilder: (context, index) {
