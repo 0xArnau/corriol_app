@@ -76,4 +76,21 @@ class ReportController {
 
     return [];
   }
+
+  Future<List<ReportModel>> getAllReports() async {
+    try {
+      List<ReportModel> reports = [];
+      await FirebaseFirestore.instance
+          .collection('Reports')
+          .get()
+          .then((snapshot) => snapshot.docs.forEach((document) {
+                reports.add(ReportModel.fromJson(document.data()));
+              }));
+      return reports;
+    } catch (e) {
+      print(e);
+    }
+
+    return [];
+  }
 }
