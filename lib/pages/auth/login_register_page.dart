@@ -85,8 +85,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       errorAuthFieldsSnackbar(context, "Empty fields");
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
       errorAuthFieldsSnackbar(context, "Passwords are different");
-    } else if (!checkBoxLegal || !checkBoxInfo || !checkBoxPrivacy) {
-      errorAuthFieldsSnackbar(context, "checkboxes");
+    } else if (!checkBoxLegal) {
+      errorAuthFieldsSnackbar(context, "Legal checkbox");
+    } else if (!checkBoxInfo) {
+      errorAuthFieldsSnackbar(context, "Info checkbox");
+    } else if (!checkBoxPrivacy) {
+      errorAuthFieldsSnackbar(context, "Privacy checkbox");
     } else {
       // Show a loading icon
       showDialog(
