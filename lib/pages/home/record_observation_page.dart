@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/report_controller.dart';
@@ -227,11 +226,23 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     List<String> address = await GeolocationController()
         .updateAddress(Provider.of<UserProvider>(context, listen: false));
 
+    print("addres: ${address.length}, $address");
+
     fields.administrativeArea = address[0];
     fields.subAdministrativeArea = address[1];
     fields.locality = address[2];
 
-    print("fields ${jsonEncode(fields.toJson())}");
+    if (fields.administrativeArea.isEmpty &&
+        fields.subAdministrativeArea.isEmpty &&
+        fields.locality.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Adreça buida'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      return;
+    }
     ReportController().saveReport(fields, mobileData);
     // Show the Snackbar
     ScaffoldMessenger.of(context).showSnackBar(
