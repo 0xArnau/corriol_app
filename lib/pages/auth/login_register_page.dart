@@ -1,7 +1,6 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
-import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
@@ -47,29 +46,20 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       errorAuthFieldsSnackbar(context, "Empty fields");
     } else {
       // Show a loading icon
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return const Center(
+      //       child: CircularProgressIndicator(),
+      //     );
+      //   },
+      // );
 
       try {
-        await AuthController()
-            .signInWithEmailAndPassword(
-              email: _controllerEmail.text,
-              password: _controllerPassword.text,
-            )
-            .then(
-              (_) => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const AuthPage(),
-                ),
-              ),
-            );
+        await AuthController().signInWithEmailAndPassword(
+          email: _controllerEmail.text,
+          password: _controllerPassword.text,
+        );
       } on FirebaseAuthException catch (e) {
         errorFirebaseAuthSnackbar(context, e);
       }
@@ -93,14 +83,14 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       errorAuthFieldsSnackbar(context, "Privacy checkbox");
     } else {
       // Show a loading icon
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return const Center(
+      //       child: CircularProgressIndicator(),
+      //     );
+      //   },
+      // );
 
       try {
         // Create the user
@@ -110,22 +100,13 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         );
 
         // Add user details
-        await AuthController()
-            .addUserInformation(
-              UserModel(
-                email: _controllerEmail.text,
-                fullName: _controllerName.text,
-                age: int.parse(_controllerAge.text),
-              ),
-            )
-            .then(
-              (_) => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const AuthPage(),
-                ),
-              ),
-            );
+        await AuthController().addUserInformation(
+          UserModel(
+            email: _controllerEmail.text,
+            fullName: _controllerName.text,
+            age: int.parse(_controllerAge.text),
+          ),
+        );
       } on FirebaseAuthException catch (e) {
         errorFirebaseAuthSnackbar(context, e);
       }

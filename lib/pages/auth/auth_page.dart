@@ -14,11 +14,14 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  late UserProvider provider;
   @override
   void initState() {
-    provider = Provider.of<UserProvider>(context, listen: false);
-    provider.fetchUserInfo();
+    AuthController().authStateChanges.listen((user) {
+      if (user != null) {
+        Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
+      }
+    });
+
     super.initState();
   }
 
