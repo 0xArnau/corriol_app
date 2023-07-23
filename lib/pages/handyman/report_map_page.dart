@@ -1,4 +1,3 @@
-import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
@@ -20,23 +19,10 @@ class ReportMapPage extends StatefulWidget {
 }
 
 class _ReportMapPageState extends State<ReportMapPage> {
-  Future<LatLng> getPosition() async {
-    try {
-      LatLng locations =
-          await GeolocationController().getLatLngFromAddress(widget.title);
-      return locations;
-    } catch (e) {
-      print('Error al obtener las coordenadas: $e');
-      // Puedes devolver un valor por defecto o lanzar una excepción si es necesario.
-      return LatLng(0.0, 0.0);
-    }
-  }
-
   Set<Marker> getMarkers() {
     Set<Marker> markers = <Marker>{};
 
     for (var report in widget.reports) {
-      print(report.coordenates);
       markers.add(
         Marker(
           markerId: MarkerId(report.createdBy),
@@ -45,8 +31,6 @@ class _ReportMapPageState extends State<ReportMapPage> {
         ),
       );
     }
-
-    print(markers.toString());
 
     return markers;
   }
@@ -64,31 +48,12 @@ class _ReportMapPageState extends State<ReportMapPage> {
           ),
         ),
       ),
-      body: FutureBuilder(
-        future: getPosition(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return const Center(
-              child: Text('Error al obtener las coordenadas'),
-            );
-          } else {
-            final position = snapshot.data ?? const LatLng(41.8205, 1.8401);
-            return Center(
-              child: GoogleMap(
-                initialCameraPosition:
-                    MapController.getDefaultCameraPosition(position, 10),
-                markers: getMarkers(),
-                onTap: (LatLng tappedPosition) {
-                  MapController.onTap(context, tappedPosition);
-                },
-              ),
-            );
-          }
-        },
+      body: Center(
+        child: GoogleMap(
+          initialCameraPosition: MapController.getDefaultCameraPosition(
+              widget.reports[0].coordenates, 7),
+          markers: getMarkers(),
+        ),
       ),
     );
   }
