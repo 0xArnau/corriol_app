@@ -113,4 +113,20 @@ class GeolocationController {
 
     return [administrativeArea, subAdministrativeArea, locality];
   }
+
+  Future<LatLng> getLatLngFromAddress(String address) async {
+    try {
+      List<Location> locations = await locationFromAddress(address);
+      if (locations.isNotEmpty) {
+        Location location = locations[0];
+        LatLng latLng = LatLng(location.latitude, location.longitude);
+        return latLng;
+      } else {
+        return const LatLng(41.8205, 1.8401);
+      }
+    } catch (e) {
+      print('Error al obtener las coordenadas: $e');
+      return const LatLng(41.8205, 1.8401);
+    }
+  }
 }
