@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class FileIoController {
   FileIoController({required this.fileName});
@@ -53,12 +54,43 @@ class FileIoController {
     }
   }
 
-  static void saveReports2CSV(List<ReportModel> reports) async {
-    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
-    final File file = File(
-        "${appDocumentsDir.path}/corriol_app-${DateTime.now().toIso8601String()}.csv");
+  static Future<bool> _permissionStorage(Permission permission) async {
+    if (await permission.isGranted) return true;
 
+    return (await permission.request().isGranted) ? true : false;
+  }
+
+  static void saveReports2CSV(List<ReportModel> reports) async {
     late String csv;
+    late File file;
+
+    Directory? directory;
+
+    if (Platform.isAndroid) {
+      if (await _permissionStorage(Permission.storage)) {
+        directory = await getExternalStorageDirectory();
+
+        if (directory == null) return;
+
+        String aux = "";
+        List<String> aux2 = directory.path.split("/");
+
+        for (int i = 1; i < aux2.length; i++) {
+          if (aux2[i] != "Android") aux += aux2[i];
+        }
+
+        directory = Directory(aux);
+        print(directory.path);
+      }
+    } else {
+      if (await _permissionStorage(Permission.storage)) {
+        directory = await getApplicationDocumentsDirectory();
+      }
+    }
+
+    file = File(
+      "${directory!.path}/corriol_app-${DateTime.now().toIso8601String()}.csv",
+    );
 
     List<List<dynamic>> rows = [];
 
@@ -98,8 +130,13 @@ class FileIoController {
 
     csv = const ListToCsvConverter().convert(rows);
 
-    print(file.path);
+    print(directory.path);
 
-    file.writeAsString(csv, mode: FileMode.write);
+    if (await directory.exists()) {
+      print("Directory exists");
+      file.writeAsStringSync(csv, mode: FileMode.write);
+    } else {
+      print("Directory don't exists");
+    }
   }
 }
