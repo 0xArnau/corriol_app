@@ -1,6 +1,7 @@
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
+import 'package:corriol_app/widgets/report_marker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -28,6 +29,12 @@ class _ReportMapPageState extends State<ReportMapPage> {
           markerId: MarkerId(report.createdBy),
           position:
               LatLng(report.coordenates.latitude, report.coordenates.longitude),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (_) => ReportMarkerWidget(report: report),
+            );
+          },
         ),
       );
     }
