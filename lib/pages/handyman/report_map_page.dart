@@ -1,3 +1,4 @@
+import 'package:corriol_app/controllers/file_io_controller.dart';
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
@@ -54,11 +55,19 @@ class _ReportMapPageState extends State<ReportMapPage> {
             style: kTextStylePageTitle,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.file_download),
+            onPressed: () {
+              FileIoController.saveReports2CSV(widget.reports);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: GoogleMap(
           initialCameraPosition: MapController.getDefaultCameraPosition(
-              widget.reports[0].coordenates, 7),
+              widget.reports[0].coordenates, 9),
           markers: getMarkers(),
         ),
       ),
