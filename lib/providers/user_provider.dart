@@ -1,6 +1,8 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/geolocation_controller.dart';
+import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/controllers/user_preferences_controller.dart';
+import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'dart:ui' as ui;
@@ -11,6 +13,8 @@ class UserProvider extends ChangeNotifier {
   late UserModel? _user;
   late UserPreferencesModel _preferences;
   late LatLng _position;
+
+  Map<String, List<ReportModel>> subAdministrativeArea = {};
 
   get user => _user;
   get preferences => _preferences;
@@ -71,6 +75,37 @@ class UserProvider extends ChangeNotifier {
     _position = LatLng(position.latitude, position.longitude);
     notifyListeners();
     print(_position);
+  }
+
+  void fetchReportDataSubAdministrativeArea() async {
+    final List<ReportModel> reports = await ReportController().getAllReports();
+    Map<String, List<ReportModel>> map = {};
+
+    for (var elem in reports) {
+      if (elem.subAdministrativeArea.isEmpty) {
+        if (map.containsKey("unknown")) {
+          map["unknown"]!.add(elem);
+        } else {
+          map["unknown"] = [elem];
+        }
+      } else if (map.containsKey(elem.subAdministrativeArea)) {
+        map[elem.subAdministrativeArea]!.add(elem);
+      } else {
+        map[elem.subAdministrativeArea] = [elem];
+      }
+    }
+
+    List<String> keys = map.keys.toList();
+    keys.sort();
+
+    subAdministrativeArea = {};
+
+    for (var key in keys) {
+      subAdministrativeArea[key] = map[key]!;
+    }
+
+    notifyListeners();
+    print("reports");
   }
 
   void setMobileDataInfo(bool mobileData) {

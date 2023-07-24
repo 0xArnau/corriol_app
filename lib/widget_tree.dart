@@ -78,7 +78,7 @@ class _WidgetTreeState extends State<WidgetTree> {
           pages = [
             const HomePage(),
             const HandymanPage(),
-            ProfilePage(),
+            const ProfilePage(),
           ];
         }
 
@@ -99,7 +99,17 @@ class _WidgetTreeState extends State<WidgetTree> {
                         color: Colors.red.shade700,
                       ),
                     )
-                  : const Text(''),
+                  : currentPage == 1
+                      ? IconButton(
+                          onPressed: () {
+                            Provider.of<UserProvider>(context, listen: false)
+                                .fetchReportDataSubAdministrativeArea();
+                          },
+                          icon: const Icon(
+                            Icons.update,
+                          ),
+                        )
+                      : const Text(''),
             ],
           ),
           body: pages.elementAt(currentPage),
