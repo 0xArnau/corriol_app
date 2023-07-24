@@ -6,7 +6,7 @@ import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
-import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
+import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:corriol_app/models/report_model.dart';
+import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
 import 'package:csv/csv.dart';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -61,7 +63,8 @@ class FileIoController {
     return (await permission.request().isGranted) ? true : false;
   }
 
-  static void saveReports2CSV(List<ReportModel> reports) async {
+  static void saveReports2CSV(
+      List<ReportModel> reports, BuildContext context) async {
     late String csv;
     late File file;
     Directory? directory;
@@ -121,12 +124,15 @@ class FileIoController {
     csv = const ListToCsvConverter().convert(rows);
 
     print(directory.path);
-
-    if (await directory.exists()) {
-      print("Directory exists");
-      file.writeAsStringSync(csv, mode: FileMode.write);
-    } else {
-      print("Directory don't exists");
-    }
+    directory.exists().then((value) {
+      if (value) {
+        file
+            .writeAsString(csv, mode: FileMode.write)
+            .then((_) => snackbarInfo(context, "File saved"))
+            .onError((error, stackTrace) => snackbarInfo(context, "$error"));
+      } else {
+        snackbarInfo(context, "Directory doesn't exists");
+      }
+    });
   }
 }
