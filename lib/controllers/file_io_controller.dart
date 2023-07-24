@@ -43,6 +43,7 @@ class FileIoController {
     return file.writeAsString(content, mode: FileMode.write);
   }
 
+  ///
   Future<String?> readContent() async {
     try {
       final file = await _localFile;
@@ -63,24 +64,11 @@ class FileIoController {
   static void saveReports2CSV(List<ReportModel> reports) async {
     late String csv;
     late File file;
-
     Directory? directory;
 
     if (Platform.isAndroid) {
       if (await _permissionStorage(Permission.storage)) {
         directory = await getExternalStorageDirectory();
-
-        if (directory == null) return;
-
-        String aux = "";
-        List<String> aux2 = directory.path.split("/");
-
-        for (int i = 1; i < aux2.length; i++) {
-          if (aux2[i] != "Android") aux += aux2[i];
-        }
-
-        directory = Directory(aux);
-        print(directory.path);
       }
     } else {
       if (await _permissionStorage(Permission.storage)) {
@@ -88,8 +76,10 @@ class FileIoController {
       }
     }
 
+    if (directory == null) return;
+
     file = File(
-      "${directory!.path}/corriol_app-${DateTime.now().toIso8601String()}.csv",
+      "${directory.path}/corriol_app-${DateTime.now().toIso8601String()}.csv",
     );
 
     List<List<dynamic>> rows = [];
