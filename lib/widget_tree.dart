@@ -103,7 +103,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                       ? IconButton(
                           onPressed: () {
                             Provider.of<UserProvider>(context, listen: false)
-                                .fetchReportDataSubAdministrativeArea();
+                                .fetchReportDatalocality();
                           },
                           icon: const Icon(
                             Icons.update,

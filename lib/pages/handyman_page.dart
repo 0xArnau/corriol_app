@@ -31,7 +31,7 @@ class _HandymanPageState extends State<HandymanPage> {
       child: Scaffold(
         body: Consumer<UserProvider>(
           builder: (context, value, child) {
-            Map<String, List<ReportModel>> map = value.subAdministrativeArea;
+            Map<String, List<ReportModel>> map = value.locality;
             List<Widget> addressSubAdministrativeArea = generateKeyButton(map);
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

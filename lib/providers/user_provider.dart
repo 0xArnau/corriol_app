@@ -14,7 +14,7 @@ class UserProvider extends ChangeNotifier {
   late UserPreferencesModel _preferences;
   late LatLng _position;
 
-  Map<String, List<ReportModel>> subAdministrativeArea = {};
+  Map<String, List<ReportModel>> locality = {};
 
   get user => _user;
   get preferences => _preferences;
@@ -77,31 +77,31 @@ class UserProvider extends ChangeNotifier {
     print(_position);
   }
 
-  void fetchReportDataSubAdministrativeArea() async {
+  void fetchReportDatalocality() async {
     final List<ReportModel> reports = await ReportController().getAllReports();
     Map<String, List<ReportModel>> map = {};
 
     for (var elem in reports) {
-      if (elem.subAdministrativeArea.isEmpty) {
+      if (elem.locality.isEmpty) {
         if (map.containsKey("unknown")) {
           map["unknown"]!.add(elem);
         } else {
           map["unknown"] = [elem];
         }
-      } else if (map.containsKey(elem.subAdministrativeArea)) {
-        map[elem.subAdministrativeArea]!.add(elem);
+      } else if (map.containsKey(elem.locality)) {
+        map[elem.locality]!.add(elem);
       } else {
-        map[elem.subAdministrativeArea] = [elem];
+        map[elem.locality] = [elem];
       }
     }
 
     List<String> keys = map.keys.toList();
     keys.sort();
 
-    subAdministrativeArea = {};
+    locality = {};
 
     for (var key in keys) {
-      subAdministrativeArea[key] = map[key]!;
+      locality[key] = map[key]!;
     }
 
     notifyListeners();
