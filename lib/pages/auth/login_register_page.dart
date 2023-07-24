@@ -295,7 +295,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble25),
         // Docs
         _legalStuff(
-            asset: 'assets/docs/legal/Avis Legal - APP.pdf',
+            asset: 'assets/docs/legal/avis-legal.pdf',
             text: "Avís Legal",
             isAccepted: checkBoxLegal,
             onChanged: (value) {
@@ -304,8 +304,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
               });
             }),
         _legalStuff(
-            asset:
-                'assets/docs/legal/Cláusula informativa formulario INSCRIPCIÓ ACTIVIDADES - català.pdf',
+            asset: 'assets/docs/legal/clausula-informativa.pdf',
             text: "Cláusula informativa formulario INSCRIPCIÓ ACTIVIDADES",
             isAccepted: checkBoxInfo,
             onChanged: (value) {
@@ -314,7 +313,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
               });
             }),
         _legalStuff(
-            asset: 'assets/docs/legal/Política de Privacidad - APP.pdf',
+            asset: 'assets/docs/legal/privacitat.pdf',
             text: "Política de Privacidad",
             isAccepted: checkBoxPrivacy,
             onChanged: (value) {
