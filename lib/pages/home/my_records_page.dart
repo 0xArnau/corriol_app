@@ -12,7 +12,7 @@ class MyRecordsPage extends StatefulWidget {
 }
 
 class _MyRecordsPageState extends State<MyRecordsPage> {
-  final List<LegendPieChartWidget> charts = [
+  final List<Widget> charts = [
     // Widgets en el GridView
     LegendPieChartWidget(
       color: kColorList['femelles']!,
@@ -43,100 +43,98 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context).myRecords,
-          style: kTextStylePageTitle,
-        ),
+    final List<Widget> basicStart = [
+      const SizedBox(height: kDouble25),
+    ];
+    final List<Widget> basicEnd = [
+      const SizedBox(height: kDouble25),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(),
+          charts[0],
+          const Spacer(),
+          charts[1],
+          const Spacer(),
+        ],
       ),
-      body: ListView.builder(
-        itemCount: 12,
-        itemBuilder: (BuildContext context, int index) {
-          switch (index) {
-            case 0:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text('Corriol petit'),
-                  Switch(
-                    value: isOptionA,
-                    onChanged: (value) {
-                      setState(() {
-                        isOptionA = value;
-                      });
-                    },
-                  ),
-                  const Text('Corriol camanegre'),
-                ],
-              );
-            case 1:
-              return const SizedBox(height: kDouble25);
-            case 2:
-              return Visibility(
-                visible: isOptionA,
-                child: const RecordsPieChartWidget(
-                  species: Species.corriolCamanegre,
-                ),
-              );
-            case 3:
-              return Visibility(
-                visible: !isOptionA,
-                child: const RecordsPieChartWidget(
-                  species: Species.corriolPetit,
-                ), // Corriol petit
-              );
-            case 4:
-              return const SizedBox(height: kDouble25);
-            case 5:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  charts[0],
-                  const Spacer(),
-                  charts[1],
-                  const Spacer(),
-                ],
-              );
-            case 6:
-              return const SizedBox(height: kDouble15);
-            case 7:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  charts[2],
-                  const Spacer(),
-                  charts[3],
-                  const Spacer(),
-                ],
-              );
-            case 8:
-              return const SizedBox(height: kDouble15);
-            case 9:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  charts[4],
-                  const Spacer(),
-                  charts[5],
-                  const Spacer(),
-                ],
-              );
-            case 10:
-              return SizedBox(
-                height: kDouble15 + (MediaQuery.of(context).size.height / 6),
-              );
-            case 11:
-              return const Image(
-                image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
-              );
-            default:
-              return const SizedBox();
-          }
-        },
+      const SizedBox(height: kDouble25),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(),
+          charts[2],
+          const Spacer(),
+          charts[3],
+          const Spacer(),
+        ],
+      ),
+      const SizedBox(height: kDouble25),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(),
+          charts[4],
+          const Spacer(),
+          charts[5],
+          const Spacer(),
+        ],
+      ),
+      SizedBox(height: kDouble15 + (MediaQuery.of(context).size.height / 6)),
+      const Image(image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png')),
+    ];
+
+    List<Widget> camanegre = [
+      ...basicStart,
+      const RecordsPieChartWidget(
+        species: Species.corriolCamanegre,
+      ),
+      ...basicEnd,
+    ];
+    List<Widget> petit = [
+      ...basicStart,
+      const RecordsPieChartWidget(
+        species: Species.corriolPetit,
+      ),
+      ...basicEnd,
+    ];
+
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context).myRecords,
+            style: kTextStylePageTitle,
+          ),
+          bottom: const TabBar(
+            // isScrollable: true,
+            tabs: [
+              Tab(
+                text: "Corriol Camanegre",
+              ),
+              Tab(
+                text: "Corriol Petit",
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            ListView.builder(
+              itemCount: camanegre.length,
+              itemBuilder: (BuildContext context, int index) {
+                return camanegre[index];
+              },
+            ),
+            ListView.builder(
+              itemCount: petit.length,
+              itemBuilder: (BuildContext context, int index) {
+                return petit[index];
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
