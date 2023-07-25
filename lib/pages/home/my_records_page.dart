@@ -80,7 +80,7 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
           const Spacer(),
         ],
       ),
-      SizedBox(height: kDouble15 + (MediaQuery.of(context).size.height / 6)),
+      const SizedBox(height: kDouble25),
       const Image(image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png')),
     ];
 

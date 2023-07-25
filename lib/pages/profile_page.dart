@@ -83,10 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     const Divider(),
                     const SizedBox(height: 10),
                     _profileAppInfo(),
-                    SizedBox(
-                      height: kDouble15 +
-                          (MediaQuery.of(context).size.height / 10.2),
-                    ),
+                    const SizedBox(height: 10),
                     const Image(
                       image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
                     ),
