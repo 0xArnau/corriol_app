@@ -5,7 +5,6 @@ import 'package:corriol_app/controllers/user_preferences_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -58,7 +57,7 @@ class UserProvider extends ChangeNotifier {
 
   void fetchLangInfo() {
     final lang = UserPreferencesController.getPrefsLang as String?;
-    _preferences.lang = Locale(lang ?? ui.window.locale.languageCode);
+    _preferences.lang = Locale(lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode);
     notifyListeners();
   }
 

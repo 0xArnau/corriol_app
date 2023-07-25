@@ -1,7 +1,6 @@
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:ui' as ui;
 
 class UserPreferencesController {
   static final Future<SharedPreferences> _prefs =
@@ -44,7 +43,7 @@ class UserPreferencesController {
     final bool? gps = prefs.getBool("gps");
 
     return UserPreferencesModel(
-      lang: Locale(lang ?? ui.window.locale.languageCode),
+      lang: Locale(lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode),
       mobileData: mobileData ?? true,
       gps: gps ?? true,
     );
