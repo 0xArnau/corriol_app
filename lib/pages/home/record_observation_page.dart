@@ -226,8 +226,6 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     List<String> address =
         await GeolocationController().updateAddress(provider);
 
-    print("addres: ${address.length}, $address");
-
     fields.administrativeArea = address[0];
     fields.subAdministrativeArea = address[1];
     fields.locality = address[2];

@@ -5,11 +5,11 @@ import 'package:corriol_app/providers/user_provider.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:logger/logger.dart';
 
 class GeolocationController {
   void _updateIsGpsOnNotifier(UserProvider provider) async {
     final LocationPermission permission = await Geolocator.requestPermission();
-    print("checking permissions: $permission");
     switch (permission) {
       case LocationPermission.denied:
         provider.setGpsInfo(false);
@@ -32,7 +32,6 @@ class GeolocationController {
 
   bool checkGpsStatus() {
     Geolocator.requestPermission().then((LocationPermission permission) {
-      print("checking permissions: $permission");
       switch (permission) {
         case LocationPermission.denied:
           return false;
@@ -54,7 +53,6 @@ class GeolocationController {
 
   Future<void> enableLocationPermission(UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
-    print("preferences, ${preferences.gps}");
     if (!preferences.gps) {
       final completer = Completer<void>();
 
@@ -105,8 +103,6 @@ class GeolocationController {
       position.longitude,
     );
 
-    print(placemarks[0]);
-
     String administrativeArea = placemarks[0].administrativeArea ?? "";
     String subAdministrativeArea = placemarks[0].subAdministrativeArea ?? "";
     String locality = placemarks[0].locality ?? "";
@@ -125,7 +121,7 @@ class GeolocationController {
         return const LatLng(41.8205, 1.8401);
       }
     } catch (e) {
-      print('Error al obtener las coordenadas: $e');
+      Logger().e(e);
       return const LatLng(41.8205, 1.8401);
     }
   }

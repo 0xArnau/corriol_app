@@ -25,9 +25,6 @@ class UserProvider extends ChangeNotifier {
     _preferences = UserPreferencesModel();
     _position = const LatLng(41.8205, 1.8401); // Catalunya
 
-    print(
-        "Constructor UserProvider() ${this.preferences.toString()}, {$_position}");
-
     init();
   }
 
@@ -45,36 +42,30 @@ class UserProvider extends ChangeNotifier {
   Future<void> fetchUserInfo() async {
     _user = await AuthController().getUserInformation();
     notifyListeners();
-    print(_user);
   }
 
   void fetchMobileDataInfo() {
     final mobileData = UserPreferencesController.getPrefsMobileData as bool?;
     _preferences.mobileData = mobileData ?? false;
     notifyListeners();
-    print(_preferences.mobileData);
   }
 
   void fetchGpsInfo() {
     final gps = UserPreferencesController.getPrefsGps as bool?;
     _preferences.gps = gps ?? false;
     notifyListeners();
-    print(_preferences.gps);
   }
 
   void fetchLangInfo() {
     final lang = UserPreferencesController.getPrefsLang as String?;
     _preferences.lang = Locale(lang ?? ui.window.locale.languageCode);
     notifyListeners();
-    print(_preferences.lang);
   }
 
   void fetchPosition() async {
-    print("fetchPosition");
     final position = await GeolocationController().getCurrentLocation(this);
     _position = LatLng(position.latitude, position.longitude);
     notifyListeners();
-    print(_position);
   }
 
   void fetchReportDatalocality() async {
@@ -105,34 +96,28 @@ class UserProvider extends ChangeNotifier {
     }
 
     notifyListeners();
-    print("reports");
   }
 
   void setMobileDataInfo(bool mobileData) {
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
     notifyListeners();
-    print(_preferences.mobileData);
   }
 
   void setGpsInfo(bool gps) {
     UserPreferencesController.setPrefsGps(gps);
     _preferences.gps = gps;
     notifyListeners();
-    print(_preferences.gps);
   }
 
   void setLangInfo(Locale lang) {
     UserPreferencesController.setPrefsLang(lang);
     _preferences.lang = lang;
     notifyListeners();
-    print(_preferences.lang);
   }
 
   void setPosition(LatLng position) {
-    print("setPosition");
     _position = position;
     notifyListeners();
-    print(_position);
   }
 }

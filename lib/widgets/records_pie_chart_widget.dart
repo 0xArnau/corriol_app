@@ -46,8 +46,6 @@ class RecordsPieChartWidget extends StatelessWidget {
                 final _records = snapshot.data!;
 
                 for (final element in _records) {
-                  print(element.toJson());
-
                   if (element.species != species) continue;
 
                   femelles += element.females;
@@ -57,13 +55,6 @@ class RecordsPieChartWidget extends StatelessWidget {
                   gossos += element.dogs;
                   gats += element.cats;
                 }
-
-                print("femelles ${femelles}");
-                print("polls ${polls}");
-                print("mascles ${mascles}");
-                print("indeterminats ${indeterminat}");
-                print("gossos ${gossos}");
-                print("gats ${gats}");
 
                 final data = [
                   PieChartSectionData(

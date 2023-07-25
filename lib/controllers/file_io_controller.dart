@@ -14,7 +14,6 @@ class FileIoController {
 
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
-    print(directory.path); // TODO: remove
     return directory.path;
   }
 
@@ -123,7 +122,6 @@ class FileIoController {
 
     csv = const ListToCsvConverter().convert(rows);
 
-    print(directory.path);
     directory.exists().then((value) {
       if (value) {
         file
