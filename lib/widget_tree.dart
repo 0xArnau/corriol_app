@@ -43,7 +43,7 @@ class _WidgetTreeState extends State<WidgetTree> {
           ];
           pages = [
             const HomePage(),
-            ProfilePage(),
+            const ProfilePage(),
           ];
         } else if (user.technician == false) {
           navigation = [
@@ -58,7 +58,7 @@ class _WidgetTreeState extends State<WidgetTree> {
           ];
           pages = [
             const HomePage(),
-            ProfilePage(),
+            const ProfilePage(),
           ];
         } else {
           navigation = [
