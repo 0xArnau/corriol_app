@@ -81,8 +81,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     _profileUserOptionsGps(isGpsOn: preferences.gps),
                     const SizedBox(height: 10),
                     const Divider(),
-                    const SizedBox(height: 10),
-                    _profileAppInfo(),
+                    // const SizedBox(height: 10),
+                    // _profileAppInfo(),
                     const SizedBox(height: 10),
                     const Image(
                       image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
@@ -227,6 +227,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  // ignore: unused_element
   Widget _profileAppInfo() {
     return const ExpansionTile(
       title: Text('App Info'),
