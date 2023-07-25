@@ -28,28 +28,28 @@ class CardWidget extends StatelessWidget {
         color: background,
         child: Container(
           padding: const EdgeInsets.all(kDouble25),
-          child: Column(
-            children: [
-              Image(
-                image: AssetImage(imagePath),
-                width:
-                    56.0, // TODO: increment size and remove padding (bottom overflowed in spanish)
-                color: Colors.black,
-              ), // TODO: change this to an image
-              // const SizedBox(height: kDoublePaddingCardImageText),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: foreground,
-                  ),
-                  textAlign: TextAlign.center,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Image(
+                  image: AssetImage(imagePath),
+                  width: 56.0,
+                  color: Colors.black,
                 ),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: foreground,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
