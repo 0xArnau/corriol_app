@@ -12,6 +12,62 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> list = [
+      Text(
+        AppLocalizations.of(context).warningText112,
+        textAlign: TextAlign.center,
+      ),
+      const Text('112',
+          style: TextStyle(fontSize: 46, color: kColorPrimaryBlue),
+          textAlign: TextAlign.center),
+      const SizedBox(height: 15),
+      // mail
+      GestureDetector(
+        onTap: () => _launchUrl(_emailLaunchUri),
+        child: Text.rich(
+          textAlign: TextAlign.center,
+          TextSpan(
+            text: AppLocalizations.of(context).emailText,
+            // style: const TextStyle(fontSize: 16),
+            children: <TextSpan>[
+              TextSpan(
+                text: _emailLaunchUri.path,
+                style: const TextStyle(
+                  fontSize: 32,
+                  color: kColorPrimaryBlue,
+                  // decoration: TextDecoration.underline,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      const SizedBox(height: 15),
+      // webpage
+      GestureDetector(
+        onTap: () => _launchUrl(_url),
+        child: Text.rich(
+          textAlign: TextAlign.center,
+          TextSpan(
+            text: AppLocalizations.of(context).webText,
+            // style: const TextStyle(fontSize: 16),
+            children: const <TextSpan>[
+              TextSpan(
+                text: 'gepec.cat',
+                style: TextStyle(
+                  fontSize: 32,
+                  color: kColorPrimaryBlue,
+                  // decoration: TextDecoration.underline,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      const SizedBox(height: 15),
+      Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,68 +77,9 @@ class ContactPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(kDouble25),
-        child: Column(
-          children: [
-            Text(
-              AppLocalizations.of(context).warningText112,
-              textAlign: TextAlign.center,
-            ),
-            const Text('112',
-                style: TextStyle(fontSize: 46, color: kColorPrimaryBlue),
-                textAlign: TextAlign.center),
-            const SizedBox(height: 15),
-            // mail
-            GestureDetector(
-              onTap: () => _launchUrl(_emailLaunchUri),
-              child: Text.rich(
-                textAlign: TextAlign.center,
-                TextSpan(
-                  text: AppLocalizations.of(context).emailText,
-                  // style: const TextStyle(fontSize: 16),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: _emailLaunchUri.path,
-                      style: const TextStyle(
-                        fontSize: 32,
-                        color: kColorPrimaryBlue,
-                        // decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            // webpage
-            GestureDetector(
-              onTap: () => _launchUrl(_url),
-              child: Text.rich(
-                textAlign: TextAlign.center,
-                TextSpan(
-                  text: AppLocalizations.of(context).webText,
-                  // style: const TextStyle(fontSize: 16),
-                  children: const <TextSpan>[
-                    TextSpan(
-                      text: 'gepec.cat',
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: kColorPrimaryBlue,
-                        // decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            // const Spacer(),
-            // Expanded(
-            //   child: Image.asset(
-            //     'assets/images/CorriolAPP.png',
-            //   ),
-            // ),
-            const Spacer(),
-            Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
-          ],
+        child: ListView.builder(
+          itemCount: list.length,
+          itemBuilder: (context, index) => list[index],
         ),
       ),
     );
