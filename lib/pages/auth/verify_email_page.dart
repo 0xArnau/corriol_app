@@ -43,9 +43,11 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   Future _checkEmailVerified() async {
     print(isEmailVerified);
 
-    setState(() {
-      isEmailVerified = AuthController().isEmailVerified();
-    });
+    if (mounted) {
+      setState(() {
+        isEmailVerified = AuthController().isEmailVerified();
+      });
+    }
 
     if (isEmailVerified) timer?.cancel();
 
