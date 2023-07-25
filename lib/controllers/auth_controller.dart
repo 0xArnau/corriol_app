@@ -65,13 +65,13 @@ class AuthController {
       await FirebaseFirestore.instance
           .collection('Users')
           .get()
-          .then((snapshot) => snapshot.docs.forEach((document) {
-                // print(document.data());
-                // print(currentUser!.email);
-                if (document.data()['email'] == currentUser!.email) {
-                  user = UserModel.fromJson(document.data());
-                }
-              }));
+          .then((snapshot) {
+        for (var document in snapshot.docs) {
+          if (document.data()['email'] == currentUser!.email) {
+            user = UserModel.fromJson(document.data());
+          }
+        }
+      });
       return user;
     } catch (e) {
       Logger().e(e);

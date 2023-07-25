@@ -58,12 +58,14 @@ class ReportController {
       await FirebaseFirestore.instance
           .collection('Reports')
           .get()
-          .then((snapshot) => snapshot.docs.forEach((document) {
-                if (document.data()['createdBy'] ==
-                    AuthController().currentUser!.email) {
-                  reports.add(ReportModel.fromJson(document.data()));
-                }
-              }));
+          .then((snapshot) {
+        for (var document in snapshot.docs) {
+          if (document.data()['createdBy'] ==
+              AuthController().currentUser!.email) {
+            reports.add(ReportModel.fromJson(document.data()));
+          }
+        }
+      });
       return reports;
     } catch (e) {
       Logger().e(e);
@@ -78,9 +80,11 @@ class ReportController {
       await FirebaseFirestore.instance
           .collection('Reports')
           .get()
-          .then((snapshot) => snapshot.docs.forEach((document) {
-                reports.add(ReportModel.fromJson(document.data()));
-              }));
+          .then((snapshot) {
+        for (var document in snapshot.docs) {
+          reports.add(ReportModel.fromJson(document.data()));
+        }
+      });
       return reports;
     } catch (e) {
       Logger().e(e);
