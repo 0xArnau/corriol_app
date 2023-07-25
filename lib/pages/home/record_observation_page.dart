@@ -8,9 +8,11 @@ import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
+import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class RecordObservationPage extends StatefulWidget {
@@ -213,44 +215,33 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         fields.undetermined == 0 &&
         fields.females == 0 &&
         fields.males == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('No pots guardar informació buida'),
-          duration: Duration(seconds: 3),
-        ),
-      );
+      errorAuthFieldsSnackbar(context, "No pots guardar informació buida");
 
       return;
     }
     UserProvider provider = Provider.of<UserProvider>(context, listen: false);
-    List<String> address =
-        await GeolocationController().updateAddress(provider);
 
-    fields.administrativeArea = address[0];
-    fields.subAdministrativeArea = address[1];
-    fields.locality = address[2];
+    try {
+      List<String> address =
+          await GeolocationController().updateAddress(provider);
 
-    fields.coordenates = provider.position;
+      fields.administrativeArea = address[0];
+      fields.subAdministrativeArea = address[1];
+      fields.locality = address[2];
 
-    if (fields.administrativeArea.isEmpty &&
-        fields.subAdministrativeArea.isEmpty &&
-        fields.locality.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Adreça buida'),
-          duration: Duration(seconds: 3),
-        ),
-      );
-      return;
+      fields.coordenates = provider.position;
+    } catch (e) {
+      Logger().e(e);
+    } finally {
+      if (fields.administrativeArea.isEmpty &&
+          fields.subAdministrativeArea.isEmpty &&
+          fields.locality.isEmpty) {
+        errorAuthFieldsSnackbar(context, 'Adreça buida');
+      } else {
+        ReportController().saveReport(fields, mobileData);
+        snackbarInfo(context, AppLocalizations.of(context).saveInformation);
+        Navigator.pop(context);
+      }
     }
-    ReportController().saveReport(fields, mobileData);
-    // Show the Snackbar
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context).saveInformation),
-        duration: const Duration(seconds: 3),
-      ),
-    );
-    Navigator.pop(context);
   }
 }

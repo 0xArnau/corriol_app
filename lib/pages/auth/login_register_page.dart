@@ -139,6 +139,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     );
   }
 
+  // ignore: unused_element
   Widget _sso() {
     return const SingleChildScrollView(
       scrollDirection: Axis.horizontal,
