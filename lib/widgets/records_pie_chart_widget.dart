@@ -43,9 +43,9 @@ class RecordsPieChartWidget extends StatelessWidget {
                 var indeterminat = 0;
                 var gossos = 0;
                 var gats = 0;
-                final _records = snapshot.data!;
+                final records0 = snapshot.data!;
 
-                for (final element in _records) {
+                for (final element in records0) {
                   if (element.species != species) continue;
 
                   femelles += element.females;
