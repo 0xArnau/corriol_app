@@ -18,7 +18,7 @@ class ContactPage extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       const Text('112',
-          style: TextStyle(fontSize: 46, color: kColorPrimaryBlue),
+          style: TextStyle(fontSize: 46, color: kColorText),
           textAlign: TextAlign.center),
       const SizedBox(height: 15),
       // mail
@@ -34,7 +34,7 @@ class ContactPage extends StatelessWidget {
                 text: _emailLaunchUri.path,
                 style: const TextStyle(
                   fontSize: 32,
-                  color: kColorPrimaryBlue,
+                  color: kColorText,
                   // decoration: TextDecoration.underline,
                 ),
               ),
@@ -56,7 +56,7 @@ class ContactPage extends StatelessWidget {
                 text: 'gepec.cat',
                 style: TextStyle(
                   fontSize: 32,
-                  color: kColorPrimaryBlue,
+                  color: kColorText,
                   // decoration: TextDecoration.underline,
                 ),
               ),

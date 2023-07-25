@@ -54,7 +54,8 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             height: 40,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+              border: Border.all(color: kColorDropDown),
+              color: kColorDropDown,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Align(

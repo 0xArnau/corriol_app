@@ -119,7 +119,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       style: TextStyle(
         fontSize: 48,
         fontWeight: FontWeight.bold,
-        color: kColorPrimaryBlue,
+        color: kColorText,
       ),
       textAlign: TextAlign.center,
     );

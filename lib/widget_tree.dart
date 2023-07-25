@@ -1,4 +1,5 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
@@ -86,7 +87,11 @@ class _WidgetTreeState extends State<WidgetTree> {
           appBar: AppBar(
             title: const Text(
               'Corriol APP',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 32,
+                color: kColorText,
+              ),
             ),
             actions: [
               currentPage == navigation.length - 1

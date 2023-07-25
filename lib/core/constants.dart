@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 // Colors
 // final kColorLightBackground = Colors.grey[500];
 
+const kColorText = Color.fromRGBO(0, 30, 255, 1);
+const kColorScreenCorriol = Color.fromRGBO(255, 0, 132, 1);
+const kColorScreenContact = Color.fromRGBO(255, 0, 255, 1);
+const kColorScreenReport = Color.fromRGBO(0, 193, 118, 1);
+const kColorScreenMyReports = Color.fromRGBO(253, 223, 1, 1);
+const kColorDropDown = Color.fromRGBO(242, 217, 116, 1);
+
+const kColorIcon = IconThemeData(color: kColorText);
+
 const kColorPrimaryBlue = Colors.blue;
 const kColorPrimaryGrey = Colors.grey;
 const kColorRedCard = Colors.red;

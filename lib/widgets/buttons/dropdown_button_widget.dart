@@ -32,17 +32,22 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.flutter_dash),
+        const Icon(
+          Icons.flutter_dash,
+          color: kColorText,
+        ),
         const SizedBox(width: kDouble25),
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             height: 40,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+              border: Border.all(color: kColorDropDown),
               borderRadius: BorderRadius.circular(8),
+              color: kColorDropDown,
             ),
             child: DropdownButton(
+              dropdownColor: kColorDropDown,
               hint: Text(widget.hint),
               isExpanded: true,
               style: const TextStyle(color: Colors.black),

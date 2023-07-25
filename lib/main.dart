@@ -1,4 +1,3 @@
-import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/l10n/l10n.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Corriol APP',
             theme: ThemeData(
-              primarySwatch: kColorPrimaryBlue,
               useMaterial3: true,
             ),
             supportedLocales: L10n.all,

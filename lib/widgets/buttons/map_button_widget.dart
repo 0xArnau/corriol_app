@@ -46,7 +46,10 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.map_outlined),
+            const Icon(
+              Icons.map_outlined,
+              color: kColorText,
+            ),
             const SizedBox(width: kDouble25),
             Expanded(
               child: OutlinedButton(
@@ -55,6 +58,9 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
+                  side: const BorderSide(color: kColorDropDown),
+                  backgroundColor: kColorDropDown,
+                  foregroundColor: Colors.black,
                 ),
                 onPressed: () {
                   Navigator.push(

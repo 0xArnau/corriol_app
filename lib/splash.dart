@@ -1,3 +1,4 @@
+import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class _SplashState extends State<Splash> {
                     style: TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: kColorText,
                     ),
                   ),
                 ),
