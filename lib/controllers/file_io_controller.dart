@@ -1,7 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:corriol_app/models/report_model.dart';
+import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
+import 'package:csv/csv.dart';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class FileIoController {
   FileIoController({required this.fileName});
@@ -41,6 +45,7 @@ class FileIoController {
     return file.writeAsString(content, mode: FileMode.write);
   }
 
+  ///
   Future<String?> readContent() async {
     try {
       final file = await _localFile;
@@ -50,5 +55,84 @@ class FileIoController {
       // If there is an error reading, return a default String
       return null;
     }
+  }
+
+  static Future<bool> _permissionStorage(Permission permission) async {
+    if (await permission.isGranted) return true;
+
+    return (await permission.request().isGranted) ? true : false;
+  }
+
+  static void saveReports2CSV(
+      List<ReportModel> reports, BuildContext context) async {
+    late String csv;
+    late File file;
+    Directory? directory;
+
+    if (Platform.isAndroid) {
+      if (await _permissionStorage(Permission.storage)) {
+        directory = await getExternalStorageDirectory();
+      }
+    } else {
+      if (await _permissionStorage(Permission.storage)) {
+        directory = await getApplicationDocumentsDirectory();
+      }
+    }
+
+    if (directory == null) return;
+
+    file = File(
+      "${directory.path}/corriol_app-${DateTime.now().toIso8601String()}.csv",
+    );
+
+    List<List<dynamic>> rows = [];
+
+    rows.add([
+      'createdBy',
+      'createdAt',
+      'coordenates',
+      'administrativeArea',
+      'subAdministrativeArea',
+      'locality',
+      'species',
+      'females',
+      'males',
+      'undetermined',
+      'chickens',
+      'dogs',
+      'cats'
+    ]);
+
+    for (var report in reports) {
+      rows.add([
+        report.createdBy,
+        report.createdAt,
+        report.coordenates,
+        report.administrativeArea,
+        report.subAdministrativeArea,
+        report.locality,
+        report.species,
+        report.females,
+        report.males,
+        report.undetermined,
+        report.chickens,
+        report.dogs,
+        report.cats,
+      ]);
+    }
+
+    csv = const ListToCsvConverter().convert(rows);
+
+    print(directory.path);
+    directory.exists().then((value) {
+      if (value) {
+        file
+            .writeAsString(csv, mode: FileMode.write)
+            .then((_) => snackbarInfo(context, "File saved"))
+            .onError((error, stackTrace) => snackbarInfo(context, "$error"));
+      } else {
+        snackbarInfo(context, "Directory doesn't exists");
+      }
+    });
   }
 }

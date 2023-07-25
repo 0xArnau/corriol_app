@@ -1,7 +1,7 @@
 import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
-import 'package:corriol_app/widgets/snackbars/firebase_snackbar.dart';
+import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
