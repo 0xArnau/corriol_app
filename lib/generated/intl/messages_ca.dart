@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("No s\'ha pogut iniciar:"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
         "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
         "infoClause": MessageLookupByLibrary.simpleMessage(

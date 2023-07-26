@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("Could not launch:"),
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "handyman": MessageLookupByLibrary.simpleMessage("Handyman"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "infoClause": MessageLookupByLibrary.simpleMessage(

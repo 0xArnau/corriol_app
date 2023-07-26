@@ -15,6 +15,7 @@
   "errorEmptyFields": "Cannot send because there are empty fields",
   "errorLaunchUrl": "Could not launch:",
   "fileSave": "File saved",
+  "forgotPassword": "Forgot password?",
   "handyman": "Handyman",
   "home": "Home",
   "infoClause": "Informative clause, form, registration, activities",

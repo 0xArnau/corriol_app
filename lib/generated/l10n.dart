@@ -200,6 +200,16 @@ class S {
     );
   }
 
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Handyman`
   String get handyman {
     return Intl.message(

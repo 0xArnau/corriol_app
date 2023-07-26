@@ -133,9 +133,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           builder: (context) => const ForgotPasswordPage(),
         ),
       ),
-      child: const Text(
-        'Forgot password?',
-        style: TextStyle(color: Colors.grey),
+      child: Text(
+        S.current.forgotPassword,
+        style: const TextStyle(color: Colors.grey),
       ),
     );
   }
