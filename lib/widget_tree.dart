@@ -6,6 +6,7 @@ import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -112,7 +113,9 @@ class _WidgetTreeState extends State<WidgetTree> {
                             if (preferences.mobileData) {
                               Provider.of<UserProvider>(context, listen: false)
                                   .fetchReportDatalocality();
-                            } else {}
+                            } else {
+                              snackbarError(context, "No internet connection");
+                            }
                           },
                           icon: const Icon(
                             Icons.update,
