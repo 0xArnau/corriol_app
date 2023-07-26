@@ -1,6 +1,7 @@
 {
   "@@locale": "es",
   "age": "Edad",
+  "all": "Todos",
   "checkboxInfo": "Casilla de verificación de información",
   "checkboxLegal": "Casilla de verificación legal",
   "checkboxPrivacy": "Casilla de privacidad",

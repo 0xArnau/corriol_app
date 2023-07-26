@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edad"),
+        "all": MessageLookupByLibrary.simpleMessage("Todos"),
         "checkboxInfo": MessageLookupByLibrary.simpleMessage(
             "Casilla de verificación de información"),
         "checkboxLegal": MessageLookupByLibrary.simpleMessage(

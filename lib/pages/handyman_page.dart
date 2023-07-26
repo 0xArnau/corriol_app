@@ -1,3 +1,4 @@
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/widgets/buttons/card_button_widget.dart';
@@ -19,7 +20,7 @@ class _HandymanPageState extends State<HandymanPage> {
       list.addAll(value);
     });
 
-    return CardButtonWidget(text: "All", reports: list);
+    return CardButtonWidget(text: S.current.all, reports: list);
   }
 
   List<Widget> generateKeyButton(Map<String, List<ReportModel>> map) {

@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Casilla de verificació d'informació`
   String get checkboxInfo {
     return Intl.message(

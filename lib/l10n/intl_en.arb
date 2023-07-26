@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "age": "Age",
+  "all": "All",
   "checkboxInfo": "Casilla de verificació d'informació",
   "checkboxLegal": "Legal checkbox",
   "checkboxPrivacy": "Privacy checkbox",
