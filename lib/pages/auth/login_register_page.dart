@@ -351,30 +351,33 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
 
   Widget _options() {
     return Center(
-      child: ToggleButtons(
-        isSelected: isSelected,
-        onPressed: (index) {
-          if (mounted) {
-            setState(() {
-              isSelected[index] = !isSelected[index];
-              isSelected[(index + 1) % 2] = !isSelected[(index + 1) % 2];
-            });
-          }
-        },
-        selectedColor: Colors.white,
-        selectedBorderColor: Colors.black,
-        fillColor: Colors.black,
-        borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDouble20),
-            child: _optionsTextStyle(S.current.signIn),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDouble20),
-            child: _optionsTextStyle(S.current.signUp),
-          ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: ToggleButtons(
+          isSelected: isSelected,
+          onPressed: (index) {
+            if (mounted) {
+              setState(() {
+                isSelected[index] = !isSelected[index];
+                isSelected[(index + 1) % 2] = !isSelected[(index + 1) % 2];
+              });
+            }
+          },
+          selectedColor: Colors.white,
+          selectedBorderColor: Colors.black,
+          fillColor: Colors.black,
+          borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              child: _optionsTextStyle(S.current.signIn),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              child: _optionsTextStyle(S.current.signUp),
+            ),
+          ],
+        ),
       ),
     );
   }
