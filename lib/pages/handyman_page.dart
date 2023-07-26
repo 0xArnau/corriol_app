@@ -12,7 +12,7 @@ class HandymanPage extends StatefulWidget {
 }
 
 class _HandymanPageState extends State<HandymanPage> {
-  Widget downlloadAllCsv(Map<String, List<ReportModel>> map) {
+  Widget _generetatAllCsv(Map<String, List<ReportModel>> map) {
     List<ReportModel> list = [];
 
     map.forEach((key, value) {
@@ -24,6 +24,7 @@ class _HandymanPageState extends State<HandymanPage> {
 
   List<Widget> generateKeyButton(Map<String, List<ReportModel>> map) {
     List<Widget> widgets = [];
+
     map.forEach((key, value) {
       widgets.add(CardButtonWidget(
         text: key,
@@ -31,7 +32,12 @@ class _HandymanPageState extends State<HandymanPage> {
       ));
     });
 
-    return widgets;
+    return widgets.isEmpty
+        ? widgets
+        : [
+            _generetatAllCsv(map),
+            ...widgets,
+          ];
   }
 
   @override
@@ -42,20 +48,16 @@ class _HandymanPageState extends State<HandymanPage> {
         body: Consumer<UserProvider>(
           builder: (context, value, child) {
             Map<String, List<ReportModel>> map = value.locality;
-            List<Widget> addressSubAdministrativeArea = generateKeyButton(map);
-            Widget all = downlloadAllCsv(map);
+            List<Widget> locality = generateKeyButton(map);
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
               ),
-              itemCount: addressSubAdministrativeArea.length + 1,
+              itemCount: locality.length,
               itemBuilder: (context, index) {
-                return [
-                  all,
-                  ...addressSubAdministrativeArea,
-                ][index];
+                return locality[index];
               },
             );
           },
