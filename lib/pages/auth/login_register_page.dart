@@ -1,4 +1,5 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
@@ -9,7 +10,6 @@ import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginRegisterPage extends StatefulWidget {
   const LoginRegisterPage({super.key});
@@ -44,7 +44,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
 
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
-      snackbarError(context, "Empty fields");
+      snackbarError(context, S.current.errorEmptyFields);
     } else {
       // Show a loading icon
       // showDialog(
@@ -73,15 +73,15 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         _controllerEmail.text.isEmpty ||
         _controllerName.text.isEmpty ||
         _controllerPassword.text.isEmpty) {
-      snackbarError(context, "Empty fields");
+      snackbarError(context, S.current.errorEmptyFields);
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
-      snackbarError(context, "Passwords are different");
+      snackbarError(context, S.current.errorDifferentPasswords);
     } else if (!checkBoxLegal) {
-      snackbarError(context, "Legal checkbox");
+      snackbarError(context, S.current.checkboxLegal);
     } else if (!checkBoxInfo) {
-      snackbarError(context, "Info checkbox");
+      snackbarError(context, S.current.checkboxInfo);
     } else if (!checkBoxPrivacy) {
-      snackbarError(context, "Privacy checkbox");
+      snackbarError(context, S.current.checkboxPrivacy);
     } else {
       // Show a loading icon
       // showDialog(
@@ -214,7 +214,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       children: [
         // Email
         MyTextFormWidget(
-          hintText: 'Email',
+          hintText: S.current.email,
           controller: _controllerEmail,
           obscureText: false,
           prefixIcon: const Icon(Icons.email),
@@ -222,7 +222,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Password
         MyTextFormWidget(
-          hintText: 'Password',
+          hintText: S.current.password,
           controller: _controllerPassword,
           obscureText: true,
           prefixIcon: const Icon(Icons.fingerprint),
@@ -232,7 +232,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         // Login button
         blackButton(
           context: context,
-          text: "Sign In",
+          text: S.current.signIn,
           onTap: signInWithEmailAndPassword,
         ),
         const SizedBox(height: kDouble10),
@@ -249,7 +249,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       children: [
         // Name
         MyTextFormWidget(
-          hintText: 'Name',
+          hintText: S.current.name,
           controller: _controllerName,
           obscureText: false,
           prefixIcon: const Icon(Icons.person),
@@ -257,7 +257,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Age
         MyTextFormWidget(
-          hintText: 'Age',
+          hintText: S.current.age,
           controller: _controllerAge,
           obscureText: false,
           prefixIcon: const Icon(Icons.numbers),
@@ -265,7 +265,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Email
         MyTextFormWidget(
-          hintText: 'Email',
+          hintText: S.current.email,
           controller: _controllerEmail,
           obscureText: false,
           prefixIcon: const Icon(Icons.email),
@@ -273,7 +273,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Password
         MyTextFormWidget(
-          hintText: 'Password',
+          hintText: S.current.password,
           controller: _controllerPassword,
           obscureText: true,
           prefixIcon: const Icon(Icons.fingerprint),
@@ -281,7 +281,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Confirmation Password
         MyTextFormWidget(
-          hintText: 'Confirmation Password',
+          hintText: S.current.confirmationPassword,
           controller: _controllerConfirmPassword,
           obscureText: true,
           prefixIcon: const Icon(Icons.fingerprint),
@@ -291,14 +291,14 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         // Register button
         blackButton(
           context: context,
-          text: "Register",
+          text: S.current.signUp,
           onTap: registerWithEmailAndPassword,
         ),
         const SizedBox(height: kDouble25),
         // Docs
         _legalStuff(
           asset: 'assets/docs/legal/avis-legal.pdf',
-          text: "Avís Legal",
+          text: S.current.legalWarning,
           isAccepted: checkBoxLegal,
           onChanged: (value) {
             if (mounted) {
@@ -310,7 +310,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         ),
         _legalStuff(
           asset: 'assets/docs/legal/clausula-informativa.pdf',
-          text: "Cláusula informativa formulario INSCRIPCIÓ ACTIVIDADES",
+          text: S.current.infoClause,
           isAccepted: checkBoxInfo,
           onChanged: (value) {
             if (mounted) {
@@ -322,7 +322,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         ),
         _legalStuff(
           asset: 'assets/docs/legal/privacitat.pdf',
-          text: "Política de Privacidad",
+          text: S.current.privacyPolicy,
           isAccepted: checkBoxPrivacy,
           onChanged: (value) {
             if (mounted) {
@@ -368,11 +368,11 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDouble20),
-            child: _optionsTextStyle("Login"),
+            child: _optionsTextStyle(S.current.signIn),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDouble20),
-            child: _optionsTextStyle("Register"),
+            child: _optionsTextStyle(S.current.signUp),
           ),
         ],
       ),

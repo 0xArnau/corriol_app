@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class VerifyEmailPage extends StatefulWidget {
@@ -83,7 +83,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
         ? const AuthPage()
         : Scaffold(
             appBar: AppBar(
-              title: const Text('Verify Email'),
+              title: Text(S.current.veirfyEmail),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -101,7 +101,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   children: [
                     const Spacer(),
                     Text(
-                      'A verification email has been send to: ${AuthController().currentUser!.email}',
+                      '${S.current.verifyEmailSent} ${AuthController().currentUser!.email}',
                       style: const TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 15),
@@ -111,26 +111,26 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                         Icons.email,
                         size: 32,
                       ),
-                      label: const Text(
-                        'Resend Verification',
-                        style: TextStyle(fontSize: 24),
+                      label: Text(
+                        S.current.verifyEmailResent,
+                        style: const TextStyle(fontSize: 24),
                       ),
                     ),
                     const SizedBox(height: kDouble25),
                     const Spacer(),
                     InkWell(
                       onTap: _checkEmailVerified,
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.refresh_outlined,
                             color: Colors.grey,
                           ),
-                          SizedBox(width: kDouble10),
+                          const SizedBox(width: kDouble10),
                           Text(
-                            'Tap to refresh',
-                            style: TextStyle(
+                            S.current.refresh,
+                            style: const TextStyle(
                               color: Colors.grey,
                             ),
                           ),

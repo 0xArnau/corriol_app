@@ -1,8 +1,7 @@
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactPage extends StatelessWidget {
   ContactPage({super.key});
@@ -15,7 +14,7 @@ class ContactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> list = [
       Text(
-        AppLocalizations.of(context).warningText112,
+        S.current.warningText112,
         textAlign: TextAlign.center,
       ),
       const Text('112',
@@ -28,7 +27,7 @@ class ContactPage extends StatelessWidget {
         child: Text.rich(
           textAlign: TextAlign.center,
           TextSpan(
-            text: AppLocalizations.of(context).emailText,
+            text: S.current.emailText,
             // style: const TextStyle(fontSize: 16),
             children: <TextSpan>[
               TextSpan(
@@ -50,7 +49,7 @@ class ContactPage extends StatelessWidget {
         child: Text.rich(
           textAlign: TextAlign.center,
           TextSpan(
-            text: AppLocalizations.of(context).webText,
+            text: S.current.webText,
             // style: const TextStyle(fontSize: 16),
             children: const <TextSpan>[
               TextSpan(
@@ -72,7 +71,7 @@ class ContactPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).contact,
+          S.current.contact,
           style: kTextStylePageTitle,
         ),
       ),
@@ -88,7 +87,7 @@ class ContactPage extends StatelessWidget {
 
   Future<void> _launchUrl(Uri url) async {
     if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
+      throw Exception('${S.current.errorLaunchUrl} $url');
     }
   }
 }

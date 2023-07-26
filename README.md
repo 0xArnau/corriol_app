@@ -55,12 +55,7 @@ flutter build apk --build-name=0.0.1 --build-number=1
 
 #### [intl](https://pub.dev/packages/intl)
 
-To generate translations for an application, the intl and flutter_localizations packages are utilized. These translations are then stored in the lib/l10n/app_XX.arb file.
-To create the translations, it is necessary to execute the following command:
-
-```shell
-flutter gen-l10n
-```
+Use the vscode plugin `Flutter Intl` to auto generate flutter translations files
 
 The resulting code will be placed in the .dart_tool/flutter_gen/gen_l10n directory, and can be accessed in the code using the following import:
 

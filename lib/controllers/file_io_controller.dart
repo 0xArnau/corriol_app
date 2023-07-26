@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class FileIoController {
@@ -128,10 +128,10 @@ class FileIoController {
       if (value) {
         file
             .writeAsString(csv, mode: FileMode.write)
-            .then((_) => snackbarInfo(context, "File saved"))
+            .then((_) => snackbarInfo(context, S.current.fileSave))
             .onError((error, stackTrace) => snackbarInfo(context, "$error"));
       } else {
-        snackbarInfo(context, "Directory doesn't exists");
+        snackbarInfo(context, S.current.directoryDoesntExist);
       }
     });
   }

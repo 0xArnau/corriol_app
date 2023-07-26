@@ -1,0 +1,140 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a ca locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'ca';
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "age": MessageLookupByLibrary.simpleMessage("Edat"),
+        "checkboxInfo": MessageLookupByLibrary.simpleMessage("Info checkbox"),
+        "checkboxLegal": MessageLookupByLibrary.simpleMessage(
+            "Casilla de verificació legal"),
+        "checkboxPrivacy": MessageLookupByLibrary.simpleMessage(
+            "Casella de selecció de privadesa"),
+        "confirmationPassword":
+            MessageLookupByLibrary.simpleMessage("Contrasenya de confirmació"),
+        "contact": MessageLookupByLibrary.simpleMessage("Contacte"),
+        "directoryDoesntExist":
+            MessageLookupByLibrary.simpleMessage("Directori no existeix"),
+        "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),
+        "emailSent": MessageLookupByLibrary.simpleMessage("Email enviat"),
+        "emailText": MessageLookupByLibrary.simpleMessage(
+            "Si vols participar de forma activa en la conservació del corriol o tens qualsevol dubte o proposta, posa\'t en contacte amb nosaltres: "),
+        "errorDifferentPasswords": MessageLookupByLibrary.simpleMessage(
+            "Les contrasenyes són diferents"),
+        "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
+            "No es pot enviar pel fet que hi ha camps buits"),
+        "errorLaunchUrl":
+            MessageLookupByLibrary.simpleMessage("No s\'ha pogut iniciar:"),
+        "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
+        "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
+        "home": MessageLookupByLibrary.simpleMessage("Inici"),
+        "infoClause": MessageLookupByLibrary.simpleMessage(
+            "Clàusula informativa, formulari, inscripció, activitats"),
+        "lang": MessageLookupByLibrary.simpleMessage("Idioma"),
+        "language": MessageLookupByLibrary.simpleMessage("Català"),
+        "legalWarning": MessageLookupByLibrary.simpleMessage("Avís legal"),
+        "meetKentishPlover":
+            MessageLookupByLibrary.simpleMessage("Coneix al Corriol camanegre"),
+        "mobileData": MessageLookupByLibrary.simpleMessage("Dades mòbils"),
+        "myRecords": MessageLookupByLibrary.simpleMessage("Els meus registres"),
+        "name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "noInternetConnection":
+            MessageLookupByLibrary.simpleMessage("Sense connexió a Internet"),
+        "password": MessageLookupByLibrary.simpleMessage("Contrasenya"),
+        "privacyPolicy":
+            MessageLookupByLibrary.simpleMessage("Política de privadesa"),
+        "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "recordObservation":
+            MessageLookupByLibrary.simpleMessage("Anotar una observació"),
+        "refresh":
+            MessageLookupByLibrary.simpleMessage("Toqueu per actualitzar"),
+        "resetPassword":
+            MessageLookupByLibrary.simpleMessage("Restablir la contrasenya"),
+        "saveInformation":
+            MessageLookupByLibrary.simpleMessage("Guardar informació"),
+        "screen1_3_Button_Cats": MessageLookupByLibrary.simpleMessage("Gats"),
+        "screen1_3_Button_Chickens":
+            MessageLookupByLibrary.simpleMessage("Polls"),
+        "screen1_3_Button_Dogs": MessageLookupByLibrary.simpleMessage("Gossos"),
+        "screen1_3_Button_Females":
+            MessageLookupByLibrary.simpleMessage("Femelles"),
+        "screen1_3_Button_Males":
+            MessageLookupByLibrary.simpleMessage("Mascles"),
+        "screen1_3_Button_Select_Specie":
+            MessageLookupByLibrary.simpleMessage("Seleccionar espècie"),
+        "screen1_3_Button_Select_Specie_Camanegre":
+            MessageLookupByLibrary.simpleMessage("Corriol camanegre"),
+        "screen1_3_Button_Select_Specie_Petit":
+            MessageLookupByLibrary.simpleMessage("Corriol petit"),
+        "screen1_3_Button_Undetermined":
+            MessageLookupByLibrary.simpleMessage("Indeterminat"),
+        "screen_1_1_Foto_1_1_1_after": MessageLookupByLibrary.simpleMessage(
+            "El seu període de reproducció coincideix amb l\'època de l\'any en que les platges es troben més frequentades, de març a agost."),
+        "screen_1_1_Foto_1_1_1_before": MessageLookupByLibrary.simpleMessage(
+            "El corriol camanegre és un petit ocell que posa els ous a la sorra de la platja."),
+        "screen_1_1_Foto_1_1_2_after": MessageLookupByLibrary.simpleMessage(
+            "La femella posa 3 ous a la sorra que coven tant el mascle com la femella durant 25 dies aproximadament."),
+        "screen_1_1_Foto_1_1_2_before": MessageLookupByLibrary.simpleMessage(
+            "Cada femella pot fer més d\'una posta durant la temporada de reproducció."),
+        "screen_1_1_Foto_1_1_3_after": MessageLookupByLibrary.simpleMessage(
+            "Són una presa fàcil per als depredadors, però creixen ràpidament."),
+        "screen_1_1_Foto_1_1_3_before": MessageLookupByLibrary.simpleMessage(
+            "Els polls són nidífugs. Això vol dir que abandonen el niu quan neixen, ja que són capaços de caminar i alimentar-se per si sols."),
+        "screen_1_1_Foto_1_1_4_after": MessageLookupByLibrary.simpleMessage(
+            "És una espècie generalment migratòria que ve a les nostres platges a reproduir-se. Si el cuidem bé cada temporada ens tornarà a visitar."),
+        "screen_1_1_Foto_1_1_4_before": MessageLookupByLibrary.simpleMessage(
+            "Quan arriben als 30 dies de vida són capaços de volar d\'una platja a un altre."),
+        "screen_1_1_Foto_1_1_5_after": MessageLookupByLibrary.simpleMessage(
+            "I també pel collaret de color negre que du al coll i les taques dels ulls i el front."),
+        "screen_1_1_Foto_1_1_5_before": MessageLookupByLibrary.simpleMessage(
+            "Podem distingir al mascle de la femella per la seva coloració ataronjada al cap durant l\'època de reproducció."),
+        "screen_1_1_Foto_1_1_6_after": MessageLookupByLibrary.simpleMessage(
+            "Quan tenen un niu o cries i es senten amenaçats, de vegades es fan els ferits \'arrosseguen les ales\'. Si observes aquest comportament el millor que pots fer és allunyar-te."),
+        "screen_1_1_Foto_1_1_6_before": MessageLookupByLibrary.simpleMessage(
+            "La femella es mimetitza molt bé amb la sorra de la platja quan està estirada."),
+        "screen_1_1_Foto_1_1_7_after": MessageLookupByLibrary.simpleMessage(
+            "El seu comportament és similar al del corriol camanegre i el podem distingir perquè aquest té la taca del front i els ulls més accentuada i un anell groc al voltant de l’ull."),
+        "screen_1_1_Foto_1_1_7_before": MessageLookupByLibrary.simpleMessage(
+            "A la platja també hi podem trobar una espècie molt semblant al corriol camanegre, que de vegades també nidifica a la sorra: El corriol petit."),
+        "screen_1_1_Foto_1_1_8_after": MessageLookupByLibrary.simpleMessage(
+            "Fes-te voluntària i participa registrant les teves observacions"),
+        "screen_1_1_Foto_1_1_8_before": MessageLookupByLibrary.simpleMessage(
+            "Ajuda\'ns a protegir al corriol"),
+        "sendEmail":
+            MessageLookupByLibrary.simpleMessage("Envia correu electrònic"),
+        "sendInformation":
+            MessageLookupByLibrary.simpleMessage("Enviar informació"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Inicieu la sessió"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
+        "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
+        "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuari"),
+        "veirfyEmail": MessageLookupByLibrary.simpleMessage("verificar Correu"),
+        "verifyEmailResent": MessageLookupByLibrary.simpleMessage(
+            "Torna a enviar la verificació"),
+        "verifyEmailSent": MessageLookupByLibrary.simpleMessage(
+            "S\'ha enviat un correu electrònic de verificació a:"),
+        "warningText112": MessageLookupByLibrary.simpleMessage(
+            "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al: "),
+        "webText": MessageLookupByLibrary.simpleMessage(
+            "O visiti la nostra pàgina web: ")
+      };
+}

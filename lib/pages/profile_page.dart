@@ -1,7 +1,7 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/geolocation_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
@@ -69,13 +69,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontSize: 17,
                       ),
                     ),
-                    Text(user.technician! ? 'Role: Technician' : 'Role: User'),
+                    Text(user.technician! ? S.current.techRole : S.current.userRole),
                     const SizedBox(height: 10),
                     const Divider(),
                     const SizedBox(height: 10),
                     _profileUserOptions(
                       icon: const Icon(Icons.language),
-                      option: "Language: ${preferences.lang}",
+                      option: "${S.current.lang}: ${preferences.lang}",
                       onTap: () => _openLanguageMenu(context),
                     ),
                     _profileUserOptionsData(mobileData: preferences.mobileData),
@@ -178,7 +178,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ? const Icon(Icons.four_g_mobiledata_rounded)
             : const Icon(Icons.mobiledata_off),
       ),
-      title: const Text("Datos mobiles"),
+      title: Text(S.current.mobileData),
       trailing: Container(
         width: 30,
         height: 30,

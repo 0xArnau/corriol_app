@@ -1,6 +1,7 @@
 import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/report_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
@@ -9,12 +10,10 @@ import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RecordObservationPage extends StatefulWidget {
   const RecordObservationPage({super.key});
@@ -51,7 +50,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).recordObservation,
+          S.current.recordObservation,
           style: kTextStylePageTitle,
         ),
       ),
@@ -71,13 +70,10 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   case 2:
                     return DropdownButtonWidget(
                         itemsList: [
-                          AppLocalizations.of(context)
-                              .screen1_3_Button_Select_Specie_Camanegre,
-                          AppLocalizations.of(context)
-                              .screen1_3_Button_Select_Specie_Petit,
+                          S.current.screen1_3_Button_Select_Specie_Camanegre,
+                          S.current.screen1_3_Button_Select_Specie_Petit,
                         ],
-                        hint: AppLocalizations.of(context)
-                            .screen1_3_Button_Select_Specie,
+                        hint: S.current.screen1_3_Button_Select_Specie,
                         onChanged: (value) {
                           if (mounted) {
                             setState(() {
@@ -89,8 +85,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 4:
                     return CounterButtonWidget(
-                      hint:
-                          AppLocalizations.of(context).screen1_3_Button_Females,
+                      hint: S.current.screen1_3_Button_Females,
                       image: const AssetImage(
                           'assets/images/Screen-1_3/femelles.png'),
                       onChanged: (value) {
@@ -105,7 +100,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 6:
                     return CounterButtonWidget(
-                      hint: AppLocalizations.of(context).screen1_3_Button_Males,
+                      hint: S.current.screen1_3_Button_Males,
                       image: const AssetImage(
                           'assets/images/Screen-1_3/mescles.png'),
                       onChanged: (value) {
@@ -120,8 +115,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 8:
                     return CounterButtonWidget(
-                      hint: AppLocalizations.of(context)
-                          .screen1_3_Button_Undetermined,
+                      hint: S.current.screen1_3_Button_Undetermined,
                       image: const AssetImage(
                           'assets/images/Screen-1_3/indeterminat.png'),
                       onChanged: (value) {
@@ -136,8 +130,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 10:
                     return CounterButtonWidget(
-                      hint: AppLocalizations.of(context)
-                          .screen1_3_Button_Chickens,
+                      hint: S.current.screen1_3_Button_Chickens,
                       image: const AssetImage(
                           'assets/images/Screen-1_3/polls.png'),
                       onChanged: (value) {
@@ -152,7 +145,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 12:
                     return CounterButtonWidget(
-                      hint: AppLocalizations.of(context).screen1_3_Button_Cats,
+                      hint: S.current.screen1_3_Button_Cats,
                       image:
                           const AssetImage('assets/images/Screen-1_3/gats.png'),
                       onChanged: (value) {
@@ -167,7 +160,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     return const SizedBox(height: 15);
                   case 14:
                     return CounterButtonWidget(
-                      hint: AppLocalizations.of(context).screen1_3_Button_Dogs,
+                      hint: S.current.screen1_3_Button_Dogs,
                       image: const AssetImage(
                           'assets/images/Screen-1_3/gossos.png'),
                       onChanged: (value) {
@@ -196,7 +189,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                         onPressed: () {
                           saveReport(preferences.mobileData);
                         },
-                        child: const Text('Submit'),
+                        child: Text(S.current.submit),
                       ),
                     );
                 }
@@ -216,7 +209,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         fields.undetermined == 0 &&
         fields.females == 0 &&
         fields.males == 0) {
-      snackbarError(context, "No pots guardar informació buida");
+      snackbarError(context, S.current.errorEmptyFields);
 
       return;
     }
@@ -237,10 +230,10 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       if (fields.administrativeArea.isEmpty &&
           fields.subAdministrativeArea.isEmpty &&
           fields.locality.isEmpty) {
-        snackbarError(context, 'Adreça buida');
+        snackbarError(context, S.current.errorEmptyFields);
       } else {
         ReportController().saveReport(fields, mobileData);
-        snackbarInfo(context, AppLocalizations.of(context).saveInformation);
+        snackbarInfo(context, S.current.saveInformation);
         Navigator.pop(context);
       }
     }

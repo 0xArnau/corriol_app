@@ -1,10 +1,10 @@
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/home/contact_page.dart';
 import 'package:corriol_app/pages/home/corriol_page.dart';
 import 'package:corriol_app/pages/home/my_records_page.dart';
 import 'package:corriol_app/pages/home/record_observation_page.dart';
 import 'package:corriol_app/widgets/card_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,28 +24,28 @@ class HomePage extends StatelessWidget {
               children: [
                 CardWidget(
                   imagePath: 'assets/images/home/1_1-coneix-al-corriol.png',
-                  text: AppLocalizations.of(context).meetKentishPlover,
+                  text: S.current.meetKentishPlover,
                   background: kColorScreenCorriol,
                   foreground: Colors.black,
                   page: const CorriolPage(),
                 ),
                 CardWidget(
                   imagePath: 'assets/images/home/1_6-contacta.png',
-                  text: AppLocalizations.of(context).contact,
+                  text: S.current.contact,
                   background: kColorScreenContact,
                   foreground: Colors.black,
                   page: ContactPage(),
                 ),
                 CardWidget(
                   imagePath: 'assets/images/home/1_3-anotar-observacio.png',
-                  text: AppLocalizations.of(context).recordObservation,
+                  text: S.current.recordObservation,
                   background: kColorScreenReport,
                   foreground: Colors.black,
                   page: const RecordObservationPage(),
                 ),
                 CardWidget(
                   imagePath: 'assets/images/home/1_4-registres.png',
-                  text: AppLocalizations.of(context).myRecords,
+                  text: S.current.myRecords,
                   background: kColorScreenMyReports,
                   foreground: Colors.black,
                   page: const MyRecordsPage(),
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: kDoublePaddingGridViewText),
             Text(
-              AppLocalizations.of(context).warningText112,
+              S.current.warningText112,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: kColorPrimaryGrey,

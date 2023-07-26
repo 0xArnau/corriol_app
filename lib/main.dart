@@ -1,10 +1,10 @@
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/l10n/l10n.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/splash.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
             ),
             supportedLocales: L10n.all,
             localizationsDelegates: const [
-              AppLocalizations.delegate,
+              S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,

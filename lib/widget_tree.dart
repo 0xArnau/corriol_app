@@ -1,4 +1,5 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
@@ -7,7 +8,6 @@ import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,11 +38,11 @@ class _WidgetTreeState extends State<WidgetTree> {
           navigation = [
             NavigationDestination(
               icon: const Icon(Icons.home),
-              label: AppLocalizations.of(context).home,
+              label: S.current.home,
             ),
             NavigationDestination(
               icon: const Icon(Icons.person),
-              label: AppLocalizations.of(context).profile,
+              label: S.current.profile,
             ),
           ];
           pages = [
@@ -53,11 +53,11 @@ class _WidgetTreeState extends State<WidgetTree> {
           navigation = [
             NavigationDestination(
               icon: const Icon(Icons.home),
-              label: AppLocalizations.of(context).home,
+              label: S.current.home,
             ),
             NavigationDestination(
               icon: const Icon(Icons.person),
-              label: AppLocalizations.of(context).profile,
+              label: S.current.profile,
             ),
           ];
           pages = [
@@ -71,21 +71,21 @@ class _WidgetTreeState extends State<WidgetTree> {
                 Icons.home,
                 // color: kColorIcon,
               ),
-              label: AppLocalizations.of(context).home,
+              label: S.current.home,
             ),
             NavigationDestination(
               icon: const Icon(
                 Icons.handyman,
                 // color: kColorIcon,
               ),
-              label: AppLocalizations.of(context).handyman,
+              label: S.current.handyman,
             ),
             NavigationDestination(
               icon: const Icon(
                 Icons.person,
                 // color: kColorIcon,
               ),
-              label: AppLocalizations.of(context).profile,
+              label: S.current.profile,
             ),
           ];
           pages = [
@@ -124,9 +124,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                                   .fetchReportDatalocality();
                             } else {
                               snackbarError(
-                                  context,
-                                  AppLocalizations.of(context)
-                                      .noInternetConnection);
+                                  context, S.current.noInternetConnection);
                             }
                           },
                           icon: const Icon(
