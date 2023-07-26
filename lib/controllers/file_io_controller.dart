@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';

@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 // import 'package:corriol_app/core/constants.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';

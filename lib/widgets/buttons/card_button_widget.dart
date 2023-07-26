@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/pages/handyman/report_map_page.dart';
 import 'package:flutter/material.dart';

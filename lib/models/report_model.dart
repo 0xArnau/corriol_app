@@ -1,4 +1,4 @@
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ReportModel {

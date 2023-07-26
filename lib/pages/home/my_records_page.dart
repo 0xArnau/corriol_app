@@ -1,4 +1,4 @@
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/widgets/legend_pie_chart_widget.dart';
 import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

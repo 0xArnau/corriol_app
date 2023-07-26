@@ -1,12 +1,12 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
-import 'package:corriol_app/widgets/snackbars/my_snackbar.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

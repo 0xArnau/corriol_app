@@ -1,5 +1,5 @@
 import 'package:corriol_app/controllers/geolocation_controller.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';

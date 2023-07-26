@@ -1,4 +1,4 @@
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/home/contact_page.dart';
 import 'package:corriol_app/pages/home/corriol_page.dart';
 import 'package:corriol_app/pages/home/my_records_page.dart';

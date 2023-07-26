@@ -1,5 +1,5 @@
 import 'package:corriol_app/controllers/file_io_controller.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/widgets/report_marker_widget.dart';

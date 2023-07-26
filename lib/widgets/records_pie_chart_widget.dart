@@ -1,6 +1,6 @@
 import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';

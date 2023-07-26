@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:corriol_app/controllers/auth_controller.dart';
-import 'package:corriol_app/core/constants.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 
