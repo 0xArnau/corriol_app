@@ -11,7 +11,7 @@ const kColorScreenReport = Color.fromRGBO(0, 193, 118, 1);
 const kColorScreenMyReports = Color.fromRGBO(253, 223, 1, 1);
 const kColorDropDown = Color.fromRGBO(242, 217, 116, 1);
 
-const kColorIcon = IconThemeData(color: kColorText);
+const kColorIcon = kColorText;
 
 const kColorPrimaryBlue = Colors.blue;
 const kColorPrimaryGrey = Colors.grey;

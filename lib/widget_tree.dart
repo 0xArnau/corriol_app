@@ -67,15 +67,24 @@ class _WidgetTreeState extends State<WidgetTree> {
         } else {
           navigation = [
             NavigationDestination(
-              icon: const Icon(Icons.home),
+              icon: const Icon(
+                Icons.home,
+                // color: kColorIcon,
+              ),
               label: AppLocalizations.of(context).home,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.handyman),
+              icon: const Icon(
+                Icons.handyman,
+                // color: kColorIcon,
+              ),
               label: AppLocalizations.of(context).handyman,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.person),
+              icon: const Icon(
+                Icons.person,
+                // color: kColorIcon,
+              ),
               label: AppLocalizations.of(context).profile,
             ),
           ];
@@ -102,9 +111,9 @@ class _WidgetTreeState extends State<WidgetTree> {
                       onPressed: () {
                         signOut();
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.logout,
-                        color: Colors.red.shade700,
+                        // color: Colors.red.shade700,
                       ),
                     )
                   : currentPage == 1
