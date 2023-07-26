@@ -43,7 +43,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
 
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
-      errorAuthFieldsSnackbar(context, "Empty fields");
+      snackbarError(context, "Empty fields");
     } else {
       // Show a loading icon
       // showDialog(
@@ -72,15 +72,15 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         _controllerEmail.text.isEmpty ||
         _controllerName.text.isEmpty ||
         _controllerPassword.text.isEmpty) {
-      errorAuthFieldsSnackbar(context, "Empty fields");
+      snackbarError(context, "Empty fields");
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
-      errorAuthFieldsSnackbar(context, "Passwords are different");
+      snackbarError(context, "Passwords are different");
     } else if (!checkBoxLegal) {
-      errorAuthFieldsSnackbar(context, "Legal checkbox");
+      snackbarError(context, "Legal checkbox");
     } else if (!checkBoxInfo) {
-      errorAuthFieldsSnackbar(context, "Info checkbox");
+      snackbarError(context, "Info checkbox");
     } else if (!checkBoxPrivacy) {
-      errorAuthFieldsSnackbar(context, "Privacy checkbox");
+      snackbarError(context, "Privacy checkbox");
     } else {
       // Show a loading icon
       // showDialog(

@@ -215,7 +215,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         fields.undetermined == 0 &&
         fields.females == 0 &&
         fields.males == 0) {
-      errorAuthFieldsSnackbar(context, "No pots guardar informació buida");
+      snackbarError(context, "No pots guardar informació buida");
 
       return;
     }
@@ -236,7 +236,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       if (fields.administrativeArea.isEmpty &&
           fields.subAdministrativeArea.isEmpty &&
           fields.locality.isEmpty) {
-        errorAuthFieldsSnackbar(context, 'Adreça buida');
+        snackbarError(context, 'Adreça buida');
       } else {
         ReportController().saveReport(fields, mobileData);
         snackbarInfo(context, AppLocalizations.of(context).saveInformation);

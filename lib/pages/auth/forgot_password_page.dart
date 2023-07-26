@@ -23,7 +23,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   Future<void> _resetPassword(BuildContext context) async {
     if (_controllerEmail.text.isEmpty) {
-      errorAuthFieldsSnackbar(context, "Field empty");
+      snackbarError(context, "Field empty");
       return;
     }
 
