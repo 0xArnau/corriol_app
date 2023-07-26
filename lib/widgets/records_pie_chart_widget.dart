@@ -28,8 +28,6 @@ class RecordsPieChartWidget extends StatelessWidget {
             ],
           );
         } else {
-          // TODO: save the local data in firestore
-
           Future<List<ReportModel>> records =
               ReportController().getReportsByUserId(user.email);
 

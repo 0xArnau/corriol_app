@@ -53,6 +53,8 @@ class ReportController {
   }
 
   Future<List<ReportModel>> getReportsByUserId(String userEmail) async {
+    _saveLocalReports2Firestore();
+
     try {
       List<ReportModel> reports = [];
       await FirebaseFirestore.instance
@@ -75,6 +77,8 @@ class ReportController {
   }
 
   Future<List<ReportModel>> getAllReports() async {
+    _saveLocalReports2Firestore();
+
     try {
       List<ReportModel> reports = [];
       await FirebaseFirestore.instance
