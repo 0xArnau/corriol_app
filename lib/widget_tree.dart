@@ -123,7 +123,10 @@ class _WidgetTreeState extends State<WidgetTree> {
                               Provider.of<UserProvider>(context, listen: false)
                                   .fetchReportDatalocality();
                             } else {
-                              snackbarError(context, "No internet connection");
+                              snackbarError(
+                                  context,
+                                  AppLocalizations.of(context)
+                                      .noInternetConnection);
                             }
                           },
                           icon: const Icon(

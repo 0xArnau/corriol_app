@@ -4,6 +4,7 @@ import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});

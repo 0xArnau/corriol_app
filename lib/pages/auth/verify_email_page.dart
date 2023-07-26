@@ -3,6 +3,8 @@ import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key});
