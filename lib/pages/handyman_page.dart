@@ -12,6 +12,16 @@ class HandymanPage extends StatefulWidget {
 }
 
 class _HandymanPageState extends State<HandymanPage> {
+  Widget downlloadAllCsv(Map<String, List<ReportModel>> map) {
+    List<ReportModel> list = [];
+
+    map.forEach((key, value) {
+      list.addAll(value);
+    });
+
+    return CardButtonWidget(text: "All", reports: list);
+  }
+
   List<Widget> generateKeyButton(Map<String, List<ReportModel>> map) {
     List<Widget> widgets = [];
     map.forEach((key, value) {
@@ -33,15 +43,19 @@ class _HandymanPageState extends State<HandymanPage> {
           builder: (context, value, child) {
             Map<String, List<ReportModel>> map = value.locality;
             List<Widget> addressSubAdministrativeArea = generateKeyButton(map);
+            Widget all = downlloadAllCsv(map);
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
               ),
-              itemCount: addressSubAdministrativeArea.length,
+              itemCount: addressSubAdministrativeArea.length + 1,
               itemBuilder: (context, index) {
-                return addressSubAdministrativeArea[index];
+                return [
+                  all,
+                  ...addressSubAdministrativeArea,
+                ][index];
               },
             );
           },
