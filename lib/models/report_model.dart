@@ -1,7 +1,7 @@
 import 'package:corriol_app/utils/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-/// Class that represents the fields that have a report
+/// Class that represents the fields that a report has
 class ReportModel {
   /// Creates a new [ReportModel] instance from a JSON format.
   ReportModel({
