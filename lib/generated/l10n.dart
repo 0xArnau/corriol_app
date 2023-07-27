@@ -170,6 +170,16 @@ class S {
     );
   }
 
+  /// `The email address is already in use by another account.`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'The email address is already in use by another account.',
+      name: 'emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email sent`
   String get emailSent {
     return Intl.message(
@@ -265,6 +275,16 @@ class S {
     return Intl.message(
       'Informative clause, form, registration, activities',
       name: 'infoClause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email address is badly formatted.`
+  String get invalidEmail {
+    return Intl.message(
+      'The email address is badly formatted.',
+      name: 'invalidEmail',
       desc: '',
       args: [],
     );
@@ -725,6 +745,16 @@ class S {
     return Intl.message(
       'Role: Technician',
       name: 'techRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is no user record corresponding to this identifier. The user may have been deleted.`
+  String get userNotFound {
+    return Intl.message(
+      'There is no user record corresponding to this identifier. The user may have been deleted.',
+      name: 'userNotFound',
       desc: '',
       args: [],
     );

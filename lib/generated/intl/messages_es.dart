@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directorio no existe"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "La dirección de correo electrónico ya está siendo utilizada por otra cuenta."),
         "emailSent": MessageLookupByLibrary.simpleMessage("Email enviado"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "Si quieres participar de forma activa en la conservación del Chorlitejo o tienes cualquier duda o propuesta, ponte en contacto con nosotros: "),
@@ -58,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Cláusula informativa, formulario, inscripción, actividades"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "La dirección de correo electrónico tiene un formato incorrecto."),
         "lang": MessageLookupByLibrary.simpleMessage("Idioma"),
         "language": MessageLookupByLibrary.simpleMessage("Castellano"),
         "legalWarning": MessageLookupByLibrary.simpleMessage("Aviso legal"),
@@ -135,6 +139,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Inscribirse"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuario"),
         "veirfyEmail": MessageLookupByLibrary.simpleMessage(
             "Verificar correo electrónico"),

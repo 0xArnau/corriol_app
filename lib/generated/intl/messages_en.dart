@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directory doesn\'t exist"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "The email address is already in use by another account."),
         "emailSent": MessageLookupByLibrary.simpleMessage("Email sent"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "If you want to participate actively in the conservation of the Plover or have any questions or proposals, please contact us: "),
@@ -57,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Informative clause, form, registration, activities"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "The email address is badly formatted."),
         "lang": MessageLookupByLibrary.simpleMessage("Language"),
         "language": MessageLookupByLibrary.simpleMessage("English"),
         "legalWarning": MessageLookupByLibrary.simpleMessage("Legal warning"),
@@ -130,6 +134,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "techRole": MessageLookupByLibrary.simpleMessage("Role: Technician"),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "There is no user record corresponding to this identifier. The user may have been deleted."),
         "userRole": MessageLookupByLibrary.simpleMessage("Role: User"),
         "veirfyEmail": MessageLookupByLibrary.simpleMessage("Verify Email"),
         "verifyEmailResent":

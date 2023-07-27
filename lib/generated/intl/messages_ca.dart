@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directori no existeix"),
         "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "L\'adreça de correu electrònic ja està utilitzada per un altre compte."),
         "emailSent": MessageLookupByLibrary.simpleMessage("Email enviat"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "Si vols participar de forma activa en la conservació del corriol o tens qualsevol dubte o proposta, posa\'t en contacte amb nosaltres: "),
@@ -56,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Clàusula informativa, formulari, inscripció, activitats"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "L\'adreça de correu electrònic està mal formatada."),
         "lang": MessageLookupByLibrary.simpleMessage("Idioma"),
         "language": MessageLookupByLibrary.simpleMessage("Català"),
         "legalWarning": MessageLookupByLibrary.simpleMessage("Avís legal"),
@@ -134,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "No hi ha cap registre d\'usuari corresponent a aquest identificador. És possible que l\'usuari hagi estat suprimit."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuari"),
         "veirfyEmail": MessageLookupByLibrary.simpleMessage("verificar Correu"),
         "verifyEmailResent": MessageLookupByLibrary.simpleMessage(
