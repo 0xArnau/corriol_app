@@ -21,43 +21,43 @@ class ReportModel {
   });
 
   /// The date and time when the report was created.
-  final String createdAt;
+  String createdAt;
 
   /// The user who created the report.
-  final String createdBy;
+  String createdBy;
 
   /// The coordinates [LatLng.latitude] and [LatLng.longitude] where the report was made.
-  final LatLng coordenates;
+  LatLng coordenates;
 
   /// The [Species] reported in the observation.
-  final Species species;
+  Species species;
 
   /// The number of male specimens in the report.
-  final int males;
+  int males;
 
   /// The number of female specimens in the report.
-  final int females;
+  int females;
 
   /// The number of undetermined specimens in the report.
-  final int undetermined;
+  int undetermined;
 
   /// The number of chicken specimens in the report.
-  final int chickens;
+  int chickens;
 
   /// The number of cat specimens in the report.
-  final int cats;
+  int cats;
 
   /// The number of dog specimens in the report.
-  final int dogs;
+  int dogs;
 
   /// The administrative area where the report was made.
-  final String administrativeArea;
+  String administrativeArea;
 
   /// The sub-administrative area where the report was made.
-  final String subAdministrativeArea;
+  String subAdministrativeArea;
 
   /// The locality where the report was made.
-  final String locality;
+  String locality;
 
   /// Converts the [ReportModel] instance to a JSON format.
   Map<String, dynamic> toJson() => {
