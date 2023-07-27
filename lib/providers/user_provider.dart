@@ -8,17 +8,30 @@ import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+/// Class to manage the current user information
 class UserProvider extends ChangeNotifier {
+  /// The current user
   late UserModel? _user;
+
+  /// The preferences of the current user
   late UserPreferencesModel _preferences;
+
+  /// The current position or a position selected on the map
   late LatLng _position;
 
+  /// Stores all the reports made by all users, the reports are grouped by locality
   Map<String, List<ReportModel>> locality = {};
 
+  /// Return the [UserModel] instance of the current user or [null]
   get user => _user;
+
+  /// Returns the [UserPreferencesModel] instance of the current user preferences, which contains: [UserPreferencesModel.lang], [UserPreferencesModel.mobileData] and [UserPreferencesModel.gps].
   get preferences => _preferences;
+
+  /// Return the selected position coordinates ([LatLng])
   get position => _position;
 
+  /// Constructor of the [UserProvider] class.
   UserProvider() {
     _user = null;
     _preferences = UserPreferencesModel();
@@ -27,34 +40,34 @@ class UserProvider extends ChangeNotifier {
     init();
   }
 
+  /// Initialize the [UserModelPreferences].
   Future<void> init() async {
-    // Obtener las preferencias asincrónicas
     _preferences = await UserPreferencesController.getUserPreferencesModel();
-
-    // Notificar a los listeners que las preferencias han cambiado
     notifyListeners();
-
-    // Continuar con cualquier otra inicialización necesaria
     fetchPosition();
   }
 
+  /// Fetches the [UserModel] info from the [AuthController.getUserInformation].
   Future<void> fetchUserInfo() async {
     _user = await AuthController().getUserInformation();
     notifyListeners();
   }
 
+  /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsMobileData].
   void fetchMobileDataInfo() async {
     bool? mobileData = await UserPreferencesController.getPrefsMobileData();
     _preferences.mobileData = mobileData ?? false;
     notifyListeners();
   }
 
+  /// Fetches the [UserPreferencesModel.gps] info from the [UserPreferencesController.getPrefsGps].
   void fetchGpsInfo() async {
     bool? gpsValue = await UserPreferencesController.getPrefsGps();
     _preferences.gps = gpsValue ?? false;
     notifyListeners();
   }
 
+  /// Fetches the [UserPreferencesModel.lang] info from the [UserPreferencesController.getPrefsLang].
   void fetchLangInfo() async {
     String? lang = await UserPreferencesController.getPrefsLang();
     _preferences.lang = Locale(
@@ -62,6 +75,7 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Fetches the [_position] info from the [GeolocationController.getCurrentLocation].
   void fetchPosition() async {
     final position = await GeolocationController().getCurrentLocation(this);
 
@@ -71,6 +85,7 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Fetches the [locality] reports from thew [ReportController.getAllReports], sorts and groups them by locality
   void fetchReportDatalocality() async {
     final List<ReportModel> reports = await ReportController().getAllReports();
     Map<String, List<ReportModel>> map = {};
@@ -101,24 +116,28 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Sets the [_preferences.mobileData]
   void setMobileDataInfo(bool mobileData) {
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
     notifyListeners();
   }
 
+  /// Sets the [_preferences.gps]
   void setGpsInfo(bool gps) {
     UserPreferencesController.setPrefsGps(gps);
     _preferences.gps = gps;
     notifyListeners();
   }
 
+  /// Sets the [_preferences.lang]
   void setLangInfo(Locale lang) {
     UserPreferencesController.setPrefsLang(lang);
     _preferences.lang = lang;
     notifyListeners();
   }
 
+  /// Sets the [_position]
   void setPosition(LatLng position) {
     _position = position;
     notifyListeners();
