@@ -1,7 +1,9 @@
 import 'package:corriol_app/utils/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+/// Class that represents the fields that have a report
 class ReportModel {
+  /// Creates a new [ReportModel] instance from a JSON format.
   ReportModel({
     required this.createdAt,
     required this.createdBy,
@@ -18,20 +20,46 @@ class ReportModel {
     required this.locality,
   });
 
-  String createdBy;
-  LatLng coordenates;
-  Species species;
-  int males;
-  int females;
-  int undetermined;
-  int chickens;
-  int dogs;
-  int cats;
-  String administrativeArea;
-  String subAdministrativeArea;
-  String locality;
-  String createdAt;
+  /// The date and time when the report was created.
+  final String createdAt;
 
+  /// The user who created the report.
+  final String createdBy;
+
+  /// The coordinates [LatLng.latitude] and [LatLng.longitude] where the report was made.
+  final LatLng coordenates;
+
+  /// The [Species] reported in the observation.
+  final Species species;
+
+  /// The number of male specimens in the report.
+  final int males;
+
+  /// The number of female specimens in the report.
+  final int females;
+
+  /// The number of undetermined specimens in the report.
+  final int undetermined;
+
+  /// The number of chicken specimens in the report.
+  final int chickens;
+
+  /// The number of cat specimens in the report.
+  final int cats;
+
+  /// The number of dog specimens in the report.
+  final int dogs;
+
+  /// The administrative area where the report was made.
+  final String administrativeArea;
+
+  /// The sub-administrative area where the report was made.
+  final String subAdministrativeArea;
+
+  /// The locality where the report was made.
+  final String locality;
+
+  /// Converts the [ReportModel] instance to a JSON format.
   Map<String, dynamic> toJson() => {
         'createdAt': createdAt,
         'createdBy': createdBy,
@@ -48,6 +76,7 @@ class ReportModel {
         'cats': cats,
       };
 
+  /// Creates a new [ReportModel] instance from a JSON format.
   factory ReportModel.fromJson(Map<String, dynamic> json) {
     final coordenates = json['coordenates'].split(',');
     return ReportModel(
