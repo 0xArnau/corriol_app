@@ -22,7 +22,7 @@ class UserProvider extends ChangeNotifier {
   /// Stores all the reports made by all users, the reports are grouped by locality
   Map<String, List<ReportModel>> locality = {};
 
-  /// Return the [UserModel] instance of the current user or [null]
+  /// Return the [UserModel] instance of the current user.
   get user => _user;
 
   /// Returns the [UserPreferencesModel] instance of the current user preferences, which contains: [UserPreferencesModel.lang], [UserPreferencesModel.mobileData] and [UserPreferencesModel.gps].
@@ -40,7 +40,7 @@ class UserProvider extends ChangeNotifier {
     init();
   }
 
-  /// Initialize the [UserModelPreferences].
+  /// Initialize the [UserPreferencesModel].
   Future<void> init() async {
     _preferences = await UserPreferencesController.getUserPreferencesModel();
     notifyListeners();
@@ -116,21 +116,21 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Sets the [_preferences.mobileData]
+  /// Sets the [UserPreferencesModel.mobileData]
   void setMobileDataInfo(bool mobileData) {
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
     notifyListeners();
   }
 
-  /// Sets the [_preferences.gps]
+  /// Sets the [UserPreferencesModel.gps]
   void setGpsInfo(bool gps) {
     UserPreferencesController.setPrefsGps(gps);
     _preferences.gps = gps;
     notifyListeners();
   }
 
-  /// Sets the [_preferences.lang]
+  /// Sets the [UserPreferencesModel.lang]
   void setLangInfo(Locale lang) {
     UserPreferencesController.setPrefsLang(lang);
     _preferences.lang = lang;
