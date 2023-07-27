@@ -43,26 +43,30 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void fetchMobileDataInfo() {
-    final mobileData = UserPreferencesController.getPrefsMobileData as bool?;
+  void fetchMobileDataInfo() async {
+    bool? mobileData = await UserPreferencesController.getPrefsMobileData();
     _preferences.mobileData = mobileData ?? false;
     notifyListeners();
   }
 
-  void fetchGpsInfo() {
-    final gps = UserPreferencesController.getPrefsGps as bool?;
-    _preferences.gps = gps ?? false;
+  void fetchGpsInfo() async {
+    bool? gpsValue = await UserPreferencesController.getPrefsGps();
+    _preferences.gps = gpsValue ?? false;
     notifyListeners();
   }
 
-  void fetchLangInfo() {
-    final lang = UserPreferencesController.getPrefsLang as String?;
-    _preferences.lang = Locale(lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode);
+  void fetchLangInfo() async {
+    String? lang = await UserPreferencesController.getPrefsLang();
+    _preferences.lang = Locale(
+        lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode);
     notifyListeners();
   }
 
   void fetchPosition() async {
     final position = await GeolocationController().getCurrentLocation(this);
+
+    if (position == null) return;
+
     _position = LatLng(position.latitude, position.longitude);
     notifyListeners();
   }

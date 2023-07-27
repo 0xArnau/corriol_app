@@ -24,13 +24,28 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final UserProvider provider = UserProvider();
+
+  @override
+  void initState() {
+    provider.fetchGpsInfo();
+    provider.fetchLangInfo();
+    provider.fetchMobileDataInfo();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UserProvider>(
-      create: (context) => UserProvider(),
+      create: (context) => provider,
       child: Consumer<UserProvider>(
         builder: (context, userProvider, child) {
           final preferences = userProvider.preferences as UserPreferencesModel;

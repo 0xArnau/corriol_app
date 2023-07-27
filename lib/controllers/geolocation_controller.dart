@@ -88,8 +88,10 @@ class GeolocationController {
     }
   }
 
-  Future<Position> getCurrentLocation(UserProvider provider) async {
+  Future<Position?> getCurrentLocation(UserProvider provider) async {
     enableLocationPermission(provider);
+
+    if (!provider.preferences.gps) return null;
 
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
