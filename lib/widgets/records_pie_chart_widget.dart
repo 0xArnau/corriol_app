@@ -1,4 +1,5 @@
 import 'package:corriol_app/controllers/report_controller.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
@@ -20,11 +21,11 @@ class RecordsPieChartWidget extends StatelessWidget {
         final user = value.user as UserModel;
         final preferences = value.preferences as UserPreferencesModel;
         if (preferences.mobileData == false) {
-          return const Column(
+          return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircularProgressIndicator(),
-              Text("No se puede visualizar esta area sin conexión a internet"),
+              const CircularProgressIndicator(),
+              Text(S.current.cannotBeViewedWithoutInternet),
             ],
           );
         } else {

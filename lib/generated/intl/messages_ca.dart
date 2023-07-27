@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edat"),
         "all": MessageLookupByLibrary.simpleMessage("Tots"),
+        "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
+            "No es pot visualitzar aquesta àrea sense connexió a internet"),
         "checkboxInfo": MessageLookupByLibrary.simpleMessage("Info checkbox"),
         "checkboxLegal": MessageLookupByLibrary.simpleMessage(
             "Casilla de verificació legal"),
@@ -32,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Contrasenya de confirmació"),
         "contact": MessageLookupByLibrary.simpleMessage("Contacte"),
+        "corriolCamanegre":
+            MessageLookupByLibrary.simpleMessage("Corriol camanegre"),
+        "corriolPetit": MessageLookupByLibrary.simpleMessage("Corriol Petit"),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directori no existeix"),
         "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),

@@ -107,16 +107,16 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
             S.current.myRecords,
             style: kTextStylePageTitle,
           ),
-          bottom: const TabBar(
+          bottom: TabBar(
             indicatorColor: kColorText,
             labelColor: kColorText,
             // isScrollable: true,
             tabs: [
               Tab(
-                text: "Corriol Camanegre",
+                text: S.current.corriolCamanegre,
               ),
               Tab(
-                text: "Corriol Petit",
+                text: S.current.corriolPetit,
               ),
             ],
           ),

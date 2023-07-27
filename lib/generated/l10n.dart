@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `This area cannot be viewed without internet connection`
+  String get cannotBeViewedWithoutInternet {
+    return Intl.message(
+      'This area cannot be viewed without internet connection',
+      name: 'cannotBeViewedWithoutInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Casilla de verificació d'informació`
   String get checkboxInfo {
     return Intl.message(
@@ -115,6 +125,26 @@ class S {
     return Intl.message(
       'Contact',
       name: 'contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kentish plover`
+  String get corriolCamanegre {
+    return Intl.message(
+      'Kentish plover',
+      name: 'corriolCamanegre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Little ringed plover`
+  String get corriolPetit {
+    return Intl.message(
+      'Little ringed plover',
+      name: 'corriolPetit',
       desc: '',
       args: [],
     );
