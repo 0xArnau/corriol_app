@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
+/// Determines the message to show based on [FirebaseAuthException].
 void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
   switch (e.code) {
     case "user-not-found":
@@ -20,6 +21,7 @@ void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
   }
 }
 
+/// Shows a [SnackBar] with an error message.
 void _errorFirebaseAuthSnackbar(BuildContext context, String? e) {
   Logger().d(e);
   ScaffoldMessenger.of(context).showSnackBar(
@@ -36,6 +38,7 @@ void _errorFirebaseAuthSnackbar(BuildContext context, String? e) {
   );
 }
 
+/// Shows a [SnackBar] with a generic error message [str]
 void snackbarInfo(BuildContext context, String str) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
@@ -48,6 +51,7 @@ void snackbarInfo(BuildContext context, String str) {
   );
 }
 
+/// Shows a [SnackBar] with a generic message [str]
 void snackbarError(BuildContext context, String str) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
