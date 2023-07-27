@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -99,17 +100,22 @@ class GeolocationController {
   }
 
   Future<List<String>> updateAddress(UserProvider provider) async {
-    final position = provider.position as LatLng;
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
-    );
+    try {
+      final position = provider.position as LatLng;
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude,
+      );
 
-    String administrativeArea = placemarks[0].administrativeArea ?? "";
-    String subAdministrativeArea = placemarks[0].subAdministrativeArea ?? "";
-    String locality = placemarks[0].locality ?? "";
+      String administrativeArea = placemarks[0].administrativeArea ?? "";
+      String subAdministrativeArea = placemarks[0].subAdministrativeArea ?? "";
+      String locality = placemarks[0].locality ?? "";
 
-    return [administrativeArea, subAdministrativeArea, locality];
+      return [administrativeArea, subAdministrativeArea, locality];
+    } catch (e) {
+      Logger().e(e);
+      return ['', '', ''];
+    }
   }
 
   Future<LatLng> getLatLngFromAddress(String address) async {
