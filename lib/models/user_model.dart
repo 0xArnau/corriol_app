@@ -21,7 +21,9 @@ class UserModel {
   /// The age of the user.
   final int age;
 
-  /// Indicates whether the user is a technician or not. Default is `false`.
+  /// Indicates whether the user is a technician or not. 
+  /// 
+  /// Default is `false`.
   final bool? technician;
 
   /// Converts the [UserModel] instance to a JSON format.
