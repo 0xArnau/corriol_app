@@ -5,7 +5,7 @@ import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 
-
+/// A widget representing the "Verify Email" page.
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key});
 
@@ -38,6 +38,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     super.dispose();
   }
 
+  /// Sign out the current user
   Future<void> signOut() async {
     await AuthController().signOut();
   }
@@ -83,7 +84,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
         ? const AuthPage()
         : Scaffold(
             appBar: AppBar(
-              title: Text(S.current.veirfyEmail),
+              title: Text(S.current.verifyEmail),
               actions: [
                 IconButton(
                   onPressed: () {

@@ -771,10 +771,10 @@ class S {
   }
 
   /// `Verify Email`
-  String get veirfyEmail {
+  String get verifyEmail {
     return Intl.message(
       'Verify Email',
-      name: 'veirfyEmail',
+      name: 'verifyEmail',
       desc: '',
       args: [],
     );

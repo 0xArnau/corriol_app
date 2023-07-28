@@ -72,7 +72,7 @@
   "techRole": "Rol: Técnico",
   "userNotFound": "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado.",
   "userRole": "Rol: Usuario",
-  "veirfyEmail": "Verificar correo electrónico",
+  "verifyEmail": "Verificar correo electrónico",
   "verifyEmailResent": "Reenviar verificación",
   "verifyEmailSent": "Un email de verificación ha sido enviado a:",
   "warningText112": "Si nota alguna incidencia relacionada con el Chorlitejo patinegro, llame al: ",

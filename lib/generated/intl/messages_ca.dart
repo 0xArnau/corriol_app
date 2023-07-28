@@ -141,7 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "No hi ha cap registre d\'usuari corresponent a aquest identificador. És possible que l\'usuari hagi estat suprimit."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuari"),
-        "veirfyEmail": MessageLookupByLibrary.simpleMessage("verificar Correu"),
+        "verifyEmail": MessageLookupByLibrary.simpleMessage("verificar Correu"),
         "verifyEmailResent": MessageLookupByLibrary.simpleMessage(
             "Torna a enviar la verificació"),
         "verifyEmailSent": MessageLookupByLibrary.simpleMessage(

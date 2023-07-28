@@ -137,7 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "There is no user record corresponding to this identifier. The user may have been deleted."),
         "userRole": MessageLookupByLibrary.simpleMessage("Role: User"),
-        "veirfyEmail": MessageLookupByLibrary.simpleMessage("Verify Email"),
+        "verifyEmail": MessageLookupByLibrary.simpleMessage("Verify Email"),
         "verifyEmailResent":
             MessageLookupByLibrary.simpleMessage("Resend Verification"),
         "verifyEmailSent": MessageLookupByLibrary.simpleMessage(

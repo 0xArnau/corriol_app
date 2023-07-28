@@ -72,7 +72,7 @@
   "techRole": "Role: Technician",
   "userNotFound": "There is no user record corresponding to this identifier. The user may have been deleted.",
   "userRole": "Role: User",
-  "veirfyEmail": "Verify Email",
+  "verifyEmail": "Verify Email",
   "verifyEmailResent": "Resend Verification",
   "verifyEmailSent": "A verification email has been sent to: ",
   "warningText112": "If you notice any incident related to the Kentish Plover, call: ",

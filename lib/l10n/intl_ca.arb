@@ -72,7 +72,7 @@
   "techRole": "Rol: tècnic",
   "userNotFound": "No hi ha cap registre d'usuari corresponent a aquest identificador. És possible que l'usuari hagi estat suprimit.",
   "userRole": "Rol: Usuari",
-  "veirfyEmail": "verificar Correu",
+  "verifyEmail": "verificar Correu",
   "verifyEmailResent": "Torna a enviar la verificació",
   "verifyEmailSent": "S'ha enviat un correu electrònic de verificació a:",
   "warningText112": "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al: ",
