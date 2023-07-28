@@ -6,6 +6,7 @@ import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// A widget representing the authentication page.
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
 
