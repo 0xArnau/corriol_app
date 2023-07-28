@@ -7,7 +7,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 
+/// Controller class for handling geolocation-related operations.
 class GeolocationController {
+  /// Updates the GPS status in the [UserProvider] based on the current location permission.
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the user's [UserPreferencesModel.gps].
   void _updateIsGpsOnNotifier(UserProvider provider) async {
     final LocationPermission permission = await Geolocator.requestPermission();
     switch (permission) {
@@ -30,6 +34,9 @@ class GeolocationController {
     }
   }
 
+  /// Checks the current location permission status.
+  ///
+  /// Returns `true` if GPS is enabled, otherwise `false`.
   bool checkGpsStatus() {
     Geolocator.requestPermission().then((LocationPermission permission) {
       switch (permission) {
@@ -51,6 +58,9 @@ class GeolocationController {
     return false;
   }
 
+  /// Requests and enables location permission for the user.
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
   Future<void> enableLocationPermission(UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
     if (!preferences.gps) {
@@ -72,6 +82,9 @@ class GeolocationController {
     }
   }
 
+  /// Disables location permission for the user.
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
   Future<void> disableLocationPermission(UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
 
@@ -88,6 +101,11 @@ class GeolocationController {
     }
   }
 
+  /// Gets the current user's location.
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel].
+  ///
+  /// Returns the [Position] object containing the user's current location, or `null` if location permission is not granted.
   Future<Position?> getCurrentLocation(UserProvider provider) async {
     enableLocationPermission(provider);
 
@@ -98,6 +116,11 @@ class GeolocationController {
     );
   }
 
+  /// Updates the user's address based on the current [LatLng].
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the current user's [UserProvider.position].
+  ///
+  /// Returns a [List] of [String] containing the administrativeArea, subAdministrativeArea, and locality, or empty strings if an error occurs.
   Future<List<String>> updateAddress(UserProvider provider) async {
     try {
       final position = provider.position as LatLng;
@@ -117,6 +140,11 @@ class GeolocationController {
     }
   }
 
+  /// Gets the [LatLng] from the given address.
+  ///
+  /// The [address] is the string representation of the address to be converted to [LatLng].
+  ///
+  /// Returns the [LatLng] coordinates if successful, otherwise returns the default coordinates (Catalunya).
   Future<LatLng> getLatLngFromAddress(String address) async {
     try {
       List<Location> locations = await locationFromAddress(address);
