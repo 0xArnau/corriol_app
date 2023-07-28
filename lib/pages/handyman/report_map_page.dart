@@ -6,6 +6,7 @@ import 'package:corriol_app/widgets/report_marker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+/// A page that displays a map with markers for each report in the [List<ReportModel>].
 class ReportMapPage extends StatefulWidget {
   const ReportMapPage({
     super.key,
@@ -21,6 +22,7 @@ class ReportMapPage extends StatefulWidget {
 }
 
 class _ReportMapPageState extends State<ReportMapPage> {
+  /// Returns a set of markers for each report in the [widget.reports] list.
   Set<Marker> getMarkers() {
     Set<Marker> markers = <Marker>{};
 
