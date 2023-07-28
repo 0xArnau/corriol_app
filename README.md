@@ -1,19 +1,15 @@
 # corriol_app
 
-A new Flutter project.
+This project is a mobile application (Android & iOS) called "Corriol APP." Its main purpose is to allow users (volunteers of [GePeC-EdC](https://gepec.cat)) to register observations of the "Corriol camanegre" bird species [[ca]](https://ca.wikipedia.org/wiki/Corriol_camanegre), [[es]](https://es.wikipedia.org/wiki/Charadrius_alexandrinus) & [[en]](https://en.wikipedia.org/wiki/Kentish_plover), and the "Corriol petit" bird species [[ca]](https://ca.wikipedia.org/wiki/Corriol_anellat_petit), [[es]](https://es.wikipedia.org/wiki/Charadrius_dubius) & [[en]](https://en.wikipedia.org/wiki/Little_ringed_plover). Users can record various details, such as the number of birds observed by gender and species, as well as their geographic location.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+   <a href="https://play.google.com/store/apps/developer?id=GEPEC-EdC" target="_blank" rel="noreferrer">
+      <img src="https://www.vectorlogo.zone/logos/google_play/google_play-ar21.svg" alt="Play Store" width="200"/>
+   </a>
+   <a href="" target="_blank" rel="noreferrer">
+      <img src="https://www.vectorlogo.zone/logos/apple_appstore/apple_appstore-ar21.svg" alt="Apple Store" width="200"/>
+   </a>
+</p>
 
 ---
 
@@ -25,52 +21,40 @@ samples, guidance on mobile development, and a full API reference.
    2. Xcode
 3. Android Studio
 
-## Installation
+## Installation & Configuration
 
-## Usage
+To get started with the project, follow these steps:
 
-### Auth
+1. Clone the repository.
+2. Add the API_KEYs from [Google Maps](https://console.cloud.google.com/apis/dashboard?) to the .env file:
+   1. GOOGLE_MAPS_API_KEY_ANDROID
+   2. GOOGLE_MAPS_API_KEY_IOS
 
-- Is used Firebase to authenticate the users.
+## Documentation
 
-### DB
-
-- Is used Firebase (Firestore) database
-
-### Translations
-
-- To have the app in multiple languages is used [intl](#intl) package.
-
-### [Generate an APK](https://docs.flutter.dev/deployment/android)
-
-Android:
+To generate documentation, use `dart doc .`, which will generate HTMLs. These can be accessed directly, but to make the search functionality work, you'll need to create a http server:
 
 ```shell
-flutter build apk --build-name=0.0.1 --build-number=1
+dart pub global activate dhttpd 
+dhttpd --path doc/api # starts the server, ctrl-c to exit
+
+dart pub global deactivate dhttpd  
 ```
 
-## Notes
+## Key Features
 
-### Packages
+- Bird Observation Recording: Users can specify the number of birds observed by gender (males, females, undetermined) and their predators.
+- Users can view their records.
+- Google Maps Integration: The application utilizes Google Maps to display the geographical location of registered observations.
+- Preference Settings: Users can customize their preferences in the app, such as language, mobile data usage and location permission.
+- Technicians can view all records (grouped by locality) made by all users and download them as CSV files.
 
-#### [intl](https://pub.dev/packages/intl)
+## Contribution
 
-Use the vscode plugin `Flutter Intl` to auto generate flutter translations files
+If you want to contribute to this project, feel free to create pull requests with your improvements, bug fixes, or new features. We appreciate any kind of collaboration and constructive feedback.
 
-The resulting code will be placed in the .dart_tool/flutter_gen/gen_l10n directory, and can be accessed in the code using the following import:
+## Build the App (coming soon)
 
-```Dart
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-```
+## License (coming soon)
 
-#### [shared_preferences](https://pub.dev/packages/shared_preferences)
-
-Data may be persisted to disk asynchronously, and there is no guarantee that writes will be persisted to disk after returning, so this plugin must not be used for storing critical data.
-
-### [gddc](https://pub.dev/packages/dcdg)
-
-Used to create class diagrams
-
-```shell
-dart run dcdg > path/file.plantuml
-``````
+## Screenshots (coming soon)
