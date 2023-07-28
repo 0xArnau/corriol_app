@@ -2,40 +2,49 @@ import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// A class that provides methods for managing user preferences using [shared_preferences].
 class UserPreferencesController {
+  /// Instance of [shared_preferences] for handling user preferences.
   static final Future<SharedPreferences> _prefs =
       SharedPreferences.getInstance();
 
+  /// Sets the selected language to [lang] in shared preferences.
   static Future<void> setPrefsLang(Locale lang) async {
     final SharedPreferences prefs = await _prefs;
     await prefs.setString('lang', lang.toString());
   }
 
+  /// Sets the GPS preference to [value] in shared preferences.
   static Future<void> setPrefsGps(bool value) async {
     final SharedPreferences prefs = await _prefs;
     await prefs.setBool('gps', value);
   }
 
+  /// Sets the mobile data preference to [value] in shared preferences.
   static Future<void> setPrefsMobileData(bool value) async {
     final SharedPreferences prefs = await _prefs;
     await prefs.setBool('mobile_data', value);
   }
 
+  /// Retrieves the selected language from shared preferences or `null` if there is no stored preference.
   static Future<String?> getPrefsLang() async {
     final SharedPreferences prefs = await _prefs;
     return prefs.getString('lang');
   }
 
+  /// Retrieves the GPS preference from shared preferences or `null` if there is no stored preference.
   static Future<bool?> getPrefsGps() async {
     final SharedPreferences prefs = await _prefs;
     return prefs.getBool('gps');
   }
 
+  /// Retrieves the mobile data preference from shared preferences or `null` if there is no stored preference.
   static Future<bool?> getPrefsMobileData() async {
     final SharedPreferences prefs = await _prefs;
     return prefs.getBool('mobile_data');
   }
 
+  /// Retrieves the [UserPreferencesModel] from shared preferences with default values.
   static Future<UserPreferencesModel> getUserPreferencesModel() async {
     final SharedPreferences prefs = await _prefs;
     final String? lang = prefs.getString("lang");
@@ -43,7 +52,8 @@ class UserPreferencesController {
     final bool? gps = prefs.getBool("gps");
 
     return UserPreferencesModel(
-      lang: Locale(lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode),
+      lang: Locale(lang ??
+          WidgetsBinding.instance.platformDispatcher.locale.languageCode),
       mobileData: mobileData ?? true,
       gps: gps ?? true,
     );
