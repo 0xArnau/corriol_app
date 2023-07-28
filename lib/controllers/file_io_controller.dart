@@ -105,7 +105,7 @@ class FileIoController {
     rows.add([
       'createdBy',
       'createdAt',
-      'coordenates',
+      'coordinates',
       'administrativeArea',
       'subAdministrativeArea',
       'locality',
@@ -122,7 +122,7 @@ class FileIoController {
       rows.add([
         report.createdBy,
         report.createdAt,
-        report.coordenates,
+        report.coordinates,
         report.administrativeArea,
         report.subAdministrativeArea,
         report.locality,

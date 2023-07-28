@@ -7,7 +7,7 @@ class ReportModel {
   ReportModel({
     required this.createdAt,
     required this.createdBy,
-    required this.coordenates,
+    required this.coordinates,
     required this.species,
     required this.females,
     required this.males,
@@ -27,7 +27,7 @@ class ReportModel {
   String createdBy;
 
   /// The coordinates [LatLng.latitude] and [LatLng.longitude] where the report was made.
-  LatLng coordenates;
+  LatLng coordinates;
 
   /// The [Species] reported in the observation.
   Species species;
@@ -63,7 +63,7 @@ class ReportModel {
   Map<String, dynamic> toJson() => {
         'createdAt': createdAt,
         'createdBy': createdBy,
-        'coordenates': '${coordenates.latitude}, ${coordenates.longitude}',
+        'coordinates': '${coordinates.latitude}, ${coordinates.longitude}',
         'administrativeArea': administrativeArea,
         'subAdministrativeArea': subAdministrativeArea,
         'locality': locality,
@@ -78,14 +78,14 @@ class ReportModel {
 
   /// Creates a new [ReportModel] instance from a JSON format.
   factory ReportModel.fromJson(Map<String, dynamic> json) {
-    final coordenates = json['coordenates'].split(',');
+    final coordinates = json['coordinates'].split(',');
     return ReportModel(
       createdAt: json['createdAt'].toString(),
       createdBy: json['createdBy'].toString(),
-      coordenates: LatLng(
-          double.parse(coordenates[0]),
+      coordinates: LatLng(
+          double.parse(coordinates[0]),
           double.parse(
-            coordenates[1],
+            coordinates[1],
           )),
       species: SpeciesExtension.valueOf(json['species'].toString()),
       females: int.parse(json['females'].toString()),

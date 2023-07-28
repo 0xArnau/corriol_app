@@ -29,7 +29,7 @@ class _ReportMapPageState extends State<ReportMapPage> {
         Marker(
           markerId: MarkerId(report.createdBy),
           position:
-              LatLng(report.coordenates.latitude, report.coordenates.longitude),
+              LatLng(report.coordinates.latitude, report.coordinates.longitude),
           onTap: () {
             showDialog(
               context: context,
@@ -67,7 +67,7 @@ class _ReportMapPageState extends State<ReportMapPage> {
       body: Center(
         child: GoogleMap(
           initialCameraPosition: MapController.getDefaultCameraPosition(
-              widget.reports[0].coordenates, 9),
+              widget.reports[0].coordinates, 9),
           markers: getMarkers(),
         ),
       ),

@@ -32,7 +32,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   ReportModel fields = ReportModel(
     createdAt: DateTime.now().toIso8601String(),
     createdBy: AuthController().currentUser!.email!,
-    coordenates: const LatLng(0, 0),
+    coordinates: const LatLng(0, 0),
     species: Species.corriolCamanegre,
     females: 0,
     males: 0,
@@ -223,7 +223,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       fields.subAdministrativeArea = address[1];
       fields.locality = address[2];
 
-      fields.coordenates = provider.position;
+      fields.coordinates = provider.position;
     } catch (e) {
       Logger().e(e);
     } finally {
