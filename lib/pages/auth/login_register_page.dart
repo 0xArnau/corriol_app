@@ -11,6 +11,7 @@ import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+/// A widget representing the "Login/Register" page.
 class LoginRegisterPage extends StatefulWidget {
   const LoginRegisterPage({super.key});
 
@@ -42,6 +43,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     super.dispose();
   }
 
+  /// Using [FirebaseAuth.signInWithEmailAndPassword] signs in the user with the provided email and password.
+  /// 
+  /// If the passwords don't match shows a [errorFirebaseAuthSnackbar] error message.
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
       snackbarError(context, S.current.errorEmptyFields);
@@ -67,6 +71,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     }
   }
 
+  /// Using [FirebaseAuth.createUserWithEmailAndPassword], registers a new user with the provided email, password, name, and age.
+  /// 
+  /// If a field is empty show a [errorFirebaseAuthSnackbar] error message.
   Future<void> registerWithEmailAndPassword(BuildContext context) async {
     if (_controllerAge.text.isEmpty ||
         _controllerConfirmPassword.text.isEmpty ||

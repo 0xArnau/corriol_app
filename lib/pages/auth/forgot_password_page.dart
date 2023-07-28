@@ -23,7 +23,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
-  /// Using [FirebaseAuth] sends a message to reset the password for the user associated with the entered email.
+  /// Using [FirebaseAuth.sendPasswordResetEmail] sends a message to reset the password for the user associated with the entered email.
   Future<void> _resetPassword(BuildContext context) async {
     if (_controllerEmail.text.isEmpty) {
       snackbarError(context, S.current.errorEmptyFields);
