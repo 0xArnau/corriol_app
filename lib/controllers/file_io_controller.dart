@@ -8,22 +8,27 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
+/// Class that provides functionality to Input/Output files
 class FileIoController {
+  /// Constructor to create a [FileIoController] instance.
   FileIoController({required this.fileName});
 
+  /// The name of the file to work with.
   String fileName;
 
+  /// Gets the path for the application's document directory using [path_provider.getApplicationDocumentsDirectory].
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
+  /// Gets the file based on the [fileName] and [_pathPath].
   Future<File> get _localFile async {
     final path = await _localPath;
     return File('$path/$fileName');
   }
 
+  /// Deletes the [_localFile]
   Future<void> deleteFile() async {
     final file = await _localFile;
     if (await file.exists()) {
@@ -31,39 +36,48 @@ class FileIoController {
     }
   }
 
+  /// Checks if the [_localFile] exists.
   Future<bool> fileExists() async {
     final file = await _localFile;
     return file.exists();
   }
 
+  /// Writes content to the [_localFile] in append mode.
   Future<File> writeContent(String content) async {
     final file = await _localFile;
     return file.writeAsString('$content\n', mode: FileMode.append);
   }
 
+  /// Re-writes content to the [_fileName] in write mode.
   Future<File> reWriteContent(String content) async {
     final file = await _localFile;
     return file.writeAsString(content, mode: FileMode.write);
   }
 
+  /// Reads the content from the [_localFile].
   ///
+  /// Returns the contents as a [String], or `null` if there was an error reading the file.
   Future<String?> readContent() async {
     try {
       final file = await _localFile;
       String contents = await file.readAsString();
       return contents;
     } catch (e) {
-      // If there is an error reading, return a default String
       return null;
     }
   }
 
+  /// Requests the permission (using [permission_handler]) for file storage and returns whether the permission is granted.
   static Future<bool> _permissionStorage(Permission permission) async {
     if (await permission.isGranted) return true;
 
     return (await permission.request().isGranted) ? true : false;
   }
 
+  /// Saves a list of [ReportModel] objects to a CSV file (using [csv.ListToCsvConverter]) in the device storage.
+  ///
+  /// The [reports] list contains the data to be written to the CSV file.
+  /// The [context] is required to display a snackbar with the result of the operation.
   static void saveReports2CSV(
       List<ReportModel> reports, BuildContext context) async {
     late String csv;
