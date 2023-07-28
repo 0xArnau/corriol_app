@@ -3,11 +3,14 @@ import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// A page that displays contact information, including emergency number, email, and website.
 class ContactPage extends StatelessWidget {
   ContactPage({super.key});
 
+  /// Gepec's url website.
   final Uri _url = Uri.parse('https://gepec.cat');
-  // final String _mail = 'especies@gepec.cat';
+
+  /// Gepec's email.
   final Uri _emailLaunchUri = Uri(scheme: 'mailto', path: 'especies@gepec.cat');
 
   @override

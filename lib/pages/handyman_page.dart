@@ -5,6 +5,7 @@ import 'package:corriol_app/widgets/buttons/card_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// A page that shows all reports made by all users based on locality.
 class HandymanPage extends StatefulWidget {
   const HandymanPage({super.key});
 

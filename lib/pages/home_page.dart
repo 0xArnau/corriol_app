@@ -7,6 +7,7 @@ import 'package:corriol_app/pages/home/record_observation_page.dart';
 import 'package:corriol_app/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
+/// The home page of the Corriol App.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

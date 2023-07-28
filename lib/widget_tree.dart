@@ -11,6 +11,7 @@ import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// The main widget tree of the Corriol app, which handles the navigation and page switching between: [HomePage], [HandymanPage] and [ProfilePage].
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});
 

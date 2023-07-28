@@ -6,14 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+/// A page that displays a map with the user's current location and allows to change the location.
 class MapPage extends StatefulWidget {
+  /// Creates a [MapPage] with the specified initial `position` and `zoom`.
   const MapPage({
     super.key,
     required this.position,
     required this.zoom,
   });
 
+  /// The initial position of the map camera.
   final LatLng position;
+
+  /// The initial zoom level of the map camera.
   final double zoom;
 
   @override

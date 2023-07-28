@@ -4,6 +4,7 @@ import 'package:corriol_app/widgets/legend_pie_chart_widget.dart';
 import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
+/// A page that displays the user's [ReportModel], categorized by two [Species].
 class MyRecordsPage extends StatefulWidget {
   const MyRecordsPage({super.key});
 
@@ -13,7 +14,6 @@ class MyRecordsPage extends StatefulWidget {
 
 class _MyRecordsPageState extends State<MyRecordsPage> {
   final List<Widget> charts = [
-    // Widgets en el GridView
     LegendPieChartWidget(
       color: kColorList['femelles']!,
       text: 'Femelles',

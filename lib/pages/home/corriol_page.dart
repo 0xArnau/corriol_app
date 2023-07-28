@@ -3,6 +3,7 @@ import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+/// A page that displays corriol (bird) information.
 class CorriolPage extends StatelessWidget {
   const CorriolPage({super.key});
 
@@ -34,66 +35,50 @@ class CorriolPage extends StatelessWidget {
           pages: [
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_1_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_1_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_1_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_1_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_1.jpg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_2_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_2_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_2_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_2_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_2.jpg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_3_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_3_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_3_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_3_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_3.jpg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_4_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_4_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_4_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_4_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_4.jpeg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_5_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_5_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_5_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_5_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_5.jpeg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_6_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_6_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_6_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_6_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_6.jpg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_7_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_7_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_7_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_7_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_7.jpg',
             ),
             myPageViewModel(
               title: '',
-              textBefore:
-                  S.current.screen_1_1_Foto_1_1_8_before,
-              textAfter:
-                  S.current.screen_1_1_Foto_1_1_8_after,
+              textBefore: S.current.screen_1_1_Foto_1_1_8_before,
+              textAfter: S.current.screen_1_1_Foto_1_1_8_after,
               image: 'assets/images/Screen-1_1/Foto-1_1_8.jpeg',
             ),
           ],

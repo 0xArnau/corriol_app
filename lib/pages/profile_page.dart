@@ -8,6 +8,7 @@ import 'package:corriol_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// The profile page where users can view and their account information and preferences. Can modify the [UserPreferencesModel].
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -26,6 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
+  /// Signs out the current user.
   Future<void> signOut() async {
     await AuthController().signOut();
   }
@@ -69,7 +71,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontSize: 17,
                       ),
                     ),
-                    Text(user.technician! ? S.current.techRole : S.current.userRole),
+                    Text(user.technician!
+                        ? S.current.techRole
+                        : S.current.userRole),
                     const SizedBox(height: 10),
                     const Divider(),
                     const SizedBox(height: 10),

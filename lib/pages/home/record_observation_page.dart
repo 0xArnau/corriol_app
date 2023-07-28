@@ -15,6 +15,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
+/// A page where the user can record observations of Corriol birds.
 class RecordObservationPage extends StatefulWidget {
   const RecordObservationPage({super.key});
 
@@ -202,6 +203,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
     );
   }
 
+  /// Saves the [ReportModel] to using [ReportController].
   void saveReport(bool mobileData) async {
     if (fields.cats == 0 &&
         fields.dogs == 0 &&
