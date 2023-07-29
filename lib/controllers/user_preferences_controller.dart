@@ -1,5 +1,6 @@
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// A class that provides methods for managing user preferences using [shared_preferences].
@@ -27,35 +28,44 @@ class UserPreferencesController {
   }
 
   /// Retrieves the selected language from shared preferences or `null` if there is no stored preference.
-  static Future<String?> getPrefsLang() async {
+  static Future<String> getPrefsLang() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getString('lang');
+    return prefs.getString('lang') ??
+        WidgetsBinding.instance.platformDispatcher.locale.languageCode;
   }
 
   /// Retrieves the GPS preference from shared preferences or `null` if there is no stored preference.
-  static Future<bool?> getPrefsGps() async {
+  static Future<bool> getPrefsGps() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getBool('gps');
+
+    if (await Permission.location.isDenied &&
+        await Permission.locationAlways.isDenied &&
+        await Permission.locationWhenInUse.isDenied) {
+      setPrefsGps(false);
+    }
+
+    return prefs.getBool('gps') ??
+        (await Permission.location.isGranted ||
+            await Permission.locationAlways.isGranted ||
+            await Permission.locationWhenInUse.isGranted);
   }
 
   /// Retrieves the mobile data preference from shared preferences or `null` if there is no stored preference.
-  static Future<bool?> getPrefsMobileData() async {
+  static Future<bool> getPrefsMobileData() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getBool('mobile_data');
+    return prefs.getBool('mobile_data') ?? true;
   }
 
   /// Retrieves the [UserPreferencesModel] from shared preferences with default values.
   static Future<UserPreferencesModel> getUserPreferencesModel() async {
-    final SharedPreferences prefs = await _prefs;
-    final String? lang = prefs.getString("lang");
-    final bool? mobileData = prefs.getBool("mobile_data");
-    final bool? gps = prefs.getBool("gps");
+    final String lang = await getPrefsLang();
+    final bool mobileData = await getPrefsMobileData();
+    final bool gps = await getPrefsGps();
 
     return UserPreferencesModel(
-      lang: Locale(lang ??
-          WidgetsBinding.instance.platformDispatcher.locale.languageCode),
-      mobileData: mobileData ?? true,
-      gps: gps ?? true,
+      lang: Locale(lang),
+      mobileData: mobileData,
+      gps: gps,
     );
   }
 }

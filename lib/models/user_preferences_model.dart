@@ -1,3 +1,4 @@
+import 'package:corriol_app/controllers/user_preferences_controller.dart';
 import 'package:flutter/material.dart';
 
 /// Class that represents the fields that a user preferences has
@@ -38,5 +39,15 @@ class UserPreferencesModel {
       mobileData: json['mobile_data'] == 'true',
       gps: json['gps'] == 'true',
     );
+  }
+
+  /// Retrieve the user preferences
+  static Future<UserPreferencesModel> fromPreferences() async {
+    final lang = await UserPreferencesController.getPrefsLang();
+    final mobileData = await UserPreferencesController.getPrefsMobileData();
+    final gps = await UserPreferencesController.getPrefsGps();
+
+    return UserPreferencesModel(
+        lang: Locale(lang), mobileData: mobileData, gps: gps);
   }
 }

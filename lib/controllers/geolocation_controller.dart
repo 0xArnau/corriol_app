@@ -76,7 +76,7 @@ class GeolocationController {
         _updateIsGpsOnNotifier(provider);
       }
 
-      completer.complete(); // Completar el Completer
+      completer.complete();
 
       return completer.future;
     }
@@ -111,9 +111,14 @@ class GeolocationController {
 
     if (!provider.preferences.gps) return null;
 
-    return await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
+    try {
+      return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
   }
 
   /// Updates the user's address based on the current [LatLng].

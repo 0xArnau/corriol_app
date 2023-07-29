@@ -42,7 +42,7 @@ class UserProvider extends ChangeNotifier {
 
   /// Initialize the [UserPreferencesModel].
   Future<void> init() async {
-    _preferences = await UserPreferencesController.getUserPreferencesModel();
+    _preferences = await UserPreferencesModel.fromPreferences();
     notifyListeners();
     fetchPosition();
   }
@@ -56,22 +56,21 @@ class UserProvider extends ChangeNotifier {
   /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsMobileData].
   void fetchMobileDataInfo() async {
     bool? mobileData = await UserPreferencesController.getPrefsMobileData();
-    _preferences.mobileData = mobileData ?? false;
+    _preferences.mobileData = mobileData;
     notifyListeners();
   }
 
   /// Fetches the [UserPreferencesModel.gps] info from the [UserPreferencesController.getPrefsGps].
   void fetchGpsInfo() async {
     bool? gpsValue = await UserPreferencesController.getPrefsGps();
-    _preferences.gps = gpsValue ?? false;
+    _preferences.gps = gpsValue;
     notifyListeners();
   }
 
   /// Fetches the [UserPreferencesModel.lang] info from the [UserPreferencesController.getPrefsLang].
   void fetchLangInfo() async {
     String? lang = await UserPreferencesController.getPrefsLang();
-    _preferences.lang = Locale(
-        lang ?? WidgetsBinding.instance.platformDispatcher.locale.languageCode);
+    _preferences.lang = Locale(lang);
     notifyListeners();
   }
 
@@ -86,7 +85,7 @@ class UserProvider extends ChangeNotifier {
   }
 
   /// Fetches the [locality] reports from thew [ReportController.getAllReports], sorts and groups them by locality
-  void fetchReportDatalocality() async {
+  void fetchReportDataLocality() async {
     final List<ReportModel> reports = await ReportController().getAllReports();
     Map<String, List<ReportModel>> map = {};
 

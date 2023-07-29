@@ -122,7 +122,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                           onPressed: () {
                             if (preferences.mobileData) {
                               Provider.of<UserProvider>(context, listen: false)
-                                  .fetchReportDatalocality();
+                                  .fetchReportDataLocality();
                             } else {
                               snackbarError(
                                   context, S.current.noInternetConnection);
