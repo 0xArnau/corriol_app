@@ -18,8 +18,8 @@ This project is a mobile application (Android & iOS) called "Corriol APP." Its m
 1. [Flutter](https://docs.flutter.dev/get-started/install)
 2. macOS, to be able to build the iOS app
    1. Ruby: [cocoapods](https://guides.cocoapods.org/using/getting-started.html#installation)
-   2. Xcode
-3. Android Studio
+   2. [Xcode](https://developer.apple.com/xcode/)
+3. [Android Studio](https://developer.android.com/studio)
 
 ## Installation & Configuration
 
@@ -29,6 +29,9 @@ To get started with the project, follow these steps:
 2. Add the API_KEYs from [Google Maps](https://console.cloud.google.com/apis/dashboard?) to the .env file:
    1. GOOGLE_MAPS_API_KEY_ANDROID
    2. GOOGLE_MAPS_API_KEY_IOS
+3. Firebase service:
+   1. **Android**: place the `google-services.json` ([downloaded from the Firebase console, Android app project](https://console.firebase.google.com/)) to `android/app/`
+   2. **iOS**: place the `GoogleService-Info.plist` ([downloaded from the Firebase console, iOS app project](https://console.firebase.google.com/)) to `ios/Runner/`
 
 ## Documentation
 
