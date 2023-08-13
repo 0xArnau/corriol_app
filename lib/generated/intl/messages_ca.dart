@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "legalWarning": MessageLookupByLibrary.simpleMessage("Avís legal"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Coneix al Corriol camanegre"),
+        "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
+            "Si no veus els reportis, prova: \n1) actualitza manualment (botó a dalt a la dreta), \n2) no has creat un reporti, prova a crear-ne un"),
         "mobileData": MessageLookupByLibrary.simpleMessage("Dades mòbils"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Els meus registres"),
         "name": MessageLookupByLibrary.simpleMessage("Nom"),
@@ -138,6 +140,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
+        "unknownError":
+            MessageLookupByLibrary.simpleMessage("Error desconegut"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "No hi ha cap registre d\'usuari corresponent a aquest identificador. És possible que l\'usuari hagi estat suprimit."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuari"),

@@ -35,6 +35,20 @@ class _WidgetTreeState extends State<WidgetTree> {
         late List<NavigationDestination> navigation;
         late List<Widget> pages;
 
+        if (user != null &&
+            Provider.of<ReportProvider>(context, listen: false)
+                .userReports
+                .isEmpty) {
+          Provider.of<ReportProvider>(context, listen: false)
+              .fetchCurrentUserReports(
+            context,
+            user.email,
+            Provider.of<UserProvider>(context, listen: false)
+                .preferences
+                .mobileData,
+          );
+        }
+
         if (user == null) {
           navigation = [
             NavigationDestination(

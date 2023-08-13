@@ -32,7 +32,10 @@ class RecordsPieChartWidget extends StatelessWidget {
               final reports = reportProvider.userReports;
 
               if (reports.isEmpty) {
-                return const Center(child: Text("No hi ha cap avistament"));
+                return Text(
+                  S.current.messageReportsDontShow,
+                  textAlign: TextAlign.center,
+                );
               } else {
                 var femelles = 0;
                 var polls = 0;

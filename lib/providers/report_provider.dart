@@ -13,8 +13,7 @@ class ReportProvider extends ChangeNotifier {
   List<ReportModel> userReports = [];
 
   /// Fetches the [locality] reports from thew [ReportController.getAllReports], sorts and groups them by locality
-  void fetchAllReports(
-      BuildContext context, bool internetConnection) async {
+  void fetchAllReports(BuildContext context, bool internetConnection) async {
     Logger().d("fetchAllReports");
     if (internetConnection) {
       final List<ReportModel> reports =
@@ -53,10 +52,8 @@ class ReportProvider extends ChangeNotifier {
   void fetchCurrentUserReports(
       BuildContext context, String email, bool internetConnection) async {
     Logger().d("fetchCurrentUserReports");
-    Logger().d("klk");
     if (internetConnection) {
       userReports = await ReportController().getReportsByUserId(email);
-      Logger().d("reports: $userReports");
 
       notifyListeners();
     } else {

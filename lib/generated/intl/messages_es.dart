@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "legalWarning": MessageLookupByLibrary.simpleMessage("Aviso legal"),
         "meetKentishPlover": MessageLookupByLibrary.simpleMessage(
             "Conoce al Chorlitejo patinegro"),
+        "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
+            "Si no ves los reportes, prueba: \n1) actualiza manualmente (botón arriba a la derecha), \n2) no has creado un reporte, prueba a crear uno"),
         "mobileData": MessageLookupByLibrary.simpleMessage("Datos móviles"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Mis registros"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
@@ -139,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Inscribirse"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
+        "unknownError":
+            MessageLookupByLibrary.simpleMessage("Error desconocido"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuario"),

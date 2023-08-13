@@ -140,7 +140,7 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
                             .mobileData,
                       );
                     } else {
-                      snackbarError(context, "Error");
+                      snackbarError(context, S.current.unknownError);
                     }
                   },
                   icon: const Icon(

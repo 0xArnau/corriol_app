@@ -1,7 +1,6 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/pages/auth/login_register_page.dart';
 import 'package:corriol_app/pages/auth/verify_email_page.dart';
-import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
@@ -21,22 +20,7 @@ class _AuthPageState extends State<AuthPage> {
   void initState() {
     AuthController().authStateChanges.listen((user) {
       if (user != null) {
-        Logger().d("user != null");
-
         Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
-
-        final user = Provider.of<UserProvider>(context, listen: false).user;
-
-        if (user != null) {
-          Provider.of<ReportProvider>(context, listen: false)
-              .fetchCurrentUserReports(
-            context,
-            user.email,
-            Provider.of<UserProvider>(context, listen: false)
-                .preferences
-                .mobileData,
-          );
-        }
       }
 
       Logger().d("user modified");

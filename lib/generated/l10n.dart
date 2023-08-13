@@ -330,6 +330,16 @@ class S {
     );
   }
 
+  /// `If you don't see the reports, try: \n1) update manually (top right button), \n2) you haven't created a report, try to create one`
+  String get messageReportsDontShow {
+    return Intl.message(
+      'If you don\'t see the reports, try: \n1) update manually (top right button), \n2) you haven\'t created a report, try to create one',
+      name: 'messageReportsDontShow',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Mobile data`
   String get mobileData {
     return Intl.message(
@@ -745,6 +755,16 @@ class S {
     return Intl.message(
       'Role: Technician',
       name: 'techRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
       desc: '',
       args: [],
     );
