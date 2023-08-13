@@ -31,15 +31,6 @@ class UserProvider extends ChangeNotifier {
     _user = null;
     _preferences = UserPreferencesModel();
     _position = const LatLng(41.8205, 1.8401); // Catalunya
-
-    init();
-  }
-
-  /// Initialize the [UserPreferencesModel].
-  Future<void> init() async {
-    _preferences = await UserPreferencesModel.fromPreferences();
-    notifyListeners();
-    // fetchPosition();
   }
 
   /// Fetches the [UserModel] info from the [AuthController.getUserInformation].
@@ -88,10 +79,12 @@ class UserProvider extends ChangeNotifier {
   }
 
   /// Sets the [UserPreferencesModel.gps]
-  void setGpsInfo(bool gps) {
+  void setGpsInfo(BuildContext context, bool gps) {
     UserPreferencesController.setPrefsGps(gps);
     _preferences.gps = gps;
     notifyListeners();
+
+    if (gps) fetchPosition(context);
   }
 
   /// Sets the [UserPreferencesModel.lang]

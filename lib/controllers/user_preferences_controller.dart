@@ -37,15 +37,19 @@ class UserPreferencesController {
   /// Retrieves the GPS preference from shared preferences or `null` if there is no stored preference.
   static Future<bool> getPrefsGps() async {
     final SharedPreferences prefs = await _prefs;
-    final isDenid = Permission.location.isDenied;
-    final isDeniedAlways = Permission.locationAlways.isDenied;
-    final isDeniedWhileInUse = Permission.locationWhenInUse.isDenied;
+    final location = Permission.location.isGranted;
+    final locationAlways = Permission.locationAlways.isGranted;
+    final locationWhenInUse = Permission.locationWhenInUse.isGranted;
 
     final permissionStatus = await Future.wait([
-      isDenid,
-      isDeniedAlways,
-      isDeniedWhileInUse,
+      location,
+      locationAlways,
+      locationWhenInUse,
     ]);
+
+    if (prefs.getBool('gps') != null && prefs.getBool('gps')! == true) {
+      prefs.setBool('gps', permissionStatus.any((status) => status));
+    }
 
     return prefs.getBool('gps') ?? permissionStatus.any((status) => status);
   }

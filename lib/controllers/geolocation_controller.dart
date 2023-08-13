@@ -15,26 +15,27 @@ class GeolocationController {
   /// Updates the GPS status in the [UserProvider] based on the current location permission.
   ///
   /// The [provider] is the instance of the [UserProvider] that holds the user's [UserPreferencesModel.gps].
-  void _updateIsGpsOnNotifier(UserProvider provider) async {
-    final LocationPermission permission = await Geolocator.requestPermission();
-    switch (permission) {
-      case LocationPermission.denied:
-        provider.setGpsInfo(false);
-        break;
-      case LocationPermission.deniedForever:
-        provider.setGpsInfo(false);
-        break;
-      case LocationPermission.unableToDetermine:
-        provider.setGpsInfo(false);
-        break;
-      case LocationPermission.always:
-        provider.setGpsInfo(true);
-        break;
-      case LocationPermission.whileInUse:
-        provider.setGpsInfo(true);
-        break;
-      default:
-    }
+  void _updateIsGpsOnNotifier(BuildContext context, UserProvider provider) {
+    Geolocator.requestPermission().then((permission) {
+      switch (permission) {
+        case LocationPermission.denied:
+          provider.setGpsInfo(context, false);
+          break;
+        case LocationPermission.deniedForever:
+          provider.setGpsInfo(context, false);
+          break;
+        case LocationPermission.unableToDetermine:
+          provider.setGpsInfo(context, false);
+          break;
+        case LocationPermission.always:
+          provider.setGpsInfo(context, true);
+          break;
+        case LocationPermission.whileInUse:
+          provider.setGpsInfo(context, true);
+          break;
+        default:
+      }
+    });
   }
 
   /// Checks the current location permission status.
@@ -64,30 +65,25 @@ class GeolocationController {
   /// Requests and enables location permission for the user.
   ///
   /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
-  Future<void> enableLocationPermission(UserProvider provider) async {
+  void enableLocationPermission(BuildContext context, UserProvider provider) {
     final preferences = provider.preferences as UserPreferencesModel;
     if (!preferences.gps) {
-      final completer = Completer<void>();
+      Geolocator.requestPermission().then((_) {
+        _updateIsGpsOnNotifier(context, provider);
+      });
 
-      await Geolocator.requestPermission();
-
-      _updateIsGpsOnNotifier(provider);
-
-      if (!preferences.gps) {
-        await Geolocator.openAppSettings();
-        _updateIsGpsOnNotifier(provider);
-      }
-
-      completer.complete();
-
-      return completer.future;
+      // if (!preferences.gps) {
+      //   Geolocator.openAppSettings()
+      //       .then((_) => _updateIsGpsOnNotifier(context, provider));
+      // }
     }
   }
 
   /// Disables location permission for the user.
   ///
   /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
-  Future<void> disableLocationPermission(UserProvider provider) async {
+  Future<void> disableLocationPermission(
+      BuildContext context, UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
 
     if (preferences.gps) {
@@ -96,7 +92,7 @@ class GeolocationController {
       await Geolocator.openAppSettings();
 
       completer.future.then((_) {
-        _updateIsGpsOnNotifier(provider);
+        _updateIsGpsOnNotifier(context, provider);
       });
 
       return completer.future;
@@ -110,7 +106,7 @@ class GeolocationController {
   /// Returns the [Position] object containing the user's current location, or `null` if location permission is not granted.
   Future<Position?> getCurrentLocation(
       BuildContext context, UserProvider provider) async {
-    enableLocationPermission(provider);
+    enableLocationPermission(context, provider);
 
     if (!provider.preferences.gps) return null;
 

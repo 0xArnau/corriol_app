@@ -223,8 +223,8 @@ class _ProfilePageState extends State<ProfilePage> {
           value: isGpsOn,
           onChanged: (value) {
             value
-                ? GeolocationController().enableLocationPermission(provider)
-                : GeolocationController().disableLocationPermission(provider);
+                ? GeolocationController().enableLocationPermission(context, provider)
+                : GeolocationController().disableLocationPermission(context, provider);
           },
         ),
       ),

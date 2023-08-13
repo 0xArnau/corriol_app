@@ -14,17 +14,17 @@ class UserPreferencesModel {
   }
 
   void init() async {
-    final isDenid = Permission.location.isDenied;
-    final isDeniedAlways = Permission.locationAlways.isDenied;
-    final isDeniedWhileInUse = Permission.locationWhenInUse.isDenied;
+    final location = Permission.location.isGranted;
+    final locationAlways = Permission.locationAlways.isGranted;
+    final locationWhenInUse = Permission.locationWhenInUse.isGranted;
 
     final permissionStatus = await Future.wait([
-      isDenid,
-      isDeniedAlways,
-      isDeniedWhileInUse,
+      location,
+      locationAlways,
+      locationWhenInUse,
     ]);
 
-    gps = !permissionStatus.any((status) => status);
+    gps = permissionStatus.any((status) => status);
   }
 
   /// The preferred language for the user.
