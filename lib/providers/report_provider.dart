@@ -13,9 +13,9 @@ class ReportProvider extends ChangeNotifier {
   List<ReportModel> userReports = [];
 
   /// Fetches the [locality] reports from thew [ReportController.getAllReports], sorts and groups them by locality
-  void fetchReportDataLocality(
+  void fetchAllReports(
       BuildContext context, bool internetConnection) async {
-    Logger().d("fetchReportDataLocality");
+    Logger().d("fetchAllReports");
     if (internetConnection) {
       final List<ReportModel> reports =
           await ReportController().getAllReports();
@@ -53,8 +53,11 @@ class ReportProvider extends ChangeNotifier {
   void fetchCurrentUserReports(
       BuildContext context, String email, bool internetConnection) async {
     Logger().d("fetchCurrentUserReports");
+    Logger().d("klk");
     if (internetConnection) {
       userReports = await ReportController().getReportsByUserId(email);
+      Logger().d("reports: $userReports");
+
       notifyListeners();
     } else {
       snackbarError(context, S.current.noInternetConnection);

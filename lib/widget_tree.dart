@@ -122,7 +122,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                       : currentPage == 1
                           ? IconButton(
                               onPressed: () {
-                                value.fetchReportDataLocality(
+                                value.fetchAllReports(
                                     context, preferences.mobileData);
                               },
                               icon: const Icon(

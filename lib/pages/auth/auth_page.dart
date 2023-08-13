@@ -21,6 +21,8 @@ class _AuthPageState extends State<AuthPage> {
   void initState() {
     AuthController().authStateChanges.listen((user) {
       if (user != null) {
+        Logger().d("user != null");
+
         Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
 
         final user = Provider.of<UserProvider>(context, listen: false).user;

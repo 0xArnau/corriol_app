@@ -1,8 +1,12 @@
 import 'package:corriol_app/generated/l10n.dart';
+import 'package:corriol_app/providers/report_provider.dart';
+import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/legend_pie_chart_widget.dart';
 import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// A page that displays the user's [ReportModel], categorized by two [Species].
 class MyRecordsPage extends StatefulWidget {
@@ -99,45 +103,71 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
       ...basicEnd,
     ];
 
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            S.current.myRecords,
-            style: kTextStylePageTitle,
-          ),
-          bottom: TabBar(
-            indicatorColor: kColorText,
-            labelColor: kColorText,
-            // isScrollable: true,
-            tabs: [
-              Tab(
-                text: S.current.corriolCamanegre,
+    return Consumer<ReportProvider>(
+      builder: (context, value, child) {
+        return DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                S.current.myRecords,
+                style: kTextStylePageTitle,
               ),
-              Tab(
-                text: S.current.corriolPetit,
+              bottom: TabBar(
+                indicatorColor: kColorText,
+                labelColor: kColorText,
+                // isScrollable: true,
+                tabs: [
+                  Tab(
+                    text: S.current.corriolCamanegre,
+                  ),
+                  Tab(
+                    text: S.current.corriolPetit,
+                  ),
+                ],
               ),
-            ],
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    final user =
+                        Provider.of<UserProvider>(context, listen: false).user;
+                    if (user != null) {
+                      value.fetchCurrentUserReports(
+                        context,
+                        user.email,
+                        Provider.of<UserProvider>(context, listen: false)
+                            .preferences
+                            .mobileData,
+                      );
+                    } else {
+                      snackbarError(context, "Error");
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.update,
+                  ),
+                ),
+              ],
+            ),
+            body: TabBarView(
+              children: [
+                ListView.builder(
+                  itemCount: camanegre.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return camanegre[index];
+                  },
+                ),
+                ListView.builder(
+                  itemCount: petit.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return petit[index];
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-        body: TabBarView(
-          children: [
-            ListView.builder(
-              itemCount: camanegre.length,
-              itemBuilder: (BuildContext context, int index) {
-                return camanegre[index];
-              },
-            ),
-            ListView.builder(
-              itemCount: petit.length,
-              itemBuilder: (BuildContext context, int index) {
-                return petit[index];
-              },
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
 }

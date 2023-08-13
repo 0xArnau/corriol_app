@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
     Provider.of<UserProvider>(context, listen: false).fetchLangInfo();
     Provider.of<UserProvider>(context, listen: false).fetchMobileDataInfo();
 
-    Provider.of<ReportProvider>(context, listen: false).fetchReportDataLocality(
+    Provider.of<ReportProvider>(context, listen: false).fetchAllReports(
       context,
       Provider.of<UserProvider>(context, listen: false).preferences.mobileData,
     );

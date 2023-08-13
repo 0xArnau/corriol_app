@@ -1,10 +1,8 @@
-import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/utils/constants.dart';
-import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
+import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +15,9 @@ class RecordsPieChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(
-      builder: (context, value, child) {
-        final user = value.user as UserModel;
-        final preferences = value.preferences as UserPreferencesModel;
+      builder: (context, userProvider, child) {
+        final preferences = userProvider.preferences as UserPreferencesModel;
+
         if (preferences.mobileData == false) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -29,30 +27,29 @@ class RecordsPieChartWidget extends StatelessWidget {
             ],
           );
         } else {
-          Future<List<ReportModel>> records =
-              ReportController().getReportsByUserId(user.email);
+          return Consumer<ReportProvider>(
+            builder: (context, reportProvider, child) {
+              final reports = reportProvider.userReports;
 
-          return FutureBuilder<List<ReportModel>>(
-            future: records,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
+              if (reports.isEmpty) {
+                return const Center(child: Text("No hi ha cap avistament"));
+              } else {
                 var femelles = 0;
                 var polls = 0;
                 var mascles = 0;
                 var indeterminat = 0;
                 var gossos = 0;
                 var gats = 0;
-                final records0 = snapshot.data!;
 
-                for (final element in records0) {
-                  if (element.species != species) continue;
+                for (var report in reports) {
+                  if (report.species != species) continue;
 
-                  femelles += element.females;
-                  polls += element.chickens;
-                  mascles += element.males;
-                  indeterminat += element.undetermined;
-                  gossos += element.dogs;
-                  gats += element.cats;
+                  femelles += report.females;
+                  polls += report.chickens;
+                  mascles += report.males;
+                  indeterminat += report.undetermined;
+                  gossos += report.dogs;
+                  gats += report.cats;
                 }
 
                 final data = [
@@ -87,7 +84,6 @@ class RecordsPieChartWidget extends StatelessWidget {
                     radius: 50,
                   ),
                 ];
-
                 return SizedBox(
                   width: 300,
                   height: 300,
@@ -96,14 +92,6 @@ class RecordsPieChartWidget extends StatelessWidget {
                       sections: data,
                     ),
                   ),
-                );
-              } else if (snapshot.hasError) {
-                return const Center(
-                  child: Text('No data found'),
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
                 );
               }
             },
