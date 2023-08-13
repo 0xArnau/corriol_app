@@ -1,23 +1,22 @@
-import 'dart:math';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/pages/handyman/report_map_page.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CardButtonWidget extends StatelessWidget {
-  const CardButtonWidget(
-      {super.key, required this.text, required this.reports});
+  const CardButtonWidget({
+    super.key,
+    required this.text,
+    required this.reports,
+    required this.index,
+  });
 
   final String text;
   final List<ReportModel> reports;
+  final int index;
 
-  Color getRandomBackgroundColor() {
-    Random random = Random();
-    int r = random.nextInt(256);
-    int g = random.nextInt(256);
-    int b = random.nextInt(256);
-
-    return Color.fromARGB(255, r, g, b);
+  Color getBackgroundColor(int index) {
+    return kListColorReports[index % kListColorReports.length];
   }
 
   // https://stackoverflow.com/questions/946544/good-text-foreground-color-for-a-given-background-color
@@ -31,7 +30,7 @@ class CardButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var backgroundColor = getRandomBackgroundColor();
+    var backgroundColor = getBackgroundColor(index);
     var foregroundColor = getForegroundColor(backgroundColor);
     return GestureDetector(
       onTap: () {

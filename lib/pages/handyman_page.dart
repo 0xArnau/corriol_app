@@ -21,17 +21,24 @@ class _HandymanPageState extends State<HandymanPage> {
       list.addAll(value);
     });
 
-    return CardButtonWidget(text: S.current.all, reports: list);
+    return CardButtonWidget(
+      text: S.current.all,
+      reports: list,
+      index: 0,
+    );
   }
 
   List<Widget> generateKeyButton(Map<String, List<ReportModel>> map) {
     List<Widget> widgets = [];
 
+    var i = 1; // The index 0 is for the widget returned on _generetatAllCsv()
     map.forEach((key, value) {
       widgets.add(CardButtonWidget(
         text: key,
         reports: value,
+        index: i,
       ));
+      i++;
     });
 
     return widgets.isEmpty

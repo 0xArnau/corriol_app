@@ -33,6 +33,30 @@ const kColorYellowCard = Colors.yellow;
 const kColorPinkCard = Colors.pink;
 const kColorCyanCard = Colors.cyan;
 
+const kListColorReports = [
+  Color.fromARGB(255, 169, 198, 237),
+  Color.fromARGB(255, 57, 114, 253),
+  Color.fromARGB(255, 116, 94, 165),
+  Color.fromARGB(255, 9, 7, 83),
+  Color.fromARGB(255, 202, 201, 201),
+  Color.fromARGB(255, 20, 17, 101),
+  Color.fromARGB(255, 241, 209, 220),
+  Color.fromARGB(255, 196, 44, 124),
+  Color.fromARGB(255, 85, 139, 105),
+  Color.fromARGB(255, 113, 146, 95),
+  Color.fromARGB(255, 60, 154, 175),
+  Color.fromARGB(255, 244, 166, 154),
+  Color.fromARGB(255, 111, 14, 4),
+  Color.fromARGB(255, 25, 1, 27),
+  Color.fromARGB(255, 200, 240, 138),
+  Color.fromARGB(255, 236, 217, 81),
+  Color.fromARGB(255, 246, 188, 59),
+  Color.fromARGB(255, 94, 85, 39),
+  Color.fromARGB(255, 165, 245, 241),
+  Color.fromARGB(255, 185, 203, 128),
+  Color.fromARGB(255, 149, 229, 197),
+];
+
 /// Used for displaying a legend, on [my_records_page], with colors representing different strings.
 const kColorList = {
   'femelles': kColorYellowCard,
