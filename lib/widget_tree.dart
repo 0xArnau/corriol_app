@@ -1,13 +1,13 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
+import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -96,59 +96,58 @@ class _WidgetTreeState extends State<WidgetTree> {
           ];
         }
 
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Corriol APP',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-                color: kColorText,
-              ),
-            ),
-            actions: [
-              currentPage == navigation.length - 1
-                  ? IconButton(
-                      onPressed: () {
-                        signOut();
-                      },
-                      icon: const Icon(
-                        Icons.logout,
-                        // color: Colors.red.shade700,
-                      ),
-                    )
-                  : currentPage == 1
+        return Consumer<ReportProvider>(
+          builder: (context, value, child) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text(
+                  'Corriol APP',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                    color: kColorText,
+                  ),
+                ),
+                actions: [
+                  currentPage == navigation.length - 1
                       ? IconButton(
                           onPressed: () {
-                            if (preferences.mobileData) {
-                              Provider.of<UserProvider>(context, listen: false)
-                                  .fetchReportDataLocality();
-                            } else {
-                              snackbarError(
-                                  context, S.current.noInternetConnection);
-                            }
+                            signOut();
                           },
                           icon: const Icon(
-                            Icons.update,
+                            Icons.logout,
+                            // color: Colors.red.shade700,
                           ),
                         )
-                      : const Text(''),
-            ],
-          ),
-          body: pages.elementAt(currentPage),
-          bottomNavigationBar: NavigationBar(
-            destinations: navigation,
-            selectedIndex: currentPage,
-            onDestinationSelected: (int value) {
-              if (mounted) {
-                setState(
-                  () {
-                    currentPage = value;
-                  },
-                );
-              }
-            },
-          ),
+                      : currentPage == 1
+                          ? IconButton(
+                              onPressed: () {
+                                value.fetchReportDataLocality(
+                                    context, preferences.mobileData);
+                              },
+                              icon: const Icon(
+                                Icons.update,
+                              ),
+                            )
+                          : const Text(''),
+                ],
+              ),
+              body: pages.elementAt(currentPage),
+              bottomNavigationBar: NavigationBar(
+                destinations: navigation,
+                selectedIndex: currentPage,
+                onDestinationSelected: (int value) {
+                  if (mounted) {
+                    setState(
+                      () {
+                        currentPage = value;
+                      },
+                    );
+                  }
+                },
+              ),
+            );
+          },
         );
       },
     );

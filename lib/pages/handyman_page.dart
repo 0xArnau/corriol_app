@@ -1,6 +1,6 @@
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/widgets/buttons/card_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +47,7 @@ class _HandymanPageState extends State<HandymanPage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Scaffold(
-        body: Consumer<UserProvider>(
+        body: Consumer<ReportProvider>(
           builder: (context, value, child) {
             Map<String, List<ReportModel>> map = value.locality;
             List<Widget> locality = generateKeyButton(map);
