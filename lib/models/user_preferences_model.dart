@@ -1,5 +1,6 @@
 import 'package:corriol_app/controllers/user_preferences_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 /// Class that represents the fields that a user preferences has
 class UserPreferencesModel {
@@ -8,7 +9,23 @@ class UserPreferencesModel {
     this.lang = const Locale("es"),
     this.mobileData = true,
     this.gps = true,
-  });
+  }) {
+    init();
+  }
+
+  void init() async {
+    final isDenid = Permission.location.isDenied;
+    final isDeniedAlways = Permission.locationAlways.isDenied;
+    final isDeniedWhileInUse = Permission.locationWhenInUse.isDenied;
+
+    final permissionStatus = await Future.wait([
+      isDenid,
+      isDeniedAlways,
+      isDeniedWhileInUse,
+    ]);
+
+    gps = !permissionStatus.any((status) => status);
+  }
 
   /// The preferred language for the user.
   ///

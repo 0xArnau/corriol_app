@@ -1,15 +1,15 @@
-import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
@@ -26,7 +26,7 @@ class RecordObservationPage extends StatefulWidget {
 class _RecordObservationPageState extends State<RecordObservationPage> {
   @override
   void initState() {
-    Provider.of<UserProvider>(context, listen: false).fetchPosition();
+    Provider.of<UserProvider>(context, listen: false).fetchPosition(context);
     super.initState();
   }
 
@@ -54,6 +54,17 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
           S.current.recordObservation,
           style: kTextStylePageTitle,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<UserProvider>(context, listen: false)
+                  .fetchPosition(context);
+            },
+            icon: const Icon(
+              Icons.pin_drop,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(kDouble25),

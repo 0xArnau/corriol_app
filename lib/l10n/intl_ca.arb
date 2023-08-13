@@ -17,6 +17,7 @@
   "emailText": "Si vols participar de forma activa en la conservació del corriol o tens qualsevol dubte o proposta, posa't en contacte amb nosaltres: ",
   "errorDifferentPasswords": "Les contrasenyes són diferents",
   "errorEmptyFields": "No es pot enviar pel fet que hi ha camps buits",
+  "errorGps": "No s'ha pogut habilitar el permís de localització. Modifica-ho manualment als paràmetres del dispositiu.",
   "errorLaunchUrl": "No s'ha pogut iniciar:",
   "fileSave": "Fitxer guardat",
   "forgotPassword": "Has oblidat la contrasenya?",

@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Passwords are different"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
             "Cannot send because there are empty fields"),
+        "errorGps": MessageLookupByLibrary.simpleMessage(
+            "Could not enable location permission. Change it manually in the device settings."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("Could not launch:"),
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),

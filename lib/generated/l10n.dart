@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Could not enable location permission. Change it manually in the device settings.`
+  String get errorGps {
+    return Intl.message(
+      'Could not enable location permission. Change it manually in the device settings.',
+      name: 'errorGps',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Could not launch:`
   String get errorLaunchUrl {
     return Intl.message(

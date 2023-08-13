@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -72,7 +75,6 @@ class GeolocationController {
 
       if (!preferences.gps) {
         await Geolocator.openAppSettings();
-
         _updateIsGpsOnNotifier(provider);
       }
 
@@ -106,7 +108,8 @@ class GeolocationController {
   /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel].
   ///
   /// Returns the [Position] object containing the user's current location, or `null` if location permission is not granted.
-  Future<Position?> getCurrentLocation(UserProvider provider) async {
+  Future<Position?> getCurrentLocation(
+      BuildContext context, UserProvider provider) async {
     enableLocationPermission(provider);
 
     if (!provider.preferences.gps) return null;
@@ -117,6 +120,7 @@ class GeolocationController {
       );
     } catch (e) {
       Logger().e(e);
+      snackbarError(context, S.current.errorGps);
       return null;
     }
   }

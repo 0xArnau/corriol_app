@@ -4,7 +4,6 @@ import 'package:corriol_app/pages/auth/verify_email_page.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/widget_tree.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 /// A widget representing the authentication page.
@@ -22,8 +21,6 @@ class _AuthPageState extends State<AuthPage> {
       if (user != null) {
         Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
       }
-
-      Logger().d("user modified");
     });
 
     super.initState();

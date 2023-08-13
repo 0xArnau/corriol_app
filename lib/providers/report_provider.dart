@@ -3,7 +3,6 @@ import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class ReportProvider extends ChangeNotifier {
   /// Stores all the reports made by all users, the reports are grouped by locality
@@ -14,7 +13,6 @@ class ReportProvider extends ChangeNotifier {
 
   /// Fetches the [locality] reports from thew [ReportController.getAllReports], sorts and groups them by locality
   void fetchAllReports(BuildContext context, bool internetConnection) async {
-    Logger().d("fetchAllReports");
     if (internetConnection) {
       final List<ReportModel> reports =
           await ReportController().getAllReports();
@@ -51,7 +49,6 @@ class ReportProvider extends ChangeNotifier {
 
   void fetchCurrentUserReports(
       BuildContext context, String email, bool internetConnection) async {
-    Logger().d("fetchCurrentUserReports");
     if (internetConnection) {
       userReports = await ReportController().getReportsByUserId(email);
 

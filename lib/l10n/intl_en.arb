@@ -17,6 +17,7 @@
   "emailText": "If you want to participate actively in the conservation of the Plover or have any questions or proposals, please contact us: ",
   "errorDifferentPasswords": "Passwords are different",
   "errorEmptyFields": "Cannot send because there are empty fields",
+  "errorGps": "Could not enable location permission. Change it manually in the device settings.",
   "errorLaunchUrl": "Could not launch:",
   "fileSave": "File saved",
   "forgotPassword": "Forgot password?",

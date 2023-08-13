@@ -5,7 +5,6 @@ import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:logger/logger.dart';
 
 /// Class to manage the current user information
 class UserProvider extends ChangeNotifier {
@@ -38,22 +37,19 @@ class UserProvider extends ChangeNotifier {
 
   /// Initialize the [UserPreferencesModel].
   Future<void> init() async {
-    Logger().d("init");
     _preferences = await UserPreferencesModel.fromPreferences();
     notifyListeners();
-    fetchPosition();
+    // fetchPosition();
   }
 
   /// Fetches the [UserModel] info from the [AuthController.getUserInformation].
   Future<void> fetchUserInfo() async {
-    Logger().d("fetchUserInfo");
     _user = await AuthController().getUserInformation();
     notifyListeners();
   }
 
   /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsMobileData].
   void fetchMobileDataInfo() async {
-    Logger().d("fetchMobileDataInfo");
     bool? mobileData = await UserPreferencesController.getPrefsMobileData();
     _preferences.mobileData = mobileData;
     notifyListeners();
@@ -61,7 +57,6 @@ class UserProvider extends ChangeNotifier {
 
   /// Fetches the [UserPreferencesModel.gps] info from the [UserPreferencesController.getPrefsGps].
   void fetchGpsInfo() async {
-    Logger().d("fetchGpsInfo");
     bool? gpsValue = await UserPreferencesController.getPrefsGps();
     _preferences.gps = gpsValue;
     notifyListeners();
@@ -69,16 +64,15 @@ class UserProvider extends ChangeNotifier {
 
   /// Fetches the [UserPreferencesModel.lang] info from the [UserPreferencesController.getPrefsLang].
   void fetchLangInfo() async {
-    Logger().d("fetchLangInfo");
     String? lang = await UserPreferencesController.getPrefsLang();
     _preferences.lang = Locale(lang);
     notifyListeners();
   }
 
   /// Fetches the [_position] info from the [GeolocationController.getCurrentLocation].
-  void fetchPosition() async {
-    Logger().d("fetchPosition");
-    final position = await GeolocationController().getCurrentLocation(this);
+  void fetchPosition(BuildContext context) async {
+    final position =
+        await GeolocationController().getCurrentLocation(context, this);
 
     if (position == null) return;
 
@@ -88,7 +82,6 @@ class UserProvider extends ChangeNotifier {
 
   /// Sets the [UserPreferencesModel.mobileData]
   void setMobileDataInfo(bool mobileData) {
-    Logger().d("setMobileDataInfo");
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
     notifyListeners();
@@ -96,7 +89,6 @@ class UserProvider extends ChangeNotifier {
 
   /// Sets the [UserPreferencesModel.gps]
   void setGpsInfo(bool gps) {
-    Logger().d("setGpsInfo");
     UserPreferencesController.setPrefsGps(gps);
     _preferences.gps = gps;
     notifyListeners();
@@ -104,7 +96,6 @@ class UserProvider extends ChangeNotifier {
 
   /// Sets the [UserPreferencesModel.lang]
   void setLangInfo(Locale lang) {
-    Logger().d("setLangInfo");
     UserPreferencesController.setPrefsLang(lang);
     _preferences.lang = lang;
     notifyListeners();
@@ -112,7 +103,6 @@ class UserProvider extends ChangeNotifier {
 
   /// Sets the [_position]
   void setPosition(LatLng position) {
-    Logger().d("setPosition");
     _position = position;
     notifyListeners();
   }
