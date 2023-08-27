@@ -50,15 +50,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorDifferentPasswords": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas son diferentes"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
-            "No se puede enviar debido a que hay campos vacíos"),
+            "No se puede realizar esta acción debido a que hay campos vacíos"),
         "errorGetInfo": MessageLookupByLibrary.simpleMessage(
             "No se ha podido obtener la información pedida"),
         "errorGps": MessageLookupByLibrary.simpleMessage(
             "No se pudo habilitar el permiso de localización. Modifícalo manualmente en los ajustes del dispositivo."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("No se pudo iniciar:"),
+        "errorPassword": MessageLookupByLibrary.simpleMessage(
+            "Correo o contraseña equivocada"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "No se pudo guardar la información dada"),
+        "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
+            "El acceso a esta cuenta se ha deshabilitado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puedes restaurarlo inmediatamente restableciendo tu contraseña o puedes volver a intentarlo más tarde."),
         "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guradado"),
         "forgotPassword": MessageLookupByLibrary.simpleMessage(
             "¿Has olvidado tu contraseña?"),
@@ -90,7 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablecer la contraseña"),
         "saveInformation":
-            MessageLookupByLibrary.simpleMessage("Guardar información"),
+            MessageLookupByLibrary.simpleMessage("Información guardada"),
         "screen1_3_Button_Cats": MessageLookupByLibrary.simpleMessage("Gatos"),
         "screen1_3_Button_Chickens":
             MessageLookupByLibrary.simpleMessage("Polluelos"),

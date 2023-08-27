@@ -48,15 +48,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorDifferentPasswords": MessageLookupByLibrary.simpleMessage(
             "Les contrasenyes són diferents"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
-            "No es pot enviar pel fet que hi ha camps buits"),
+            "No es pot realitzar aquesta acció pel fet que hi ha camps buits"),
         "errorGetInfo": MessageLookupByLibrary.simpleMessage(
             "No s\'ha pogut obtenir la informació demanada"),
         "errorGps": MessageLookupByLibrary.simpleMessage(
             "No s\'ha pogut habilitar el permís de localització. Modifica-ho manualment als paràmetres del dispositiu."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("No s\'ha pogut iniciar:"),
+        "errorPassword": MessageLookupByLibrary.simpleMessage(
+            "Correu electrònic o contrasenya incorrectes"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "No s\'ha pogut desar la informació proporcionada"),
+        "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
+            "L\'accés a aquest compte s\'ha desactivat temporalment a causa de molts intents fallits d\'iniciar sessió. Podeu restaurar-lo immediatament restablint la vostra contrasenya o podeu tornar-ho a provar més tard."),
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
@@ -89,7 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Restablir la contrasenya"),
         "saveInformation":
-            MessageLookupByLibrary.simpleMessage("Guardar informació"),
+            MessageLookupByLibrary.simpleMessage("Informació desada"),
         "screen1_3_Button_Cats": MessageLookupByLibrary.simpleMessage("Gats"),
         "screen1_3_Button_Chickens":
             MessageLookupByLibrary.simpleMessage("Polls"),

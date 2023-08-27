@@ -49,15 +49,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorDifferentPasswords":
             MessageLookupByLibrary.simpleMessage("Passwords are different"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
-            "Cannot send because there are empty fields"),
+            "Cannot perform this action because there are empty fields"),
         "errorGetInfo": MessageLookupByLibrary.simpleMessage(
             "The requested information could not be obtained"),
         "errorGps": MessageLookupByLibrary.simpleMessage(
             "Could not enable location permission. Change it manually in the device settings."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("Could not launch:"),
+        "errorPassword":
+            MessageLookupByLibrary.simpleMessage("Wrong email or password"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "Failed to save the given information"),
+        "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
+            "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."),
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -87,7 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "refresh": MessageLookupByLibrary.simpleMessage("Tap to refresh"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "saveInformation":
-            MessageLookupByLibrary.simpleMessage("Save information"),
+            MessageLookupByLibrary.simpleMessage("Saved information"),
         "screen1_3_Button_Cats": MessageLookupByLibrary.simpleMessage("Cats"),
         "screen1_3_Button_Chickens":
             MessageLookupByLibrary.simpleMessage("Chickens"),

@@ -210,10 +210,10 @@ class S {
     );
   }
 
-  /// `Cannot send because there are empty fields`
+  /// `Cannot perform this action because there are empty fields`
   String get errorEmptyFields {
     return Intl.message(
-      'Cannot send because there are empty fields',
+      'Cannot perform this action because there are empty fields',
       name: 'errorEmptyFields',
       desc: '',
       args: [],
@@ -250,11 +250,31 @@ class S {
     );
   }
 
+  /// `Wrong email or password`
+  String get errorPassword {
+    return Intl.message(
+      'Wrong email or password',
+      name: 'errorPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Failed to save the given information`
   String get errorSaveInfo {
     return Intl.message(
       'Failed to save the given information',
       name: 'errorSaveInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.`
+  String get errorToManyRequestsFirebase {
+    return Intl.message(
+      'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.',
+      name: 'errorToManyRequestsFirebase',
       desc: '',
       args: [],
     );
@@ -470,10 +490,10 @@ class S {
     );
   }
 
-  /// `Save information`
+  /// `Saved information`
   String get saveInformation {
     return Intl.message(
-      'Save information',
+      'Saved information',
       name: 'saveInformation',
       desc: '',
       args: [],

@@ -15,6 +15,15 @@ void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
     case "email-already-in-use":
       _errorFirebaseAuthSnackbar(context, S.current.emailAlreadyInUse);
       break;
+    case "network-request-failed":
+      _errorFirebaseAuthSnackbar(context, S.current.noInternetConnection);
+      break;
+  case "wrong-password":
+      _errorFirebaseAuthSnackbar(context, S.current.errorPassword);
+      break;
+      case "too-many-requests":
+      _errorFirebaseAuthSnackbar(context, S.current.errorToManyRequestsFirebase);
+      break;
     default:
       Logger().d(e.code);
       _errorFirebaseAuthSnackbar(context, e.message);
