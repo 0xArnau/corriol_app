@@ -86,6 +86,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         internetConnection: provider.internetConnectionStatus),
                     _profileUserOptionsData(mobileData: preferences.mobileData),
                     _profileUserOptionsGps(isGpsOn: preferences.gps),
+                    _profileUserOptions(
+                      icon: const Icon(Icons.settings),
+                      option: S.current.goToDeviceSettings,
+                      onTap: () => GeolocationController()
+                          .openAppSettings(context, provider),
+                    ),
                     const SizedBox(height: 10),
                     const Divider(),
                     // const SizedBox(height: 10),

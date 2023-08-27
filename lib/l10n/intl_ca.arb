@@ -25,6 +25,7 @@
   "errorToManyRequestsFirebase": "L'accés a aquest compte s'ha desactivat temporalment a causa de molts intents fallits d'iniciar sessió. Podeu restaurar-lo immediatament restablint la vostra contrasenya o podeu tornar-ho a provar més tard.",
   "fileSave": "Fitxer guardat",
   "forgotPassword": "Has oblidat la contrasenya?",
+  "goToDeviceSettings": "Aneu a la configuració de l'aplicació del dispositiu",
   "handyman": "Tècnic",
   "home": "Inici",
   "inernetConnection": "Connexió a Internet",

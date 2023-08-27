@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
+        "goToDeviceSettings": MessageLookupByLibrary.simpleMessage(
+            "Aneu a la configuració de l\'aplicació del dispositiu"),
         "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
         "inernetConnection":

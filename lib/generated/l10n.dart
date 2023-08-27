@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `Go to device app settings`
+  String get goToDeviceSettings {
+    return Intl.message(
+      'Go to device app settings',
+      name: 'goToDeviceSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Handyman`
   String get handyman {
     return Intl.message(

@@ -25,6 +25,7 @@
   "errorToManyRequestsFirebase": "El acceso a esta cuenta se ha deshabilitado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puedes restaurarlo inmediatamente restableciendo tu contraseña o puedes volver a intentarlo más tarde.",
   "fileSave": "Archivo guradado",
   "forgotPassword": "¿Has olvidado tu contraseña?",
+  "goToDeviceSettings": "Ir a la configuración de la aplicación del dispositivo",
   "handyman": "Técnico",
   "home": "Inicio",
   "inernetConnection": "Conexión a Internet",

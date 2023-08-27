@@ -71,11 +71,6 @@ class GeolocationController {
       Geolocator.requestPermission().then((_) {
         _updateIsGpsOnNotifier(context, provider);
       });
-
-      // if (!preferences.gps) {
-      //   Geolocator.openAppSettings()
-      //       .then((_) => _updateIsGpsOnNotifier(context, provider));
-      // }
     }
   }
 
@@ -86,7 +81,7 @@ class GeolocationController {
       BuildContext context, UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
 
-    if (preferences.gps) {
+    if (!preferences.gps) {
       final completer = Completer<void>();
 
       await Geolocator.openAppSettings();
@@ -96,6 +91,21 @@ class GeolocationController {
       });
 
       return completer.future;
+    }
+  }
+
+  /// Open the app settings
+  ///
+  /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
+  Future<void> openAppSettings(
+      BuildContext context, UserProvider provider) async {
+    enableLocationPermission(context, provider);
+
+    final preferences = provider.preferences as UserPreferencesModel;
+
+    if (!preferences.gps) {
+      Geolocator.openAppSettings()
+          .then((_) => _updateIsGpsOnNotifier(context, provider));
     }
   }
 
