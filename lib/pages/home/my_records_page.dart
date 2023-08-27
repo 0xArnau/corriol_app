@@ -136,8 +136,7 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
                         context,
                         user.email,
                         Provider.of<UserProvider>(context, listen: false)
-                            .preferences
-                            .mobileData,
+                            .internetConnectionStatus,
                       );
                     } else {
                       snackbarError(context, S.current.unknownError);

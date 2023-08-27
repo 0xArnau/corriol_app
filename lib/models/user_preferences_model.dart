@@ -7,11 +7,10 @@ class UserPreferencesModel {
   /// Creates a [UserModel] instance.
   UserPreferencesModel({
     this.lang = const Locale("es"),
+    this.internetConnection = true,
     this.mobileData = true,
     this.gps = true,
-  }) {
-    init();
-  }
+  });
 
   void init() async {
     final location = Permission.location.isGranted;
@@ -24,6 +23,9 @@ class UserPreferencesModel {
       locationWhenInUse,
     ]);
 
+    internetConnection =
+        await UserPreferencesController.getInternetConnectionStatus(
+            mobileData: mobileData);
     gps = permissionStatus.any((status) => status);
   }
 
@@ -33,8 +35,10 @@ class UserPreferencesModel {
   Locale lang;
 
   /// Whether the user allows mobile data usage.
+  /// Whether it allows internet connection
   ///
   /// The default value is `true`.
+  bool internetConnection;
   bool mobileData;
 
   /// Whether the user allows GPS usage.

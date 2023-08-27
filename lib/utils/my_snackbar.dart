@@ -18,11 +18,12 @@ void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
     case "network-request-failed":
       _errorFirebaseAuthSnackbar(context, S.current.noInternetConnection);
       break;
-  case "wrong-password":
+    case "wrong-password":
       _errorFirebaseAuthSnackbar(context, S.current.errorPassword);
       break;
-      case "too-many-requests":
-      _errorFirebaseAuthSnackbar(context, S.current.errorToManyRequestsFirebase);
+    case "too-many-requests":
+      _errorFirebaseAuthSnackbar(
+          context, S.current.errorToManyRequestsFirebase);
       break;
     default:
       Logger().d(e.code);
@@ -33,43 +34,49 @@ void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
 /// Shows a [SnackBar] with an error message.
 void _errorFirebaseAuthSnackbar(BuildContext context, String? e) {
   Logger().d(e);
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        "$e",
-        style: const TextStyle(
-          color: Colors.black,
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "$e",
+          style: const TextStyle(
+            color: Colors.black,
+          ),
         ),
+        duration: const Duration(seconds: 5),
+        backgroundColor: Colors.red[200],
       ),
-      duration: const Duration(seconds: 5),
-      backgroundColor: Colors.red[200],
-    ),
-  );
+    );
+  });
 }
 
 /// Shows a [SnackBar] with a generic error message [str]
 void snackbarInfo(BuildContext context, String str) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        str,
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          str,
+        ),
+        duration: const Duration(seconds: 3),
+        // backgroundColor: Colors.red[200],
       ),
-      duration: const Duration(seconds: 3),
-      // backgroundColor: Colors.red[200],
-    ),
-  );
+    );
+  });
 }
 
 /// Shows a [SnackBar] with a generic message [str]
 void snackbarError(BuildContext context, String str) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        str,
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          str,
+        ),
+        duration: const Duration(seconds: 3),
+        backgroundColor: Colors.red[200],
+        // backgroundColor: Colors.red[200],
       ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.red[200],
-      // backgroundColor: Colors.red[200],
-    ),
-  );
+    );
+  });
 }

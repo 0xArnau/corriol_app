@@ -66,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
         "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
+        "inernetConnection":
+            MessageLookupByLibrary.simpleMessage("Connexió a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Clàusula informativa, formulari, inscripció, activitats"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -148,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enviar informació"),
         "signIn": MessageLookupByLibrary.simpleMessage("Inicieu la sessió"),
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
+        "statusOff": MessageLookupByLibrary.simpleMessage("apagat"),
+        "statusOn": MessageLookupByLibrary.simpleMessage("activat"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
         "unknownError":

@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "handyman": MessageLookupByLibrary.simpleMessage("Handyman"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "inernetConnection":
+            MessageLookupByLibrary.simpleMessage("Internet connection"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Informative clause, form, registration, activities"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -144,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Send information"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "statusOff": MessageLookupByLibrary.simpleMessage("off"),
+        "statusOn": MessageLookupByLibrary.simpleMessage("on"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "techRole": MessageLookupByLibrary.simpleMessage("Role: Technician"),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),

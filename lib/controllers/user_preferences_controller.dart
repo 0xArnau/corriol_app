@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -58,6 +59,32 @@ class UserPreferencesController {
   static Future<bool> getPrefsMobileData() async {
     final SharedPreferences prefs = await _prefs;
     return prefs.getBool('mobile_data') ?? true;
+  }
+
+  /// Retrieves if the device has internet connection
+  static Future<bool> getInternetConnectionStatus(
+      {ConnectivityResult? connectivityResult,
+      required bool mobileData}) async {
+    connectivityResult ??= await (Connectivity().checkConnectivity());
+    final bool internetConnection;
+
+    if (connectivityResult == ConnectivityResult.mobile && mobileData) {
+      internetConnection = true;
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      internetConnection = true;
+    } else if (connectivityResult == ConnectivityResult.ethernet) {
+      internetConnection = true;
+    } else if (connectivityResult == ConnectivityResult.vpn) {
+      internetConnection = true;
+    } else if (connectivityResult == ConnectivityResult.bluetooth) {
+      internetConnection = false;
+    } else if (connectivityResult == ConnectivityResult.other) {
+      internetConnection = false;
+    } else /* (connectivityResult == ConnectivityResult.none) */ {
+      internetConnection = false;
+    }
+
+    return internetConnection;
   }
 
   /// Retrieves the [UserPreferencesModel] from shared preferences with default values.
