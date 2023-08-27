@@ -1,0 +1,138 @@
+@startuml
+set namespaceSeparator ::
+
+' <l10n>
+
+class "corriol_app::generated::intl::messages_ca.dart::MessageLookup" {
+  +Map<String, dynamic> messages
+  +String localeName
+  {static} -Map<String, Function> _notInlinedMessages()
+}
+
+"intl::message_lookup_by_library.dart::MessageLookupByLibrary" <|-- "corriol_app::generated::intl::messages_ca.dart::MessageLookup"
+
+class "corriol_app::generated::intl::messages_es.dart::MessageLookup" {
+  +Map<String, dynamic> messages
+  +String localeName
+  {static} -Map<String, Function> _notInlinedMessages()
+}
+
+"intl::message_lookup_by_library.dart::MessageLookupByLibrary" <|-- "corriol_app::generated::intl::messages_es.dart::MessageLookup"
+
+class "corriol_app::generated::intl::messages_en.dart::MessageLookup" {
+  +Map<String, dynamic> messages
+  +String localeName
+  {static} -Map<String, Function> _notInlinedMessages()
+}
+
+"intl::message_lookup_by_library.dart::MessageLookupByLibrary" <|-- "corriol_app::generated::intl::messages_en.dart::MessageLookup"
+
+class "corriol_app::generated::l10n.dart::S" {
+  {static} -S? _current
+  {static} +AppLocalizationDelegate delegate
+  {static} +S current
+  +String age
+  +String all
+  +String cannotBeViewedWithoutInternet
+  +String checkboxInfo
+  +String checkboxLegal
+  +String checkboxPrivacy
+  +String confirmationPassword
+  +String contact
+  +String corriolCamanegre
+  +String corriolPetit
+  +String directoryDoesntExist
+  +String email
+  +String emailAlreadyInUse
+  +String emailSent
+  +String emailText
+  +String errorDifferentPasswords
+  +String errorEmptyFields
+  +String errorGetInfo
+  +String errorGps
+  +String errorLaunchUrl
+  +String errorSaveInfo
+  +String fileSave
+  +String forgotPassword
+  +String handyman
+  +String home
+  +String infoClause
+  +String invalidEmail
+  +String lang
+  +String language
+  +String legalWarning
+  +String meetKentishPlover
+  +String messageReportsDontShow
+  +String mobileData
+  +String myRecords
+  +String name
+  +String noInternetConnection
+  +String password
+  +String privacyPolicy
+  +String profile
+  +String recordObservation
+  +String refresh
+  +String resetPassword
+  +String saveInformation
+  +String screen1_3_Button_Cats
+  +String screen1_3_Button_Chickens
+  +String screen1_3_Button_Dogs
+  +String screen1_3_Button_Females
+  +String screen1_3_Button_Males
+  +String screen1_3_Button_Select_Specie
+  +String screen1_3_Button_Select_Specie_Camanegre
+  +String screen1_3_Button_Select_Specie_Petit
+  +String screen1_3_Button_Undetermined
+  +String screen_1_1_Foto_1_1_1_after
+  +String screen_1_1_Foto_1_1_1_before
+  +String screen_1_1_Foto_1_1_2_after
+  +String screen_1_1_Foto_1_1_2_before
+  +String screen_1_1_Foto_1_1_3_after
+  +String screen_1_1_Foto_1_1_3_before
+  +String screen_1_1_Foto_1_1_4_after
+  +String screen_1_1_Foto_1_1_4_before
+  +String screen_1_1_Foto_1_1_5_after
+  +String screen_1_1_Foto_1_1_5_before
+  +String screen_1_1_Foto_1_1_6_after
+  +String screen_1_1_Foto_1_1_6_before
+  +String screen_1_1_Foto_1_1_7_after
+  +String screen_1_1_Foto_1_1_7_before
+  +String screen_1_1_Foto_1_1_8_after
+  +String screen_1_1_Foto_1_1_8_before
+  +String sendEmail
+  +String sendInformation
+  +String signIn
+  +String signUp
+  +String submit
+  +String techRole
+  +String unknownError
+  +String userNotFound
+  +String userRole
+  +String verifyEmail
+  +String verifyEmailResent
+  +String verifyEmailSent
+  +String warningText112
+  +String webText
+  {static} +dynamic load()
+  {static} +S of()
+  {static} +S? maybeOf()
+}
+
+"corriol_app::generated::l10n.dart::S" o-- "corriol_app::generated::l10n.dart::S"
+"corriol_app::generated::l10n.dart::S" o-- "corriol_app::generated::l10n.dart::AppLocalizationDelegate"
+
+class "corriol_app::generated::l10n.dart::AppLocalizationDelegate" {
+  +List<Locale> supportedLocales
+  +bool isSupported()
+  +dynamic load()
+  +bool shouldReload()
+  -bool _isSupported()
+}
+
+"flutter::src::widgets::localizations.dart::LocalizationsDelegate" <|-- "corriol_app::generated::l10n.dart::AppLocalizationDelegate"
+
+class "corriol_app::l10n::l10n.dart::L10n" {
+  {static} +List<Locale> all
+}
+
+@enduml

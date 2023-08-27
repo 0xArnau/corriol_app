@@ -1,0 +1,92 @@
+@startuml
+set namespaceSeparator ::
+
+' <models>
+
+class "corriol_app::models::user_preferences_model.dart::UserPreferencesModel" {
+  +Locale lang
+  +bool mobileData
+  +bool gps
+  +void init()
+  +Map<String, dynamic> toJson()
+  {static} +dynamic fromPreferences()
+}
+
+"corriol_app::models::user_preferences_model.dart::UserPreferencesModel" o-- "dart::ui::Locale"
+
+class "corriol_app::models::report_model.dart::ReportModel" {
+  +String createdAt
+  +String createdBy
+  +LatLng coordinates
+  +Species species
+  +int males
+  +int females
+  +int undetermined
+  +int chickens
+  +int cats
+  +int dogs
+  +String administrativeArea
+  +String subAdministrativeArea
+  +String locality
+  +Map<String, dynamic> toJson()
+}
+
+"corriol_app::models::report_model.dart::ReportModel" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"corriol_app::models::report_model.dart::ReportModel" o-- "corriol_app::utils::constants.dart::Species"
+
+class "corriol_app::models::user_model.dart::UserModel" {
+  +String email
+  +String fullName
+  +int age
+  +bool? technician
+  +Map<String, dynamic> toJson()
+}
+
+' <constants>
+
+class "corriol_app::utils::constants.dart::Species" {
+  +int index
+  {static} +List<Species> values
+  {static} +Species corriolCamanegre
+  {static} +Species corriolPetit
+}
+
+"corriol_app::utils::constants.dart::Species" o-- "corriol_app::utils::constants.dart::Species"
+"dart::core::Enum" <|-- "corriol_app::utils::constants.dart::Species"
+
+' <providers>
+
+class "corriol_app::providers::report_provider.dart::ReportProvider" {
+  +Map<String, List<ReportModel>> locality
+  +List<ReportModel> userReports
+  +void fetchAllReports()
+  +void fetchCurrentUserReports()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "corriol_app::providers::report_provider.dart::ReportProvider"
+"corriol_app::providers::report_provider.dart::ReportProvider" o-- "corriol_app::models::report_model.dart::ReportModel"
+
+class "corriol_app::providers::user_provider.dart::UserProvider" {
+  -UserModel? _user
+  -UserPreferencesModel _preferences
+  -LatLng _position
+  +dynamic user
+  +dynamic preferences
+  +dynamic position
+  +dynamic fetchUserInfo()
+  +void fetchMobileDataInfo()
+  +void fetchGpsInfo()
+  +void fetchLangInfo()
+  +void fetchPosition()
+  +void setMobileDataInfo()
+  +void setGpsInfo()
+  +void setLangInfo()
+  +void setPosition()
+}
+
+"corriol_app::providers::user_provider.dart::UserProvider" o-- "corriol_app::models::user_model.dart::UserModel"
+"corriol_app::providers::user_provider.dart::UserProvider" o-- "corriol_app::models::user_preferences_model.dart::UserPreferencesModel"
+"corriol_app::providers::user_provider.dart::UserProvider" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "corriol_app::providers::user_provider.dart::UserProvider"
+
+@enduml

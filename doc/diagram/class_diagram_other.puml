@@ -1,0 +1,31 @@
+@startuml
+set namespaceSeparator ::
+
+' <main>
+
+class "corriol_app::main.dart::MyApp" {
+  +State<MyApp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "corriol_app::main.dart::MyApp"
+
+class "corriol_app::main.dart::_MyAppState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "corriol_app::main.dart::_MyAppState"
+
+' <constants>
+
+class "corriol_app::utils::constants.dart::Species" {
+  +int index
+  {static} +List<Species> values
+  {static} +Species corriolCamanegre
+  {static} +Species corriolPetit
+}
+
+"corriol_app::utils::constants.dart::Species" o-- "corriol_app::utils::constants.dart::Species"
+"dart::core::Enum" <|-- "corriol_app::utils::constants.dart::Species"
+
+@enduml

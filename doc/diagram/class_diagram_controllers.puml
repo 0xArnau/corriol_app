@@ -1,0 +1,76 @@
+@startuml
+set namespaceSeparator ::
+
+' <controllers>
+
+class "corriol_app::controllers::map_controller.dart::MapController" {
+  {static} -Map<MarkerId, Marker> _markers
+  {static} +Set<Marker> markers
+  {static} +CameraPosition getDefaultCameraPosition()
+  {static} +void onTap()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "corriol_app::controllers::map_controller.dart::MapController"
+
+class "corriol_app::controllers::report_controller.dart::ReportController" {
+  +void saveReport()
+  -dynamic _saveReportLocally()
+  -dynamic _saveReport2Firestore()
+  -dynamic _saveLocalReports2Firestore()
+  +dynamic getReportsByUserId()
+  +dynamic getAllReports()
+}
+
+class "corriol_app::controllers::auth_controller.dart::AuthController" {
+  -FirebaseAuth _firebaseAuth
+  +User? currentUser
+  +Stream<User?> authStateChanges
+  +void userReload()
+  +bool isEmailVerified()
+  +dynamic signInWithEmailAndPassword()
+  +dynamic createUserWithEmailAndPassword()
+  +dynamic signOut()
+  +dynamic sendEmailVerification()
+  +dynamic addUserInformation()
+  +dynamic getUserInformation()
+}
+
+"corriol_app::controllers::auth_controller.dart::AuthController" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"corriol_app::controllers::auth_controller.dart::AuthController" o-- "firebase_auth::firebase_auth.dart::User"
+"corriol_app::controllers::auth_controller.dart::AuthController" o-- "dart::async::Stream<User>"
+
+class "corriol_app::controllers::user_preferences_controller.dart::UserPreferencesController" {
+  {static} -dynamic _prefs
+  {static} +dynamic setPrefsLang()
+  {static} +dynamic setPrefsGps()
+  {static} +dynamic setPrefsMobileData()
+  {static} +dynamic getPrefsLang()
+  {static} +dynamic getPrefsGps()
+  {static} +dynamic getPrefsMobileData()
+  {static} +dynamic getUserPreferencesModel()
+}
+
+class "corriol_app::controllers::geolocation_controller.dart::GeolocationController" {
+  -void _updateIsGpsOnNotifier()
+  +bool checkGpsStatus()
+  +void enableLocationPermission()
+  +dynamic disableLocationPermission()
+  +dynamic getCurrentLocation()
+  +dynamic updateAddress()
+  +dynamic getLatLngFromAddress()
+}
+
+class "corriol_app::controllers::file_io_controller.dart::FileIoController" {
+  +String fileName
+  -dynamic _localPath
+  -dynamic _localFile
+  +dynamic deleteFile()
+  +dynamic fileExists()
+  +dynamic writeContent()
+  +dynamic reWriteContent()
+  +dynamic readContent()
+  {static} -dynamic _permissionStorage()
+  {static} +void saveReports2CSV()
+}
+
+@enduml
