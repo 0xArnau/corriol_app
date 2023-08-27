@@ -79,6 +79,7 @@
   "statusOff": "apagado",
   "statusOn": "activado",
   "submit": "Enviar",
+  "tapTheIcon": "Toque el botón para actualizar los datos.",
   "techRole": "Rol: Técnico",
   "unknownError": "Error desconocido",
   "userNotFound": "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado.",

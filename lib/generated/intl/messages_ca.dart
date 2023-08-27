@@ -155,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "statusOff": MessageLookupByLibrary.simpleMessage("apagat"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activat"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "tapTheIcon": MessageLookupByLibrary.simpleMessage(
+            "Toqueu el botó per actualitzar les dades."),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconegut"),

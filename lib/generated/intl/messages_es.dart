@@ -156,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "statusOff": MessageLookupByLibrary.simpleMessage("apagado"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activado"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "tapTheIcon": MessageLookupByLibrary.simpleMessage(
+            "Toque el botón para actualizar los datos."),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconocido"),

@@ -79,6 +79,7 @@
   "statusOff": "apagat",
   "statusOn": "activat",
   "submit": "Enviar",
+  "tapTheIcon": "Toqueu el botó per actualitzar les dades.",
   "techRole": "Rol: tècnic",
   "unknownError": "Error desconegut",
   "userNotFound": "No hi ha cap registre d'usuari corresponent a aquest identificador. És possible que l'usuari hagi estat suprimit.",

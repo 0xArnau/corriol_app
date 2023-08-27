@@ -79,6 +79,7 @@
   "statusOff": "off",
   "statusOn": "on",
   "submit": "Submit",
+  "tapTheIcon": "Touch the button to update the data.",
   "techRole": "Role: Technician",
   "unknownError": "Unknown error",
   "userNotFound": "There is no user record corresponding to this identifier. The user may have been deleted.",

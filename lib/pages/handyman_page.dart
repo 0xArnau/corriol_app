@@ -58,6 +58,15 @@ class _HandymanPageState extends State<HandymanPage> {
           builder: (context, value, child) {
             Map<String, List<ReportModel>> map = value.locality;
             List<Widget> locality = generateKeyButton(map);
+            if (locality.isEmpty) {
+              return Align(
+                alignment: Alignment.topRight,
+                child: Text(
+                  S.current.tapTheIcon,
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+              );
+            }
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,

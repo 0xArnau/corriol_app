@@ -840,6 +840,16 @@ class S {
     );
   }
 
+  /// `Touch the button to update the data.`
+  String get tapTheIcon {
+    return Intl.message(
+      'Touch the button to update the data.',
+      name: 'tapTheIcon',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Role: Technician`
   String get techRole {
     return Intl.message(
