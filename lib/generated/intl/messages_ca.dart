@@ -49,10 +49,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Les contrasenyes són diferents"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
             "No es pot enviar pel fet que hi ha camps buits"),
+        "errorGetInfo": MessageLookupByLibrary.simpleMessage(
+            "No s\'ha pogut obtenir la informació demanada"),
         "errorGps": MessageLookupByLibrary.simpleMessage(
             "No s\'ha pogut habilitar el permís de localització. Modifica-ho manualment als paràmetres del dispositiu."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("No s\'ha pogut iniciar:"),
+        "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
+            "No s\'ha pogut desar la informació proporcionada"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),

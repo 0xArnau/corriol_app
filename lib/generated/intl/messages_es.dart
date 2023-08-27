@@ -51,10 +51,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Las contraseñas son diferentes"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
             "No se puede enviar debido a que hay campos vacíos"),
+        "errorGetInfo": MessageLookupByLibrary.simpleMessage(
+            "No se ha podido obtener la información pedida"),
         "errorGps": MessageLookupByLibrary.simpleMessage(
             "No se pudo habilitar el permiso de localización. Modifícalo manualmente en los ajustes del dispositivo."),
         "errorLaunchUrl":
             MessageLookupByLibrary.simpleMessage("No se pudo iniciar:"),
+        "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
+            "No se pudo guardar la información dada"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guradado"),
         "forgotPassword": MessageLookupByLibrary.simpleMessage(
             "¿Has olvidado tu contraseña?"),

@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `The requested information could not be obtained`
+  String get errorGetInfo {
+    return Intl.message(
+      'The requested information could not be obtained',
+      name: 'errorGetInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Could not enable location permission. Change it manually in the device settings.`
   String get errorGps {
     return Intl.message(
@@ -235,6 +245,16 @@ class S {
     return Intl.message(
       'Could not launch:',
       name: 'errorLaunchUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to save the given information`
+  String get errorSaveInfo {
+    return Intl.message(
+      'Failed to save the given information',
+      name: 'errorSaveInfo',
       desc: '',
       args: [],
     );
