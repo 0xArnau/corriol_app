@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "¿Has olvidado tu contraseña?"),
         "handyman": MessageLookupByLibrary.simpleMessage("Técnico"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "inernetConnection":
+            MessageLookupByLibrary.simpleMessage("Conexión a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Cláusula informativa, formulario, inscripción, actividades"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -149,6 +151,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enviar información"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscribirse"),
+        "statusOff": MessageLookupByLibrary.simpleMessage("apagado"),
+        "statusOn": MessageLookupByLibrary.simpleMessage("activado"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
         "unknownError":

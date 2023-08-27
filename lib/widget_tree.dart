@@ -1,7 +1,6 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/user_model.dart';
-import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/pages/handyman_page.dart';
 import 'package:corriol_app/pages/home_page.dart';
 import 'package:corriol_app/pages/profile_page.dart';
@@ -31,7 +30,7 @@ class _WidgetTreeState extends State<WidgetTree> {
     return Consumer<UserProvider>(
       builder: (context, value, child) {
         final user = value.user as UserModel?;
-        final preferences = value.preferences as UserPreferencesModel;
+        // final internetStatus = value.internetConnectionStatus;
         late List<NavigationDestination> navigation;
         late List<Widget> pages;
 
@@ -44,8 +43,7 @@ class _WidgetTreeState extends State<WidgetTree> {
             context,
             user.email,
             Provider.of<UserProvider>(context, listen: false)
-                .preferences
-                .mobileData,
+                .internetConnectionStatus,
           );
         }
 
@@ -136,8 +134,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                       : currentPage == 1
                           ? IconButton(
                               onPressed: () {
-                                value.fetchAllReports(
-                                    context, preferences.mobileData);
+                                value.fetchAllReports(context, true);
                               },
                               icon: const Icon(
                                 Icons.update,

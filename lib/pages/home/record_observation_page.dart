@@ -70,7 +70,6 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         padding: const EdgeInsets.all(kDouble25),
         child: Consumer<UserProvider>(
           builder: (context, value, child) {
-            final preferences = value.preferences as UserPreferencesModel;
             return ListView.builder(
               itemCount: 17,
               itemBuilder: (BuildContext context, int index) {
@@ -199,7 +198,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                           ),
                         ),
                         onPressed: () {
-                          saveReport(preferences.mobileData);
+                          saveReport(value.internetConnectionStatus);
                         },
                         child: Text(S.current.submit),
                       ),
@@ -215,7 +214,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   }
 
   /// Saves the [ReportModel] to using [ReportController].
-  void saveReport(bool mobileData) async {
+  void saveReport(bool internetConnectionStatus) async {
     if (fields.cats == 0 &&
         fields.dogs == 0 &&
         fields.chickens == 0 &&
@@ -245,7 +244,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
           fields.locality.isEmpty) {
         snackbarError(context, S.current.errorEmptyFields);
       } else {
-        ReportController().saveReport(fields, mobileData);
+        ReportController().saveReport(fields, internetConnectionStatus);
         snackbarInfo(context, S.current.saveInformation);
         Navigator.pop(context);
       }

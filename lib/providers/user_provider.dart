@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/user_preferences_controller.dart';
@@ -5,6 +6,7 @@ import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:logger/logger.dart';
 
 /// Class to manage the current user information
 class UserProvider extends ChangeNotifier {
@@ -16,6 +18,9 @@ class UserProvider extends ChangeNotifier {
 
   /// The current position or a position selected on the map
   late LatLng _position;
+
+  /// The current status of internet connection
+  late bool internetConnectionStatus;
 
   /// Return the [UserModel] instance of the current user.
   get user => _user;
@@ -31,6 +36,14 @@ class UserProvider extends ChangeNotifier {
     _user = null;
     _preferences = UserPreferencesModel();
     _position = const LatLng(41.8205, 1.8401); // Catalunya
+
+    init();
+  }
+
+  void init() async {
+    internetConnectionStatus =
+        await UserPreferencesController.getInternetConnectionStatus(
+            mobileData: _preferences.mobileData);
   }
 
   /// Fetches the [UserModel] info from the [AuthController.getUserInformation].
@@ -41,8 +54,25 @@ class UserProvider extends ChangeNotifier {
 
   /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsMobileData].
   void fetchMobileDataInfo() async {
-    bool? mobileData = await UserPreferencesController.getPrefsMobileData();
+    bool mobileData = await UserPreferencesController.getPrefsMobileData();
     _preferences.mobileData = mobileData;
+    notifyListeners();
+  }
+
+  /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsInternetConnection].
+  void fetchInternetConnectionInfo() async {
+    bool internetConnection =
+        await UserPreferencesController.getInternetConnectionStatus(
+      mobileData: _preferences.mobileData,
+    );
+    _preferences.internetConnection = internetConnection;
+    notifyListeners();
+  }
+
+  /// Fetches the [UserPreferencesModel.mobileData] info from the [UserPreferencesController.getPrefsMobileData].
+  void fetchInternetConnectionStatus() async {
+    internetConnectionStatus =
+        _preferences.internetConnection & _preferences.mobileData;
     notifyListeners();
   }
 
@@ -72,9 +102,42 @@ class UserProvider extends ChangeNotifier {
   }
 
   /// Sets the [UserPreferencesModel.mobileData]
-  void setMobileDataInfo(bool mobileData) {
+  void setMobileDataInfo(bool mobileData) async {
     UserPreferencesController.setPrefsMobileData(mobileData);
     _preferences.mobileData = mobileData;
+
+    Logger().d(
+        "mobileData: $mobileData, internetConnectionStatus: $internetConnectionStatus");
+
+    internetConnectionStatus =
+        await UserPreferencesController.getInternetConnectionStatus(
+      mobileData: mobileData,
+    );
+
+    Logger().d(
+        "mobileData: $mobileData, internetConnectionStatus: $internetConnectionStatus");
+
+    notifyListeners();
+  }
+
+  /// Sets the [internetConnectionStatus]
+  void setInternetConnectionStatus(ConnectivityResult connectivityResult) {
+    if (connectivityResult == ConnectivityResult.mobile) {
+      internetConnectionStatus = true && _preferences.mobileData;
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      internetConnectionStatus = true;
+    } else if (connectivityResult == ConnectivityResult.ethernet) {
+      internetConnectionStatus = true;
+    } else if (connectivityResult == ConnectivityResult.vpn) {
+      internetConnectionStatus = true;
+    } else if (connectivityResult == ConnectivityResult.bluetooth) {
+      internetConnectionStatus = false;
+    } else if (connectivityResult == ConnectivityResult.other) {
+      internetConnectionStatus = false;
+    } else if (connectivityResult == ConnectivityResult.none) {
+      internetConnectionStatus = false;
+    }
+
     notifyListeners();
   }
 

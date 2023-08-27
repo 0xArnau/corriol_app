@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/l10n/l10n.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
@@ -40,18 +43,39 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late final StreamSubscription<ConnectivityResult> subscription;
+
   @override
   void initState() {
-    Provider.of<UserProvider>(context, listen: false).fetchGpsInfo();
-    Provider.of<UserProvider>(context, listen: false).fetchLangInfo();
-    Provider.of<UserProvider>(context, listen: false).fetchMobileDataInfo();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<UserProvider>(context, listen: false).fetchGpsInfo();
+      Provider.of<UserProvider>(context, listen: false).fetchLangInfo();
+      Provider.of<UserProvider>(context, listen: false).fetchMobileDataInfo();
+      Provider.of<UserProvider>(context, listen: false)
+          .fetchInternetConnectionInfo();
+      Provider.of<UserProvider>(context, listen: false)
+          .fetchInternetConnectionStatus();
+    });
 
-    Provider.of<ReportProvider>(context, listen: false).fetchAllReports(
-      context,
-      Provider.of<UserProvider>(context, listen: false).preferences.mobileData,
-    );
+    // Provider.of<ReportProvider>(context, listen: false).fetchAllReports(
+    //   context,
+    //   Provider.of<UserProvider>(context, listen: false).preferences.mobileData,
+    // );
+
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      Provider.of<UserProvider>(context, listen: false)
+          .setInternetConnectionStatus(result);
+    });
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
   }
 
   @override

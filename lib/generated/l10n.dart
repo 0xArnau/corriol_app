@@ -320,6 +320,16 @@ class S {
     );
   }
 
+  /// `Internet connection`
+  String get inernetConnection {
+    return Intl.message(
+      'Internet connection',
+      name: 'inernetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Informative clause, form, registration, activities`
   String get infoClause {
     return Intl.message(
@@ -785,6 +795,26 @@ class S {
     return Intl.message(
       'Sign Up',
       name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `off`
+  String get statusOff {
+    return Intl.message(
+      'off',
+      name: 'statusOff',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `on`
+  String get statusOn {
+    return Intl.message(
+      'on',
+      name: 'statusOn',
       desc: '',
       args: [],
     );

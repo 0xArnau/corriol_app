@@ -1,5 +1,4 @@
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
@@ -16,9 +15,7 @@ class RecordsPieChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(
       builder: (context, userProvider, child) {
-        final preferences = userProvider.preferences as UserPreferencesModel;
-
-        if (preferences.mobileData == false) {
+        if (userProvider.internetConnectionStatus == false) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

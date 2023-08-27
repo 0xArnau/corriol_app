@@ -1,10 +1,10 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/models/user_preferences_model.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -82,6 +82,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       option: "${S.current.lang}: ${preferences.lang}",
                       onTap: () => _openLanguageMenu(context),
                     ),
+                    _profileUserOptionsInternet(
+                        internetConnection: provider.internetConnectionStatus),
                     _profileUserOptionsData(mobileData: preferences.mobileData),
                     _profileUserOptionsGps(isGpsOn: preferences.gps),
                     const SizedBox(height: 10),
@@ -169,6 +171,34 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  Widget _profileUserOptionsInternet({required bool internetConnection}) {
+    return ListTile(
+      leading: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: Colors.grey.withOpacity(0.1),
+        ),
+        child: internetConnection
+            ? const Icon(Icons.signal_cellular_0_bar_rounded)
+            : const Icon(
+                Icons.signal_cellular_connected_no_internet_0_bar_rounded),
+      ),
+      title: Text(S.current.inernetConnection),
+      trailing: internetConnection
+          ? Text(
+              S.current.statusOn,
+              style: TextStyle(color: Colors.grey[800]),
+            )
+          : Text(
+              S.current.statusOff,
+              style: TextStyle(color: Colors.grey[800]),
+            ),
+      // onTap: onTap,
+    );
+  }
+
   Widget _profileUserOptionsData({required bool mobileData}) {
     return ListTile(
       leading: Container(
@@ -223,8 +253,10 @@ class _ProfilePageState extends State<ProfilePage> {
           value: isGpsOn,
           onChanged: (value) {
             value
-                ? GeolocationController().enableLocationPermission(context, provider)
-                : GeolocationController().disableLocationPermission(context, provider);
+                ? GeolocationController()
+                    .enableLocationPermission(context, provider)
+                : GeolocationController()
+                    .disableLocationPermission(context, provider);
           },
         ),
       ),
