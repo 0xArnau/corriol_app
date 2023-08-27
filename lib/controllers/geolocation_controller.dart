@@ -9,6 +9,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 /// Controller class for handling geolocation-related operations.
 class GeolocationController {
@@ -68,9 +70,7 @@ class GeolocationController {
   void enableLocationPermission(BuildContext context, UserProvider provider) {
     final preferences = provider.preferences as UserPreferencesModel;
     if (!preferences.gps) {
-      Geolocator.requestPermission().then((_) {
-        _updateIsGpsOnNotifier(context, provider);
-      });
+      _updateIsGpsOnNotifier(context, provider);
     }
   }
 
@@ -81,17 +81,29 @@ class GeolocationController {
       BuildContext context, UserProvider provider) async {
     final preferences = provider.preferences as UserPreferencesModel;
 
-    if (!preferences.gps) {
-      final completer = Completer<void>();
-
-      await Geolocator.openAppSettings();
-
-      completer.future.then((_) {
-        _updateIsGpsOnNotifier(context, provider);
+    if (preferences.gps) {
+      Geolocator.openAppSettings().then((status) {
+        if (status) {
+          updateGpsPermission(context, provider);
+        }
       });
-
-      return completer.future;
     }
+  }
+
+  Future<void> updateGpsPermission(
+      BuildContext context, UserProvider provider) async {
+    final location = Permission.location.isGranted;
+    final locationAlways = Permission.locationAlways.isGranted;
+    final locationWhenInUse = Permission.locationWhenInUse.isGranted;
+
+    Future.wait([
+      location,
+      locationAlways,
+      locationWhenInUse,
+    ]).then((value) {
+      Provider.of<UserProvider>(context, listen: false)
+          .setGpsInfo(context, value.any((status) => status));
+    });
   }
 
   /// Open the app settings
@@ -99,14 +111,7 @@ class GeolocationController {
   /// The [provider] is the instance of the [UserProvider] that holds the [UserPreferencesModel] and modify the [UserPreferencesModel.gps].
   Future<void> openAppSettings(
       BuildContext context, UserProvider provider) async {
-    enableLocationPermission(context, provider);
-
-    final preferences = provider.preferences as UserPreferencesModel;
-
-    if (!preferences.gps) {
-      Geolocator.openAppSettings()
-          .then((_) => _updateIsGpsOnNotifier(context, provider));
-    }
+    Geolocator.openAppSettings().then((_) => provider.fetchGpsInfo());
   }
 
   /// Gets the current user's location.
