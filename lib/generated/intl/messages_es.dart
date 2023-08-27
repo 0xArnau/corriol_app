@@ -66,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guradado"),
         "forgotPassword": MessageLookupByLibrary.simpleMessage(
             "¿Has olvidado tu contraseña?"),
+        "goToDeviceSettings": MessageLookupByLibrary.simpleMessage(
+            "Ir a la configuración de la aplicación del dispositivo"),
         "handyman": MessageLookupByLibrary.simpleMessage("Técnico"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "inernetConnection":

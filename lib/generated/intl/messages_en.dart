@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "goToDeviceSettings":
+            MessageLookupByLibrary.simpleMessage("Go to device app settings"),
         "handyman": MessageLookupByLibrary.simpleMessage("Handyman"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "inernetConnection":
