@@ -1,7 +1,7 @@
 import 'package:corriol_app/controllers/file_io_controller.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/controllers/map_controller.dart';
 import 'package:corriol_app/models/report_model.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/widgets/report_marker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -29,7 +29,7 @@ class _ReportMapPageState extends State<ReportMapPage> {
     for (var report in widget.reports) {
       markers.add(
         Marker(
-          markerId: MarkerId(report.createdBy),
+          markerId: MarkerId(report.createdAt),
           position:
               LatLng(report.coordinates.latitude, report.coordinates.longitude),
           onTap: () {
