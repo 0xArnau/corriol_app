@@ -29,7 +29,7 @@ class _ReportMapPageState extends State<ReportMapPage> {
     for (var report in widget.reports) {
       markers.add(
         Marker(
-          markerId: MarkerId(report.createdAt),
+          markerId: MarkerId("${report.createdBy}-${report.createdAt}"),
           position:
               LatLng(report.coordinates.latitude, report.coordinates.longitude),
           onTap: () {
