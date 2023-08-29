@@ -57,6 +57,7 @@ dependencies:
   permission_handler: ^10.4.3
   dcdg: ^4.1.0
   logger: ^1.4.0
+  document_file_save_plus: ^2.0.0
 
 dev_dependencies:
   flutter_test:

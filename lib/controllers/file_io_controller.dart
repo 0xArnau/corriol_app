@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:csv/csv.dart';
+import 'package:document_file_save_plus/document_file_save_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -78,28 +82,14 @@ class FileIoController {
   ///
   /// The [reports] list contains the data to be written to the CSV file.
   /// The [context] is required to display a snackbar with the result of the operation.
-  static void saveReports2CSV(
-      List<ReportModel> reports, BuildContext context) async {
+  static void saveReports2CSV({
+    required BuildContext context,
+    required List<ReportModel> reports,
+    required String locality,
+  }) async {
     late String csv;
-    late File file;
-    Directory? directory;
-
-    if (Platform.isAndroid) {
-      if (await _permissionStorage(Permission.storage)) {
-        directory = await getExternalStorageDirectory();
-      }
-    } else {
-      if (await _permissionStorage(Permission.storage)) {
-        directory = await getApplicationDocumentsDirectory();
-      }
-    }
-
-    if (directory == null) return;
-
-    file = File(
-      "${directory.path}/corriol_app-${DateTime.now().toIso8601String()}.csv",
-    );
-
+    final fileName =
+        "corriol_app-$locality-${DateTime.now().toIso8601String()}.csv";
     List<List<dynamic>> rows = [];
 
     rows.add([
@@ -138,15 +128,13 @@ class FileIoController {
 
     csv = const ListToCsvConverter().convert(rows);
 
-    directory.exists().then((value) {
-      if (value) {
-        file
-            .writeAsString(csv, mode: FileMode.write)
-            .then((_) => snackbarInfo(context, S.current.fileSave))
-            .onError((error, stackTrace) => snackbarInfo(context, "$error"));
-      } else {
-        snackbarInfo(context, S.current.directoryDoesntExist);
-      }
-    });
+    DocumentFileSavePlus()
+        .saveFile(
+          Uint8List.fromList(utf8.encode(csv)),
+          fileName,
+          "text/csv",
+        )
+        .then((_) => snackbarInfo(context, "${S.current.fileSave}: $fileName "))
+        .onError((error, stackTrace) => snackbarError(context, "$error"));
   }
 }

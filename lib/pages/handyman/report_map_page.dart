@@ -61,7 +61,11 @@ class _ReportMapPageState extends State<ReportMapPage> {
           IconButton(
             icon: const Icon(Icons.file_download),
             onPressed: () {
-              FileIoController.saveReports2CSV(widget.reports, context);
+              FileIoController.saveReports2CSV(
+                context: context,
+                reports: widget.reports,
+                locality: widget.title,
+              );
             },
           ),
         ],

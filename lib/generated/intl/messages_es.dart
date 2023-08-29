@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "No se pudo guardar la información dada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "El acceso a esta cuenta se ha deshabilitado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puedes restaurarlo inmediatamente restableciendo tu contraseña o puedes volver a intentarlo más tarde."),
-        "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guradado"),
+        "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guardado"),
         "forgotPassword": MessageLookupByLibrary.simpleMessage(
             "¿Has olvidado tu contraseña?"),
         "goToDeviceSettings": MessageLookupByLibrary.simpleMessage(
