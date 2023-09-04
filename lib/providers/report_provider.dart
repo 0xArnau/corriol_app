@@ -47,6 +47,7 @@ class ReportProvider extends ChangeNotifier {
     }
   }
 
+  /// Fetches the [userReports] from the current user;
   void fetchCurrentUserReports(
       BuildContext context, String email, bool internetConnection) async {
     if (internetConnection) {
@@ -56,5 +57,12 @@ class ReportProvider extends ChangeNotifier {
     } else {
       snackbarError(context, S.current.noInternetConnection);
     }
+  }
+
+  /// Add a report created by the current user
+  void addUserReport(ReportModel report) {
+    userReports.add(report);
+
+    notifyListeners();
   }
 }

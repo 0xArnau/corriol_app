@@ -3,6 +3,7 @@ import 'package:corriol_app/controllers/geolocation_controller.dart';
 import 'package:corriol_app/controllers/report_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
+import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
@@ -243,6 +244,8 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
           fields.locality.isEmpty) {
         snackbarError(context, S.current.errorEmptyFields);
       } else {
+        Provider.of<ReportProvider>(context, listen: false)
+            .addUserReport(fields);
         ReportController().saveReport(fields, internetConnectionStatus);
         snackbarInfo(context, S.current.saveInformation);
         Navigator.pop(context);
