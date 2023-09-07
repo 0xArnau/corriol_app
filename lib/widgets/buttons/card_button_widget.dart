@@ -51,12 +51,14 @@ class CardButtonWidget extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(kDouble25),
           alignment: Alignment.center,
-          child: Text(
-            text,
-            style: TextStyle(
-              color: foregroundColor,
+          child: SingleChildScrollView(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: foregroundColor,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         ),
       ),
