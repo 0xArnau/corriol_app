@@ -1,7 +1,6 @@
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/providers/report_provider.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/widgets/buttons/card_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

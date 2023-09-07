@@ -238,9 +238,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Login button
         blackButton(
-          context: context,
           text: S.current.signIn,
-          onTap: signInWithEmailAndPassword,
+          onTap: () {
+            signInWithEmailAndPassword(context);
+          },
         ),
         const SizedBox(height: kDouble10),
         _forgotPassword(),
@@ -297,9 +298,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Register button
         blackButton(
-          context: context,
           text: S.current.signUp,
-          onTap: registerWithEmailAndPassword,
+          onTap: () {
+            registerWithEmailAndPassword(context);
+          },
         ),
         const SizedBox(height: kDouble25),
         // Docs

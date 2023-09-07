@@ -67,9 +67,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       _emailButton(),
       const SizedBox(height: kDouble25),
       blackButton(
-        context: context,
         text: S.current.sendEmail,
-        onTap: _resetPassword,
+        onTap: () {
+          _resetPassword(context);
+        },
       ),
     ];
 

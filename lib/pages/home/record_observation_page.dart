@@ -205,10 +205,9 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                     //   ),
                     // );
                     return blackButton(
-                      context: context,
                       text: S.current.submit,
                       onTap: () {
-                        saveReport(value.internetConnectionStatus);
+                        saveReport(context, value.internetConnectionStatus);
                       },
                     );
                 }
@@ -222,7 +221,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   }
 
   /// Saves the [ReportModel] to using [ReportController].
-  void saveReport(bool internetConnectionStatus) async {
+  void saveReport(BuildContext context, bool internetConnectionStatus) async {
     if (fields.cats == 0 &&
         fields.dogs == 0 &&
         fields.chickens == 0 &&
