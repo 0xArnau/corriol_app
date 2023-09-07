@@ -7,6 +7,7 @@ import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
+import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
@@ -185,23 +186,30 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   case 15:
                     return const SizedBox(height: 15);
                   case 16:
-                    return SizedBox(
-                      height: null,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          saveReport(value.internetConnectionStatus);
-                        },
-                        child: Text(S.current.submit),
-                      ),
+                    // return SizedBox(
+                    //   height: null,
+                    //   width: double.infinity,
+                    //   child: ElevatedButton(
+                    //     style: ButtonStyle(
+                    //       shape:
+                    //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //         RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(8.0),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     onPressed: () {
+                    //       saveReport(value.internetConnectionStatus);
+                    //     },
+                    //     child: Text(S.current.submit),
+                    //   ),
+                    // );
+                    return blackButton(
+                      context: context,
+                      text: S.current.submit,
+                      onTap: () {
+                        saveReport(value.internetConnectionStatus);
+                      },
                     );
                 }
                 return null;
