@@ -1,13 +1,13 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
+import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +44,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   /// Using [FirebaseAuth.signInWithEmailAndPassword] signs in the user with the provided email and password.
-  /// 
+  ///
   /// If the passwords don't match shows a [errorFirebaseAuthSnackbar] error message.
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
@@ -72,7 +72,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   /// Using [FirebaseAuth.createUserWithEmailAndPassword], registers a new user with the provided email, password, name, and age.
-  /// 
+  ///
   /// If a field is empty show a [errorFirebaseAuthSnackbar] error message.
   Future<void> registerWithEmailAndPassword(BuildContext context) async {
     if (_controllerAge.text.isEmpty ||
@@ -376,11 +376,11 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              padding: const EdgeInsets.all(kDoubleMainPadding),
               child: _optionsTextStyle(S.current.signIn),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              padding: const EdgeInsets.all(kDoubleMainPadding),
               child: _optionsTextStyle(S.current.signUp),
             ),
           ],
@@ -420,7 +420,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(kDoublePaddingBasic),
+            padding: const EdgeInsets.all(kDoubleMainPadding),
             child: ListView.builder(
               itemCount: list.length,
               itemBuilder: (context, index) {

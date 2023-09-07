@@ -68,6 +68,8 @@ const kColorList = {
 };
 
 // Paddings
+const kDoubleMainPadding = 10.0;
+
 const kDouble10 = 10.0;
 const kDouble15 = 15.0;
 const kDouble20 = 20.0;

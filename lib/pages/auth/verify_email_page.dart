@@ -95,7 +95,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
               ],
             ),
             body: Padding(
-              padding: const EdgeInsets.all(kDouble15),
+              padding: const EdgeInsets.all(kDoubleMainPadding),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

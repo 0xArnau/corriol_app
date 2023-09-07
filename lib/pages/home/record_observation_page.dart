@@ -68,7 +68,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(kDouble25),
+        padding: const EdgeInsets.all(kDoubleMainPadding),
         child: Consumer<UserProvider>(
           builder: (context, value, child) {
             return ListView.builder(
