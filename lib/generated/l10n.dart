@@ -939,6 +939,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Year of birth`
+  String get yearOfBirth {
+    return Intl.message(
+      'Year of birth',
+      name: 'yearOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

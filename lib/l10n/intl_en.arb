@@ -88,5 +88,6 @@
   "verifyEmailResent": "Resend Verification",
   "verifyEmailSent": "A verification email has been sent to: ",
   "warningText112": "If you notice any incident related to the Kentish Plover, call: ",
-  "webText": "Or visit our website: "
+  "webText": "Or visit our website: ",
+  "yearOfBirth": "Year of birth"
 }

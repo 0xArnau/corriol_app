@@ -173,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warningText112": MessageLookupByLibrary.simpleMessage(
             "Si nota alguna incidencia relacionada con el Chorlitejo patinegro, llame al: "),
         "webText": MessageLookupByLibrary.simpleMessage(
-            "O visite nuestra página web: ")
+            "O visite nuestra página web: "),
+        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Año de nacimiento")
       };
 }

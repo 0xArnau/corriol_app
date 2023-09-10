@@ -166,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warningText112": MessageLookupByLibrary.simpleMessage(
             "If you notice any incident related to the Kentish Plover, call: "),
         "webText":
-            MessageLookupByLibrary.simpleMessage("Or visit our website: ")
+            MessageLookupByLibrary.simpleMessage("Or visit our website: "),
+        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Year of birth")
       };
 }

@@ -1,13 +1,13 @@
 import 'package:corriol_app/controllers/auth_controller.dart';
 import 'package:corriol_app/generated/l10n.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/pages/auth/forgot_password_page.dart';
+import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/sso_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
 import 'package:corriol_app/widgets/pdf_viewer_widget.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +24,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerConfirmPassword =
       TextEditingController();
-  final TextEditingController _controllerAge = TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
+  late final TextEditingController _controllerYearOfBirth =
+      TextEditingController();
 
   bool checkBoxLegal = false;
   bool checkBoxInfo = false;
@@ -39,12 +40,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     _controllerConfirmPassword.dispose();
     _controllerEmail.dispose();
     _controllerName.dispose();
-    _controllerAge.dispose();
+    _controllerYearOfBirth.dispose();
     super.dispose();
   }
 
   /// Using [FirebaseAuth.signInWithEmailAndPassword] signs in the user with the provided email and password.
-  /// 
+  ///
   /// If the passwords don't match shows a [errorFirebaseAuthSnackbar] error message.
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     if (_controllerEmail.text == "" || _controllerPassword.text == "") {
@@ -72,10 +73,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   /// Using [FirebaseAuth.createUserWithEmailAndPassword], registers a new user with the provided email, password, name, and age.
-  /// 
+  ///
   /// If a field is empty show a [errorFirebaseAuthSnackbar] error message.
   Future<void> registerWithEmailAndPassword(BuildContext context) async {
-    if (_controllerAge.text.isEmpty ||
+    if (_controllerYearOfBirth.text.isEmpty ||
         _controllerConfirmPassword.text.isEmpty ||
         _controllerEmail.text.isEmpty ||
         _controllerName.text.isEmpty ||
@@ -112,13 +113,30 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           UserModel(
             email: _controllerEmail.text,
             fullName: _controllerName.text,
-            age: int.parse(_controllerAge.text),
+            yearOfBirth: int.parse(_controllerYearOfBirth.text),
           ),
         );
       } on FirebaseAuthException catch (e) {
         errorFirebaseAuthSnackbar(context, e);
       }
     }
+  }
+
+  void _showYearPicker(BuildContext context) {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    ).then((value) {
+      if (value != null) {
+        if (mounted) {
+          setState(() {
+            _controllerYearOfBirth.text = "${value.year}";
+          });
+        }
+      }
+    });
   }
 
   Widget _title() {
@@ -264,10 +282,13 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Age
         MyTextFormWidget(
-          hintText: S.current.age,
-          controller: _controllerAge,
+          hintText: S.current.yearOfBirth,
+          controller: _controllerYearOfBirth,
+          onTap: () {
+            _showYearPicker(context);
+          },
           obscureText: false,
-          prefixIcon: const Icon(Icons.numbers),
+          prefixIcon: const Icon(Icons.calendar_today_rounded),
         ),
         const SizedBox(height: kDouble15),
         // Email

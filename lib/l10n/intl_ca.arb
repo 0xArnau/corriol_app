@@ -88,5 +88,6 @@
   "verifyEmailResent": "Torna a enviar la verificació",
   "verifyEmailSent": "S'ha enviat un correu electrònic de verificació a:",
   "warningText112": "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al: ",
-  "webText": "O visiti la nostra pàgina web: "
+  "webText": "O visiti la nostra pàgina web: ",
+  "yearOfBirth": "Any de naixement"
 }

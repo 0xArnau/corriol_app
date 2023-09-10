@@ -171,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warningText112": MessageLookupByLibrary.simpleMessage(
             "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al: "),
         "webText": MessageLookupByLibrary.simpleMessage(
-            "O visiti la nostra pàgina web: ")
+            "O visiti la nostra pàgina web: "),
+        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Any de naixement")
       };
 }

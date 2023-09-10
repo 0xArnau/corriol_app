@@ -8,7 +8,7 @@ class UserModel {
     required this.email,
     // required this.password,
     required this.fullName,
-    required this.age,
+    required this.yearOfBirth,
     this.technician = false,
   });
 
@@ -18,11 +18,11 @@ class UserModel {
   /// The full name of the user.
   final String fullName;
 
-  /// The age of the user.
-  final int age;
+  /// The user's year of birth.
+  final int yearOfBirth;
 
-  /// Indicates whether the user is a technician or not. 
-  /// 
+  /// Indicates whether the user is a technician or not.
+  ///
   /// Default is `false`.
   final bool? technician;
 
@@ -31,7 +31,7 @@ class UserModel {
         'email': email,
         // 'password': password,
         'fullName': fullName,
-        'age': age,
+        'yearOfBirth': yearOfBirth,
         'technician': technician,
       };
 
@@ -41,7 +41,7 @@ class UserModel {
       email: json['email'],
       // password: json['password'].toString(),
       fullName: json['fullName'],
-      age: json['age'],
+      yearOfBirth: json['yearOfBirth'],
       technician: json['technician'],
     );
   }
