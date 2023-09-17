@@ -52,12 +52,14 @@ dart pub global deactivate dhttpd
 - Preference Settings: Users can customize their preferences in the app, such as language, mobile data usage and location permission.
 - Technicians can view all records (grouped by locality) made by all users and download them as CSV files.
 
-## Contribution
-
-If you want to contribute to this project, feel free to create pull requests with your improvements, bug fixes, or new features. We appreciate any kind of collaboration and constructive feedback.
-
 ## Build the App (coming soon)
 
-## License (coming soon)
+## Screenshots
 
-## Screenshots (coming soon)
+![Home](doc/img/home.png)
+![Kentish Plover](doc/img/kentishPlover.png)
+![Contact](doc/img/Contact.png)
+![Record an observation](doc/img/RecordObservation.png)
+![View observations](doc/img/ViewObservation.png)
+![Handyman](doc/img/handyman.png)
+![Profile](doc/img/Profile.png)
