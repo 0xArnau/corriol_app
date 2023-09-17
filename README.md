@@ -56,10 +56,15 @@ dart pub global deactivate dhttpd
 
 ## Screenshots
 
-![Home](doc/img/home.png)
-![Kentish Plover](doc/img/kentishPlover.png)
-![Contact](doc/img/Contact.png)
-![Record an observation](doc/img/RecordObservation.png)
-![View observations](doc/img/ViewObservation.png)
-![Handyman](doc/img/handyman.png)
-![Profile](doc/img/Profile.png)
+<div style="display: flex; justify-content: space-between;">
+  <img src="doc/img/home.png" alt="Home" style="width: 30%;">
+  <img src="doc/img/handyman.png" alt="Handyman" style="width: 30%;">
+  <img src="doc/img/profile.png" alt="Profile" style="width: 30%;">
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+  <img src="doc/img/kentishPlover.png" alt="Kentish Plover" style="width: 33%; padding: 10px;">
+  <img src="doc/img/Contact.png" alt="Contact" style="width: 33%; padding: 10px;">
+  <img src="doc/img/RecordObservation.png" alt="Record an observation" style="width: 33%; padding: 10px;">
+  <img src="doc/img/ViewObservation.png" alt="View observations" style="width: 33%; padding: 10px;">
+</div>
