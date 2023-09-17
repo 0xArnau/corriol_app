@@ -1,10 +1,10 @@
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/forms/my_text_form_widget.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 /// A widget representing the "Forgot Password" page.
 class ForgotPasswordPage extends StatefulWidget {
@@ -67,9 +67,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       _emailButton(),
       const SizedBox(height: kDouble25),
       blackButton(
-        context: context,
         text: S.current.sendEmail,
-        onTap: _resetPassword,
+        onTap: () {
+          _resetPassword(context);
+        },
       ),
     ];
 
@@ -79,7 +80,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(kDoublePaddingBasic),
+          padding: const EdgeInsets.all(kDoubleMainPadding),
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {

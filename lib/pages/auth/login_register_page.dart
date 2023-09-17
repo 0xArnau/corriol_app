@@ -256,9 +256,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Login button
         blackButton(
-          context: context,
           text: S.current.signIn,
-          onTap: signInWithEmailAndPassword,
+          onTap: () {
+            signInWithEmailAndPassword(context);
+          },
         ),
         const SizedBox(height: kDouble10),
         _forgotPassword(),
@@ -318,9 +319,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Register button
         blackButton(
-          context: context,
           text: S.current.signUp,
-          onTap: registerWithEmailAndPassword,
+          onTap: () {
+            registerWithEmailAndPassword(context);
+          },
         ),
         const SizedBox(height: kDouble25),
         // Docs
@@ -397,11 +399,11 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              padding: const EdgeInsets.all(kDoubleMainPadding),
               child: _optionsTextStyle(S.current.signIn),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kDouble20),
+              padding: const EdgeInsets.all(kDoubleMainPadding),
               child: _optionsTextStyle(S.current.signUp),
             ),
           ],
@@ -441,7 +443,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(kDoublePaddingBasic),
+            padding: const EdgeInsets.all(kDoubleMainPadding),
             child: ListView.builder(
               itemCount: list.length,
               itemBuilder: (context, index) {

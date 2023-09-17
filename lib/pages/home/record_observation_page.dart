@@ -7,6 +7,7 @@ import 'package:corriol_app/providers/report_provider.dart';
 import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
+import 'package:corriol_app/widgets/buttons/black_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/counter_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/dropdown_button_widget.dart';
 import 'package:corriol_app/widgets/buttons/map_button_widget.dart';
@@ -67,7 +68,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(kDouble25),
+        padding: const EdgeInsets.all(kDoubleMainPadding),
         child: Consumer<UserProvider>(
           builder: (context, value, child) {
             return ListView.builder(
@@ -185,23 +186,29 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                   case 15:
                     return const SizedBox(height: 15);
                   case 16:
-                    return SizedBox(
-                      height: null,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          saveReport(value.internetConnectionStatus);
-                        },
-                        child: Text(S.current.submit),
-                      ),
+                    // return SizedBox(
+                    //   height: null,
+                    //   width: double.infinity,
+                    //   child: ElevatedButton(
+                    //     style: ButtonStyle(
+                    //       shape:
+                    //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //         RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(8.0),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     onPressed: () {
+                    //       saveReport(value.internetConnectionStatus);
+                    //     },
+                    //     child: Text(S.current.submit),
+                    //   ),
+                    // );
+                    return blackButton(
+                      text: S.current.submit,
+                      onTap: () {
+                        saveReport(context, value.internetConnectionStatus);
+                      },
                     );
                 }
                 return null;
@@ -214,7 +221,7 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
   }
 
   /// Saves the [ReportModel] to using [ReportController].
-  void saveReport(bool internetConnectionStatus) async {
+  void saveReport(BuildContext context, bool internetConnectionStatus) async {
     if (fields.cats == 0 &&
         fields.dogs == 0 &&
         fields.chickens == 0 &&

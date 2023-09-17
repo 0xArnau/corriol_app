@@ -2,29 +2,31 @@ import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget blackButton({
-  required BuildContext context,
   required String text,
   required Function onTap,
 }) {
-  return GestureDetector(
-    onTap: () {
-      onTap(context);
+  return ElevatedButton(
+    onPressed: () {
+      onTap();
     },
-    child: Container(
-      padding: const EdgeInsets.all(kDoublePaddingMyButtonAndMyTextField),
-      // margin: const EdgeInsets.symmetric(horizontal: kDouble25),
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsets>(
+        const EdgeInsets.all(kDoubleMainPadding),
       ),
-      child: Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kDoubleBorderRadiusButtons),
+        ),
+      ),
+    ),
+    child: Center(
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
         ),
       ),
     ),

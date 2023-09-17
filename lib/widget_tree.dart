@@ -143,7 +143,10 @@ class _WidgetTreeState extends State<WidgetTree> {
                           : const Text(''),
                 ],
               ),
-              body: pages.elementAt(currentPage),
+              body: Padding(
+                padding: const EdgeInsets.all(kDoubleMainPadding),
+                child: pages.elementAt(currentPage),
+              ),
               bottomNavigationBar: NavigationBar(
                 destinations: navigation,
                 selectedIndex: currentPage,

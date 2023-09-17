@@ -40,7 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Consumer<UserProvider>(
             builder: (context, provider, child) {
               final user = provider.user as UserModel?;
-              final preferences = provider.preferences as UserPreferencesModel;
+              final preferences =
+                  provider.preferences as UserPreferencesModel;
               if (user == null) {
                 return const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,8 +84,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       onTap: () => _openLanguageMenu(context),
                     ),
                     _profileUserOptionsInternet(
-                        internetConnection: provider.internetConnectionStatus),
-                    _profileUserOptionsData(mobileData: preferences.mobileData),
+                        internetConnection:
+                            provider.internetConnectionStatus),
+                    _profileUserOptionsData(
+                        mobileData: preferences.mobileData),
                     _profileUserOptionsGps(isGpsOn: preferences.gps),
                     _profileUserOptions(
                       icon: const Icon(Icons.settings),
@@ -98,7 +101,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     // _profileAppInfo(),
                     const SizedBox(height: 10),
                     const Image(
-                      image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                      image:
+                          AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
                     ),
                   ],
                 );

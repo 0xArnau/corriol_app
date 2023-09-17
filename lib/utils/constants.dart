@@ -19,7 +19,7 @@ const kColorScreenReport = Color.fromRGBO(0, 193, 118, 1);
 const kColorScreenMyReports = Color.fromRGBO(253, 223, 1, 1);
 
 /// Color for the in the card of the [home_page]
-const kColorDropDown = Color.fromRGBO(242, 217, 116, 1);
+const kColorDropDown = Color.fromRGBO(191, 191, 191, 1);
 
 /// Color to stand out icons
 const kColorIcon = kColorText;
@@ -68,6 +68,8 @@ const kColorList = {
 };
 
 // Paddings
+const kDoubleMainPadding = 10.0;
+
 const kDouble10 = 10.0;
 const kDouble15 = 15.0;
 const kDouble20 = 20.0;

@@ -79,7 +79,7 @@ class ContactPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(kDouble25),
+        padding: const EdgeInsets.all(kDoubleMainPadding),
         child: ListView.builder(
           itemCount: list.length,
           itemBuilder: (context, index) => list[index],
