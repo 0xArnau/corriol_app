@@ -91,7 +91,8 @@ class AuthController {
           .get()
           .then((snapshot) {
         for (var document in snapshot.docs) {
-          if (document.data()['email'] == currentUser!.email) {
+          if (currentUser != null &&
+              document.data()['email'] == currentUser!.email) {
             user = UserModel.fromJson(document.data());
           }
         }

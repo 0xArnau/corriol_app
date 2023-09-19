@@ -145,7 +145,8 @@ class _WidgetTreeState extends State<WidgetTree> {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(kDoubleMainPadding),
-                child: pages.elementAt(currentPage),
+                child: pages.elementAt(
+                    user == null ? navigation.length - 1 : currentPage),
               ),
               bottomNavigationBar: NavigationBar(
                 destinations: navigation,

@@ -40,14 +40,41 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Consumer<UserProvider>(
             builder: (context, provider, child) {
               final user = provider.user as UserModel?;
-              final preferences =
-                  provider.preferences as UserPreferencesModel;
+              final preferences = provider.preferences as UserPreferencesModel;
+
+              List<Widget> options = [
+                _profileUserOptions(
+                  icon: const Icon(Icons.language),
+                  option: "${S.current.lang}: ${preferences.lang}",
+                  onTap: () => _openLanguageMenu(context),
+                ),
+                _profileUserOptionsInternet(
+                    internetConnection: provider.internetConnectionStatus),
+                _profileUserOptionsData(mobileData: preferences.mobileData),
+                _profileUserOptionsGps(isGpsOn: preferences.gps),
+                _profileUserOptions(
+                  icon: const Icon(Icons.settings),
+                  option: S.current.goToDeviceSettings,
+                  onTap: () => GeolocationController()
+                      .openAppSettings(context, provider),
+                ),
+                const SizedBox(height: 10),
+                const Divider(),
+                // const SizedBox(height: 10),
+                // _profileAppInfo(),
+                const SizedBox(height: 10),
+                const Image(
+                  image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                ),
+              ];
+
               if (user == null) {
-                return const Column(
+                return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: kDouble25),
-                    CircularProgressIndicator(),
+                    const SizedBox(height: kDouble25),
+                    const CircularProgressIndicator(),
+                    ...options,
                   ],
                 );
               } else {
@@ -78,32 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(height: 10),
                     const Divider(),
                     const SizedBox(height: 10),
-                    _profileUserOptions(
-                      icon: const Icon(Icons.language),
-                      option: "${S.current.lang}: ${preferences.lang}",
-                      onTap: () => _openLanguageMenu(context),
-                    ),
-                    _profileUserOptionsInternet(
-                        internetConnection:
-                            provider.internetConnectionStatus),
-                    _profileUserOptionsData(
-                        mobileData: preferences.mobileData),
-                    _profileUserOptionsGps(isGpsOn: preferences.gps),
-                    _profileUserOptions(
-                      icon: const Icon(Icons.settings),
-                      option: S.current.goToDeviceSettings,
-                      onTap: () => GeolocationController()
-                          .openAppSettings(context, provider),
-                    ),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    // const SizedBox(height: 10),
-                    // _profileAppInfo(),
-                    const SizedBox(height: 10),
-                    const Image(
-                      image:
-                          AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
-                    ),
+                    ...options,
                   ],
                 );
               }
