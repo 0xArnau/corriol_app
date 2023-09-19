@@ -52,7 +52,26 @@ dart pub global deactivate dhttpd
 - Preference Settings: Users can customize their preferences in the app, such as language, mobile data usage and location permission.
 - Technicians can view all records (grouped by locality) made by all users and download them as CSV files.
 
-## Build the App (coming soon)
+## Build the App
+
+### Android
+
+- Generate a keystore
+
+```shell
+mkdir -p ~/.corriol-app/.android
+
+keytool -genkey -v -keystore ~/.corriol-app/.android/debug-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey
+keytool -genkey -v -keystore ~/.corriol-app/.android/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+```
+
+- [Flutter docs](https://docs.flutter.dev/deployment/android)
+- [YT](https://www.youtube.com/watch?v=mUpF8R6Nfcw&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=29)
+
+### iOS
+
+- [Flutter docs](https://docs.flutter.dev/deployment/ios)
+- [YT](https://www.youtube.com/watch?v=6QMadUJF78U&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=30)
 
 ## Screenshots
 

@@ -44,6 +44,10 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Android related stuff
+key.*.properties
+!key.*.properties.example
+
 .env
 */.env
 .env.*
