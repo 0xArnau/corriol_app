@@ -98,6 +98,7 @@ class _MyAppState extends State<MyApp> {
           ],
           home: const Splash(),
           locale: preferences.lang, // Use the lang from UserPreferencesModel
+          debugShowCheckedModeBanner: false,
         );
       },
     );

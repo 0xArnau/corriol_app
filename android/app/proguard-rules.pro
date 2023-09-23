@@ -1,1 +1,1 @@
--keep class com.example.corriol_app.BuildConfig { *; }
+-keep class com.corriol_app.BuildConfig { *; }

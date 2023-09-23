@@ -1,4 +1,4 @@
-package com.example.corriol_app
+package com.corriol_app
 
 import io.flutter.embedding.android.FlutterActivity
 
