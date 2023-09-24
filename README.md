@@ -56,17 +56,22 @@ dart pub global deactivate dhttpd
 
 ### Android
 
-- Generate a keystore
-
-```shell
-mkdir -p ~/.corriol-app/.android
-
-keytool -genkey -v -keystore ~/.corriol-app/.android/debug-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey
-keytool -genkey -v -keystore ~/.corriol-app/.android/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
-```
-
 - [Flutter docs](https://docs.flutter.dev/deployment/android)
-- [YT](https://www.youtube.com/watch?v=mUpF8R6Nfcw&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=29)
+- [YT](https://www.youtube.com/watch?v=mUpF8R6Nfcw&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=29) (Recommended)
+
+1. Modify the `version` of `pubspec.yaml`
+     1. 1.0.0(version name)+3(version code), at least update the version code every time an update is going to be done on Play Store.
+2. Build the app bundle: `flutter build appbundle`
+
+#### Errors
+
+#### Warnings
+
+- This App Bundle contains native code, and you've not uploaded debug symbols. We recommend you upload a symbol file to make your crashes and ANRs easier to analyze and debug
+  - [StackOverflow](https://stackoverflow.com/questions/62568757/playstore-error-app-bundle-contains-native-code-and-youve-not-uploaded-debug/68778908#68778908)
+  - [YT](https://www.youtube.com/watch?v=nbDjfPbc6hk) (Recommended)
+    - The native debug symbols contain an invalid directory __MACOSX. Only Android ABIs are supported.
+      - `zip -d symbols.zip "__MACOSX*"`
 
 ### iOS
 
