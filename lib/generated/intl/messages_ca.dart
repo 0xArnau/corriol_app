@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkboxPrivacy": MessageLookupByLibrary.simpleMessage(
             "Casella de selecció de privadesa"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirma"),
+        "confirmationEmail": MessageLookupByLibrary.simpleMessage(
+            "Correu electrònic de confirmació"),
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Contrasenya de confirmació"),
         "contact": MessageLookupByLibrary.simpleMessage("Contacte"),
@@ -51,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailSent": MessageLookupByLibrary.simpleMessage("Email enviat"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "Si vols participar de forma activa en la conservació del corriol o tens qualsevol dubte o proposta, posa\'t en contacte amb nosaltres: "),
+        "errorDifferentEmails":
+            MessageLookupByLibrary.simpleMessage("Els emails són diferents"),
         "errorDifferentPasswords": MessageLookupByLibrary.simpleMessage(
             "Les contrasenyes són diferents"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(

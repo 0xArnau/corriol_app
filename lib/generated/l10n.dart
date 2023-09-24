@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Confirmation email`
+  String get confirmationEmail {
+    return Intl.message(
+      'Confirmation email',
+      name: 'confirmationEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirmation Password`
   String get confirmationPassword {
     return Intl.message(
@@ -235,6 +245,16 @@ class S {
     return Intl.message(
       'If you want to participate actively in the conservation of the Plover or have any questions or proposals, please contact us: ',
       name: 'emailText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emails are different`
+  String get errorDifferentEmails {
+    return Intl.message(
+      'Emails are different',
+      name: 'errorDifferentEmails',
       desc: '',
       args: [],
     );

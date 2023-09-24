@@ -21,6 +21,7 @@ class LoginRegisterPage extends StatefulWidget {
 
 class _LoginRegisterPageState extends State<LoginRegisterPage> {
   final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerConfirmEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerConfirmPassword =
       TextEditingController();
@@ -79,11 +80,14 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     if (_controllerYearOfBirth.text.isEmpty ||
         _controllerConfirmPassword.text.isEmpty ||
         _controllerEmail.text.isEmpty ||
+        _controllerConfirmEmail.text.isEmpty ||
         _controllerName.text.isEmpty ||
         _controllerPassword.text.isEmpty) {
       snackbarError(context, S.current.errorEmptyFields);
     } else if (_controllerConfirmPassword.text != _controllerPassword.text) {
       snackbarError(context, S.current.errorDifferentPasswords);
+    } else if (_controllerConfirmEmail.text != _controllerEmail.text) {
+      snackbarError(context, S.current.errorDifferentEmails);
     } else if (!checkBoxLegal) {
       snackbarError(context, S.current.checkboxLegal);
     } else if (!checkBoxInfo) {
@@ -282,20 +286,37 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         ),
         const SizedBox(height: kDouble15),
         // Age
-        MyTextFormWidget(
-          hintText: S.current.yearOfBirth,
-          controller: _controllerYearOfBirth,
+        InkWell(
           onTap: () {
             _showYearPicker(context);
           },
-          obscureText: false,
-          prefixIcon: const Icon(Icons.calendar_today_rounded),
+          child: IgnorePointer(
+            child: TextFormField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.calendar_today_rounded),
+                labelText: S.current.yearOfBirth,
+                // hintText: hintText,
+                border: OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.circular(kDoubleBorderRadiusButtons),
+                ),
+              ),
+              controller: _controllerYearOfBirth,
+            ),
+          ),
         ),
         const SizedBox(height: kDouble15),
         // Email
         MyTextFormWidget(
           hintText: S.current.email,
           controller: _controllerEmail,
+          obscureText: false,
+          prefixIcon: const Icon(Icons.email),
+        ),
+        const SizedBox(height: kDouble15),
+        MyTextFormWidget(
+          hintText: S.current.confirmationEmail,
+          controller: _controllerConfirmEmail,
           obscureText: false,
           prefixIcon: const Icon(Icons.email),
         ),
@@ -316,15 +337,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           prefixIcon: const Icon(Icons.fingerprint),
         ),
         const SizedBox(height: kDouble15),
-        const SizedBox(height: kDouble15),
-        // Register button
-        blackButton(
-          text: S.current.signUp,
-          onTap: () {
-            registerWithEmailAndPassword(context);
-          },
-        ),
-        const SizedBox(height: kDouble25),
         // Docs
         _legalStuff(
           asset: 'assets/docs/legal/avis-legal.pdf',
@@ -362,7 +374,15 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
             }
           },
         ),
-
+        const SizedBox(height: kDouble15),
+        // Register button
+        blackButton(
+          text: S.current.signUp,
+          onTap: () {
+            registerWithEmailAndPassword(context);
+          },
+        ),
+        const SizedBox(height: kDouble25),
         // SSO
         // _sso(),
       ],

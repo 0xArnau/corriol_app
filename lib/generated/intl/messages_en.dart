@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkboxPrivacy":
             MessageLookupByLibrary.simpleMessage("Privacy checkbox"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmationEmail":
+            MessageLookupByLibrary.simpleMessage("Confirmation email"),
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Confirmation Password"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
@@ -52,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailSent": MessageLookupByLibrary.simpleMessage("Email sent"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "If you want to participate actively in the conservation of the Plover or have any questions or proposals, please contact us: "),
+        "errorDifferentEmails":
+            MessageLookupByLibrary.simpleMessage("Emails are different"),
         "errorDifferentPasswords":
             MessageLookupByLibrary.simpleMessage("Passwords are different"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(

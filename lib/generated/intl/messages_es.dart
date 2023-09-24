@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkboxPrivacy":
             MessageLookupByLibrary.simpleMessage("Casilla de privacidad"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
+        "confirmationEmail": MessageLookupByLibrary.simpleMessage(
+            "Correo electrónico de confrimación "),
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña de confirmación"),
         "contact": MessageLookupByLibrary.simpleMessage("Contacto"),
@@ -53,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailSent": MessageLookupByLibrary.simpleMessage("Email enviado"),
         "emailText": MessageLookupByLibrary.simpleMessage(
             "Si quieres participar de forma activa en la conservación del Chorlitejo o tienes cualquier duda o propuesta, ponte en contacto con nosotros: "),
+        "errorDifferentEmails":
+            MessageLookupByLibrary.simpleMessage("Los emails son diferentes"),
         "errorDifferentPasswords": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas son diferentes"),
         "errorEmptyFields": MessageLookupByLibrary.simpleMessage(
