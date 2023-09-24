@@ -104,4 +104,34 @@ class AuthController {
       return null;
     }
   }
+
+  /// Remove the user information (Collection 'Users') and the user account (Auth)
+  Future<void> deleteUserAccountAndInformation() async {
+    // Remove the user info
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .get()
+          .then((snapshot) {
+        for (var document in snapshot.docs) {
+          if (currentUser != null &&
+              document.data()['email'] == currentUser!.email) {
+            document.reference
+                .delete()
+                .then((_) => Logger().d("Removed 'User' document"));
+          }
+        }
+      });
+    } catch (e) {
+      Logger().e("User collection: $e");
+    }
+    // Remove the account
+    try {
+      if (currentUser != null) {
+        currentUser!.delete().then((_) => Logger().d("Removed account"));
+      }
+    } catch (e) {
+      Logger().e("User account: $e");
+    }
+  }
 }

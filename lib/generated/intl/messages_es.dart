@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edad"),
         "all": MessageLookupByLibrary.simpleMessage("Todos"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No se puede visualizar esta área sin conexión a internet"),
         "checkboxInfo": MessageLookupByLibrary.simpleMessage(
@@ -32,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Casilla de verificación legal"),
         "checkboxPrivacy":
             MessageLookupByLibrary.simpleMessage("Casilla de privacidad"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Contraseña de confirmación"),
         "contact": MessageLookupByLibrary.simpleMessage("Contacto"),
@@ -39,6 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chorlitejo patinegro"),
         "corriolPetit":
             MessageLookupByLibrary.simpleMessage("Chorlitejo chico"),
+        "deleteMyAccount":
+            MessageLookupByLibrary.simpleMessage("Borrar mi cuenta"),
+        "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
+            "Al eliminar la cuenta se eliminará toda la información personal y no se podrá recuperar (se deberá crear una cuenta nueva). Se mantendrá la información relativa a las observaciones creadas."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directorio no existe"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),

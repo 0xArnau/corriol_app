@@ -17,13 +17,21 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   @override
   void initState() {
-    AuthController().authStateChanges.listen((user) {
-      if (user != null) {
-        Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
-      }
-    });
+    if (mounted) {
+      AuthController().authStateChanges.listen((user) {
+        if (user != null) {
+          Provider.of<UserProvider>(context, listen: false).fetchUserInfo();
+        }
+      });
+    }
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override

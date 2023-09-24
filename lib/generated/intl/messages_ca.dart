@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edat"),
         "all": MessageLookupByLibrary.simpleMessage("Tots"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel · lar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No es pot visualitzar aquesta àrea sense connexió a internet"),
         "checkboxInfo": MessageLookupByLibrary.simpleMessage("Info checkbox"),
@@ -31,12 +32,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Casilla de verificació legal"),
         "checkboxPrivacy": MessageLookupByLibrary.simpleMessage(
             "Casella de selecció de privadesa"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirma"),
         "confirmationPassword":
             MessageLookupByLibrary.simpleMessage("Contrasenya de confirmació"),
         "contact": MessageLookupByLibrary.simpleMessage("Contacte"),
         "corriolCamanegre":
             MessageLookupByLibrary.simpleMessage("Corriol camanegre"),
         "corriolPetit": MessageLookupByLibrary.simpleMessage("Corriol Petit"),
+        "deleteMyAccount":
+            MessageLookupByLibrary.simpleMessage("Esborrar el meu compte"),
+        "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
+            "En eliminar el compte s\'eliminarà tota la informació personal i no es podrà recuperar (s\'haurà de crear un compte nou). Es mantindrà la informació relativa a les observacions creades."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directori no existeix"),
         "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),

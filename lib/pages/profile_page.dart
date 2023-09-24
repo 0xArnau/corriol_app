@@ -58,6 +58,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   onTap: () => GeolocationController()
                       .openAppSettings(context, provider),
                 ),
+                _profileUserOptions(
+                  icon: const Icon(Icons.delete_forever),
+                  option: S.current.deleteMyAccount,
+                  onTap: () {
+                    _alertDialogDeleteMyAccount();
+                  },
+                ),
                 const SizedBox(height: 10),
                 const Divider(),
                 // const SizedBox(height: 10),
@@ -283,6 +290,31 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
         Text('Version: pre alpha'),
       ],
+    );
+  }
+
+  void _alertDialogDeleteMyAccount() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(S.current.deleteMyAccount),
+          content: Text(S.current.deleteMyAccountContent),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(S.current.cancel)),
+            TextButton(
+                onPressed: () {
+                  AuthController().deleteUserAccountAndInformation();
+                  Navigator.of(context).pop();
+                },
+                child: Text(S.current.confirm)),
+          ],
+        );
+      },
     );
   }
 }

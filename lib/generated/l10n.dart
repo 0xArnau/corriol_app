@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `This area cannot be viewed without internet connection`
   String get cannotBeViewedWithoutInternet {
     return Intl.message(
@@ -110,6 +120,16 @@ class S {
     );
   }
 
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirmation Password`
   String get confirmationPassword {
     return Intl.message(
@@ -145,6 +165,26 @@ class S {
     return Intl.message(
       'Little ringed plover',
       name: 'corriolPetit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete my account`
+  String get deleteMyAccount {
+    return Intl.message(
+      'Delete my account',
+      name: 'deleteMyAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting the account will delete all personal information and cannot be recovered (a new account must be created). Information regarding the observations created will be maintained.`
+  String get deleteMyAccountContent {
+    return Intl.message(
+      'Deleting the account will delete all personal information and cannot be recovered (a new account must be created). Information regarding the observations created will be maintained.',
+      name: 'deleteMyAccountContent',
       desc: '',
       args: [],
     );
