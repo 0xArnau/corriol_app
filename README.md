@@ -59,6 +59,13 @@ dart pub global deactivate dhttpd
 - [Flutter docs](https://docs.flutter.dev/deployment/android)
 - [YT](https://www.youtube.com/watch?v=mUpF8R6Nfcw&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=29) (Recommended)
 
+```shell
+mkdir -p ~/.corriol-app/.android
+
+keytool -genkey -v -keystore ~/.corriol-app/.android/debug-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey
+keytool -genkey -v -keystore ~/.corriol-app/.android/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+```
+
 1. Modify the `version` of `pubspec.yaml`
      1. 1.0.0(version name)+3(version code), at least update the version code every time an update is going to be done on Play Store.
 2. Build the app bundle: `flutter build appbundle`
