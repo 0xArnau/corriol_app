@@ -88,6 +88,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "lang": MessageLookupByLibrary.simpleMessage("Language"),
         "language": MessageLookupByLibrary.simpleMessage("English"),
         "legalWarning": MessageLookupByLibrary.simpleMessage("Legal warning"),
+        "legendCats": MessageLookupByLibrary.simpleMessage("Cats"),
+        "legendChickens": MessageLookupByLibrary.simpleMessage("Chicks"),
+        "legendDogs": MessageLookupByLibrary.simpleMessage("Dogs"),
+        "legendFemales": MessageLookupByLibrary.simpleMessage("Females"),
+        "legendMales": MessageLookupByLibrary.simpleMessage("Males"),
+        "legendUndetermined":
+            MessageLookupByLibrary.simpleMessage("Undetermined"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Meet the Kenthish Plover"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(

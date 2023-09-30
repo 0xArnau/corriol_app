@@ -1,8 +1,6 @@
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/providers/report_provider.dart';
-import 'package:corriol_app/providers/user_provider.dart';
 import 'package:corriol_app/utils/constants.dart';
-import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:corriol_app/widgets/legend_pie_chart_widget.dart';
 import 'package:corriol_app/widgets/records_pie_chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,27 +18,27 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
   final List<Widget> charts = [
     LegendPieChartWidget(
       color: kColorList['femelles']!,
-      text: 'Femelles',
+      text: S.current.legendFemales,
     ),
     LegendPieChartWidget(
       color: kColorList['polls']!,
-      text: 'Polls',
+      text: S.current.legendChickens,
     ),
     LegendPieChartWidget(
       color: kColorList['mascles']!,
-      text: 'Mascles',
+      text: S.current.legendMales,
     ),
     LegendPieChartWidget(
       color: kColorList['indeterminat']!,
-      text: 'Indeterminat',
+      text: S.current.legendUndetermined,
     ),
     LegendPieChartWidget(
       color: kColorList['gossos']!,
-      text: 'Gossos',
+      text: S.current.legendDogs,
     ),
     LegendPieChartWidget(
       color: kColorList['gats']!,
-      text: 'Gats',
+      text: S.current.legendCats,
     ),
   ];
   bool isOptionA = true; // Corriol camanegre (true), Corriol petit (false)
@@ -126,27 +124,6 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
                   ),
                 ],
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    final user =
-                        Provider.of<UserProvider>(context, listen: false).user;
-                    if (user != null) {
-                      value.fetchCurrentUserReports(
-                        context,
-                        user.email,
-                        Provider.of<UserProvider>(context, listen: false)
-                            .internetConnectionStatus,
-                      );
-                    } else {
-                      snackbarError(context, S.current.unknownError);
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.update,
-                  ),
-                ),
-              ],
             ),
             body: TabBarView(
               children: [
