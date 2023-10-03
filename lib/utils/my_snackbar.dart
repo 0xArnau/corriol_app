@@ -25,6 +25,10 @@ void errorFirebaseAuthSnackbar(BuildContext context, FirebaseAuthException e) {
       _errorFirebaseAuthSnackbar(
           context, S.current.errorToManyRequestsFirebase);
       break;
+    case "requires-recent-login":
+      _errorFirebaseAuthSnackbar(
+          context, S.current.errorReDoLogin);
+      break;
     default:
       Logger().d(e.code);
       _errorFirebaseAuthSnackbar(context, e.message);

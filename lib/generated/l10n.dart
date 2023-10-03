@@ -320,6 +320,16 @@ class S {
     );
   }
 
+  /// `Please sign in again before trying this request again`
+  String get errorReDoLogin {
+    return Intl.message(
+      'Please sign in again before trying this request again',
+      name: 'errorReDoLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Failed to save the given information`
   String get errorSaveInfo {
     return Intl.message(
@@ -985,6 +995,16 @@ class S {
     return Intl.message(
       'Unknown error',
       name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This user cannot be deleted, if you want to delete it, contact us`
+  String get userCannotBeRemoved {
+    return Intl.message(
+      'This user cannot be deleted, if you want to delete it, contact us',
+      name: 'userCannotBeRemoved',
       desc: '',
       args: [],
     );

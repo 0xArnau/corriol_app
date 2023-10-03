@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/user_model.dart';
+import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:logger/logger.dart';
 
 /// Class that provides functionality to the [UserModel] class.
@@ -106,32 +109,46 @@ class AuthController {
   }
 
   /// Remove the user information (Collection 'Users') and the user account (Auth)
-  Future<void> deleteUserAccountAndInformation() async {
+  Future<void> deleteUserAccountAndInformation(BuildContext context) async {
+    String testingAccountEmail = FlutterConfig.get("TESTING_ACCOUNT_EMAIL");
     // Remove the user info
-    try {
-      await FirebaseFirestore.instance
-          .collection('Users')
-          .get()
-          .then((snapshot) {
-        for (var document in snapshot.docs) {
-          if (currentUser != null &&
-              document.data()['email'] == currentUser!.email) {
-            document.reference
-                .delete()
-                .then((_) => Logger().d("Removed 'User' document"));
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .get()
+        .then((snapshot) {
+          for (var document in snapshot.docs) {
+            if (currentUser?.email?.toLowerCase() == testingAccountEmail) {
+              // Logger().d("/Users -> ${currentUser?.email} cannot be removed");
+              break;
+            }
+            if (document.data()['email'] == currentUser?.email) {
+              document.reference
+                  .delete()
+                  .then((_) => Logger().d("Removed 'User' document"));
+            }
           }
-        }
-      });
-    } catch (e) {
-      Logger().e("User collection: $e");
-    }
-    // Remove the account
-    try {
-      if (currentUser != null) {
-        currentUser!.delete().then((_) => Logger().d("Removed account"));
-      }
-    } catch (e) {
-      Logger().e("User account: $e");
-    }
+        })
+        .then((_) {
+          // Remove the account
+          if (currentUser?.email != testingAccountEmail) {
+            currentUser?.delete().then((_) {
+              Logger().d("Removed account");
+            }).catchError((e) {
+              Logger().e("User account: $e");
+
+              if (e is FirebaseAuthException) {
+                errorFirebaseAuthSnackbar(context, e);
+              }
+            });
+          } else {
+            // Logger().d("Auth -> ${currentUser?.email} cannot be removed");
+            snackbarInfo(context, S.current.userCannotBeRemoved);
+          }
+        })
+        .then((_) => Navigator.of(context).pop())
+        .catchError((e) {
+          Logger().e("User collection: $e");
+          Navigator.of(context).pop();
+        });
   }
 }

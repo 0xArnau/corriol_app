@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No s\'ha pogut iniciar:"),
         "errorPassword": MessageLookupByLibrary.simpleMessage(
             "Correu electrònic o contrasenya incorrectes"),
+        "errorReDoLogin": MessageLookupByLibrary.simpleMessage(
+            "Inicieu sessió novament abans de tornar a intentar aquesta sol·licitud"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "No s\'ha pogut desar la informació proporcionada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
@@ -177,6 +179,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconegut"),
+        "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
+            "Aquest usuari no es pot eliminar, si ho vols eliminar posa\'t en contacte amb nosaltres"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "No hi ha cap registre d\'usuari corresponent a aquest identificador. És possible que l\'usuari hagi estat suprimit."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuari"),

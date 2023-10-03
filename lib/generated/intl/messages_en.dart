@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Could not launch:"),
         "errorPassword":
             MessageLookupByLibrary.simpleMessage("Wrong email or password"),
+        "errorReDoLogin": MessageLookupByLibrary.simpleMessage(
+            "Please sign in again before trying this request again"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "Failed to save the given information"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
@@ -172,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Touch the button to update the data."),
         "techRole": MessageLookupByLibrary.simpleMessage("Role: Technician"),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+        "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
+            "This user cannot be deleted, if you want to delete it, contact us"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "There is no user record corresponding to this identifier. The user may have been deleted."),
         "userRole": MessageLookupByLibrary.simpleMessage("Role: User"),

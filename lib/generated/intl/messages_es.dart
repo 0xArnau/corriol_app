@@ -69,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No se pudo iniciar:"),
         "errorPassword": MessageLookupByLibrary.simpleMessage(
             "Correo o contraseña equivocada"),
+        "errorReDoLogin": MessageLookupByLibrary.simpleMessage(
+            "Inicie sesión nuevamente antes de volver a intentar esta solicitud"),
         "errorSaveInfo": MessageLookupByLibrary.simpleMessage(
             "No se pudo guardar la información dada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
@@ -178,6 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconocido"),
+        "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
+            "Este usuario no se puede eliminar, si lo quieres eliminar ponte en contacto con nosotros"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado."),
         "userRole": MessageLookupByLibrary.simpleMessage("Rol: Usuario"),

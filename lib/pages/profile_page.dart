@@ -33,6 +33,11 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -62,7 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   icon: const Icon(Icons.delete_forever),
                   option: S.current.deleteMyAccount,
                   onTap: () {
-                    _alertDialogDeleteMyAccount();
+                    _alertDialogDeleteMyAccount(context);
                   },
                 ),
                 const SizedBox(height: 10),
@@ -293,7 +298,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _alertDialogDeleteMyAccount() {
+  void _alertDialogDeleteMyAccount(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
@@ -308,8 +313,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Text(S.current.cancel)),
             TextButton(
                 onPressed: () {
-                  AuthController().deleteUserAccountAndInformation();
-                  Navigator.of(context).pop();
+                  AuthController().deleteUserAccountAndInformation(
+                      context); // Deleting the context must be done within the method itself
                 },
                 child: Text(S.current.confirm)),
           ],
