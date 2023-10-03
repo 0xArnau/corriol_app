@@ -98,7 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Meet the Kenthish Plover"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
-            "If you don\'t see the reports, try: \n1) update manually (top right button), \n2) you haven\'t created a report, try to create one"),
+            "If you don\'t see the reports it\'s because you haven\'t created one, try creating one \n (if the problem persists, get in touch)"),
         "mobileData": MessageLookupByLibrary.simpleMessage("Mobile data"),
         "myRecords": MessageLookupByLibrary.simpleMessage("My records"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),

@@ -47,7 +47,7 @@
   "legendMales": "Males",
   "legendUndetermined": "Undetermined",
   "meetKentishPlover": "Meet the Kenthish Plover",
-  "messageReportsDontShow": "If you don't see the reports, try: \n1) update manually (top right button), \n2) you haven't created a report, try to create one",
+  "messageReportsDontShow": "If you don't see the reports it's because you haven't created one, try creating one \n (if the problem persists, get in touch)",
   "mobileData": "Mobile data",
   "myRecords": "My records",
   "name": "Name",

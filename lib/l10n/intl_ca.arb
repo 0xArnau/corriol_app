@@ -47,7 +47,7 @@
   "legendMales": "Mascles",
   "legendUndetermined": "Indeterminat",
   "meetKentishPlover": "Coneix al Corriol camanegre",
-  "messageReportsDontShow": "Si no veus els reportis, prova: \n1) actualitza manualment (botó a dalt a la dreta), \n2) no has creat un reporti, prova a crear-ne un",
+  "messageReportsDontShow": "Si no veus les observacions és degut al fet que no n'has creat un, prova de crear un \n (si el problema persisteix, posa't en contacte)",
   "mobileData": "Dades mòbils",
   "myRecords": "Els meus registres",
   "name": "Nom",

@@ -47,7 +47,7 @@
   "legendMales": "Machos",
   "legendUndetermined": "Indeterminado",
   "meetKentishPlover": "Conoce al Chorlitejo patinegro",
-  "messageReportsDontShow": "Si no ves los reportes, prueba: \n1) actualiza manualmente (botón arriba a la derecha), \n2) no has creado un reporte, prueba a crear uno",
+  "messageReportsDontShow": "Si no ves los reportes es debido a que no has creado uno, prueba a crear uno \n (si el problema persiste, ponte en contacto)",
   "mobileData": "Datos móviles",
   "myRecords": "Mis registros",
   "name": "Nombre",
