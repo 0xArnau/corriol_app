@@ -450,6 +450,66 @@ class S {
     );
   }
 
+  /// `Cats`
+  String get legendCats {
+    return Intl.message(
+      'Cats',
+      name: 'legendCats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chicks`
+  String get legendChickens {
+    return Intl.message(
+      'Chicks',
+      name: 'legendChickens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dogs`
+  String get legendDogs {
+    return Intl.message(
+      'Dogs',
+      name: 'legendDogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Females`
+  String get legendFemales {
+    return Intl.message(
+      'Females',
+      name: 'legendFemales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Males`
+  String get legendMales {
+    return Intl.message(
+      'Males',
+      name: 'legendMales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Undetermined`
+  String get legendUndetermined {
+    return Intl.message(
+      'Undetermined',
+      name: 'legendUndetermined',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Meet the Kenthish Plover`
   String get meetKentishPlover {
     return Intl.message(
