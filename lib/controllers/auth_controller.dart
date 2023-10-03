@@ -35,7 +35,7 @@ class AuthController {
     required String password,
   }) async {
     await _firebaseAuth.signInWithEmailAndPassword(
-      email: email,
+      email: email.toLowerCase(),
       password: password,
     );
   }
@@ -47,7 +47,7 @@ class AuthController {
     required String password,
   }) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
+      email: email.toLowerCase(),
       password: password,
     );
   }
@@ -91,8 +91,8 @@ class AuthController {
           .get()
           .then((snapshot) {
         for (var document in snapshot.docs) {
-          if (currentUser != null &&
-              document.data()['email'] == currentUser!.email) {
+          if (document.data()['email'].toString().toLowerCase() ==
+              currentUser?.email?.toLowerCase()) {
             user = UserModel.fromJson(document.data());
           }
         }

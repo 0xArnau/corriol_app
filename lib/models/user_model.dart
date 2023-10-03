@@ -28,7 +28,7 @@ class UserModel {
 
   /// Converts the [UserModel] instance to a JSON format.
   Map<String, dynamic> toJson() => {
-        'email': email,
+        'email': email.toLowerCase(),
         // 'password': password,
         'fullName': fullName,
         'yearOfBirth': yearOfBirth,
@@ -38,7 +38,7 @@ class UserModel {
   /// Creates a new [UserModel] instance from a JSON format.
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      email: json['email'],
+      email: json['email'].toString().toLowerCase(),
       // password: json['password'].toString(),
       fullName: json['fullName'],
       yearOfBirth: json['yearOfBirth'],
