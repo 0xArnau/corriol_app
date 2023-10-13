@@ -85,6 +85,16 @@ keytool -genkey -v -keystore ~/.corriol-app/.android/upload-keystore.jks -keyalg
 - [Flutter docs](https://docs.flutter.dev/deployment/ios)
 - [YT](https://www.youtube.com/watch?v=6QMadUJF78U&list=PLPRFjV_AptwAJ1WTY_xHLw1zq0eHXM__c&index=30)
 
+1. Open the iOS project on xcode (`ios/Runner.xcodeproj`)
+   1. In the Signing & Capabilities tab:
+      1. Team -> Select the team associated with your registered Apple Developer account. If required, select Add Account…, then update this setting.
+2. Generate the `ipa` format using flutter cli
+3. [Upload the app bundle to App Store Connect](https://docs.flutter.dev/deployment/ios#upload-the-app-bundle-to-app-store-connect)
+
+```sh
+flutter build ipa
+```
+
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
