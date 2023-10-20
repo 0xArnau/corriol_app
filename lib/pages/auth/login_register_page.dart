@@ -26,8 +26,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   final TextEditingController _controllerConfirmPassword =
       TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
-  late final TextEditingController _controllerYearOfBirth =
-      TextEditingController();
 
   bool checkBoxLegal = false;
   bool checkBoxInfo = false;
@@ -41,7 +39,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     _controllerConfirmPassword.dispose();
     _controllerEmail.dispose();
     _controllerName.dispose();
-    _controllerYearOfBirth.dispose();
     super.dispose();
   }
 
@@ -77,8 +74,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   ///
   /// If a field is empty show a [errorFirebaseAuthSnackbar] error message.
   Future<void> registerWithEmailAndPassword(BuildContext context) async {
-    if (_controllerYearOfBirth.text.isEmpty ||
-        _controllerConfirmPassword.text.isEmpty ||
+    if (_controllerConfirmPassword.text.isEmpty ||
         _controllerEmail.text.isEmpty ||
         _controllerConfirmEmail.text.isEmpty ||
         _controllerName.text.isEmpty ||
@@ -117,30 +113,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           UserModel(
             email: _controllerEmail.text,
             fullName: _controllerName.text,
-            yearOfBirth: int.parse(_controllerYearOfBirth.text),
           ),
         );
       } on FirebaseAuthException catch (e) {
         errorFirebaseAuthSnackbar(context, e);
       }
     }
-  }
-
-  void _showYearPicker(BuildContext context) {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-    ).then((value) {
-      if (value != null) {
-        if (mounted) {
-          setState(() {
-            _controllerYearOfBirth.text = "${value.year}";
-          });
-        }
-      }
-    });
   }
 
   Widget _title() {
@@ -283,27 +261,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           controller: _controllerName,
           obscureText: false,
           prefixIcon: const Icon(Icons.person),
-        ),
-        const SizedBox(height: kDouble15),
-        // Age
-        InkWell(
-          onTap: () {
-            _showYearPicker(context);
-          },
-          child: IgnorePointer(
-            child: TextFormField(
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.calendar_today_rounded),
-                labelText: S.current.yearOfBirth,
-                // hintText: hintText,
-                border: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.circular(kDoubleBorderRadiusButtons),
-                ),
-              ),
-              controller: _controllerYearOfBirth,
-            ),
-          ),
         ),
         const SizedBox(height: kDouble15),
         // Email

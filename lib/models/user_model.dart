@@ -8,7 +8,6 @@ class UserModel {
     required this.email,
     // required this.password,
     required this.fullName,
-    required this.yearOfBirth,
     this.technician = false,
   });
 
@@ -17,9 +16,6 @@ class UserModel {
 
   /// The full name of the user.
   final String fullName;
-
-  /// The user's year of birth.
-  final int yearOfBirth;
 
   /// Indicates whether the user is a technician or not.
   ///
@@ -31,7 +27,6 @@ class UserModel {
         'email': email.toLowerCase(),
         // 'password': password,
         'fullName': fullName,
-        'yearOfBirth': yearOfBirth,
         'technician': technician,
       };
 
@@ -41,7 +36,6 @@ class UserModel {
       email: json['email'].toString().toLowerCase(),
       // password: json['password'].toString(),
       fullName: json['fullName'],
-      yearOfBirth: json['yearOfBirth'],
       technician: json['technician'],
     );
   }
