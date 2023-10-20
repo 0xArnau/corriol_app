@@ -295,6 +295,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         ),
         const SizedBox(height: kDouble15),
         // Docs
+        const SizedBox(height: kDouble10),
+        Text(S.current.legalFields),
+        // const SizedBox(height: kDouble10),
         _legalStuff(
           asset: 'assets/docs/legal/avis-legal.pdf',
           text: S.current.legalWarning,

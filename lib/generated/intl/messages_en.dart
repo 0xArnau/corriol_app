@@ -86,9 +86,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "infoClause": MessageLookupByLibrary.simpleMessage(
             "Informative clause, form, registration, activities"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
-            "The email address is badly formatted."),
+            "The email address is incorrectly formatted. Check that there are no blank spaces."),
         "lang": MessageLookupByLibrary.simpleMessage("Language"),
         "language": MessageLookupByLibrary.simpleMessage("English"),
+        "legalFields": MessageLookupByLibrary.simpleMessage(
+            "Read the PDFs and check the boxes to accept the documents"),
         "legalWarning": MessageLookupByLibrary.simpleMessage("Legal warning"),
         "legendCats": MessageLookupByLibrary.simpleMessage("Cats"),
         "legendChickens": MessageLookupByLibrary.simpleMessage("Chicks"),

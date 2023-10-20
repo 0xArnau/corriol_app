@@ -420,10 +420,10 @@ class S {
     );
   }
 
-  /// `The email address is badly formatted.`
+  /// `The email address is incorrectly formatted. Check that there are no blank spaces.`
   String get invalidEmail {
     return Intl.message(
-      'The email address is badly formatted.',
+      'The email address is incorrectly formatted. Check that there are no blank spaces.',
       name: 'invalidEmail',
       desc: '',
       args: [],
@@ -445,6 +445,16 @@ class S {
     return Intl.message(
       'English',
       name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read the PDFs and check the boxes to accept the documents`
+  String get legalFields {
+    return Intl.message(
+      'Read the PDFs and check the boxes to accept the documents',
+      name: 'legalFields',
       desc: '',
       args: [],
     );
