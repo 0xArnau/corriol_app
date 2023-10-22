@@ -4,10 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Esta aplicación necesita tener acceso al GPS para poder capturar automáticamente la ubicación de los nidos.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open.</string>
+	<string>Esta aplicación necesita tener acceso al GPS para poder capturar automáticamente la ubicación de los nidos.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background.</string>
+	<string>Esta aplicación necesita tener acceso al GPS para poder capturar automáticamente la ubicación de los nidos.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Corriol App</string>
 	<key>CFBundleExecutable</key>
