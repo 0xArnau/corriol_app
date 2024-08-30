@@ -3,10 +3,10 @@
 This project is a mobile application (Android & iOS) called "Corriol APP." Its main purpose is to allow users (volunteers of [GePeC-EdC](https://gepec.cat)) to register observations of the "Corriol camanegre" bird species [[ca]](https://ca.wikipedia.org/wiki/Corriol_camanegre), [[es]](https://es.wikipedia.org/wiki/Charadrius_alexandrinus) & [[en]](https://en.wikipedia.org/wiki/Kentish_plover), and the "Corriol petit" bird species [[ca]](https://ca.wikipedia.org/wiki/Corriol_anellat_petit), [[es]](https://es.wikipedia.org/wiki/Charadrius_dubius) & [[en]](https://en.wikipedia.org/wiki/Little_ringed_plover). Users can record various details, such as the number of birds observed by gender and species, as well as their geographic location.
 
 <p align="center">
-   <a href="https://play.google.com/store/apps/developer?id=GEPEC-EdC" target="_blank" rel="noreferrer">
+   <a href="https://play.google.com/store/apps/details?id=com.corriol_app" target="_blank" rel="noreferrer">
       <img src="https://www.vectorlogo.zone/logos/google_play/google_play-ar21.svg" alt="Play Store" width="200"/>
    </a>
-   <a href="" target="_blank" rel="noreferrer">
+   <a href="https://apps.apple.com/us/app/corriol-app/id6468093371" target="_blank" rel="noreferrer">
       <img src="https://www.vectorlogo.zone/logos/apple_appstore/apple_appstore-ar21.svg" alt="Apple Store" width="200"/>
    </a>
 </p>
