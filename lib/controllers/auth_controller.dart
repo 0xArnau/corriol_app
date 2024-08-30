@@ -114,44 +114,47 @@ class AuthController {
   /// Remove the user information (Collection 'Users') and the user account (Auth)
   Future<void> deleteUserAccountAndInformation(BuildContext context) async {
     String testingAccountEmail = FlutterConfig.get("TESTING_ACCOUNT_EMAIL");
-    // Remove the user info
-    await FirebaseFirestore.instance
-        .collection('Users')
-        .get()
-        .then((snapshot) {
-          for (var document in snapshot.docs) {
-            if (currentUser?.email?.toLowerCase() == testingAccountEmail) {
-              // Logger().d("/Users -> ${currentUser?.email} cannot be removed");
-              break;
-            }
-            if (document.data()['email'] == currentUser?.email) {
-              document.reference
-                  .delete()
-                  .then((_) => Logger().d("Removed 'User' document"));
-            }
-          }
-        })
-        .then((_) {
-          // Remove the account
-          if (currentUser?.email != testingAccountEmail) {
-            currentUser?.delete().then((_) {
-              Logger().d("Removed account");
-            }).catchError((e) {
-              Logger().e("User account: $e");
 
-              if (e is FirebaseAuthException) {
-                errorFirebaseAuthSnackbar(context, e);
-              }
-            });
-          } else {
-            // Logger().d("Auth -> ${currentUser?.email} cannot be removed");
-            snackbarInfo(context, S.current.userCannotBeRemoved);
-          }
-        })
-        .then((_) => Navigator.of(context).pop())
-        .catchError((e) {
-          Logger().e("User collection: $e");
-          Navigator.of(context).pop();
-        });
+    try {
+      // Convertir el email del usuario actual a minúsculas para una comparación más segura
+      final userEmail = currentUser?.email?.toLowerCase();
+
+      if (userEmail == null) {
+        Logger().e("No current user email found.");
+        return;
+      }
+
+      // Eliminar la cuenta del usuario si no es la cuenta de prueba
+      if (userEmail != testingAccountEmail.toLowerCase()) {
+        await currentUser?.delete();
+        Logger().d("Removed account");
+
+        // Consulta en la colección 'Users' donde el email coincide
+        final querySnapshot = await FirebaseFirestore.instance
+            .collection('Users')
+            .where('email', isEqualTo: userEmail)
+            .get();
+
+        // Verificar si encontramos algún documento
+        if (querySnapshot.docs.isNotEmpty) {
+          // Eliminar el documento correspondiente
+          await querySnapshot.docs.first.reference.delete();
+          Logger().d("Removed 'User' document");
+        } else {
+          Logger().d("No document found for email: $userEmail");
+        }
+      } else {
+        snackbarInfo(context, S.current.userCannotBeRemoved);
+      }
+
+      // Finalizar la acción
+      Navigator.of(context).pop();
+    } catch (e) {
+      Logger().e("Error: $e");
+      if (e is FirebaseAuthException) {
+        errorFirebaseAuthSnackbar(context, e);
+      }
+      Navigator.of(context).pop();
+    }
   }
 }
