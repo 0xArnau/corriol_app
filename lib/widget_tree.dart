@@ -200,6 +200,7 @@ class _WidgetTreeState extends State<WidgetTree> {
             ),
             TextButton(
               onPressed: () {
+                ReportProvider().removeAllReports();
                 Navigator.of(context).pop();
               },
               child: Text(S.current.remove_data_remove),

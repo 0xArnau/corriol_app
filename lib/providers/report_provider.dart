@@ -65,4 +65,13 @@ class ReportProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void removeAllReports() {
+    ReportController().removeAllReports();
+
+    // userReports = [];
+    // locality = {};
+
+    notifyListeners();
+  }
 }

@@ -88,22 +88,25 @@ class AuthController {
   /// with the user information if found, otherwise `null`.
   Future<UserModel?> getUserInformation() async {
     try {
-      UserModel? user;
-      await FirebaseFirestore.instance
+      // Convertir el email a minúsculas para una comparación más segura
+      final userEmail = currentUser?.email?.toLowerCase();
+
+      if (userEmail == null) return null;
+
+      // Consulta en la colección 'Users' donde el email coincide
+      final querySnapshot = await FirebaseFirestore.instance
           .collection('Users')
-          .get()
-          .then((snapshot) {
-        for (var document in snapshot.docs) {
-          if (document.data()['email'].toString().toLowerCase() ==
-              currentUser?.email?.toLowerCase()) {
-            user = UserModel.fromJson(document.data());
-          }
-        }
-      });
-      return user;
+          .where('email', isEqualTo: userEmail)
+          .get();
+
+      // Si encontramos el documento, lo convertimos a un modelo de usuario
+      if (querySnapshot.docs.isNotEmpty) {
+        return UserModel.fromJson(querySnapshot.docs.first.data());
+      } else {
+        return null; // No se encontró el usuario
+      }
     } catch (e) {
       Logger().e(e);
-
       return null;
     }
   }

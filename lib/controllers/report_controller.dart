@@ -1,8 +1,8 @@
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/models/report_model.dart';
-import 'package:corriol_app/controllers/auth_controller.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:logger/logger.dart';
 
 /// Class that provides functionality to the [ReportModel] class.
@@ -66,27 +66,22 @@ class ReportController {
     _saveLocalReports2Firestore();
 
     try {
-      List<ReportModel> reports = [];
-      await FirebaseFirestore.instance
+      // Convertir el email a minúsculas para asegurar la comparación
+      final userReports = await FirebaseFirestore.instance
           .collection('Reports')
-          .get()
-          .then((snapshot) {
-        for (var document in snapshot.docs) {
-          if (document.data()['createdBy'] ==
-              AuthController().currentUser!.email) {
-            reports.add(ReportModel.fromJson(document.data()));
-          }
-        }
-      });
-      return reports;
+          .where('createdBy', isEqualTo: userEmail.toLowerCase())
+          .get();
+
+      // Convertir los documentos a una lista de ReportModel
+      return userReports.docs
+          .map((doc) => ReportModel.fromJson(doc.data()))
+          .toList();
     } catch (e) {
       Logger().e(e);
+      return [];
     }
-
-    return [];
   }
 
-  /// Retrieves a list of all [ReportModel] from [FirebaseFirestore].
   Future<List<ReportModel>> getAllReports() async {
     _saveLocalReports2Firestore();
 
@@ -106,5 +101,16 @@ class ReportController {
     }
 
     return [];
+  }
+
+  void removeAllReports() async {
+    CollectionReference collectionRef =
+        FirebaseFirestore.instance.collection('Reports');
+    QuerySnapshot querySnapshot = await collectionRef.get();
+
+    for (QueryDocumentSnapshot doc in querySnapshot.docs) {
+      Logger().d("Deleting ${doc.data()}");
+      await doc.reference.delete().whenComplete(() => Logger().d("Deleted"));
+    }
   }
 }
