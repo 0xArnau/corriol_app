@@ -190,6 +190,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "If you notice any incident related to the Kentish Plover, call: "),
         "webText":
             MessageLookupByLibrary.simpleMessage("Or visit our website: "),
-        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Year of birth")
+        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Year of birth"),
+        "remove_data": MessageLookupByLibrary.simpleMessage("Remove"),
+        "remove_data_remove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "remove_data_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "remove_data_title":
+            MessageLookupByLibrary.simpleMessage("Confirmation"),
+        "remove_data_description": MessageLookupByLibrary.simpleMessage(
+            "You are about to delete all data related to the observations of the corridor. This action cannot be undone. We recommend that you first download the data.")
       };
 }

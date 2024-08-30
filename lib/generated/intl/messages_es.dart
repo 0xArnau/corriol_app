@@ -197,6 +197,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Si nota alguna incidencia relacionada con el Chorlitejo patinegro, llame al: "),
         "webText": MessageLookupByLibrary.simpleMessage(
             "O visite nuestra página web: "),
-        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Año de nacimiento")
+        "yearOfBirth":
+            MessageLookupByLibrary.simpleMessage("Año de nacimiento"),
+        "remove_data": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "remove_data_remove": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "remove_data_cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "remove_data_title":
+            MessageLookupByLibrary.simpleMessage("Confirmación"),
+        "remove_data_description": MessageLookupByLibrary.simpleMessage(
+            "Estás a punto de eliminar todos los datos referentes a las observaciones del corriol. Esta acción no se puede deshacer. Te recomendamos que primero descargues los datos.")
       };
 }

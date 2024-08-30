@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1095,6 +1096,56 @@ class S {
     return Intl.message(
       'Year of birth',
       name: 'yearOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove_data {
+    return Intl.message(
+      'Remove',
+      name: 'remove_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove_data_remove {
+    return Intl.message(
+      'Remove',
+      name: 'remove_data_remove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get remove_data_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'remove_data_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmation`
+  String get remove_data_title {
+    return Intl.message(
+      'Confirmation',
+      name: 'remove_data_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete all data related to the observations of the corridor. This action cannot be undone. We recommend that you first download the data.`
+  String get remove_data_description {
+    return Intl.message(
+      'You are about to delete all data related to the observations of the corridor. This action cannot be undone. We recommend that you first download the data.',
+      name: 'remove_data_description',
       desc: '',
       args: [],
     );

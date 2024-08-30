@@ -141,6 +141,22 @@ class _WidgetTreeState extends State<WidgetTree> {
                               ),
                             )
                           : const Text(''),
+                  currentPage != navigation.length - 1 && currentPage == 1
+                      ? PopupMenuButton<String>(
+                          itemBuilder: (BuildContext context) =>
+                              <PopupMenuEntry<String>>[
+                            PopupMenuItem<String>(
+                              value: 'remove',
+                              child: TextButton(
+                                onPressed: () {
+                                  _showConfirmationDialog(context);
+                                },
+                                child: Text(S.current.remove_data),
+                              ),
+                            ),
+                          ],
+                        )
+                      : const Text(''),
                 ],
               ),
               body: Padding(
@@ -163,6 +179,32 @@ class _WidgetTreeState extends State<WidgetTree> {
               ),
             );
           },
+        );
+      },
+    );
+  }
+
+  void _showConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(S.current.remove_data_title),
+          content: Text(S.current.remove_data_description),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(S.current.remove_data_cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(S.current.remove_data_remove),
+            ),
+          ],
         );
       },
     );

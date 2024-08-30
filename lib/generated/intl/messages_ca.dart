@@ -195,6 +195,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Si nota alguna incidència relacionada amb el Corriol camanegre, truqui al: "),
         "webText": MessageLookupByLibrary.simpleMessage(
             "O visiti la nostra pàgina web: "),
-        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Any de naixement")
+        "yearOfBirth": MessageLookupByLibrary.simpleMessage("Any de naixement"),
+        "remove_data": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "remove_data_remove": MessageLookupByLibrary.simpleMessage("Eliminar"),
+        "remove_data_cancel":
+            MessageLookupByLibrary.simpleMessage("Cancel·lar"),
+        "remove_data_title":
+            MessageLookupByLibrary.simpleMessage("Confirmació"),
+        "remove_data_description": MessageLookupByLibrary.simpleMessage(
+            "Estàs a punt d'eliminar totes les dades relatives a les observacions del corriol. Aquesta acció no es pot desfer. Et recomanem que primer descarreguis les dades.")
       };
 }
