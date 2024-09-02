@@ -100,7 +100,6 @@ flutter build ipa
 <div style="display: flex; justify-content: space-between;">
   <img src="doc/img/home.png" alt="Home" style="width: 30%;">
   <img src="doc/img/handyman.png" alt="Handyman" style="width: 30%;">
-  <img src="doc/img/profile.png" alt="Profile" style="width: 30%;">
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
