@@ -10,7 +10,7 @@ import 'package:corriol_app/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_config/flutter_config.dart';
+// import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,7 @@ void main() async {
   ]);
 
   await Firebase.initializeApp();
-  await FlutterConfig.loadEnvVariables();
+  // await FlutterConfig.loadEnvVariables();
 
   runApp(
     MultiProvider(
