@@ -121,20 +121,20 @@ class UserProvider extends ChangeNotifier {
   }
 
   /// Sets the [internetConnectionStatus]
-  void setInternetConnectionStatus(ConnectivityResult connectivityResult) {
-    if (connectivityResult == ConnectivityResult.mobile) {
+  void setInternetConnectionStatus(List<ConnectivityResult> connectivityResult) {
+    if (connectivityResult.contains(ConnectivityResult.mobile)) {
       internetConnectionStatus = true && _preferences.mobileData;
-    } else if (connectivityResult == ConnectivityResult.wifi) {
+    } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
       internetConnectionStatus = true;
-    } else if (connectivityResult == ConnectivityResult.ethernet) {
+    } else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
       internetConnectionStatus = true;
-    } else if (connectivityResult == ConnectivityResult.vpn) {
+    } else if (connectivityResult.contains(ConnectivityResult.vpn)) {
       internetConnectionStatus = true;
-    } else if (connectivityResult == ConnectivityResult.bluetooth) {
+    } else if (connectivityResult.contains(ConnectivityResult.bluetooth)) {
       internetConnectionStatus = false;
-    } else if (connectivityResult == ConnectivityResult.other) {
+    } else if (connectivityResult.contains(ConnectivityResult.other)) {
       internetConnectionStatus = false;
-    } else if (connectivityResult == ConnectivityResult.none) {
+    } else if (connectivityResult.contains(ConnectivityResult.none)) {
       internetConnectionStatus = false;
     }
 

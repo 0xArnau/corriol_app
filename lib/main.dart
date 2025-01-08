@@ -43,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final StreamSubscription<ConnectivityResult> subscription;
+  late final StreamSubscription<List<ConnectivityResult>> subscription;
 
   @override
   void initState() {
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
 
     subscription = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
+        .listen((List<ConnectivityResult> result) {
       Provider.of<UserProvider>(context, listen: false)
           .setInternetConnectionStatus(result);
     });

@@ -65,20 +65,27 @@ class UserPreferencesController {
   static Future<bool> getInternetConnectionStatus(
       {ConnectivityResult? connectivityResult,
       required bool mobileData}) async {
-    connectivityResult ??= await (Connectivity().checkConnectivity());
+    late List<ConnectivityResult> connectivityResultList;
     final bool internetConnection;
 
-    if (connectivityResult == ConnectivityResult.mobile && mobileData) {
+    if (connectivityResult != null) {
+      connectivityResultList = [connectivityResult];
+    } else {
+      connectivityResultList = await (Connectivity().checkConnectivity());
+    }
+
+    if (connectivityResultList.contains(ConnectivityResult.mobile) &&
+        mobileData) {
       internetConnection = true;
-    } else if (connectivityResult == ConnectivityResult.wifi) {
+    } else if (connectivityResultList.contains(ConnectivityResult.wifi)) {
       internetConnection = true;
-    } else if (connectivityResult == ConnectivityResult.ethernet) {
+    } else if (connectivityResultList.contains(ConnectivityResult.ethernet)) {
       internetConnection = true;
-    } else if (connectivityResult == ConnectivityResult.vpn) {
+    } else if (connectivityResultList.contains(ConnectivityResult.vpn)) {
       internetConnection = true;
-    } else if (connectivityResult == ConnectivityResult.bluetooth) {
+    } else if (connectivityResultList.contains(ConnectivityResult.bluetooth)) {
       internetConnection = false;
-    } else if (connectivityResult == ConnectivityResult.other) {
+    } else if (connectivityResultList.contains(ConnectivityResult.other)) {
       internetConnection = false;
     } else /* (connectivityResult == ConnectivityResult.none) */ {
       internetConnection = false;
