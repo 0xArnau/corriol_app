@@ -62,3 +62,9 @@ key.*.properties
 # Firebase
 google-services.json
 GoogleService-Info.plist
+
+# ios
+ios/Runner/AppDelegate.swift
+
+# android
+android/app/src/main/res/values/strings.xml
