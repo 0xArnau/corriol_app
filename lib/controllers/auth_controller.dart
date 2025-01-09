@@ -4,7 +4,6 @@ import 'package:corriol_app/models/user_model.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:logger/logger.dart';
 
 /// Class that provides functionality to the [UserModel] class.
@@ -113,7 +112,8 @@ class AuthController {
 
   /// Remove the user information (Collection 'Users') and the user account (Auth)
   Future<void> deleteUserAccountAndInformation(BuildContext context) async {
-    String testingAccountEmail = FlutterConfig.get("TESTING_ACCOUNT_EMAIL");
+    String testingAccountEmail =
+        ''; // FlutterConfig.get("TESTING_ACCOUNT_EMAIL");
 
     try {
       // Convertir el email del usuario actual a minúsculas para una comparación más segura

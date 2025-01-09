@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MapButtonWidget extends StatefulWidget {
-  const MapButtonWidget({Key? key}) : super(key: key);
+  const MapButtonWidget({super.key});
 
   @override
   State<MapButtonWidget> createState() => _MapButtonWidgetState();

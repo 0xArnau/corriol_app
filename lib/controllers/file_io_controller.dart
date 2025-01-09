@@ -7,7 +7,7 @@ import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
 import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:csv/csv.dart';
-import 'package:document_file_save_plus/document_file_save_plus.dart';
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -128,11 +128,21 @@ class FileIoController {
 
     csv = const ListToCsvConverter().convert(rows);
 
-    DocumentFileSavePlus()
+    // DocumentFileSavePlus()
+    //     .saveFile(
+    //       Uint8List.fromList(utf8.encode(csv)),
+    //       fileName,
+    //       "text/csv",
+    //     )
+    //     .then((_) => snackbarInfo(context, "${S.current.fileSave}: $fileName "))
+    //     .onError((error, stackTrace) => snackbarError(context, "$error"));
+
+    await FileSaver.instance
         .saveFile(
-          Uint8List.fromList(utf8.encode(csv)),
-          fileName,
-          "text/csv",
+          name: fileName,
+          bytes: Uint8List.fromList(utf8.encode(csv)),
+          ext: 'csv',
+          mimeType: MimeType.csv,
         )
         .then((_) => snackbarInfo(context, "${S.current.fileSave}: $fileName "))
         .onError((error, stackTrace) => snackbarError(context, "$error"));
