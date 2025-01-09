@@ -5,11 +5,13 @@ class DropdownButtonWidget extends StatefulWidget {
   const DropdownButtonWidget({
     super.key,
     required this.itemsList,
+    required this.itemsValueList,
     required this.hint,
     required this.onChanged,
   });
 
   final List itemsList;
+  final List<Species> itemsValueList;
   final String hint;
   final ValueChanged<String> onChanged;
 
@@ -18,12 +20,12 @@ class DropdownButtonWidget extends StatefulWidget {
 }
 
 class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
-  String? _valueChoose;
+  Species? _valueChoose;
 
   @override
   void initState() {
     super.initState();
-    _valueChoose = widget.itemsList[0];
+    _valueChoose = widget.itemsValueList[0];
     // widget.onChanged.call(_valueChoose!);
   }
 
@@ -55,17 +57,24 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
               onChanged: (newValue) {
                 if (mounted) {
                   setState(() {
-                    _valueChoose = newValue as String;
+                    _valueChoose = newValue;
                   });
                 }
-                widget.onChanged.call(_valueChoose!);
+                widget.onChanged.call(_valueChoose!.name);
               },
-              items: widget.itemsList.map((itemValue) {
-                return DropdownMenuItem(
-                  value: itemValue,
-                  child: Text(itemValue),
-                );
-              }).toList(),
+              items: widget.itemsList
+                  .asMap()
+                  .map((index, itemValue) {
+                    return MapEntry(
+                      index,
+                      DropdownMenuItem(
+                        value: widget.itemsValueList[index],
+                        child: Text(itemValue),
+                      ),
+                    );
+                  })
+                  .values
+                  .toList(),
             ),
           ),
         )

@@ -85,6 +85,11 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
                           S.current.screen1_3_Button_Select_Specie_Camanegre,
                           S.current.screen1_3_Button_Select_Specie_Petit,
                         ],
+                        // Same order as above
+                        itemsValueList: [
+                          Species.corriolCamanegre,
+                          Species.corriolPetit,
+                        ],
                         hint: S.current.screen1_3_Button_Select_Specie,
                         onChanged: (value) {
                           if (mounted) {
@@ -233,6 +238,8 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
       return;
     }
     UserProvider provider = Provider.of<UserProvider>(context, listen: false);
+
+    Logger().e(fields.species);
 
     try {
       List<String> address =

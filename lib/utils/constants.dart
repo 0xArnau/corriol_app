@@ -105,7 +105,7 @@ enum Species {
 /// Extension on the [Species] enum providing [SpeciesExtension.valueOf].
 extension SpeciesExtension on Species {
   static Species valueOf(String value) {
-    return value == 'Species.corriolCamanegre'
+    return value == Species.corriolCamanegre.name
         ? Species.corriolCamanegre
         : Species.corriolPetit;
   }
