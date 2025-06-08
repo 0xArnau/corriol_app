@@ -33,6 +33,9 @@ To get started with the project, follow these steps:
    1. **Android**: place the `google-services.json` ([downloaded from the Firebase console, Android app project](https://console.firebase.google.com/)) to `android/app/`
    2. **iOS**: place the `GoogleService-Info.plist` ([downloaded from the Firebase console, iOS app project](https://console.firebase.google.com/)) to `ios/Runner/`
 
+> [!WARNING]
+> Read the [PRIVATE.md](PRIVATE.md) file to know how to set up the private keys.
+
 ## Documentation
 
 To generate documentation, use `dart doc .`, which will generate HTMLs. These can be accessed directly, but to make the search functionality work, you'll need to create a http server:
