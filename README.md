@@ -34,7 +34,7 @@ To get started with the project, follow these steps:
    2. **iOS**: place the `GoogleService-Info.plist` ([downloaded from the Firebase console, iOS app project](https://console.firebase.google.com/)) to `ios/Runner/`
 
 > [!WARNING]
-> Read the [PRIVATE.md](PRIVATE.md) file to know how to set up the private keys.
+> Read the [PRIVATE.MD](PRIVATE.MD) file to know how to set up the private keys.
 
 ## Documentation
 
