@@ -49,26 +49,35 @@ class ContactPage extends StatelessWidget {
       // webpage
       GestureDetector(
         onTap: () => _launchUrl(_url),
-        child: Text.rich(
-          textAlign: TextAlign.center,
-          TextSpan(
-            text: S.current.webText,
-            // style: const TextStyle(fontSize: 16),
-            children: const <TextSpan>[
-              TextSpan(
-                text: 'gepec.cat',
-                style: TextStyle(
-                  fontSize: 32,
-                  color: kColorText,
-                  // decoration: TextDecoration.underline,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minWidth: 48,
+            minHeight: 48,
+          ),
+          child: Text.rich(
+            textAlign: TextAlign.center,
+            TextSpan(
+              text: S.current.webText,
+              // style: const TextStyle(fontSize: 16),
+              children: const <TextSpan>[
+                TextSpan(
+                  text: 'gepec.cat',
+                  style: TextStyle(
+                    fontSize: 32,
+                    color: kColorText,
+                    // decoration: TextDecoration.underline,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
       const SizedBox(height: 15),
-      Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+      Semantics(
+        hidden: true,
+        child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+      ),
     ];
 
     return Scaffold(
