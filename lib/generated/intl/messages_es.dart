@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edad"),
         "all": MessageLookupByLibrary.simpleMessage("Todos"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Volver"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No se puede visualizar esta área sin conexión a internet"),
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Al eliminar la cuenta se eliminará toda la información personal y no se podrá recuperar (se deberá crear una cuenta nueva). Se mantendrá la información relativa a las observaciones creadas."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directorio no existe"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Hecho"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "La dirección de correo electrónico ya está siendo utilizada por otra cuenta."),
@@ -109,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Datos móviles"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Mis registros"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Siguiente"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("Sin conexión a Internet"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
@@ -184,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
         "signOut": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscribirse"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Saltar"),
         "statusOff": MessageLookupByLibrary.simpleMessage("apagado"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activado"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),

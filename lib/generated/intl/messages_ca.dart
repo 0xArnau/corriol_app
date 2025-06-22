@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edat"),
         "all": MessageLookupByLibrary.simpleMessage("Tots"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Enrere"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel · lar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No es pot visualitzar aquesta àrea sense connexió a internet"),
@@ -47,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "En eliminar el compte s\'eliminarà tota la informació personal i no es podrà recuperar (s\'haurà de crear un compte nou). Es mantindrà la informació relativa a les observacions creades."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directori no existeix"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Fet"),
         "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "L\'adreça de correu electrònic ja està utilitzada per un altre compte."),
@@ -107,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Dades mòbils"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Els meus registres"),
         "name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Següent"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("Sense connexió a Internet"),
         "password": MessageLookupByLibrary.simpleMessage("Contrasenya"),
@@ -184,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Inicieu la sessió"),
         "signOut": MessageLookupByLibrary.simpleMessage("Tancar sessió"),
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Saltar"),
         "statusOff": MessageLookupByLibrary.simpleMessage("apagat"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activat"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),

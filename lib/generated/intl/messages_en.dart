@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Back"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "This area cannot be viewed without internet connection"),
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Deleting the account will delete all personal information and cannot be recovered (a new account must be created). Information regarding the observations created will be maintained."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directory doesn\'t exist"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Done"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "The email address is already in use by another account."),
@@ -108,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Mobile data"),
         "myRecords": MessageLookupByLibrary.simpleMessage("My records"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Next"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -179,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Skip"),
         "statusOff": MessageLookupByLibrary.simpleMessage("off"),
         "statusOn": MessageLookupByLibrary.simpleMessage("on"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),

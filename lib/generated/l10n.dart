@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Back`
+  String get backSemantic {
+    return Intl.message(
+      'Back',
+      name: 'backSemantic',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
   String get cancel {
     return Intl.message(
@@ -205,6 +215,16 @@ class S {
     return Intl.message(
       'Directory doesn\'t exist',
       name: 'directoryDoesntExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get doneSemantic {
+    return Intl.message(
+      'Done',
+      name: 'doneSemantic',
       desc: '',
       args: [],
     );
@@ -585,6 +605,16 @@ class S {
     return Intl.message(
       'Name',
       name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get nextSemantic {
+    return Intl.message(
+      'Next',
+      name: 'nextSemantic',
       desc: '',
       args: [],
     );
@@ -1015,6 +1045,16 @@ class S {
     return Intl.message(
       'Sign Up',
       name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skipSemantic {
+    return Intl.message(
+      'Skip',
+      name: 'skipSemantic',
       desc: '',
       args: [],
     );

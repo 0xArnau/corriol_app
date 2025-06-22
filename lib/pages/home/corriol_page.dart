@@ -18,6 +18,10 @@ class CorriolPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: IntroductionScreen(
+          backSemantic: S.current.backSemantic,
+          nextSemantic: S.current.nextSemantic,
+          doneSemantic: S.current.doneSemantic,
+          skipSemantic: S.current.skipSemantic,
           showDoneButton: true,
           showNextButton: true,
           showBackButton: true,
@@ -105,7 +109,10 @@ class CorriolPage extends StatelessWidget {
               textAlign: TextAlign.justify,
             ),
             const SizedBox(height: 20), // Espacio entre texto e imagen
-            Image.asset(image),
+            Semantics(
+              hidden: true,
+              child: Image.asset(image),
+            ),
             const SizedBox(height: 20), // Espacio entre imagen y texto
             Text(
               textAfter,
