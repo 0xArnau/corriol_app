@@ -73,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "No s\'ha pogut desar la informació proporcionada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "L\'accés a aquest compte s\'ha desactivat temporalment a causa de molts intents fallits d\'iniciar sessió. Podeu restaurar-lo immediatament restablint la vostra contrasenya o podeu tornar-ho a provar més tard."),
+        "fetchOrUpdateData":
+            MessageLookupByLibrary.simpleMessage("Obtenir o actualitzar dades"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
@@ -180,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Enviar informació"),
         "signIn": MessageLookupByLibrary.simpleMessage("Inicieu la sessió"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Tancar sessió"),
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
         "statusOff": MessageLookupByLibrary.simpleMessage("apagat"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activat"),

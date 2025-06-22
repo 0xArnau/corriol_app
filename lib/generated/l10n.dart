@@ -350,6 +350,16 @@ class S {
     );
   }
 
+  /// `Fetch or Update data`
+  String get fetchOrUpdateData {
+    return Intl.message(
+      'Fetch or Update data',
+      name: 'fetchOrUpdateData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `File saved`
   String get fileSave {
     return Intl.message(
@@ -985,6 +995,16 @@ class S {
     return Intl.message(
       'Sign In',
       name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get signOut {
+    return Intl.message(
+      'Sign Out',
+      name: 'signOut',
       desc: '',
       args: [],
     );

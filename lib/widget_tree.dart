@@ -130,6 +130,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                             Icons.logout,
                             // color: Colors.red.shade700,
                           ),
+                          tooltip: S.current.signOut,
                         )
                       : currentPage == 1
                           ? IconButton(
@@ -139,6 +140,7 @@ class _WidgetTreeState extends State<WidgetTree> {
                               icon: const Icon(
                                 Icons.update,
                               ),
+                              tooltip: S.current.fetchOrUpdateData,
                             )
                           : const Text(''),
                   currentPage != navigation.length - 1 && currentPage == 1

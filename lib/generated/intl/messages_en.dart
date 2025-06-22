@@ -74,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to save the given information"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."),
+        "fetchOrUpdateData":
+            MessageLookupByLibrary.simpleMessage("Fetch or Update data"),
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -175,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Send information"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "statusOff": MessageLookupByLibrary.simpleMessage("off"),
         "statusOn": MessageLookupByLibrary.simpleMessage("on"),
