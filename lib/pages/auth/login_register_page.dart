@@ -140,9 +140,17 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           builder: (context) => const ForgotPasswordPage(),
         ),
       ),
-      child: Text(
-        S.current.forgotPassword,
-        style: const TextStyle(color: Colors.grey),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minHeight: 48,
+          minWidth: 48,
+        ),
+        child: Center(
+          child: Text(
+            S.current.forgotPassword,
+            style: const TextStyle(color: Colors.grey, fontSize: 18),
+          ),
+        ),
       ),
     );
   }
