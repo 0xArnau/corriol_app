@@ -1070,6 +1070,16 @@ class S {
     );
   }
 
+  /// `Toggle`
+  String get toggle {
+    return Intl.message(
+      'Toggle',
+      name: 'toggle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Unknown error`
   String get unknownError {
     return Intl.message(

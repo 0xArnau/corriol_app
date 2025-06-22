@@ -185,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tapTheIcon": MessageLookupByLibrary.simpleMessage(
             "Touch the button to update the data."),
         "techRole": MessageLookupByLibrary.simpleMessage("Role: Technician"),
+        "toggle": MessageLookupByLibrary.simpleMessage("Toggle"),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
         "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
             "This user cannot be deleted, if you want to delete it, contact us"),

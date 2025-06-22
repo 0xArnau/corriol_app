@@ -102,6 +102,7 @@
   "submit": "Submit",
   "tapTheIcon": "Touch the button to update the data.",
   "techRole": "Role: Technician",
+  "toggle": "Toggle",
   "unknownError": "Unknown error",
   "userCannotBeRemoved": "This user cannot be deleted, if you want to delete it, contact us",
   "userNotFound": "There is no user record corresponding to this identifier. The user may have been deleted.",

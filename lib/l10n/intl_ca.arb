@@ -102,6 +102,7 @@
   "submit": "Enviar",
   "tapTheIcon": "Toqueu el botó per actualitzar les dades.",
   "techRole": "Rol: tècnic",
+  "toggle": "Activar o desactivar",
   "unknownError": "Error desconegut",
   "userCannotBeRemoved": "Aquest usuari no es pot eliminar, si ho vols eliminar posa't en contacte amb nosaltres",
   "userNotFound": "No hi ha cap registre d'usuari corresponent a aquest identificador. És possible que l'usuari hagi estat suprimit.",

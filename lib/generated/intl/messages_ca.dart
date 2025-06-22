@@ -190,6 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tapTheIcon": MessageLookupByLibrary.simpleMessage(
             "Toqueu el botó per actualitzar les dades."),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
+        "toggle": MessageLookupByLibrary.simpleMessage("Activar o desactivar"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconegut"),
         "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(

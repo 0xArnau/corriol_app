@@ -102,6 +102,7 @@
   "submit": "Enviar",
   "tapTheIcon": "Toque el botón para actualizar los datos.",
   "techRole": "Rol: Técnico",
+  "toggle": "Activar o desactivar",
   "unknownError": "Error desconocido",
   "userCannotBeRemoved": "Este usuario no se puede eliminar, si lo quieres eliminar ponte en contacto con nosotros",
   "userNotFound": "No existe ningún registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado.",
