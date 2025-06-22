@@ -21,10 +21,14 @@ class _HandymanPageState extends State<HandymanPage> {
       list.addAll(value);
     });
 
-    return CardButtonWidget(
-      text: S.current.all,
-      reports: list,
-      index: 0,
+    return Semantics(
+      button: true,
+      label: S.current.all,
+      child: CardButtonWidget(
+        text: S.current.all,
+        reports: list,
+        index: 0,
+      ),
     );
   }
 
@@ -33,11 +37,17 @@ class _HandymanPageState extends State<HandymanPage> {
 
     var i = 1; // The index 0 is for the widget returned on _generetatAllCsv()
     map.forEach((key, value) {
-      widgets.add(CardButtonWidget(
-        text: key,
-        reports: value,
-        index: i,
-      ));
+      widgets.add(
+        Semantics(
+          button: true,
+          label: key,
+          child: CardButtonWidget(
+            text: key,
+            reports: value,
+            index: i,
+          ),
+        ),
+      );
       i++;
     });
 
@@ -57,11 +67,14 @@ class _HandymanPageState extends State<HandymanPage> {
           Map<String, List<ReportModel>> map = value.locality;
           List<Widget> locality = generateKeyButton(map);
           if (locality.isEmpty) {
-            return Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                S.current.tapTheIcon,
-                style: TextStyle(color: Colors.grey[700]),
+            return Semantics(
+              hidden: true,
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Text(
+                  S.current.tapTheIcon,
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
               ),
             );
           }
