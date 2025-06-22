@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/l10n/l10n.dart';
@@ -96,9 +97,10 @@ class _MyAppState extends State<MyApp> {
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
+          builder: (context, child) => AccessibilityTools(child: child),
           home: const Splash(),
           locale: preferences.lang, // Use the lang from UserPreferencesModel
-          debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: true,
         );
       },
     );
