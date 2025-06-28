@@ -134,21 +134,24 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   Widget _forgotPassword() {
-    return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ForgotPasswordPage(),
+    return Semantics(
+      button: true,
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const ForgotPasswordPage(),
+          ),
         ),
-      ),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minHeight: 48,
-          minWidth: 48,
-        ),
-        child: Center(
-          child: Text(
-            S.current.forgotPassword,
-            style: const TextStyle(color: Colors.grey, fontSize: 18),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 48,
+            minWidth: 48,
+          ),
+          child: Center(
+            child: Text(
+              S.current.forgotPassword,
+              style: const TextStyle(color: Colors.grey, fontSize: 18),
+            ),
           ),
         ),
       ),
