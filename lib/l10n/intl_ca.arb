@@ -18,6 +18,7 @@
   "deleteMyAccountContent": "En eliminar el compte s'eliminarà tota la informació personal i no es podrà recuperar (s'haurà de crear un compte nou). Es mantindrà la informació relativa a les observacions creades.",
   "directoryDoesntExist": "Directori no existeix",
   "doneSemantic": "Fet",
+  "download": "Descarregar",
   "email": "Correu electrònic",
   "emailAlreadyInUse": "L'adreça de correu electrònic ja està utilitzada per un altre compte.",
   "emailSent": "Email enviat",

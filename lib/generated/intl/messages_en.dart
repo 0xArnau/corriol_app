@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directory doesn\'t exist"),
         "doneSemantic": MessageLookupByLibrary.simpleMessage("Done"),
+        "download": MessageLookupByLibrary.simpleMessage("Download"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "The email address is already in use by another account."),

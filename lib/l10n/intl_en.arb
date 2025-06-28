@@ -18,6 +18,7 @@
   "deleteMyAccountContent": "Deleting the account will delete all personal information and cannot be recovered (a new account must be created). Information regarding the observations created will be maintained.",
   "directoryDoesntExist": "Directory doesn't exist",
   "doneSemantic": "Done",
+  "download": "Download",
   "email": "Email",
   "emailAlreadyInUse": "The email address is already in use by another account.",
   "emailSent": "Email sent",

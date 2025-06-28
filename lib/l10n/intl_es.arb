@@ -18,6 +18,7 @@
   "deleteMyAccountContent": "Al eliminar la cuenta se eliminará toda la información personal y no se podrá recuperar (se deberá crear una cuenta nueva). Se mantendrá la información relativa a las observaciones creadas.",
   "directoryDoesntExist": "Directorio no existe",
   "doneSemantic": "Hecho",
+  "download": "Descargar",
   "email": "Correo electrónico",
   "emailAlreadyInUse": "La dirección de correo electrónico ya está siendo utilizada por otra cuenta.",
   "emailSent": "Email enviado",
