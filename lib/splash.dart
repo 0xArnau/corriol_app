@@ -1,5 +1,5 @@
-import 'package:corriol_app/utils/constants.dart';
 import 'package:corriol_app/pages/auth/auth_page.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -50,7 +50,10 @@ class _SplashState extends State<Splash> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                  child: Image.asset('assets/images/CorriolAPP.png'),
+                  child: Semantics(
+                    hidden: true,
+                    child: Image.asset('assets/images/CorriolAPP.png'),
+                  ),
                 ),
               ),
               // const Spacer(),
@@ -58,7 +61,10 @@ class _SplashState extends State<Splash> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                  child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+                  child: Semantics(
+                    hidden: true,
+                    child: Image.asset('assets/images/GEPEC_EdC_OFICIAL.png'),
+                  ),
                 ),
               ),
             ],
