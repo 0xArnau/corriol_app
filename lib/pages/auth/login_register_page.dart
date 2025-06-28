@@ -193,6 +193,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         Checkbox(
           value: isAccepted,
           onChanged: (value) => onChanged(value ?? false),
+          semanticLabel: text,
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -209,12 +210,28 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                   ),
                 );
               },
-              child: Text(
-                text,
-                style: const TextStyle(
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.blue,
-                  color: Colors.blue,
+              behavior: HitTestBehavior.opaque,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 48,
+                  minHeight: 48,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Semantics(
+                    button: true,
+                    child: Semantics(
+                      hidden: true,
+                      child: Text(
+                        text,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.blue,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
