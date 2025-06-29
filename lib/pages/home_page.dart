@@ -71,8 +71,11 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: kDoublePaddingGridViewText),
-            const Image(
-              image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+            Semantics(
+              hidden: true,
+              child: Image(
+                image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+              ),
             ),
           ],
         ),

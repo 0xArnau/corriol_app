@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Back"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "This area cannot be viewed without internet connection"),
@@ -42,12 +43,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kentish plover"),
         "corriolPetit":
             MessageLookupByLibrary.simpleMessage("Little ringed plover"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrement"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Delete my account"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
             "Deleting the account will delete all personal information and cannot be recovered (a new account must be created). Information regarding the observations created will be maintained."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directory doesn\'t exist"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Done"),
+        "download": MessageLookupByLibrary.simpleMessage("Download"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "The email address is already in use by another account."),
@@ -74,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to save the given information"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."),
+        "fetchOrUpdateData":
+            MessageLookupByLibrary.simpleMessage("Fetch or Update data"),
         "fileSave": MessageLookupByLibrary.simpleMessage("File saved"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -81,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Go to device app settings"),
         "handyman": MessageLookupByLibrary.simpleMessage("Handyman"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "increment": MessageLookupByLibrary.simpleMessage("Increment"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Internet connection"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
@@ -99,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Males"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Undetermined"),
+        "map": MessageLookupByLibrary.simpleMessage("Map"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Meet the Kenthish Plover"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -106,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Mobile data"),
         "myRecords": MessageLookupByLibrary.simpleMessage("My records"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Next"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -171,17 +180,23 @@ class MessageLookup extends MessageLookupByLibrary {
             "Become a volunteer and participate by recording your observations"),
         "screen_1_1_Foto_1_1_8_before":
             MessageLookupByLibrary.simpleMessage("Help us protect the plover"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Select current position on the map"),
         "sendEmail": MessageLookupByLibrary.simpleMessage("Send email"),
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Send information"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Skip"),
         "statusOff": MessageLookupByLibrary.simpleMessage("off"),
         "statusOn": MessageLookupByLibrary.simpleMessage("on"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "tapTheIcon": MessageLookupByLibrary.simpleMessage(
             "Touch the button to update the data."),
         "techRole": MessageLookupByLibrary.simpleMessage("Role: Technician"),
+        "toggle": MessageLookupByLibrary.simpleMessage("Toggle"),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
         "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
             "This user cannot be deleted, if you want to delete it, contact us"),

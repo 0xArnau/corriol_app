@@ -134,15 +134,26 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   Widget _forgotPassword() {
-    return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ForgotPasswordPage(),
+    return Semantics(
+      button: true,
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const ForgotPasswordPage(),
+          ),
         ),
-      ),
-      child: Text(
-        S.current.forgotPassword,
-        style: const TextStyle(color: Colors.grey),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 48,
+            minWidth: 48,
+          ),
+          child: Center(
+            child: Text(
+              S.current.forgotPassword,
+              style: const TextStyle(color: Colors.grey, fontSize: 18),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -185,6 +196,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         Checkbox(
           value: isAccepted,
           onChanged: (value) => onChanged(value ?? false),
+          semanticLabel: text,
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -201,12 +213,28 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                   ),
                 );
               },
-              child: Text(
-                text,
-                style: const TextStyle(
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.blue,
-                  color: Colors.blue,
+              behavior: HitTestBehavior.opaque,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 48,
+                  minHeight: 48,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Semantics(
+                    button: true,
+                    child: Semantics(
+                      hidden: true,
+                      child: Text(
+                        text,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.blue,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -248,6 +276,51 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble25),
         // SSO
         // _sso(),
+      ],
+    );
+  }
+
+  Widget _allLegalStuff() {
+    return Column(
+      children: [
+        Text(S.current.legalFields),
+        // const SizedBox(height: kDouble10),
+        _legalStuff(
+          asset: 'assets/docs/legal/avis-legal.pdf',
+          text: S.current.legalWarning,
+          isAccepted: checkBoxLegal,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxLegal = value;
+              });
+            }
+          },
+        ),
+        _legalStuff(
+          asset: 'assets/docs/legal/clausula-informativa.pdf',
+          text: S.current.infoClause,
+          isAccepted: checkBoxInfo,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxInfo = value;
+              });
+            }
+          },
+        ),
+        _legalStuff(
+          asset: 'assets/docs/legal/privacitat.pdf',
+          text: S.current.privacyPolicy,
+          isAccepted: checkBoxPrivacy,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxPrivacy = value;
+              });
+            }
+          },
+        ),
       ],
     );
   }
@@ -296,43 +369,11 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Docs
         const SizedBox(height: kDouble10),
-        Text(S.current.legalFields),
-        // const SizedBox(height: kDouble10),
-        _legalStuff(
-          asset: 'assets/docs/legal/avis-legal.pdf',
-          text: S.current.legalWarning,
-          isAccepted: checkBoxLegal,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxLegal = value;
-              });
-            }
-          },
-        ),
-        _legalStuff(
-          asset: 'assets/docs/legal/clausula-informativa.pdf',
-          text: S.current.infoClause,
-          isAccepted: checkBoxInfo,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxInfo = value;
-              });
-            }
-          },
-        ),
-        _legalStuff(
-          asset: 'assets/docs/legal/privacitat.pdf',
-          text: S.current.privacyPolicy,
-          isAccepted: checkBoxPrivacy,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxPrivacy = value;
-              });
-            }
-          },
+        // Primero debe de leer lo de arriba y luego lo d abajo
+
+        Semantics(
+          container: true,
+          child: _allLegalStuff(),
         ),
         const SizedBox(height: kDouble15),
         // Register button

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edad"),
         "all": MessageLookupByLibrary.simpleMessage("Todos"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Volver"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No se puede visualizar esta área sin conexión a internet"),
@@ -43,12 +44,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chorlitejo patinegro"),
         "corriolPetit":
             MessageLookupByLibrary.simpleMessage("Chorlitejo chico"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrementar"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Borrar mi cuenta"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
             "Al eliminar la cuenta se eliminará toda la información personal y no se podrá recuperar (se deberá crear una cuenta nueva). Se mantendrá la información relativa a las observaciones creadas."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directorio no existe"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Hecho"),
+        "download": MessageLookupByLibrary.simpleMessage("Descargar"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "La dirección de correo electrónico ya está siendo utilizada por otra cuenta."),
@@ -75,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "No se pudo guardar la información dada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "El acceso a esta cuenta se ha deshabilitado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puedes restaurarlo inmediatamente restableciendo tu contraseña o puedes volver a intentarlo más tarde."),
+        "fetchOrUpdateData":
+            MessageLookupByLibrary.simpleMessage("Obtener o actualizar datos"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Archivo guardado"),
         "forgotPassword": MessageLookupByLibrary.simpleMessage(
             "¿Has olvidado tu contraseña?"),
@@ -82,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ir a la configuración de la aplicación del dispositivo"),
         "handyman": MessageLookupByLibrary.simpleMessage("Técnico"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "increment": MessageLookupByLibrary.simpleMessage("Incrementar"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Conexión a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
@@ -100,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Machos"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Indeterminado"),
+        "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "meetKentishPlover": MessageLookupByLibrary.simpleMessage(
             "Conoce al Chorlitejo patinegro"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -107,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Datos móviles"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Mis registros"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Siguiente"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("Sin conexión a Internet"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
@@ -175,18 +184,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hazte voluntaria y participa registrando tus observaciones"),
         "screen_1_1_Foto_1_1_8_before": MessageLookupByLibrary.simpleMessage(
             "Ayudanos a proteger al chorlitejo"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Seleccionar la posición actual en el mapa"),
         "sendEmail":
             MessageLookupByLibrary.simpleMessage("Enviar correo electrónico"),
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Enviar información"),
         "signIn": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "signUp": MessageLookupByLibrary.simpleMessage("Inscribirse"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Saltar"),
         "statusOff": MessageLookupByLibrary.simpleMessage("apagado"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activado"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "tapTheIcon": MessageLookupByLibrary.simpleMessage(
             "Toque el botón para actualizar los datos."),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: Técnico"),
+        "toggle": MessageLookupByLibrary.simpleMessage("Activar o desactivar"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconocido"),
         "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(

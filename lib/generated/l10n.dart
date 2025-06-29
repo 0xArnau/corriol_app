@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Back`
+  String get backSemantic {
+    return Intl.message(
+      'Back',
+      name: 'backSemantic',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
   String get cancel {
     return Intl.message(
@@ -180,6 +190,16 @@ class S {
     );
   }
 
+  /// `Decrement`
+  String get decrement {
+    return Intl.message(
+      'Decrement',
+      name: 'decrement',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete my account`
   String get deleteMyAccount {
     return Intl.message(
@@ -205,6 +225,26 @@ class S {
     return Intl.message(
       'Directory doesn\'t exist',
       name: 'directoryDoesntExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get doneSemantic {
+    return Intl.message(
+      'Done',
+      name: 'doneSemantic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download`
+  String get download {
+    return Intl.message(
+      'Download',
+      name: 'download',
       desc: '',
       args: [],
     );
@@ -350,6 +390,16 @@ class S {
     );
   }
 
+  /// `Fetch or Update data`
+  String get fetchOrUpdateData {
+    return Intl.message(
+      'Fetch or Update data',
+      name: 'fetchOrUpdateData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `File saved`
   String get fileSave {
     return Intl.message(
@@ -395,6 +445,16 @@ class S {
     return Intl.message(
       'Home',
       name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increment`
+  String get increment {
+    return Intl.message(
+      'Increment',
+      name: 'increment',
       desc: '',
       args: [],
     );
@@ -530,6 +590,16 @@ class S {
     );
   }
 
+  /// `Map`
+  String get map {
+    return Intl.message(
+      'Map',
+      name: 'map',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Meet the Kenthish Plover`
   String get meetKentishPlover {
     return Intl.message(
@@ -575,6 +645,16 @@ class S {
     return Intl.message(
       'Name',
       name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get nextSemantic {
+    return Intl.message(
+      'Next',
+      name: 'nextSemantic',
       desc: '',
       args: [],
     );
@@ -960,6 +1040,16 @@ class S {
     );
   }
 
+  /// `Select current position on the map`
+  String get select_current_position_on_the_map {
+    return Intl.message(
+      'Select current position on the map',
+      name: 'select_current_position_on_the_map',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Send email`
   String get sendEmail {
     return Intl.message(
@@ -990,11 +1080,31 @@ class S {
     );
   }
 
+  /// `Sign Out`
+  String get signOut {
+    return Intl.message(
+      'Sign Out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign Up`
   String get signUp {
     return Intl.message(
       'Sign Up',
       name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skipSemantic {
+    return Intl.message(
+      'Skip',
+      name: 'skipSemantic',
       desc: '',
       args: [],
     );
@@ -1045,6 +1155,16 @@ class S {
     return Intl.message(
       'Role: Technician',
       name: 'techRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toggle`
+  String get toggle {
+    return Intl.message(
+      'Toggle',
+      name: 'toggle',
       desc: '',
       args: [],
     );

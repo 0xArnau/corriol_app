@@ -75,8 +75,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 // const SizedBox(height: 10),
                 // _profileAppInfo(),
                 const SizedBox(height: 10),
-                const Image(
-                  image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                Semantics(
+                  hidden: true,
+                  child: Image(
+                    image: AssetImage('assets/images/GEPEC_EdC_OFICIAL.png'),
+                  ),
                 ),
               ];
 
@@ -237,16 +240,20 @@ class _ProfilePageState extends State<ProfilePage> {
             : const Icon(Icons.mobiledata_off),
       ),
       title: Text(S.current.mobileData),
-      trailing: Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(100),
-          color: Colors.grey.withOpacity(0.1),
-        ),
-        child: Switch(
-          value: mobileData,
-          onChanged: provider.setMobileDataInfo,
+      trailing: SizedBox(
+        width: 48,
+        height: 48,
+        child: MergeSemantics(
+          child: Semantics(
+            container: true,
+            label: "${S.current.toggle} ${S.current.mobileData}",
+            toggled: mobileData,
+            inMutuallyExclusiveGroup: true,
+            child: Switch(
+              value: mobileData,
+              onChanged: provider.setMobileDataInfo,
+            ),
+          ),
         ),
       ),
       // onTap: onTap,
@@ -266,22 +273,26 @@ class _ProfilePageState extends State<ProfilePage> {
               ? const Icon(Icons.gps_fixed)
               : const Icon(Icons.gps_off)),
       title: const Text("GPS"),
-      trailing: Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(100),
-          color: Colors.grey.withOpacity(0.1),
-        ),
-        child: Switch(
-          value: isGpsOn,
-          onChanged: (value) {
-            value
-                ? GeolocationController()
-                    .enableLocationPermission(context, provider)
-                : GeolocationController()
-                    .disableLocationPermission(context, provider);
-          },
+      trailing: SizedBox(
+        width: 48,
+        height: 48,
+        child: MergeSemantics(
+          child: Semantics(
+            container: true,
+            label: "${S.current.toggle} GPS",
+            toggled: isGpsOn,
+            inMutuallyExclusiveGroup: true,
+            child: Switch(
+              value: isGpsOn,
+              onChanged: (value) {
+                value
+                    ? GeolocationController()
+                        .enableLocationPermission(context, provider)
+                    : GeolocationController()
+                        .disableLocationPermission(context, provider);
+              },
+            ),
+          ),
         ),
       ),
       // onTap: onTap,

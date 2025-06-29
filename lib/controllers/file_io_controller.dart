@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/models/report_model.dart';
@@ -9,6 +8,7 @@ import 'package:corriol_app/utils/my_snackbar.dart';
 import 'package:csv/csv.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -146,5 +146,34 @@ class FileIoController {
         )
         .then((_) => snackbarInfo(context, "${S.current.fileSave}: $fileName "))
         .onError((error, stackTrace) => snackbarError(context, "$error"));
+  }
+
+  /// Saves a PDF file from the assets using FileSaver.
+  ///
+  /// Displays a snackbar indicating whether the operation was successful or failed.
+  ///
+  /// Parameters:
+  /// - [context]: Build context to show the snackbar.
+  /// - [assetPath]: Path to the PDF file within the assets.
+  /// - [fileName]: Desired name of the exported file (without extension).
+  static void savePDFFromAssets({
+    required BuildContext context,
+    required String assetPath,
+    required String fileName,
+  }) async {
+    try {
+      final ByteData byteData = await rootBundle.load(assetPath);
+      final Uint8List bytes = byteData.buffer.asUint8List();
+
+      await FileSaver.instance.saveFile(
+        name: '$fileName.pdf',
+        bytes: bytes,
+        mimeType: MimeType.pdf,
+      );
+
+      snackbarInfo(context, '${S.current.fileSave}: $fileName.pdf');
+    } catch (error) {
+      snackbarError(context, '$error');
+    }
   }
 }

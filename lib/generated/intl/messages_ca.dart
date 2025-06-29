@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "age": MessageLookupByLibrary.simpleMessage("Edat"),
         "all": MessageLookupByLibrary.simpleMessage("Tots"),
+        "backSemantic": MessageLookupByLibrary.simpleMessage("Enrere"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel · lar"),
         "cannotBeViewedWithoutInternet": MessageLookupByLibrary.simpleMessage(
             "No es pot visualitzar aquesta àrea sense connexió a internet"),
@@ -41,12 +42,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "corriolCamanegre":
             MessageLookupByLibrary.simpleMessage("Corriol camanegre"),
         "corriolPetit": MessageLookupByLibrary.simpleMessage("Corriol Petit"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrementar"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Esborrar el meu compte"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
             "En eliminar el compte s\'eliminarà tota la informació personal i no es podrà recuperar (s\'haurà de crear un compte nou). Es mantindrà la informació relativa a les observacions creades."),
         "directoryDoesntExist":
             MessageLookupByLibrary.simpleMessage("Directori no existeix"),
+        "doneSemantic": MessageLookupByLibrary.simpleMessage("Fet"),
+        "download": MessageLookupByLibrary.simpleMessage("Descarregar"),
         "email": MessageLookupByLibrary.simpleMessage("Correu electrònic"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "L\'adreça de correu electrònic ja està utilitzada per un altre compte."),
@@ -73,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "No s\'ha pogut desar la informació proporcionada"),
         "errorToManyRequestsFirebase": MessageLookupByLibrary.simpleMessage(
             "L\'accés a aquest compte s\'ha desactivat temporalment a causa de molts intents fallits d\'iniciar sessió. Podeu restaurar-lo immediatament restablint la vostra contrasenya o podeu tornar-ho a provar més tard."),
+        "fetchOrUpdateData":
+            MessageLookupByLibrary.simpleMessage("Obtenir o actualitzar dades"),
         "fileSave": MessageLookupByLibrary.simpleMessage("Fitxer guardat"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Has oblidat la contrasenya?"),
@@ -80,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Aneu a la configuració de l\'aplicació del dispositiu"),
         "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
+        "increment": MessageLookupByLibrary.simpleMessage("Incrementar"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Connexió a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
@@ -98,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Mascles"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Indeterminat"),
+        "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Coneix al Corriol camanegre"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -105,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mobileData": MessageLookupByLibrary.simpleMessage("Dades mòbils"),
         "myRecords": MessageLookupByLibrary.simpleMessage("Els meus registres"),
         "name": MessageLookupByLibrary.simpleMessage("Nom"),
+        "nextSemantic": MessageLookupByLibrary.simpleMessage("Següent"),
         "noInternetConnection":
             MessageLookupByLibrary.simpleMessage("Sense connexió a Internet"),
         "password": MessageLookupByLibrary.simpleMessage("Contrasenya"),
@@ -175,18 +184,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fes-te voluntària i participa registrant les teves observacions"),
         "screen_1_1_Foto_1_1_8_before": MessageLookupByLibrary.simpleMessage(
             "Ajuda\'ns a protegir al corriol"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Selecciona la posició actual al mapa"),
         "sendEmail":
             MessageLookupByLibrary.simpleMessage("Envia correu electrònic"),
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Enviar informació"),
         "signIn": MessageLookupByLibrary.simpleMessage("Inicieu la sessió"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Tancar sessió"),
         "signUp": MessageLookupByLibrary.simpleMessage("Registra\'t"),
+        "skipSemantic": MessageLookupByLibrary.simpleMessage("Saltar"),
         "statusOff": MessageLookupByLibrary.simpleMessage("apagat"),
         "statusOn": MessageLookupByLibrary.simpleMessage("activat"),
         "submit": MessageLookupByLibrary.simpleMessage("Enviar"),
         "tapTheIcon": MessageLookupByLibrary.simpleMessage(
             "Toqueu el botó per actualitzar les dades."),
         "techRole": MessageLookupByLibrary.simpleMessage("Rol: tècnic"),
+        "toggle": MessageLookupByLibrary.simpleMessage("Activar o desactivar"),
         "unknownError":
             MessageLookupByLibrary.simpleMessage("Error desconegut"),
         "userCannotBeRemoved": MessageLookupByLibrary.simpleMessage(
