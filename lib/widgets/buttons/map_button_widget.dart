@@ -54,46 +54,49 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
             ),
             const SizedBox(width: kDouble25),
             Expanded(
-              child: Semantics(
-                label: S.current.select_current_position_on_the_map,
-                button: true,
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    side: const BorderSide(color: kColorDropDown),
-                    backgroundColor: kColorDropDown,
-                    foregroundColor: Colors.black,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MapPage(
-                            position: position,
-                            zoom: 10,
-                          );
-                        },
+              child: SizedBox(
+                height: 48,
+                child: Semantics(
+                  label: S.current.select_current_position_on_the_map,
+                  button: true,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    );
-                  },
-                  child: Semantics(
-                    hidden: true,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Semantics(
-                        hidden: true,
-                        child: ValueListenableBuilder<String>(
-                          valueListenable: addressNotifier,
-                          builder: (context, address, child) {
-                            return Text(
-                              address,
-                              textAlign: TextAlign.center,
+                      side: const BorderSide(color: kColorDropDown),
+                      backgroundColor: kColorDropDown,
+                      foregroundColor: Colors.black,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MapPage(
+                              position: position,
+                              zoom: 10,
                             );
                           },
+                        ),
+                      );
+                    },
+                    child: Semantics(
+                      hidden: true,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Semantics(
+                          hidden: true,
+                          child: ValueListenableBuilder<String>(
+                            valueListenable: addressNotifier,
+                            builder: (context, address, child) {
+                              return Text(
+                                address,
+                                textAlign: TextAlign.center,
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
