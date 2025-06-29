@@ -280,6 +280,51 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
     );
   }
 
+  Widget _allLegalStuff() {
+    return Column(
+      children: [
+        Text(S.current.legalFields),
+        // const SizedBox(height: kDouble10),
+        _legalStuff(
+          asset: 'assets/docs/legal/avis-legal.pdf',
+          text: S.current.legalWarning,
+          isAccepted: checkBoxLegal,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxLegal = value;
+              });
+            }
+          },
+        ),
+        _legalStuff(
+          asset: 'assets/docs/legal/clausula-informativa.pdf',
+          text: S.current.infoClause,
+          isAccepted: checkBoxInfo,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxInfo = value;
+              });
+            }
+          },
+        ),
+        _legalStuff(
+          asset: 'assets/docs/legal/privacitat.pdf',
+          text: S.current.privacyPolicy,
+          isAccepted: checkBoxPrivacy,
+          onChanged: (value) {
+            if (mounted) {
+              setState(() {
+                checkBoxPrivacy = value;
+              });
+            }
+          },
+        ),
+      ],
+    );
+  }
+
   Widget _register() {
     return Column(
       children: [
@@ -324,43 +369,11 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         const SizedBox(height: kDouble15),
         // Docs
         const SizedBox(height: kDouble10),
-        Text(S.current.legalFields),
-        // const SizedBox(height: kDouble10),
-        _legalStuff(
-          asset: 'assets/docs/legal/avis-legal.pdf',
-          text: S.current.legalWarning,
-          isAccepted: checkBoxLegal,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxLegal = value;
-              });
-            }
-          },
-        ),
-        _legalStuff(
-          asset: 'assets/docs/legal/clausula-informativa.pdf',
-          text: S.current.infoClause,
-          isAccepted: checkBoxInfo,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxInfo = value;
-              });
-            }
-          },
-        ),
-        _legalStuff(
-          asset: 'assets/docs/legal/privacitat.pdf',
-          text: S.current.privacyPolicy,
-          isAccepted: checkBoxPrivacy,
-          onChanged: (value) {
-            if (mounted) {
-              setState(() {
-                checkBoxPrivacy = value;
-              });
-            }
-          },
+        // Primero debe de leer lo de arriba y luego lo d abajo
+
+        Semantics(
+          container: true,
+          child: _allLegalStuff(),
         ),
         const SizedBox(height: kDouble15),
         // Register button
