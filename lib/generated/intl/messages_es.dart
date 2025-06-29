@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Machos"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Indeterminado"),
+        "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "meetKentishPlover": MessageLookupByLibrary.simpleMessage(
             "Conoce al Chorlitejo patinegro"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -181,6 +182,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hazte voluntaria y participa registrando tus observaciones"),
         "screen_1_1_Foto_1_1_8_before": MessageLookupByLibrary.simpleMessage(
             "Ayudanos a proteger al chorlitejo"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Seleccionar la posición actual en el mapa"),
         "sendEmail":
             MessageLookupByLibrary.simpleMessage("Enviar correo electrónico"),
         "sendInformation":

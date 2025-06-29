@@ -570,6 +570,16 @@ class S {
     );
   }
 
+  /// `Map`
+  String get map {
+    return Intl.message(
+      'Map',
+      name: 'map',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Meet the Kenthish Plover`
   String get meetKentishPlover {
     return Intl.message(
@@ -1005,6 +1015,16 @@ class S {
     return Intl.message(
       'Help us protect the plover',
       name: 'screen_1_1_Foto_1_1_8_before',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select current position on the map`
+  String get select_current_position_on_the_map {
+    return Intl.message(
+      'Select current position on the map',
+      name: 'select_current_position_on_the_map',
       desc: '',
       args: [],
     );

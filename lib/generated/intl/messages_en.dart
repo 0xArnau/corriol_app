@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Males"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Undetermined"),
+        "map": MessageLookupByLibrary.simpleMessage("Map"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Meet the Kenthish Plover"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -177,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Become a volunteer and participate by recording your observations"),
         "screen_1_1_Foto_1_1_8_before":
             MessageLookupByLibrary.simpleMessage("Help us protect the plover"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Select current position on the map"),
         "sendEmail": MessageLookupByLibrary.simpleMessage("Send email"),
         "sendInformation":
             MessageLookupByLibrary.simpleMessage("Send information"),

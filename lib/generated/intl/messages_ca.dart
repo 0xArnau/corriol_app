@@ -103,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "legendMales": MessageLookupByLibrary.simpleMessage("Mascles"),
         "legendUndetermined":
             MessageLookupByLibrary.simpleMessage("Indeterminat"),
+        "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "meetKentishPlover":
             MessageLookupByLibrary.simpleMessage("Coneix al Corriol camanegre"),
         "messageReportsDontShow": MessageLookupByLibrary.simpleMessage(
@@ -181,6 +182,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fes-te voluntària i participa registrant les teves observacions"),
         "screen_1_1_Foto_1_1_8_before": MessageLookupByLibrary.simpleMessage(
             "Ajuda\'ns a protegir al corriol"),
+        "select_current_position_on_the_map":
+            MessageLookupByLibrary.simpleMessage(
+                "Selecciona la posició actual al mapa"),
         "sendEmail":
             MessageLookupByLibrary.simpleMessage("Envia correu electrònic"),
         "sendInformation":

@@ -1,7 +1,8 @@
 import 'package:corriol_app/controllers/geolocation_controller.dart';
-import 'package:corriol_app/utils/constants.dart';
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/pages/home/map_page.dart';
 import 'package:corriol_app/providers/user_provider.dart';
+import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +44,7 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
     return Consumer<UserProvider>(
       builder: (context, value, child) {
         final position = value.position as LatLng;
+
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -52,39 +54,49 @@ class _MapButtonWidgetState extends State<MapButtonWidget> {
             ),
             const SizedBox(width: kDouble25),
             Expanded(
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  side: const BorderSide(color: kColorDropDown),
-                  backgroundColor: kColorDropDown,
-                  foregroundColor: Colors.black,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MapPage(
-                          position: position,
-                          zoom: 10,
-                        );
-                      },
+              child: Semantics(
+                label: S.current.select_current_position_on_the_map,
+                button: true,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                  );
-                },
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ValueListenableBuilder<String>(
-                    valueListenable: addressNotifier,
-                    builder: (context, address, child) {
-                      return Text(
-                        address,
-                        textAlign: TextAlign.center,
-                      );
-                    },
+                    side: const BorderSide(color: kColorDropDown),
+                    backgroundColor: kColorDropDown,
+                    foregroundColor: Colors.black,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MapPage(
+                            position: position,
+                            zoom: 10,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  child: Semantics(
+                    hidden: true,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Semantics(
+                        hidden: true,
+                        child: ValueListenableBuilder<String>(
+                          valueListenable: addressNotifier,
+                          builder: (context, address, child) {
+                            return Text(
+                              address,
+                              textAlign: TextAlign.center,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
