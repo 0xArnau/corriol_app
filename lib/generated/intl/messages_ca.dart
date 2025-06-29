@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "corriolCamanegre":
             MessageLookupByLibrary.simpleMessage("Corriol camanegre"),
         "corriolPetit": MessageLookupByLibrary.simpleMessage("Corriol Petit"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrementar"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Esborrar el meu compte"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
@@ -85,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Aneu a la configuració de l\'aplicació del dispositiu"),
         "handyman": MessageLookupByLibrary.simpleMessage("Tècnic"),
         "home": MessageLookupByLibrary.simpleMessage("Inici"),
+        "increment": MessageLookupByLibrary.simpleMessage("Incrementar"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Connexió a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(

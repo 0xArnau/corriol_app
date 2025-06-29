@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kentish plover"),
         "corriolPetit":
             MessageLookupByLibrary.simpleMessage("Little ringed plover"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrement"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Delete my account"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Go to device app settings"),
         "handyman": MessageLookupByLibrary.simpleMessage("Handyman"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "increment": MessageLookupByLibrary.simpleMessage("Increment"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Internet connection"),
         "infoClause": MessageLookupByLibrary.simpleMessage(

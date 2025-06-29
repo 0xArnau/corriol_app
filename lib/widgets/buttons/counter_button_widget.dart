@@ -1,3 +1,4 @@
+import 'package:corriol_app/generated/l10n.dart';
 import 'package:corriol_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,7 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            height: 40,
+            height: 48,
             decoration: BoxDecoration(
               border: Border.all(color: kColorDropDown),
               color: kColorDropDown,
@@ -69,6 +70,7 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
             IconButton(
               icon: const Icon(Icons.remove),
               onPressed: _decrement,
+              tooltip: S.current.decrement,
             ),
             Text(
               '$_count',
@@ -76,6 +78,7 @@ class _CounterButtonWidgetState extends State<CounterButtonWidget> {
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: _increment,
+              tooltip: S.current.increment,
             ),
           ],
         )

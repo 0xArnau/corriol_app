@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `Decrement`
+  String get decrement {
+    return Intl.message(
+      'Decrement',
+      name: 'decrement',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete my account`
   String get deleteMyAccount {
     return Intl.message(
@@ -435,6 +445,16 @@ class S {
     return Intl.message(
       'Home',
       name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increment`
+  String get increment {
+    return Intl.message(
+      'Increment',
+      name: 'increment',
       desc: '',
       args: [],
     );

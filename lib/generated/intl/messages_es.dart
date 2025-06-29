@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chorlitejo patinegro"),
         "corriolPetit":
             MessageLookupByLibrary.simpleMessage("Chorlitejo chico"),
+        "decrement": MessageLookupByLibrary.simpleMessage("Decrementar"),
         "deleteMyAccount":
             MessageLookupByLibrary.simpleMessage("Borrar mi cuenta"),
         "deleteMyAccountContent": MessageLookupByLibrary.simpleMessage(
@@ -87,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ir a la configuración de la aplicación del dispositivo"),
         "handyman": MessageLookupByLibrary.simpleMessage("Técnico"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "increment": MessageLookupByLibrary.simpleMessage("Incrementar"),
         "inernetConnection":
             MessageLookupByLibrary.simpleMessage("Conexión a Internet"),
         "infoClause": MessageLookupByLibrary.simpleMessage(
