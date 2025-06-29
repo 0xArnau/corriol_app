@@ -61,8 +61,9 @@ class _RecordObservationPageState extends State<RecordObservationPage> {
               Provider.of<UserProvider>(context, listen: false)
                   .fetchPosition(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.pin_drop,
+              semanticLabel: S.current.map,
             ),
           ),
         ],
