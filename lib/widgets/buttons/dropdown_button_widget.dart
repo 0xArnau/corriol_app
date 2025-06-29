@@ -42,7 +42,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            height: 40,
+            height: 48,
             decoration: BoxDecoration(
               border: Border.all(color: kColorDropDown),
               borderRadius: BorderRadius.circular(8),
