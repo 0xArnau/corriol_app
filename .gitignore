@@ -68,3 +68,6 @@ ios/Runner/AppDelegate.swift
 
 # android
 android/app/src/main/res/values/strings.xml
+
+# direnv
+.direnv/
