@@ -15,7 +15,7 @@
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            flutter329
+            flutter
             dart
           ];
 
