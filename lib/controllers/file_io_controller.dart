@@ -141,7 +141,7 @@ class FileIoController {
         .saveFile(
           name: fileName,
           bytes: Uint8List.fromList(utf8.encode(csv)),
-          ext: 'csv',
+          fileExtension: 'csv',
           mimeType: MimeType.csv,
         )
         .then((_) => snackbarInfo(context, "${S.current.fileSave}: $fileName "))
