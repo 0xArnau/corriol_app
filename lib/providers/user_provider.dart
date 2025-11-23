@@ -23,13 +23,13 @@ class UserProvider extends ChangeNotifier {
   late bool internetConnectionStatus;
 
   /// Return the [UserModel] instance of the current user.
-  get user => _user;
+  UserModel? get user => _user;
 
   /// Returns the [UserPreferencesModel] instance of the current user preferences, which contains: [UserPreferencesModel.lang], [UserPreferencesModel.mobileData] and [UserPreferencesModel.gps].
-  get preferences => _preferences;
+  UserPreferencesModel get preferences => _preferences;
 
   /// Return the selected position coordinates ([LatLng])
-  get position => _position;
+  LatLng get position => _position;
 
   /// Constructor of the [UserProvider] class.
   UserProvider() {
