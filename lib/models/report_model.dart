@@ -79,6 +79,8 @@ class ReportModel {
   /// Creates a new [ReportModel] instance from a JSON format.
   factory ReportModel.fromJson(Map<String, dynamic> json) {
     final coordinates = json['coordinates'].split(',');
+    final speciesName = json['species'].toString().split('.').last;
+
     return ReportModel(
       createdAt: json['createdAt'].toString(),
       createdBy: json['createdBy'].toString(),
@@ -87,7 +89,7 @@ class ReportModel {
           double.parse(
             coordinates[1],
           )),
-      species: SpeciesExtension.valueOf(json['species'].toString()),
+      species: SpeciesExtension.valueOf(speciesName),
       females: int.parse(json['females'].toString()),
       males: int.parse(json['males'].toString()),
       undetermined: int.parse(json['undetermined'].toString()),
